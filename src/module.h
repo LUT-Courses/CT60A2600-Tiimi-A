@@ -22,7 +22,9 @@ int valikko();
 TIEDOT* lue(char *pNimi, TIEDOT *pAlku);
 TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pSukunimi, int iMaara);
 TIEDOT *vapautaMuisti(TIEDOT *pAlku);
-void kirjoita();
-void tulosta();
+void kysyKirjoitettavaTiedosto(char *pKirjoitusTiedostoNimi);
+void kysyLuettavaTiedosto(char *pLueTiedostoNimi);
+TIEDOT kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku);
+void kirjoitaTiedostoLopustaAlkuun();
 
 #endif

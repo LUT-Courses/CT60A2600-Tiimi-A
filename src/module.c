@@ -5,6 +5,11 @@
 
 int valikko() {
     int iValinta = 0;
+    printf("1) Lue Tiedosto\n");
+    printf("2) Kirjoita tiedosto alusta loppuun\n");
+    printf("3) Kirjoita tiedosto lopusta alkuun\n");
+    printf("4) Tyhjennä taulukko\n");
+    printf("0) Lopeta\n");
     printf("Anna valintasi: ");
     scanf("%d", &iValinta);
     getchar();
@@ -100,10 +105,41 @@ TIEDOT *vapautaMuisti(TIEDOT *pAlku) {
     return(pAlku);
 }
 
-void kirjoita()
-{
+void kysyKirjoitettavaTiedosto(char *pKirjoitusTiedostoNimi) {
+    printf("Anna kirjoitettavan tiedoston nimi: ");
+    scanf("%s", pKirjoitusTiedostoNimi);
+    getchar();
+    return(0);
 }
 
-void tulosta()
-{
+void kysyLuettavaTiedosto(char *pLueTiedostoNimi) {
+    printf("Anna luettavan tiedoston nimi: ");
+    scanf("%s", pLueTiedostoNimi);
+    getchar();
+    return(0);
+}
+
+TIEDOT kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku) {
+    FILE *Tiedosto = NULL;
+    char aRivi[LEN] = "";
+    TIEDOT *ptr = NULL;
+
+    //Kirjoitus tiedoston avaaminen
+    Tiedosto = fopen(pKirjoitaTiedostoNimi, "a");
+    if(Tiedosto == NULL) {
+        perror("Tiedoston avaaminen epäonnistui, lopetetaan");
+        exit(0);
+    }
+
+    //Tiedostoon kirjoittaminen
+    ptr = pAlku;
+    while (ptr != NULL)
+    {
+        fprintf(Tiedosto, "%c,%d\n", ptr->aSukunimi, ptr->iYhteensa);
+        ptr = ptr->pSeuraava;
+    }
+    
+}
+
+void kirjoitaTiedostoLopustaAlkuun() {
 }
