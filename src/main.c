@@ -20,6 +20,7 @@ int main(void) {
             kirjoitaTiedostoAlustaLoppuun(pKirjoitusTiedosto, pAlku);
         } else if (iValinta == 3) {
             kysyKirjoitettavaTiedosto(pKirjoitusTiedosto);
+            kirjoitaTiedostoLopustaAlkuun(pKirjoitusTiedosto, pAlku);
         } else if (iValinta == 4) {
             pAlku = vapautaMuisti(pAlku);
             printf("Muisti vapautettu.\n");
