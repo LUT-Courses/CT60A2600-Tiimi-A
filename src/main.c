@@ -22,6 +22,7 @@ int main(void) {
             kysyKirjoitettavaTiedosto(pKirjoitusTiedosto);
         } else if (iValinta == 4) {
             pAlku = vapautaMuisti(pAlku);
+            printf("Muisti vapautettu.\n");
         } else if (iValinta == 0) {
             printf("Lopetetaan.\n");
         } else {

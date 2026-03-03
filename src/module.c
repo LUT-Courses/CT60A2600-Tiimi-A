@@ -109,14 +109,12 @@ void kysyKirjoitettavaTiedosto(char *pKirjoitusTiedostoNimi) {
     printf("Anna kirjoitettavan tiedoston nimi: ");
     scanf("%s", pKirjoitusTiedostoNimi);
     getchar();
-    return(0);
 }
 
 void kysyLuettavaTiedosto(char *pLueTiedostoNimi) {
     printf("Anna luettavan tiedoston nimi: ");
     scanf("%s", pLueTiedostoNimi);
     getchar();
-    return(0);
 }
 
 TIEDOT kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku) {
@@ -135,9 +133,13 @@ TIEDOT kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku)
     ptr = pAlku;
     while (ptr != NULL)
     {
-        fprintf(Tiedosto, "%c,%d\n", ptr->aSukunimi, ptr->iYhteensa);
+        fprintf(Tiedosto, "%s,%d\n", ptr->aSukunimi, ptr->iYhteensa);
         ptr = ptr->pSeuraava;
     }
+
+    //Tiedoston sulkeminen
+    fclose(Tiedosto);
+    printf("Tiedosto %s kirjoitettu.\n", pKirjoitaTiedostoNimi);
     
 }
 
