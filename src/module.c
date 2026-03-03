@@ -3,7 +3,8 @@
 #include <string.h>
 #include "module.h"
 
-int valikko() {
+int valikko()
+{
     int iValinta = 0;
     printf("1) Lue Tiedosto\n");
     printf("2) Kirjoita tiedosto alusta loppuun\n");
@@ -16,7 +17,8 @@ int valikko() {
     return (iValinta);
 }
 
-TIEDOT *lue(char *pNimi, TIEDOT *pAlku) {
+TIEDOT *lue(char *pNimi, TIEDOT *pAlku)
+{
     FILE *Tiedosto = NULL;
     char aRivi[LEN] = "";
     char *p1 = NULL, *p2 = NULL;
@@ -25,28 +27,33 @@ TIEDOT *lue(char *pNimi, TIEDOT *pAlku) {
 
     /* Pitääkö tämän olla oma aliohjelmansa (avaaminen)? */
 
-    if ((Tiedosto = fopen(pNimi, "r")) == NULL) {
+    if ((Tiedosto = fopen(pNimi, "r")) == NULL)
+    {
         perror("Tiedoston avaaminen epäonnistui, lopetetaan");
         exit(0);
     }
 
     /* Tiedoston lukeminen */
 
-    while ((fgets(aRivi, LEN, Tiedosto)) != NULL) {
+    while ((fgets(aRivi, LEN, Tiedosto)) != NULL)
+    {
 
-        aRivi[strlen(aRivi)-1] = '\0';
+        aRivi[strlen(aRivi) - 1] = '\0';
 
-        if (iOtsikko == 0) {
+        if (iOtsikko == 0)
+        {
             iOtsikko = 1;
             continue;
         }
 
-        if ((p1 = strtok(aRivi, ";")) == NULL) {
+        if ((p1 = strtok(aRivi, ";")) == NULL)
+        {
             perror("Tiedoston pilkkominen epäonnistui, lopetetaan");
             exit(0);
         }
 
-        if ((p2 = strtok(NULL, ";")) == NULL) {
+        if ((p2 = strtok(NULL, ";")) == NULL)
+        {
             perror("Tiedoston pilkkominen epäonnistui, lopetetaan");
             exit(0);
         }
@@ -59,16 +66,18 @@ TIEDOT *lue(char *pNimi, TIEDOT *pAlku) {
     }
     /* Pitääkö tämän olla oma aliohjelmansa (sulkeminen)? */
     fclose(Tiedosto);
-    return(pAlku);
+    return (pAlku);
 }
 
-TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pSukunimi, int iMaara) {
+TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pSukunimi, int iMaara)
+{
     TIEDOT *pUusi = NULL;
     TIEDOT *ptr = NULL;
 
     /* Muistin varaaminen. */
 
-    if ((pUusi = (TIEDOT *)malloc(sizeof(TIEDOT))) == NULL) {
+    if ((pUusi = (TIEDOT *)malloc(sizeof(TIEDOT))) == NULL)
+    {
         perror("Muistin varaus epäonnistui, lopetetaan");
         exit(0);
     }
@@ -79,12 +88,16 @@ TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pSukunimi, int iMaara) {
     pUusi->iYhteensa = iMaara;
     pUusi->pSeuraava = NULL;
 
-    if (pAlku == NULL) {
+    if (pAlku == NULL)
+    {
         pUusi->pEdellinen = NULL;
         pAlku = pUusi;
-    } else {
+    }
+    else
+    {
         ptr = pAlku;
-        while (ptr->pSeuraava != NULL) {
+        while (ptr->pSeuraava != NULL)
+        {
             ptr = ptr->pSeuraava;
         }
         ptr->pSeuraava = pUusi;
@@ -93,16 +106,18 @@ TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pSukunimi, int iMaara) {
     return (pAlku);
 }
 
-TIEDOT *vapautaMuisti(TIEDOT *pAlku) {
+TIEDOT *vapautaMuisti(TIEDOT *pAlku)
+{
     /* Muistin vapauttaminen. */
     TIEDOT *ptr = pAlku;
-    while (ptr != NULL) {
+    while (ptr != NULL)
+    {
         pAlku = ptr->pSeuraava;
         free(ptr);
         ptr = pAlku;
     }
     pAlku = NULL;
-    return(pAlku);
+    return (pAlku);
 }
 
 void kysyKirjoitettavaTiedosto(char *pKirjoitusTiedostoNimi) {
@@ -117,7 +132,7 @@ void kysyLuettavaTiedosto(char *pLueTiedostoNimi) {
     getchar();
 }
 
-TIEDOT kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku) {
+void kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku) {
     FILE *Tiedosto = NULL;
     char aRivi[LEN] = "";
     TIEDOT *ptr = NULL;
@@ -143,5 +158,35 @@ TIEDOT kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku)
     
 }
 
-void kirjoitaTiedostoLopustaAlkuun() {
+void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku)
+{
+    FILE *Tiedosto = NULL;
+
+    /* Haluaakohan CodeGrade että tämä tarkistetaan _ja_ ohjelman suoritus loppuu?
+        vai laitetaanko return :D */
+
+    if (pAlku == NULL){
+        printf("Lista on tyhjä, lopetetaan.\n");
+        exit(0);
+    }
+    TIEDOT *ptr = pAlku;
+
+     if ((Tiedosto = fopen(pNimi, "a")) == NULL)
+    {
+        perror("Tiedoston avaaminen epäonnistui, lopetetaan");
+        exit(0);
+    }
+
+    // Mennään listan loppuun.
+    while (ptr->pSeuraava != NULL){
+        ptr=ptr->pSeuraava;
+    }
+
+    // Lopusta alkuun, kirjoitetaan tiedostoon.
+    while (ptr != NULL){
+        fprintf(Tiedosto,"%s,%d\n",ptr->aSukunimi,ptr->iYhteensa);
+        ptr=ptr->pEdellinen;
+    }
+
+    fclose(Tiedosto);
 }

@@ -22,9 +22,14 @@ int valikko();
 TIEDOT* lue(char *pNimi, TIEDOT *pAlku);
 TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pSukunimi, int iMaara);
 TIEDOT *vapautaMuisti(TIEDOT *pAlku);
+<<<<<<< Updated upstream
 void kysyKirjoitettavaTiedosto(char *pKirjoitusTiedostoNimi);
 void kysyLuettavaTiedosto(char *pLueTiedostoNimi);
 TIEDOT kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku);
 void kirjoitaTiedostoLopustaAlkuun();
+=======
+void kirjoitaAlustaLoppuun(char *pNimi, TIEDOT *pAlku);
+void kirjoitaLopustaAlkuun(char *pNimi, TIEDOT *pAlku);
+>>>>>>> Stashed changes
 
 #endif
