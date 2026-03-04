@@ -150,8 +150,8 @@ git push origin v0.1.0
 
 ## 👤 Author & Course
 
-- **Authors**: Your Name 
-- **Course**: Course Name
+- **Authors**: Aino Pöyhönen, Sofia Toropainen ja Noora Vepsäläinen 
+- **Course**: CT60A2600 Ohjelmistokehitys C-kielellä
 - **Institution**: LUT University
 
 ---
