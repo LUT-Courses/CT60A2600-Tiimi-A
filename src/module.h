@@ -11,19 +11,11 @@ typedef struct tiedot
     struct tiedot *pEdellinen;
 } TIEDOT;
 
-/* Ei tällä hetkellä käytössä. Olisi kyllä tehokkaampi vaihtoehto. */
-/* typedef struct lista
-{
-    TIEDOT *pAlku;
-    TIEDOT *pLoppu;
-} LISTA; */
-
 int valikko();
+char *kysyNimi(char *pPrompti, char *pNimi);
 TIEDOT* lue(char *pNimi, TIEDOT *pAlku);
 TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pSukunimi, int iMaara);
 TIEDOT *vapautaMuisti(TIEDOT *pAlku);
-void kysyKirjoitettavaTiedosto(char *pKirjoitusTiedostoNimi);
-void kysyLuettavaTiedosto(char *pLueTiedostoNimi);
 void kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku);
 void kirjoitaTiedostoLopustaAlkuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku);
 

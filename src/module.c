@@ -6,7 +6,8 @@
 int valikko()
 {
     int iValinta = 0;
-    printf("1) Lue Tiedosto\n");
+    printf("Valitse haluamasi toiminto:\n");
+    printf("1) Lue tiedosto\n");
     printf("2) Kirjoita tiedosto alusta loppuun\n");
     printf("3) Kirjoita tiedosto lopusta alkuun\n");
     printf("4) Tyhjennä taulukko\n");
@@ -17,6 +18,13 @@ int valikko()
     return (iValinta);
 }
 
+char *kysyNimi(char *pPrompti, char *pNimi) {
+    printf("%s", pPrompti);
+    scanf("%s", pNimi);
+    getchar();
+    return (pNimi);
+}
+
 TIEDOT *lue(char *pNimi, TIEDOT *pAlku)
 {
     FILE *Tiedosto = NULL;
@@ -25,7 +33,7 @@ TIEDOT *lue(char *pNimi, TIEDOT *pAlku)
     int iOtsikko = 0;
     int iMaara = 0;
 
-    /* Pitääkö tämän olla oma aliohjelmansa (avaaminen)? */
+    /* Tiedoston avaaminen. */
 
     if ((Tiedosto = fopen(pNimi, "r")) == NULL)
     {
@@ -64,8 +72,9 @@ TIEDOT *lue(char *pNimi, TIEDOT *pAlku)
 
         pAlku = varaaMuistia(pAlku, p1, iMaara);
     }
-    /* Pitääkö tämän olla oma aliohjelmansa (sulkeminen)? */
+    /* Tiedoston sulkeminen. */
     fclose(Tiedosto);
+    printf("Tiedosto '%s' luettu.\n", pNimi);
     return (pAlku);
 }
 
@@ -120,21 +129,8 @@ TIEDOT *vapautaMuisti(TIEDOT *pAlku)
     return (pAlku);
 }
 
-void kysyKirjoitettavaTiedosto(char *pKirjoitusTiedostoNimi) {
-    printf("Anna kirjoitettavan tiedoston nimi: ");
-    scanf("%s", pKirjoitusTiedostoNimi);
-    getchar();
-}
-
-void kysyLuettavaTiedosto(char *pLueTiedostoNimi) {
-    printf("Anna luettavan tiedoston nimi: ");
-    scanf("%s", pLueTiedostoNimi);
-    getchar();
-}
-
 void kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku) {
     FILE *Tiedosto = NULL;
-    char aRivi[LEN] = "";
     TIEDOT *ptr = NULL;
 
     //Kirjoitus tiedoston avaaminen
@@ -155,7 +151,7 @@ void kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku) {
     //Tiedoston sulkeminen
     fclose(Tiedosto);
     printf("Tiedosto %s kirjoitettu.\n", pKirjoitaTiedostoNimi);
-    
+    return;
 }
 
 void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku)
@@ -189,4 +185,5 @@ void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku)
     }
 
     fclose(Tiedosto);
+    return;
 }

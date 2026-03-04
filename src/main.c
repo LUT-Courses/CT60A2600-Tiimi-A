@@ -4,23 +4,30 @@
 #include "module.h"
 
 int main(void) {
-    //char aNimi[] = "data/sukunimet_2025.txt";
-    char aNimi[40] = "";
+    char aNimiLuettava[LEN] = "";
+    char aNimiKirjoitettava[LEN] = "";
     TIEDOT *pAlku = NULL;
     int iValinta = 0;
-    char pKirjoitusTiedosto[50] = "";
 
     do {
         iValinta = valikko();
         if (iValinta == 1) {
-            kysyLuettavaTiedosto(aNimi);
-            pAlku = lue(aNimi, pAlku);
+            kysyNimi("Anna luettavan tiedoston nimi: ", aNimiLuettava);
+            pAlku = lue(aNimiLuettava, pAlku);
         } else if (iValinta == 2) {
-            kysyKirjoitettavaTiedosto(pKirjoitusTiedosto);
-            kirjoitaTiedostoAlustaLoppuun(pKirjoitusTiedosto, pAlku);
+            if (pAlku == NULL){
+                printf("Lista on tyhjä, lue tiedosto ennen kirjoittamista.\n");
+            } else {
+                kysyNimi("Anna kirjoitettavan tiedoston nimi: ", aNimiKirjoitettava);
+                kirjoitaTiedostoAlustaLoppuun(aNimiKirjoitettava, pAlku);
+            }
         } else if (iValinta == 3) {
-            kysyKirjoitettavaTiedosto(pKirjoitusTiedosto);
-            kirjoitaTiedostoLopustaAlkuun(pKirjoitusTiedosto, pAlku);
+            if (pAlku == NULL){
+                printf("Lista on tyhjä, lue tiedosto ennen kirjoittamista.\n");
+            } else {
+                kysyNimi("Anna kirjoitettavan tiedoston nimi: ", aNimiKirjoitettava);
+                kirjoitaTiedostoLopustaAlkuun(aNimiKirjoitettava, pAlku);
+            }
         } else if (iValinta == 4) {
             pAlku = vapautaMuisti(pAlku);
             printf("Muisti vapautettu.\n");
@@ -29,8 +36,10 @@ int main(void) {
         } else {
             printf("Tuntematon valinta, yritä uudestaan.\n");
         }
+        printf("\n");
     } while (iValinta != 0);
-    /* En tiedä onko turha, mutta varmuuden vuoksi vielä täällä lopussa erikseen. */
+    /* Vapautetaan muisti varmuuden vuoksi vielä täällä lopussa erikseen, jos käyttäjä ei muista sitä tehdä. */
     pAlku = vapautaMuisti(pAlku);
+    printf("Kiitos ohjelman käytöstä.\n");
     return(0);
 }
