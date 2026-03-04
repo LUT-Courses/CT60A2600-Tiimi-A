@@ -3,7 +3,7 @@
 #include <string.h>
 #include "module.h"
 
-int valikko()
+int valikko(void)
 {
     int iValinta = 0;
     printf("Valitse haluamasi toiminto:\n");
@@ -157,14 +157,6 @@ void kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku) {
 void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku)
 {
     FILE *Tiedosto = NULL;
-
-    /* Haluaakohan CodeGrade että tämä tarkistetaan _ja_ ohjelman suoritus loppuu?
-        vai laitetaanko return :D */
-
-    if (pAlku == NULL){
-        printf("Lista on tyhjä, lopetetaan.\n");
-        exit(0);
-    }
     TIEDOT *ptr = pAlku;
 
      if ((Tiedosto = fopen(pNimi, "a")) == NULL)

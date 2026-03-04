@@ -11,7 +11,7 @@ typedef struct tiedot
     struct tiedot *pEdellinen;
 } TIEDOT;
 
-int valikko();
+int valikko(void);
 char *kysyNimi(char *pPrompti, char *pNimi);
 TIEDOT* lue(char *pNimi, TIEDOT *pAlku);
 TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pSukunimi, int iMaara);
