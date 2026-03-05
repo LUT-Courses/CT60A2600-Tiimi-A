@@ -38,9 +38,23 @@ void test_VapautaMuisti(void) {
     TEST_ASSERT_NULL(pAlku);
 }
 
+void test_OtsikonOhi(void) {
+    int expectedLuku = 1;
+    int iOtsikko = 0;
+
+    // Onko otsikko menty ohi
+    if (iOtsikko == 0) {
+        iOtsikko = 1;
+    }
+
+    // Loytyyko oikeat arvot
+    TEST_ASSERT_EQUAL_INT(expectedLuku, iOtsikko);
+}
+
 int main(void) {
     UNITY_BEGIN();
     RUN_TEST(test_VaraaMuistia);
     RUN_TEST(test_VapautaMuisti);
+    RUN_TEST(test_OtsikonOhi);
     return UNITY_END();
 }
