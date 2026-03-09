@@ -3,7 +3,19 @@
 #include <string.h>
 #include "module.h"
 
-int valikko()
+int valikko(){
+    int iValinta = 0;
+    printf("Valitse haluamasi toiminto:\n");
+    printf("1) Lista\n");
+    printf("2) Binääripuu\n");
+    printf("0) Lopeta\n");
+    printf("Anna valintasi: ");
+    scanf("%d", &iValinta);
+    getchar();
+    return iValinta;
+}
+
+int listaValikko()
 {
     int iValinta = 0;
     printf("Valitse haluamasi toiminto:\n");
@@ -11,11 +23,26 @@ int valikko()
     printf("2) Kirjoita tiedosto alusta loppuun\n");
     printf("3) Kirjoita tiedosto lopusta alkuun\n");
     printf("4) Tyhjennä taulukko\n");
-    printf("0) Lopeta\n");
+    printf("0) Takaisin\n"); // Viikko 2: takaisin ??
     printf("Anna valintasi: ");
     scanf("%d", &iValinta);
     getchar();
-    return (iValinta);
+    return iValinta;
+}
+
+int binaaripuuValikko(){
+    int iValinta = 0;
+    printf("Valitse haluamasi toiminto:\n");
+    printf("1) Luo puu\n");
+    printf("2) Tulosta puu\n");
+    printf("3) Syvyyshaku\n");
+    printf("4) Leveyshaku\n");
+    printf("5) Tyhjennä puu\n");
+    printf("0) Takaisin\n");
+    printf("Anna valintasi: ");
+    scanf("%d", &iValinta);
+    getchar();
+    return iValinta;
 }
 
 char *kysyNimi(char *pPrompti, char *pNimi) {
@@ -24,6 +51,8 @@ char *kysyNimi(char *pPrompti, char *pNimi) {
     getchar();
     return (pNimi);
 }
+
+// Viikko 1 / Lista:
 
 TIEDOT *lue(char *pNimi, TIEDOT *pAlku)
 {
@@ -186,4 +215,22 @@ void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku)
 
     fclose(Tiedosto);
     return;
+}
+
+// Viikko 2 / Binääripuu:
+
+void luoPuu(){
+    // Voi viedä enemmän kuin yhden aliohjelman varmaan, + erillinen muistinkäsittely?
+}
+
+void tulostaPuu(){
+    // tulosta puu järkevässä muodossa, CodeGrade *ei* testaa
+}
+
+void syvyyshaku(char *pNimi){
+    // syvyyshaku arvon mukaan, kirjoitetaan käydyt nodet /polku tiedostoon
+}
+
+void leveyshaku(char *pNimi){
+    // leveyshaku nimen mukaan, kirjoitetaan käydyt nodet /polku tiedostoon
 }
