@@ -219,12 +219,118 @@ void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku)
 
 // Viikko 2 / Binääripuu:
 
-void luoPuu(){
-    // Voi viedä enemmän kuin yhden aliohjelman varmaan, + erillinen muistinkäsittely?
+PUU *varaaMuistiaPuulle(char *pSolmu, int iValiMatka) {
+    PUU *pUusi = NULL;
+
+    //Muistin varaaminen
+    if ((pUusi = (PUU *)malloc(sizeof(PUU))) == NULL) {
+        perror("Muistin varaus epäonnistui, lopetetaan");
+        exit(0);
+    }
+
+    strcpy(pUusi->aNimi, pSolmu);
+    pUusi->iArvo = iValiMatka;
+    pUusi->pVasen = NULL;
+    pUusi->pOikea = NULL;
+    return(pUusi);
 }
 
-void tulostaPuu(){
+/*PUU *vapautaMuistiPuu(PUU *pJuuriSolmu) {
+    //Muistin vapauttaminen
+    vapautaMuistiPuu(pJuuriSolmu->pVasen);
+    vapautaMuistiPuu(pJuuriSolmu->pOikea);
+    free(pJuuriSolmu);
+
+    return(pJuuriSolmu);
+}*/
+
+PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka) {
+    int iVertailu = 0;
+
+    //Varataan muistia, jos muisti tyhja
+    if (pAlku == NULL) {
+        return varaaMuistiaPuulle(pSolmu, iValiMatka);
+    }
+
+    iVertailu = strcmp(pSolmu, pAlku->aNimi);
+
+    //Solmujen lisaaminen
+    if (iValiMatka < pAlku->iArvo) {
+        pAlku->pVasen = lisaaSolmu(pAlku->pVasen, pSolmu, iValiMatka);
+    } else if (iValiMatka > pAlku->iArvo) {
+        pAlku->pOikea = lisaaSolmu(pAlku->pOikea, pSolmu, iValiMatka);
+
+    //Testataan, onko arvot samat
+    } else if (iValiMatka == pAlku->iArvo) {
+        if(iVertailu < 0) {
+            pAlku->pVasen = lisaaSolmu(pAlku->pVasen, pSolmu, iValiMatka);
+        } else if (iVertailu > 0) {
+            pAlku->pOikea = lisaaSolmu(pAlku->pOikea, pSolmu, iValiMatka);
+        }
+    }
+    
+    return(pAlku);
+}
+
+PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
+    // Voi viedä enemmän kuin yhden aliohjelman varmaan, + erillinen muistinkäsittely?
+    FILE *Tiedosto = NULL;
+    char aRivi[LEN] = "";
+    int iOtsikko = 0;
+    char *p1 = NULL, *p2 = NULL;
+    int iValiMatka = 0;
+
+    //Tiedoston avaus
+    if ((Tiedosto = fopen(pNimi, "r")) == NULL) {
+        perror("Tiedoston avaaminen epäonnistui, lopetetaan");
+        exit(0);
+    }
+
+    // Tiedoston lukeminen
+    while ((fgets(aRivi, LEN, Tiedosto)) != NULL) {
+        aRivi[strlen(aRivi) - 1] = '\0';
+
+        //Ohitetaan otsikko
+        if (iOtsikko == 0){
+            iOtsikko++;
+            continue;
+        }
+        
+        //Pilkotaan rivit
+        if ((p1 = strtok(aRivi, ";")) == NULL) {
+            perror("Tiedoston pilkkominen epäonnistui, lopetetaan");
+            exit(0);
+        }
+
+        if ((p2 = strtok(NULL, ";")) == NULL) {
+            perror("Tiedoston pilkkominen epäonnistui, lopetetaan");
+            exit(0);
+        }
+
+        iValiMatka = atoi(p2);
+
+        //Maaritetaan juuri solmu jos sita ei ole maaritetty
+        if (pJuuriSolmu == NULL) {
+            pJuuriSolmu = lisaaSolmu(pJuuriSolmu, p1, iValiMatka);
+            iOtsikko++;
+            continue;
+        }
+
+        lisaaSolmu(pJuuriSolmu, p1, iValiMatka);
+    }
+
+    fclose(Tiedosto);
+    return(pJuuriSolmu);
+}
+
+PUU *tulostaPuu(PUU *pAlku){
     // tulosta puu järkevässä muodossa, CodeGrade *ei* testaa
+    if(pAlku != NULL) {
+        printf("%s-%d + ", pAlku->aNimi, pAlku->iArvo);
+        tulostaPuu(pAlku->pVasen);
+        tulostaPuu(pAlku->pOikea);
+    }
+    return(0);
 }
 
 void syvyyshaku(char *pNimi){

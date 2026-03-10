@@ -15,8 +15,8 @@ typedef struct puu
 {
     char aNimi[LEN];
     int iArvo;
-    struct tiedot *pSeuraava;
-    struct tiedot *pEdellinen;
+    struct puu *pOikea;
+    struct puu *pVasen;
 } PUU;
 
 int valikko();
@@ -30,8 +30,11 @@ TIEDOT *vapautaMuisti(TIEDOT *pAlku);
 void kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku);
 void kirjoitaTiedostoLopustaAlkuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku);
 
-void luoPuu();
-void tulostaPuu();
+PUU *varaaMuistiaPuulle(char *pSolmu, int iValiMatka);
+//PUU *vapautaMuistiPuu(PUU *pJuuriSolmu);
+PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka);
+PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu);
+PUU *tulostaPuu(PUU *pAlku);
 void syvyyshaku(char *pKirjoitaTiedostoNimi);
 void leveyshaku(char *pKirjoitaTiedostoNimi);
 

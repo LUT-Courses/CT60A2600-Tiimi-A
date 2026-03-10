@@ -7,7 +7,16 @@ int main(void) {
     char aNimiLuettava[LEN] = "";
     char aNimiKirjoitettava[LEN] = "";
     TIEDOT *pAlku = NULL;
+    PUU *pJuuriSolmu = NULL;
     int iValinta = 0;
+
+    kysyNimi("Tiedoston nimi ", aNimiLuettava); //SAA POISTAA KUN VALINNAT TOIMIVAT
+    pJuuriSolmu = luoPuu(aNimiLuettava, pJuuriSolmu);//SAA POISTAA KUN VALINNAT TOIMIVAT
+    tulostaPuu(pJuuriSolmu);//SAA POISTAA KUN VALINNAT TOIMIVAT
+    //pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu); //SAA POISTAA KUN VALINNAT TOIMIVAT
+    //pJuuriSolmu = NULL; //SAA POISTAA KUN VALINNAT TOIMIVAT
+
+
 
     do {
         iValinta = valikko();
@@ -40,6 +49,7 @@ int main(void) {
     } while (iValinta != 0);
     /* Vapautetaan muisti varmuuden vuoksi vielä täällä lopussa erikseen, jos käyttäjä ei muista sitä tehdä. */
     pAlku = vapautaMuisti(pAlku);
+    //pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
     printf("Kiitos ohjelman käytöstä.\n");
     return(0);
 }
