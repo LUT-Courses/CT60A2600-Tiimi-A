@@ -67,9 +67,10 @@ int main(void) {
                     pJuuriSolmu = luoPuu(aNimiLuettava, pJuuriSolmu);
                 } else if (iValinta2 == 2) {
                     if (pJuuriSolmu == NULL) {
-                        printf("Puu on tyhjä, luo puurakenne ennen tulostamista.\n");
+                        printf("Puu on tyhjä, luo puurakenne ennen kirjoittamista.\n");
                     } else {
-                        tulostaPuu(pJuuriSolmu);
+                        kysyNimi("Anna kirjoitettavan tiedoston nimi: ", aNimiKirjoitettava);
+                        kirjoitaBinaaripuu(aNimiKirjoitettava, pJuuriSolmu);
                     }
                 } else if (iValinta2 == 3) {
                     if (pJuuriSolmu == NULL) {

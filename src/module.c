@@ -309,6 +309,15 @@ void tulostaPuu(PUU *pAlku) {
     return;
 }
 
+void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku) {
+    if (pAlku != NULL) {
+        kirjoitaTiedostoon(pNimi, pAlku);
+        kirjoitaBinaaripuu(pNimi, pAlku->pVasen);
+        kirjoitaBinaaripuu(pNimi, pAlku->pOikea);
+    }
+    return;
+}
+
 int kysyArvo(char *pPrompti, int iArvo) {
     printf("%s", pPrompti);
     scanf("%d", &iArvo);
