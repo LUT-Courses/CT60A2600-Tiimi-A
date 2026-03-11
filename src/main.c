@@ -12,7 +12,7 @@ int main(void) {
     int iValinta = 0;
     int iValinta2 = 0;
     int iArvo = 0;
-
+    int iLoytyi = 0;
     /*
     kysyNimi("Tiedoston nimi ", aNimiLuettava); //SAA POISTAA KUN VALINNAT TOIMIVAT
     pJuuriSolmu = luoPuu(aNimiLuettava, pJuuriSolmu);//SAA POISTAA KUN VALINNAT TOIMIVAT
@@ -78,7 +78,11 @@ int main(void) {
                     } else {
                         iArvo = kysyArvo("Anna haettava numeroarvo: ", iArvo);
                         kysyNimi("Anna kirjoitettavan tiedoston nimi: ", aNimiKirjoitettava);
-                        syvyyshaku(aNimiKirjoitettava, pJuuriSolmu, iArvo);
+                        iLoytyi = syvyyshaku(aNimiKirjoitettava, pJuuriSolmu, iArvo);
+
+                        if (iLoytyi == 0) {
+                            printf("Arvoa %d ei löytynyt puusta.\n", iArvo);
+                        }
                         printf("Tiedosto '%s' kirjoitettu.\n", aNimiKirjoitettava);
                     }
                 } else if (iValinta2 == 4) {

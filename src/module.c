@@ -33,7 +33,7 @@ int binaaripuuValikko() {
     int iValinta = 0;
     printf("\nValitse haluamasi toiminto:\n");
     printf("1) Luo puu\n");
-    printf("2) Tulosta puu\n");
+    printf("2) Kirjoita puu tiedostoon\n");
     printf("3) Syvyyshaku\n");
     printf("4) Leveyshaku\n");
     printf("5) Tyhjennä puu\n");
@@ -325,21 +325,26 @@ int kysyArvo(char *pPrompti, int iArvo) {
     return (iArvo);
 }
 
-void syvyyshaku(char *pNimi, PUU *pAlku, int iArvo) {
+int syvyyshaku(char *pNimi, PUU *pAlku, int iArvo) {
     // Syvyyshaku arvon mukaan, kirjoitetaan käydyt solmut tiedostoon.
+    int iLoytyi = 0;
 
     if (pAlku != NULL) {
         kirjoitaTiedostoon(pNimi, pAlku);
 
         if (pAlku->iArvo == iArvo) {
+            iLoytyi = 1;
             printf("Arvo %d löytyi.\n", iArvo);
-        } else {
-            syvyyshaku(pNimi, pAlku->pVasen, iArvo);
-            syvyyshaku(pNimi, pAlku->pOikea, iArvo);
+         } else {
+            if (iLoytyi == 0) {
+                iLoytyi = syvyyshaku(pNimi, pAlku->pVasen, iArvo);
+            }
+            if (iLoytyi == 0) {
+                iLoytyi = syvyyshaku(pNimi, pAlku->pOikea, iArvo);
+            }
         }
     }
-
-    return;
+    return (iLoytyi);
 }
 
 void leveyshaku(char *pNimi, PUU *pJuuriSolmu, char *pHaku) {
