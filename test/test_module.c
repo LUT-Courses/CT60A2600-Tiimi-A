@@ -4,14 +4,18 @@
 #include "../src/module.h"
 
 TIEDOT *pAlku = NULL;
+PUU *pJuuriSolmu = NULL;
 
 void setUp(void) {
     pAlku = NULL;
+    pJuuriSolmu = NULL;
 }
 
 // Vapautetaan muisti jokaisen testin jälkeen
 void tearDown(void) {
     pAlku = vapautaMuisti(pAlku);
+    pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+    
 }
 
 // Onnistuuko varaaMuistia, kun lista on tyhjä
@@ -88,11 +92,60 @@ void test_VaraaMuistiUsealleAlkiolle(void) {
     TEST_ASSERT_NULL(pAlku->pEdellinen);
 }
 
+//Onnistuuko varaaMuistiaPuulle, kun se on tyhja
+void test_VaraaMuistiaPuulle() {
+    char expectedNimi[] = "Kosonen";
+    int expectedArvo = 500;
+
+    pJuuriSolmu = varaaMuistiaPuulle(expectedNimi, expectedArvo);
+    TEST_ASSERT_NOT_NULL(pJuuriSolmu);
+
+    //Pitaisi olla ainut solmu
+    TEST_ASSERT_NULL(pJuuriSolmu->pVasen);
+    TEST_ASSERT_NULL(pJuuriSolmu->pOikea);
+
+    //Loytyyko oikeat arvot
+    TEST_ASSERT_EQUAL_STRING(expectedNimi, pJuuriSolmu->aNimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo, pJuuriSolmu->iArvo);
+}
+
+//Onnistuuko varata muistia usealle solmulle puussa, kun se on tyhja
+/*void test_VaraaMuistiaUsealleSolmullePuussa() {
+    PUU *ptr = pJuuriSolmu;
+    char expectedNimi1[] = "Kosonen";
+    int expectedArvo1 = 500;
+    char expectedNimi2[] = "Gekko";
+    int expectedArvo2 = 345;
+    char expectedNimi3[] = "Karjalainen";
+    int expectedArvo3 = 600;
+
+    //Varataan muistia
+    pJuuriSolmu = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
+    TEST_ASSERT_NOT_NULL(pJuuriSolmu);
+
+
+    pJuuriSolmu = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
+    TEST_ASSERT_NOT_NULL(pJuuriSolmu);
+
+    pJuuriSolmu = varaaMuistiaPuulle(expectedNimi3, expectedArvo3);
+    TEST_ASSERT_NOT_NULL(pJuuriSolmu);
+
+    //Loytyyko oikeat arvot
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, ptr->aNimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo1, ptr->iArvo);
+
+    ptr = ptr->pVasen;
+    TEST_ASSERT_EQUAL_STRING(expectedNimi2, ptr->aNimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo2, ptr->iArvo);
+}*/
+
 int main(void) {
     UNITY_BEGIN();
     RUN_TEST(test_VaraaMuistia);
     RUN_TEST(test_VapautaMuisti);
     RUN_TEST(test_OtsikonOhi);
     RUN_TEST(test_VaraaMuistiUsealleAlkiolle);
+    RUN_TEST(test_VaraaMuistiaPuulle);
+    //RUN_TEST(test_VaraaMuistiaUsealleSolmullePuussa);
     return UNITY_END();
 }
