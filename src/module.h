@@ -17,6 +17,11 @@ typedef struct puu {
     struct puu *pVasen;
 } PUU;
 
+typedef struct jono {
+    PUU *pSolmu;
+    struct jono *pSeuraava;
+} JONO;
+
 int valikko();
 int listaValikko();
 int binaaripuuValikko();
@@ -29,11 +34,14 @@ void kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku);
 void kirjoitaTiedostoLopustaAlkuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku);
 
 PUU *varaaMuistiaPuulle(char *pSolmu, int iValiMatka);
-// PUU *vapautaMuistiPuu(PUU *pJuuriSolmu);
+PUU *vapautaMuistiPuu(PUU *pJuuriSolmu);
 PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka);
 PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu);
-PUU *tulostaPuu(PUU *pAlku);
-void syvyyshaku(char *pKirjoitaTiedostoNimi);
-void leveyshaku(char *pKirjoitaTiedostoNimi);
-
+void tulostaPuu(PUU *pAlku);
+int kysyArvo(char *pPrompti, int iArvo);
+void syvyyshaku(char *pKirjoitaTiedostoNimi, PUU *pJuuriSolmu, int iArvo);
+void leveyshaku(char *pKirjoitaTiedostoNimi, PUU *pAlku, char *pHaku);
+JONO *varaaMuistiaJonolle(PUU *pSolmu);
+JONO *vapautaMuistiJono(JONO *pAlku);
+void kirjoitaTiedostoon(char *pKirjoitaTiedostoNimi, PUU *pAlku);
 #endif

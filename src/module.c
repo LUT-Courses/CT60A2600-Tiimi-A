@@ -209,32 +209,34 @@ PUU *varaaMuistiaPuulle(char *pSolmu, int iValiMatka) {
     return (pUusi);
 }
 
-/*PUU *vapautaMuistiPuu(PUU *pJuuriSolmu) {
+PUU *vapautaMuistiPuu(PUU *pJuuriSolmu) {
     //Muistin vapauttaminen
-    vapautaMuistiPuu(pJuuriSolmu->pVasen);
-    vapautaMuistiPuu(pJuuriSolmu->pOikea);
-    free(pJuuriSolmu);
-
-    return(pJuuriSolmu);
-}*/
+    if (pJuuriSolmu != NULL) {
+        vapautaMuistiPuu(pJuuriSolmu->pVasen);
+        vapautaMuistiPuu(pJuuriSolmu->pOikea);
+        free(pJuuriSolmu);
+    }
+    pJuuriSolmu = NULL;
+    return (pJuuriSolmu);
+}
 
 PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka) {
     int iVertailu = 0;
 
-    // Varataan muistia, jos muisti tyhja
+    // Varataan muistia, jos muisti tyhjä.
     if (pAlku == NULL) {
         return varaaMuistiaPuulle(pSolmu, iValiMatka);
     }
 
     iVertailu = strcmp(pSolmu, pAlku->aNimi);
 
-    // Solmujen lisaaminen
+    // Solmujen lisääminen.
     if (iValiMatka < pAlku->iArvo) {
         pAlku->pVasen = lisaaSolmu(pAlku->pVasen, pSolmu, iValiMatka);
     } else if (iValiMatka > pAlku->iArvo) {
         pAlku->pOikea = lisaaSolmu(pAlku->pOikea, pSolmu, iValiMatka);
 
-        // Testataan, onko arvot samat
+        // Testataan, ovatko arvot samat.
     } else if (iValiMatka == pAlku->iArvo) {
         if (iVertailu < 0) {
             pAlku->pVasen = lisaaSolmu(pAlku->pVasen, pSolmu, iValiMatka);
@@ -283,7 +285,7 @@ PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
 
         iValiMatka = atoi(p2);
 
-        // Maaritetaan juuri solmu jos sita ei ole maaritetty
+        // Maaritetaan juuri solmu jos sitä ei ole määritelty.
         if (pJuuriSolmu == NULL) {
             pJuuriSolmu = lisaaSolmu(pJuuriSolmu, p1, iValiMatka);
             iOtsikko++;
@@ -297,20 +299,123 @@ PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
     return (pJuuriSolmu);
 }
 
-PUU *tulostaPuu(PUU *pAlku) {
+void tulostaPuu(PUU *pAlku) {
     // tulosta puu järkevässä muodossa, CodeGrade *ei* testaa
     if (pAlku != NULL) {
-        printf("%s-%d + ", pAlku->aNimi, pAlku->iArvo);
+        printf("%s - %d\n", pAlku->aNimi, pAlku->iArvo);
         tulostaPuu(pAlku->pVasen);
         tulostaPuu(pAlku->pOikea);
     }
-    return (0);
+    return;
 }
 
-void syvyyshaku(char *pNimi) {
-    // syvyyshaku arvon mukaan, kirjoitetaan käydyt nodet /polku tiedostoon
+int kysyArvo(char *pPrompti, int iArvo) {
+    printf("%s", pPrompti);
+    scanf("%d", &iArvo);
+    getchar();
+    return (iArvo);
 }
 
-void leveyshaku(char *pNimi) {
-    // leveyshaku nimen mukaan, kirjoitetaan käydyt nodet /polku tiedostoon
+void syvyyshaku(char *pNimi, PUU *pAlku, int iArvo) {
+    // Syvyyshaku arvon mukaan, kirjoitetaan käydyt solmut tiedostoon.
+
+    if (pAlku != NULL) {
+        kirjoitaTiedostoon(pNimi, pAlku);
+
+        if (pAlku->iArvo == iArvo) {
+            printf("Arvo %d löytyi.\n", iArvo);
+        } else {
+            syvyyshaku(pNimi, pAlku->pVasen, iArvo);
+            syvyyshaku(pNimi, pAlku->pOikea, iArvo);
+        }
+    }
+
+    return;
+}
+
+void leveyshaku(char *pNimi, PUU *pJuuriSolmu, char *pHaku) {
+    // Leveyshaku nimen mukaan, kirjoitetaan käydyt solmut tiedostoon.
+    JONO *pAlku = varaaMuistiaJonolle(pJuuriSolmu);
+    JONO *pLoppu = pAlku;
+    JONO *pEdellinen = NULL;
+    int iVertailu = 0;
+    int iLoytyi = 0;
+
+    while (pAlku != NULL) {
+        PUU *ptr = pAlku->pSolmu;
+        kirjoitaTiedostoon(pNimi, ptr);
+
+        iVertailu = strcmp(ptr->aNimi, pHaku);
+
+        if (iVertailu == 0) {
+            printf("Nimi '%s' löytyi puusta.\n", ptr->aNimi);
+            iLoytyi = 1;
+            break;
+        }
+
+        if (ptr->pVasen != NULL) {
+            pLoppu->pSeuraava = varaaMuistiaJonolle(ptr->pVasen);
+            pLoppu = pLoppu->pSeuraava;
+        }
+        
+        if (ptr->pOikea != NULL) {
+            pLoppu->pSeuraava = varaaMuistiaJonolle(ptr->pOikea);
+            pLoppu = pLoppu->pSeuraava;
+        }
+
+        pEdellinen = pAlku;
+        pAlku = pAlku->pSeuraava;
+        free(pEdellinen);
+    }
+
+    if (iLoytyi == 0) {
+        printf("Hakemaasi nimeä ei löytynyt puusta.\n");
+    }
+    pAlku = vapautaMuistiJono(pAlku);
+    return;
+}
+
+JONO *varaaMuistiaJonolle(PUU *pSolmu) {
+    JONO *pUusi = NULL;
+
+    // Muistin varaaminen jonolle.
+    if ((pUusi = (JONO *)malloc(sizeof(JONO))) == NULL) {
+        perror("Muistin varaus epäonnistui, lopetetaan");
+        exit(0);
+    }
+
+    pUusi->pSolmu = pSolmu;
+    pUusi->pSeuraava = NULL;
+
+    return (pUusi);
+}
+
+JONO *vapautaMuistiJono(JONO *pAlku) {
+    // Jonon muistin vapauttaminen. 
+    JONO *ptr = pAlku; 
+    JONO *pSeuraava = NULL; 
+    
+    while (ptr != NULL) {
+        pSeuraava = ptr->pSeuraava;
+        free(ptr);
+        ptr = pSeuraava;
+    }
+    pAlku = NULL;
+    return (pAlku);
+}
+
+void kirjoitaTiedostoon(char *pNimi, PUU *pAlku) {
+    FILE *Tiedosto = NULL;
+    
+    /* Tiedoston avaaminen. */
+    if ((Tiedosto = fopen(pNimi, "a")) == NULL) {
+        perror("Tiedoston avaaminen epäonnistui, lopetetaan");
+        exit(0);
+    }
+    /* Tiedostoon kirjoittaminen. */
+    fprintf(Tiedosto, "%s-%d\n", pAlku->aNimi, pAlku->iArvo);
+
+    /* Tiedoston sulkeminen. */
+    fclose(Tiedosto);
+    return;
 }

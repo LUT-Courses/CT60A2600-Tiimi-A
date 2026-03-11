@@ -6,10 +6,12 @@
 int main(void) {
     char aNimiLuettava[LEN] = "";
     char aNimiKirjoitettava[LEN] = "";
+    char aHaettavaNimi[LEN] = "";
     TIEDOT *pAlku = NULL;
     PUU *pJuuriSolmu = NULL;
     int iValinta = 0;
     int iValinta2 = 0;
+    int iArvo = 0;
 
     /*
     kysyNimi("Tiedoston nimi ", aNimiLuettava); //SAA POISTAA KUN VALINNAT TOIMIVAT
@@ -46,12 +48,13 @@ int main(void) {
                     pAlku = vapautaMuisti(pAlku);
                     printf("Muisti vapautettu.\n");
                 } else if (iValinta2 == 0) {
-                    printf("Mennään takaisin päävalikkoon.\n");
+                    printf("Palataan takaisin päävalikkoon.\n");
                 } else {
                     printf("Tuntematon valinta, yritä uudestaan.\n");
                 }
             } while (iValinta2 != 0);
-            /* Vapautetaan muisti varmuuden vuoksi vielä täällä lopussa erikseen, jos käyttäjä
+
+            /* Vapautetaan listan varaama muisti varmuuden vuoksi vielä täällä lopussa erikseen, jos käyttäjä
              * ei muista sitä tehdä. */
             pAlku = vapautaMuisti(pAlku);
 
@@ -60,24 +63,45 @@ int main(void) {
             do {
                 iValinta2 = binaaripuuValikko();
                 if (iValinta2 == 1) {
-                    kysyNimi("Tiedoston nimi ", aNimiLuettava);
+                    kysyNimi("Tiedoston nimi: ", aNimiLuettava);
                     pJuuriSolmu = luoPuu(aNimiLuettava, pJuuriSolmu);
                 } else if (iValinta2 == 2) {
-                    tulostaPuu(pJuuriSolmu);
+                    if (pJuuriSolmu == NULL) {
+                        printf("Puu on tyhjä, luo puurakenne ennen tulostamista.\n");
+                    } else {
+                        tulostaPuu(pJuuriSolmu);
+                    }
                 } else if (iValinta2 == 3) {
-                    /* code */
+                    if (pJuuriSolmu == NULL) {
+                        printf("Puu on tyhjä, luo puurakenne ennen syvyyshakua.\n");
+                    } else {
+                        iArvo = kysyArvo("Anna haettava numeroarvo: ", iArvo);
+                        kysyNimi("Anna kirjoitettavan tiedoston nimi: ", aNimiKirjoitettava);
+                        syvyyshaku(aNimiKirjoitettava, pJuuriSolmu, iArvo);
+                        printf("Tiedosto '%s' kirjoitettu.\n", aNimiKirjoitettava);
+                    }
                 } else if (iValinta2 == 4) {
-                    /* code */
+                    if (pJuuriSolmu == NULL) {
+                        printf("Puu on tyhjä, luo puurakenne ennen leveyshakua.\n");
+                    } else {
+                        kysyNimi("Anna haettava nimi: ", aHaettavaNimi);
+                        kysyNimi("Anna kirjoitettavan tiedoston nimi: ", aNimiKirjoitettava);
+                        leveyshaku(aNimiKirjoitettava, pJuuriSolmu, aHaettavaNimi);
+                        printf("Tiedosto '%s' kirjoitettu.\n", aNimiKirjoitettava);
+                    }
                 } else if (iValinta2 == 5) {
-                    /* code */
-                }
-                if (iValinta2 == 0) {
-                    printf("Mennään takaisin päävalikkoon.\n");
+                    pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+                    printf("Muisti vapautettu.\n");
+                } else if (iValinta2 == 0) {
+                    printf("Palataan takaisin päävalikkoon.\n");
                 } else {
                     printf("Tuntematon valinta, yritä uudestaan.\n");
                 }
             } while (iValinta2 != 0);
-            // pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+
+            /* Vapautetaan puun varaaama muisti varmuuden vuoksi vielä täällä lopussa erikseen, jos käyttäjä
+             * ei muista sitä tehdä. */
+            pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
 
         } else if (iValinta == 0) {
             printf("Lopetetaan.\n");
@@ -86,7 +110,7 @@ int main(void) {
         }
         printf("\n");
     } while (iValinta != 0);
-    printf("\n");
+
     printf("Kiitos ohjelman käytöstä.\n");
     return (0);
 }
