@@ -413,7 +413,7 @@ void kirjoitaTiedostoon(char *pNimi, PUU *pAlku) {
         exit(0);
     }
     /* Tiedostoon kirjoittaminen. */
-    fprintf(Tiedosto, "%s-%d\n", pAlku->aNimi, pAlku->iArvo);
+    fprintf(Tiedosto, "%s,%d\n", pAlku->aNimi, pAlku->iArvo);
 
     /* Tiedoston sulkeminen. */
     fclose(Tiedosto);
