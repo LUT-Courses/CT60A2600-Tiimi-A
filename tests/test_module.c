@@ -144,6 +144,58 @@ void test_VaraaMuistiaUsealleSolmullePuussa() {
     TEST_ASSERT_EQUAL_INT(expectedArvo3, ptr->iArvo);
 }
 
+//Onnistuuko muistin varaaminen jonolle.
+void test_VaraaMuistiaJonolle() {
+    char expectedNimi1[LEN] = "Kosonen";
+    char expectedNimi2[LEN] = "Karjalainen";
+    int expectedArvo1 = 4465;
+    int expectedArvo2 = 11900;
+
+    JONO *pJono1 = NULL;
+    JONO *pJono2 = NULL;
+
+    PUU *pSolmu1 = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
+    pJono1 = varaaMuistiaJonolle(pSolmu1);
+    TEST_ASSERT_NOT_NULL(pJono1);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pJono1->pSolmu->aNimi);
+
+    PUU *pSolmu2 = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
+    pJono2 = varaaMuistiaJonolle(pSolmu2);
+    TEST_ASSERT_NOT_NULL(pJono2);
+    TEST_ASSERT_EQUAL_INT(11900, pJono2->pSolmu->iArvo);
+
+    free(pJono1);
+    free(pJono2);
+    free(pSolmu1);
+    free(pSolmu2);
+}
+
+//Testataan, toimiiko jonon muistin vapautus.
+void test_VapautaMuistiJono() {
+    char expectedNimi1[LEN] = "Kosonen";
+    char expectedNimi2[LEN] = "Karjalainen";
+    int expectedArvo1 = 4465;
+    int expectedArvo2 = 11900;
+
+    JONO *pJono1 = NULL;
+    JONO *pJono2 = NULL;
+
+    PUU *pSolmu1 = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
+    PUU *pSolmu2 = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
+
+    pJono1 = varaaMuistiaJonolle(pSolmu1);
+    pJono2 = varaaMuistiaJonolle(pSolmu2);
+
+    pJono1 = vapautaMuistiJono(pJono1);
+    TEST_ASSERT_NULL(pJono1);
+
+    pJono2 = vapautaMuistiJono(pJono2);
+    TEST_ASSERT_NULL(pJono2);
+
+    free(pSolmu1);
+    free(pSolmu2);
+}
+
 int main(void) {
     UNITY_BEGIN();
     RUN_TEST(test_VaraaMuistia);
@@ -152,5 +204,7 @@ int main(void) {
     RUN_TEST(test_VaraaMuistiUsealleAlkiolle);
     RUN_TEST(test_VaraaMuistiaPuulle);
     RUN_TEST(test_VaraaMuistiaUsealleSolmullePuussa);
+    RUN_TEST(test_VaraaMuistiaJonolle);
+    RUN_TEST(test_VapautaMuistiJono);
     return UNITY_END();
 }

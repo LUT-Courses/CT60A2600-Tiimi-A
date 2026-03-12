@@ -38,7 +38,6 @@ PUU *vapautaMuistiPuu(PUU *pJuuriSolmu);
 PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka);
 PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu);
 void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku);
-void tulostaPuu(PUU *pAlku);
 int kysyArvo(char *pPrompti, int iArvo);
 void syvyyshaku(char *pKirjoitaTiedostoNimi, PUU *pJuuriSolmu, int iArvo);
 void leveyshaku(char *pKirjoitaTiedostoNimi, PUU *pAlku, char *pHaku);

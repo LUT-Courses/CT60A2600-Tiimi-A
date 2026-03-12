@@ -299,16 +299,6 @@ PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
     return (pJuuriSolmu);
 }
 
-void tulostaPuu(PUU *pAlku) {
-    // tulosta puu järkevässä muodossa, CodeGrade *ei* testaa
-    if (pAlku != NULL) {
-        printf("%s - %d\n", pAlku->aNimi, pAlku->iArvo);
-        tulostaPuu(pAlku->pVasen);
-        tulostaPuu(pAlku->pOikea);
-    }
-    return;
-}
-
 void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku) {
     if (pAlku != NULL) {
         kirjoitaTiedostoon(pNimi, pAlku);
