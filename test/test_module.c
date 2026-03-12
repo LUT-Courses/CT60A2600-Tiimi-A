@@ -110,7 +110,7 @@ void test_VaraaMuistiaPuulle() {
 }
 
 //Onnistuuko varata muistia usealle solmulle puussa, kun se on tyhja
-/*void test_VaraaMuistiaUsealleSolmullePuussa() {
+void test_VaraaMuistiaUsealleSolmullePuussa() {
     PUU *ptr = pJuuriSolmu;
     char expectedNimi1[] = "Kosonen";
     int expectedArvo1 = 500;
@@ -119,25 +119,30 @@ void test_VaraaMuistiaPuulle() {
     char expectedNimi3[] = "Karjalainen";
     int expectedArvo3 = 600;
 
-    //Varataan muistia
+    //Varataan muistia ensimmaiselle solmulle
     pJuuriSolmu = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
-    TEST_ASSERT_NOT_NULL(pJuuriSolmu);
-
-
-    pJuuriSolmu = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
-    TEST_ASSERT_NOT_NULL(pJuuriSolmu);
-
-    pJuuriSolmu = varaaMuistiaPuulle(expectedNimi3, expectedArvo3);
-    TEST_ASSERT_NOT_NULL(pJuuriSolmu);
-
+    TEST_ASSERT_NOT_NULL(pJuuriSolmu->aNimi);
     //Loytyyko oikeat arvot
+    ptr = pJuuriSolmu;
     TEST_ASSERT_EQUAL_STRING(expectedNimi1, ptr->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedArvo1, ptr->iArvo);
 
-    ptr = ptr->pVasen;
+    //Varataan muistia toiselle solmulle
+    pJuuriSolmu = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
+    TEST_ASSERT_NOT_NULL(pJuuriSolmu->aNimi);
+    //Loytyyko oikeat arvot
+    ptr = pJuuriSolmu;
     TEST_ASSERT_EQUAL_STRING(expectedNimi2, ptr->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedArvo2, ptr->iArvo);
-}*/
+
+    //Varataan muistia kolmannelle solmulle
+    pJuuriSolmu = varaaMuistiaPuulle(expectedNimi3, expectedArvo3);
+    TEST_ASSERT_NOT_NULL(pJuuriSolmu->aNimi);
+    //Loytyyko oikeat arvot
+    ptr = pJuuriSolmu;
+    TEST_ASSERT_EQUAL_STRING(expectedNimi3, ptr->aNimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo3, ptr->iArvo);
+}
 
 int main(void) {
     UNITY_BEGIN();
@@ -146,6 +151,6 @@ int main(void) {
     RUN_TEST(test_OtsikonOhi);
     RUN_TEST(test_VaraaMuistiUsealleAlkiolle);
     RUN_TEST(test_VaraaMuistiaPuulle);
-    //RUN_TEST(test_VaraaMuistiaUsealleSolmullePuussa);
+    RUN_TEST(test_VaraaMuistiaUsealleSolmullePuussa);
     return UNITY_END();
 }
