@@ -1,0 +1,24 @@
+
+PROJECT_NAME = "CT60A2600-TIIMI-A"
+
+#documentaatio menee documentation kansioon
+OUTPUT_DIRECTORY = documentation
+
+#src kansio on inputtina ja inputtina luetaan kaikki .c ha .h loppuiset tiedostot
+INPUT = src include
+FILE_PATTERNS = *.c *.h
+
+#jos alikansioita src kansiossa niin ne myos huomioidaan
+RECURSIVE = YES
+
+#tehdaan XML ja LATEX, mutta ei tehda HTML
+GENERATE_XML = YES
+GENERATE_HTML = NO
+GENERATE_LATEX = YES
+
+#kommentit tunnistetaan automaattisesti tiedostoista
+JAVADOC_AUTOBRIEF      = YES
+
+# lahdekoodi nakyy dokumentaatiossa
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES

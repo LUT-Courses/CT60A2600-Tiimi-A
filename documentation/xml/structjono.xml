@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structjono" kind="struct" language="C++" prot="public">
+    <compoundname>jono</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structjono_1a10b26838a553b6a87e05dafa52bf92ea" prot="public" static="no" mutable="no">
+        <type><ref refid="structpuu" kindref="compound">PUU</ref> *</type>
+        <definition>PUU* jono::pSolmu</definition>
+        <argsstring></argsstring>
+        <name>pSolmu</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/module.h" line="21" column="9" bodyfile="src/module.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structjono_1a8bf7349f0913782f9592448a3282b522" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structjono" kindref="compound">jono</ref> *</type>
+        <definition>struct jono* jono::pSeuraava</definition>
+        <argsstring></argsstring>
+        <name>pSeuraava</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/module.h" line="22" column="15" bodyfile="src/module.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>jono</label>
+        <link refid="structjono"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>pSeuraava</edgelabel>
+        </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>pSolmu</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>puu</label>
+        <link refid="structpuu"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>pOikea</edgelabel>
+          <edgelabel>pVasen</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/module.h" line="20" column="1" bodyfile="src/module.h" bodystart="20" bodyend="23"/>
+    <listofallmembers>
+      <member refid="structjono_1a8bf7349f0913782f9592448a3282b522" prot="public" virt="non-virtual"><scope>jono</scope><name>pSeuraava</name></member>
+      <member refid="structjono_1a10b26838a553b6a87e05dafa52bf92ea" prot="public" virt="non-virtual"><scope>jono</scope><name>pSolmu</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
