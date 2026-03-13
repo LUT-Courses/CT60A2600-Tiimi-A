@@ -13,13 +13,6 @@ int main(void) {
     int iValinta2 = 0;
     int iArvo = 0;
     int iLoytyi = 0;
-    /*
-    kysyNimi("Tiedoston nimi ", aNimiLuettava); //SAA POISTAA KUN VALINNAT TOIMIVAT
-    pJuuriSolmu = luoPuu(aNimiLuettava, pJuuriSolmu);//SAA POISTAA KUN VALINNAT TOIMIVAT
-    tulostaPuu(pJuuriSolmu);//SAA POISTAA KUN VALINNAT TOIMIVAT
-    //pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu); //SAA POISTAA KUN VALINNAT TOIMIVAT
-    //pJuuriSolmu = NULL; //SAA POISTAA KUN VALINNAT TOIMIVAT
-    */
 
     do {
         iValinta = valikko();
