@@ -1,7 +1,9 @@
 /* Tests */
+#include "../src/binaaripuu.h"
+#include "../src/linkitettylista.h"
+#include "../src/yleiset.h"
 #include "unity.h"
 #include <stdlib.h>
-#include "../src/module.h"
 
 TIEDOT *pAlku = NULL;
 PUU *pJuuriSolmu = NULL;
@@ -15,7 +17,6 @@ void setUp(void) {
 void tearDown(void) {
     pAlku = vapautaMuisti(pAlku);
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
-    
 }
 
 // Onnistuuko varaaMuistia, kun lista on tyhjä
@@ -31,8 +32,8 @@ void test_VaraaMuistia(void) {
     TEST_ASSERT_NULL(pAlku->pSeuraava);
 
     // Löytyykö oikeat arvot
-    TEST_ASSERT_EQUAL_STRING(expectedNimi,pAlku->aSukunimi);
-    TEST_ASSERT_EQUAL_INT(expectedYhteensa,pAlku->iYhteensa);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_INT(expectedYhteensa, pAlku->iYhteensa);
 }
 
 void test_VapautaMuisti(void) {
@@ -77,8 +78,8 @@ void test_VaraaMuistiUsealleAlkiolle(void) {
     TEST_ASSERT_NOT_NULL(pAlku);
 
     // Loytyyko oikeat arvot
-    TEST_ASSERT_EQUAL_STRING(expectedNimi1,pAlku->aSukunimi);
-    TEST_ASSERT_EQUAL_INT(expectedYhteensa1,pAlku->iYhteensa);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_INT(expectedYhteensa1, pAlku->iYhteensa);
     ptr = pAlku->pSeuraava;
     TEST_ASSERT_EQUAL_STRING(expectedNimi2, ptr->aSukunimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa2, ptr->iYhteensa);
@@ -92,7 +93,7 @@ void test_VaraaMuistiUsealleAlkiolle(void) {
     TEST_ASSERT_NULL(pAlku->pEdellinen);
 }
 
-//Onnistuuko varaaMuistiaPuulle, kun se on tyhja
+// Onnistuuko varaaMuistiaPuulle, kun se on tyhja
 void test_VaraaMuistiaPuulle() {
     char expectedNimi[] = "Kosonen";
     int expectedArvo = 500;
@@ -100,16 +101,16 @@ void test_VaraaMuistiaPuulle() {
     pJuuriSolmu = varaaMuistiaPuulle(expectedNimi, expectedArvo);
     TEST_ASSERT_NOT_NULL(pJuuriSolmu);
 
-    //Pitaisi olla ainut solmu
+    // Pitaisi olla ainut solmu
     TEST_ASSERT_NULL(pJuuriSolmu->pVasen);
     TEST_ASSERT_NULL(pJuuriSolmu->pOikea);
 
-    //Loytyyko oikeat arvot
+    // Loytyyko oikeat arvot
     TEST_ASSERT_EQUAL_STRING(expectedNimi, pJuuriSolmu->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedArvo, pJuuriSolmu->iArvo);
 }
 
-//Onnistuuko varata muistia usealle solmulle puussa, kun se on tyhja
+// Onnistuuko varata muistia usealle solmulle puussa, kun se on tyhja
 void test_VaraaMuistiaUsealleSolmullePuussa() {
     PUU *ptr = pJuuriSolmu;
     char expectedNimi1[] = "Kosonen";
@@ -119,32 +120,32 @@ void test_VaraaMuistiaUsealleSolmullePuussa() {
     char expectedNimi3[] = "Karjalainen";
     int expectedArvo3 = 600;
 
-    //Varataan muistia ensimmaiselle solmulle
+    // Varataan muistia ensimmaiselle solmulle
     pJuuriSolmu = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
     TEST_ASSERT_NOT_NULL(pJuuriSolmu->aNimi);
-    //Loytyyko oikeat arvot
+    // Loytyyko oikeat arvot
     ptr = pJuuriSolmu;
     TEST_ASSERT_EQUAL_STRING(expectedNimi1, ptr->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedArvo1, ptr->iArvo);
 
-    //Varataan muistia toiselle solmulle
+    // Varataan muistia toiselle solmulle
     pJuuriSolmu = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
     TEST_ASSERT_NOT_NULL(pJuuriSolmu->aNimi);
-    //Loytyyko oikeat arvot
+    // Loytyyko oikeat arvot
     ptr = pJuuriSolmu;
     TEST_ASSERT_EQUAL_STRING(expectedNimi2, ptr->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedArvo2, ptr->iArvo);
 
-    //Varataan muistia kolmannelle solmulle
+    // Varataan muistia kolmannelle solmulle
     pJuuriSolmu = varaaMuistiaPuulle(expectedNimi3, expectedArvo3);
     TEST_ASSERT_NOT_NULL(pJuuriSolmu->aNimi);
-    //Loytyyko oikeat arvot
+    // Loytyyko oikeat arvot
     ptr = pJuuriSolmu;
     TEST_ASSERT_EQUAL_STRING(expectedNimi3, ptr->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedArvo3, ptr->iArvo);
 }
 
-//Onnistuuko muistin varaaminen jonolle.
+// Onnistuuko muistin varaaminen jonolle.
 void test_VaraaMuistiaJonolle() {
     char expectedNimi1[LEN] = "Kosonen";
     char expectedNimi2[LEN] = "Karjalainen";
@@ -170,7 +171,7 @@ void test_VaraaMuistiaJonolle() {
     free(pSolmu2);
 }
 
-//Testataan, toimiiko jonon muistin vapautus.
+// Testataan, toimiiko jonon muistin vapautus.
 void test_VapautaMuistiJono() {
     char expectedNimi1[LEN] = "Kosonen";
     char expectedNimi2[LEN] = "Karjalainen";

@@ -1,197 +1,9 @@
-#include "module.h"
+#include "binaaripuu.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-int valikko() {
-    int iValinta = 0;
-    printf("Valitse haluamasi toiminto:\n");
-    printf("1) Lista\n");
-    printf("2) Binääripuu\n");
-    printf("0) Lopeta\n");
-    printf("Anna valintasi: ");
-    scanf("%d", &iValinta);
-    getchar();
-    return iValinta;
-}
-
-int listaValikko() {
-    int iValinta = 0;
-    printf("\nValitse haluamasi toiminto:\n");
-    printf("1) Lue tiedosto\n");
-    printf("2) Kirjoita tiedosto alusta loppuun\n");
-    printf("3) Kirjoita tiedosto lopusta alkuun\n");
-    printf("4) Tyhjennä taulukko\n");
-    printf("0) Takaisin\n"); // Viikko 2: takaisin ??
-    printf("Anna valintasi: ");
-    scanf("%d", &iValinta);
-    getchar();
-    return iValinta;
-}
-
-int binaaripuuValikko() {
-    int iValinta = 0;
-    printf("\nValitse haluamasi toiminto:\n");
-    printf("1) Luo puu\n");
-    printf("2) Kirjoita puu tiedostoon\n");
-    printf("3) Syvyyshaku\n");
-    printf("4) Leveyshaku\n");
-    printf("5) Tyhjennä puu\n");
-    printf("0) Takaisin\n");
-    printf("Anna valintasi: ");
-    scanf("%d", &iValinta);
-    getchar();
-    return iValinta;
-}
-
-char *kysyNimi(char *pPrompti, char *pNimi) {
-    printf("%s", pPrompti);
-    scanf("%s", pNimi);
-    getchar();
-    return (pNimi);
-}
-
-// Viikko 1 / Lista:
-
-TIEDOT *lue(char *pNimi, TIEDOT *pAlku) {
-    FILE *Tiedosto = NULL;
-    char aRivi[LEN] = "";
-    char *p1 = NULL, *p2 = NULL;
-    int iOtsikko = 0;
-    int iMaara = 0;
-
-    /* Tiedoston avaaminen. */
-
-    if ((Tiedosto = fopen(pNimi, "r")) == NULL) {
-        perror("Tiedoston avaaminen epäonnistui, lopetetaan");
-        exit(0);
-    }
-
-    /* Tiedoston lukeminen */
-
-    while ((fgets(aRivi, LEN, Tiedosto)) != NULL) {
-
-        aRivi[strlen(aRivi) - 1] = '\0';
-
-        if (iOtsikko == 0) {
-            iOtsikko = 1;
-            continue;
-        }
-
-        if ((p1 = strtok(aRivi, ";")) == NULL) {
-            perror("Tiedoston pilkkominen epäonnistui, lopetetaan");
-            exit(0);
-        }
-
-        if ((p2 = strtok(NULL, ";")) == NULL) {
-            perror("Tiedoston pilkkominen epäonnistui, lopetetaan");
-            exit(0);
-        }
-
-        iMaara = atoi(p2);
-
-        /* Muistin varaaminen ja linkitetyn listan luominen. */
-
-        pAlku = varaaMuistia(pAlku, p1, iMaara);
-    }
-    /* Tiedoston sulkeminen. */
-    fclose(Tiedosto);
-    printf("Tiedosto '%s' luettu.\n", pNimi);
-    return (pAlku);
-}
-
-TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pSukunimi, int iMaara) {
-    TIEDOT *pUusi = NULL;
-    TIEDOT *ptr = NULL;
-
-    /* Muistin varaaminen. */
-
-    if ((pUusi = (TIEDOT *)malloc(sizeof(TIEDOT))) == NULL) {
-        perror("Muistin varaus epäonnistui, lopetetaan");
-        exit(0);
-    }
-
-    /* Kaksisuuntaisen linkitetyn listan luominen. */
-
-    strcpy(pUusi->aSukunimi, pSukunimi);
-    pUusi->iYhteensa = iMaara;
-    pUusi->pSeuraava = NULL;
-
-    if (pAlku == NULL) {
-        pUusi->pEdellinen = NULL;
-        pAlku = pUusi;
-    } else {
-        ptr = pAlku;
-        while (ptr->pSeuraava != NULL) {
-            ptr = ptr->pSeuraava;
-        }
-        ptr->pSeuraava = pUusi;
-        pUusi->pEdellinen = ptr;
-    }
-    return (pAlku);
-}
-
-TIEDOT *vapautaMuisti(TIEDOT *pAlku) {
-    /* Muistin vapauttaminen. */
-    TIEDOT *ptr = pAlku;
-    while (ptr != NULL) {
-        pAlku = ptr->pSeuraava;
-        free(ptr);
-        ptr = pAlku;
-    }
-    pAlku = NULL;
-    return (pAlku);
-}
-
-void kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku) {
-    FILE *Tiedosto = NULL;
-    TIEDOT *ptr = NULL;
-
-    // Kirjoitus tiedoston avaaminen
-    Tiedosto = fopen(pKirjoitaTiedostoNimi, "a");
-    if (Tiedosto == NULL) {
-        perror("Tiedoston avaaminen epäonnistui, lopetetaan");
-        exit(0);
-    }
-
-    // Tiedostoon kirjoittaminen
-    ptr = pAlku;
-    while (ptr != NULL) {
-        fprintf(Tiedosto, "%s,%d\n", ptr->aSukunimi, ptr->iYhteensa);
-        ptr = ptr->pSeuraava;
-    }
-
-    // Tiedoston sulkeminen
-    fclose(Tiedosto);
-    printf("Tiedosto %s kirjoitettu.\n", pKirjoitaTiedostoNimi);
-    return;
-}
-
-void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku) {
-    FILE *Tiedosto = NULL;
-    TIEDOT *ptr = pAlku;
-
-    if ((Tiedosto = fopen(pNimi, "a")) == NULL) {
-        perror("Tiedoston avaaminen epäonnistui, lopetetaan");
-        exit(0);
-    }
-
-    // Mennään listan loppuun.
-    while (ptr->pSeuraava != NULL) {
-        ptr = ptr->pSeuraava;
-    }
-
-    // Lopusta alkuun, kirjoitetaan tiedostoon.
-    while (ptr != NULL) {
-        fprintf(Tiedosto, "%s,%d\n", ptr->aSukunimi, ptr->iYhteensa);
-        ptr = ptr->pEdellinen;
-    }
-
-    fclose(Tiedosto);
-    return;
-}
-
-// Viikko 2 / Binääripuu:
+// L09 / Binääripuu:
 
 PUU *varaaMuistiaPuulle(char *pSolmu, int iValiMatka) {
     PUU *pUusi = NULL;
@@ -210,7 +22,7 @@ PUU *varaaMuistiaPuulle(char *pSolmu, int iValiMatka) {
 }
 
 PUU *vapautaMuistiPuu(PUU *pJuuriSolmu) {
-    //Muistin vapauttaminen
+    // Muistin vapauttaminen
     if (pJuuriSolmu != NULL) {
         vapautaMuistiPuu(pJuuriSolmu->pVasen);
         vapautaMuistiPuu(pJuuriSolmu->pOikea);
@@ -249,7 +61,6 @@ PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka) {
 }
 
 PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
-    // Voi viedä enemmän kuin yhden aliohjelman varmaan, + erillinen muistinkäsittely?
     FILE *Tiedosto = NULL;
     char aRivi[LEN] = "";
     int iOtsikko = 0;
@@ -300,6 +111,10 @@ PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
 }
 
 void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku) {
+    if (pAlku == NULL) {
+        printf("Puu on tyhjä, luo puurakenne ennen kirjoittamista.\n");
+        return;
+    }
     if (pAlku != NULL) {
         kirjoitaTiedostoon(pNimi, pAlku);
         kirjoitaBinaaripuu(pNimi, pAlku->pVasen);
@@ -319,13 +134,18 @@ int syvyyshaku(char *pNimi, PUU *pAlku, int iArvo) {
     // Syvyyshaku arvon mukaan, kirjoitetaan käydyt solmut tiedostoon.
     int iLoytyi = 0;
 
+    if (pAlku == NULL) {
+        printf("Puu on tyhjä, luo puurakenne ennen syvyyshakua.\n");
+        return 0;
+    }
+
     if (pAlku != NULL) {
         kirjoitaTiedostoon(pNimi, pAlku);
 
         if (pAlku->iArvo == iArvo) {
             iLoytyi = 1;
             printf("Arvo %d löytyi.\n", iArvo);
-         } else {
+        } else {
             if (iLoytyi == 0) {
                 iLoytyi = syvyyshaku(pNimi, pAlku->pVasen, iArvo);
             }
@@ -345,6 +165,11 @@ void leveyshaku(char *pNimi, PUU *pJuuriSolmu, char *pHaku) {
     int iVertailu = 0;
     int iLoytyi = 0;
 
+    if (pJuuriSolmu == NULL) {
+        printf("Puu on tyhjä, luo puurakenne ennen leveyshakua.\n");
+        return;
+    }
+
     while (pAlku != NULL) {
         PUU *ptr = pAlku->pSolmu;
         kirjoitaTiedostoon(pNimi, ptr);
@@ -361,7 +186,7 @@ void leveyshaku(char *pNimi, PUU *pJuuriSolmu, char *pHaku) {
             pLoppu->pSeuraava = varaaMuistiaJonolle(ptr->pVasen);
             pLoppu = pLoppu->pSeuraava;
         }
-        
+
         if (ptr->pOikea != NULL) {
             pLoppu->pSeuraava = varaaMuistiaJonolle(ptr->pOikea);
             pLoppu = pLoppu->pSeuraava;
@@ -395,10 +220,10 @@ JONO *varaaMuistiaJonolle(PUU *pSolmu) {
 }
 
 JONO *vapautaMuistiJono(JONO *pAlku) {
-    // Jonon muistin vapauttaminen. 
-    JONO *ptr = pAlku; 
-    JONO *pSeuraava = NULL; 
-    
+    // Jonon muistin vapauttaminen.
+    JONO *ptr = pAlku;
+    JONO *pSeuraava = NULL;
+
     while (ptr != NULL) {
         pSeuraava = ptr->pSeuraava;
         free(ptr);
@@ -410,7 +235,11 @@ JONO *vapautaMuistiJono(JONO *pAlku) {
 
 void kirjoitaTiedostoon(char *pNimi, PUU *pAlku) {
     FILE *Tiedosto = NULL;
-    
+
+    if (pAlku == NULL) {
+        return;
+    }
+
     /* Tiedoston avaaminen. */
     if ((Tiedosto = fopen(pNimi, "a")) == NULL) {
         perror("Tiedoston avaaminen epäonnistui, lopetetaan");
@@ -421,5 +250,14 @@ void kirjoitaTiedostoon(char *pNimi, PUU *pAlku) {
 
     /* Tiedoston sulkeminen. */
     fclose(Tiedosto);
+    printf("Tiedosto '%s' kirjoitettu.\n", pNimi);
     return;
+}
+
+void tarkistaLoytyykoSyvyyshaulla(char *aNimiKirjoitettava, PUU *pJuuriSolmu, int iArvo) {
+    int iLoytyi = 0;
+    iLoytyi = syvyyshaku(aNimiKirjoitettava, pJuuriSolmu, iArvo);
+    if (iLoytyi == 0) {
+        printf("Arvoa %d ei löytynyt puusta.\n", iArvo);
+    }
 }
