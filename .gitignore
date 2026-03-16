@@ -57,3 +57,5 @@ bin/
 
 # format
 .clang-format
+.vscode
+.DS_Store
