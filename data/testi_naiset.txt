@@ -1,0 +1,10 @@
+Helena;210
+Emilia;150
+Maria;190
+Anneli;250
+Johanna;230
+Marjatta;200
+Kaarina;170
+Sofia;130
+Hannele;80
+Kristiina;50

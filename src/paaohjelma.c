@@ -71,6 +71,12 @@ int main(void) {
                 } else if (iValinta2 == 5) {
                     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
                     printf("Muisti vapautettu.\n");
+                } else if (iValinta2 == 6) {
+                    // Poistaminen
+                } else if (iValinta2 == 7) {
+                    iArvo = kysyArvo("Anna haettava numeroarvo: ", iArvo);
+                    kysyNimi("Anna kirjoitettavan tiedoston nimi: ", aNimiKirjoitettava);
+                    binaariHaku(aNimiKirjoitettava, pJuuriSolmu, iArvo);
                 } else if (iValinta2 == 0) {
                     printf("Palataan takaisin päävalikkoon.\n");
                 } else {

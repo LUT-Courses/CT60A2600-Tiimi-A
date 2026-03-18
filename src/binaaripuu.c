@@ -285,7 +285,7 @@ void kirjoitaTiedostoon(char *pNimi, PUU *pAlku) {
 
     /* Tiedoston sulkeminen. */
     fclose(Tiedosto);
-    printf("Tiedosto '%s' kirjoitettu.\n", pNimi);
+    //printf("Tiedosto '%s' kirjoitettu.\n", pNimi);
     return;
 }
 
@@ -399,4 +399,23 @@ int suurempiLukuVertailu(int iLuku1, int iLuku2) {
         iPalautus = iLuku2;
     }
     return (iPalautus);
+}
+
+int binaariHaku(char *pNimi, PUU *pJuuriSolmu, int iArvo) {
+
+    if (pJuuriSolmu == NULL) {
+        printf("Puu on tyhjä, luo puurakenne ennen binäärihakua.\n");
+        return (0);
+    }
+
+    kirjoitaTiedostoon(pNimi, pJuuriSolmu);
+
+    if (iArvo == pJuuriSolmu->iArvo) {
+        printf("Hakemasi arvo '%d' löytyi!\n", iArvo);
+        return (1);
+    } else if (iArvo < pJuuriSolmu->iArvo) {
+        return binaariHaku(pNimi, pJuuriSolmu->pVasen, iArvo);
+    } else {
+        return binaariHaku(pNimi, pJuuriSolmu->pOikea, iArvo);
+    }
 }
