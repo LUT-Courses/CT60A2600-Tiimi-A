@@ -56,7 +56,29 @@ PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka) {
             pAlku->pOikea = lisaaSolmu(pAlku->pOikea, pSolmu, iValiMatka);
         }
     }
+    pAlku->iArvo = max(iArvo(pAlku->pVasen), iArvo(pAlku->pOikea)) +1; //Lisatty 18.3.2026
+    int tasapaino = tasapainoitaPuu(pAlku, pSolmu, iValiMatka);
 
+    if ((tasapaino > 1) && (iValiMatka < pAlku->pVasen->iArvo)) {
+        //return (oikeaPuoli(pAlku, pSolmu, iValiMatka));
+        return (oikeaPuoli(pAlku));
+    }
+
+    if ((tasapaino < -1) && (iValiMatka > pAlku->pOikea->iArvo)) {
+        //return (vasenPuoli(pAlku, pSolmu, iValiMatka));
+        return(vasenPuoli(pAlku));
+    }
+
+    if ((tasapaino > 1) && (iValiMatka > pAlku->pVasen->iArvo)) {
+        pAlku->pVasen = vasenPuoli(pAlku->pVasen);//, pAlku->pVasen->aNimi, pAlku->pVasen->iArvo);
+        //return (oikeaPuoli(pAlku, pSolmu, iValiMatka));
+        return (oikeaPuoli(pAlku));
+    }
+
+    if ((tasapaino < -1) && (iValiMatka < pAlku->pOikea->iArvo)) {
+        pAlku->pOikea = oikeaPuoli(pAlku->pOikea); //, pAlku->pOikea->aNimi, pAlku->pOikea->iArvo);
+        return(vasenPuoli(pAlku));
+    }
     return (pAlku);
 }
 
@@ -260,4 +282,32 @@ void tarkistaLoytyykoSyvyyshaulla(char *aNimiKirjoitettava, PUU *pJuuriSolmu, in
     if (iLoytyi == 0) {
         printf("Arvoa %d ei löytynyt puusta.\n", iArvo);
     }
+}
+
+
+int tasapainoitaPuu(PUU *pAlku, char *pSolmu, int iValimatka) {
+    if( == NULL) {
+        return(0);
+    }
+    return();
+}
+
+PUU oikeaPuoli(PUU *pAlku) { //, char *pSolmu, int iValimatka) {}
+    PUU *pMuuttuja1 = pAlku->pVasen;
+    PUU *pMuuttuja2 = pMuuttuja1->pOikea;
+
+    pMuuttuja1->pOikea = pAlku;
+    pAlku->pVasen = pMuuttuja2;
+
+    return pAlku;
+}
+
+PUU vasenPuoli(PUU *pAlku) { //, char *pSolmu, int iValimatka) {
+    PUU *pMuuttuja1 = pAlku->pOikea;
+    PUU *pMuuttuja2 = pMuuttuja1->pVasen;
+
+    pMuuttuja1->pVasen = pAlku;
+    pAlku->pOikea = pMuuttuja2;
+
+    return pMuuttuja1;
 }
