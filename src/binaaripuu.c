@@ -16,6 +16,7 @@ PUU *varaaMuistiaPuulle(char *pSolmu, int iValiMatka) {
 
     strcpy(pUusi->aNimi, pSolmu);
     pUusi->iArvo = iValiMatka;
+    pUusi->iPituus = 1; //Lisatty 18.3.2026
     pUusi->pVasen = NULL;
     pUusi->pOikea = NULL;
     return (pUusi);
@@ -56,27 +57,30 @@ PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka) {
             pAlku->pOikea = lisaaSolmu(pAlku->pOikea, pSolmu, iValiMatka);
         }
     }
-    pAlku->iArvo = max(iArvo(pAlku->pVasen), iArvo(pAlku->pOikea)) +1; //Lisatty 18.3.2026
-    int tasapaino = tasapainoitaPuu(pAlku, pSolmu, iValiMatka);
 
+    // Tasta eteenpain tahan aliohjelmaan lisatty 18.3.2026
+    pAlku->iPituus = 1 + suurempiLukuVertailu(puunPituus(pAlku->pVasen), puunPituus(pAlku->pOikea));
+    int tasapaino = tasapainoitaPuu(pAlku);
+
+    // vasen vasen tasapainotus
     if ((tasapaino > 1) && (iValiMatka < pAlku->pVasen->iArvo)) {
-        //return (oikeaPuoli(pAlku, pSolmu, iValiMatka));
         return (oikeaPuoli(pAlku));
     }
 
-    if ((tasapaino < -1) && (iValiMatka > pAlku->pOikea->iArvo)) {
-        //return (vasenPuoli(pAlku, pSolmu, iValiMatka));
+    // oikea oikea tasapainotus
+    if ((tasapaino < -1) && (iValiMatka > pAlku->pOikea->iArvo)) {//} && (pAlku->pOikea != NULL)) { //lisatty loppu
         return(vasenPuoli(pAlku));
     }
 
+    // vasen oikea tasapainotus
     if ((tasapaino > 1) && (iValiMatka > pAlku->pVasen->iArvo)) {
-        pAlku->pVasen = vasenPuoli(pAlku->pVasen);//, pAlku->pVasen->aNimi, pAlku->pVasen->iArvo);
-        //return (oikeaPuoli(pAlku, pSolmu, iValiMatka));
+        pAlku->pVasen = vasenPuoli(pAlku->pVasen);
         return (oikeaPuoli(pAlku));
     }
 
-    if ((tasapaino < -1) && (iValiMatka < pAlku->pOikea->iArvo)) {
-        pAlku->pOikea = oikeaPuoli(pAlku->pOikea); //, pAlku->pOikea->aNimi, pAlku->pOikea->iArvo);
+    //oikea vasen tasapainotus
+    if ((tasapaino < -1) && (iValiMatka < pAlku->pOikea->iArvo)) {//} && (pAlku->pOikea != NULL)) { //lisatty loppu
+        pAlku->pOikea = oikeaPuoli(pAlku->pOikea);
         return(vasenPuoli(pAlku));
     }
     return (pAlku);
@@ -285,29 +289,60 @@ void tarkistaLoytyykoSyvyyshaulla(char *aNimiKirjoitettava, PUU *pJuuriSolmu, in
 }
 
 
-int tasapainoitaPuu(PUU *pAlku, char *pSolmu, int iValimatka) {
-    if( == NULL) {
+int tasapainoitaPuu(PUU *pAlku) {
+    if(pAlku == NULL) {
         return(0);
     }
-    return();
+    return (puunPituus(pAlku->pVasen) - puunPituus(pAlku->pOikea));
 }
 
-PUU oikeaPuoli(PUU *pAlku) { //, char *pSolmu, int iValimatka) {}
+PUU *oikeaPuoli(PUU *pAlku) {
+    if ((pAlku->pVasen == NULL) || (pAlku == NULL)) {
+        return (pAlku);
+    }
+
     PUU *pMuuttuja1 = pAlku->pVasen;
     PUU *pMuuttuja2 = pMuuttuja1->pOikea;
 
     pMuuttuja1->pOikea = pAlku;
     pAlku->pVasen = pMuuttuja2;
 
-    return pAlku;
+    pAlku->iPituus = suurempiLukuVertailu(puunPituus(pAlku->pVasen), puunPituus(pAlku->pOikea)) + 1;
+    pMuuttuja1->iPituus = suurempiLukuVertailu(puunPituus(pMuuttuja1->pVasen), puunPituus(pMuuttuja1->pOikea)) + 1;
+
+    return pMuuttuja1;
 }
 
-PUU vasenPuoli(PUU *pAlku) { //, char *pSolmu, int iValimatka) {
+PUU *vasenPuoli(PUU *pAlku) {
+    if ((pAlku->pOikea == NULL) || (pAlku == NULL)) {
+        return (pAlku);
+    }
+
     PUU *pMuuttuja1 = pAlku->pOikea;
     PUU *pMuuttuja2 = pMuuttuja1->pVasen;
 
     pMuuttuja1->pVasen = pAlku;
     pAlku->pOikea = pMuuttuja2;
 
+    pAlku->iPituus = suurempiLukuVertailu(puunPituus(pAlku->pVasen), puunPituus(pAlku->pOikea)) + 1;
+    pMuuttuja1->iPituus = suurempiLukuVertailu(puunPituus(pMuuttuja1->pVasen), puunPituus(pMuuttuja1->pOikea)) + 1;
+
     return pMuuttuja1;
+}
+
+int puunPituus(PUU *pAlku) {
+    if (pAlku == NULL) {
+        return(0);
+    }
+    return (pAlku->iPituus);
+}
+
+int suurempiLukuVertailu(int iLuku1, int iLuku2) {
+    int iPalautus = 0;
+    if (iLuku1 > iLuku2) {
+        iPalautus = iLuku1;
+    } else {
+        iPalautus = iLuku2;
+    }
+    return (iPalautus);
 }

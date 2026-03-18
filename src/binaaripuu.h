@@ -5,6 +5,7 @@
 typedef struct puu {
     char aNimi[LEN];
     int iArvo;
+    int iPituus;
     struct puu *pOikea;
     struct puu *pVasen;
 } PUU;
@@ -26,5 +27,10 @@ JONO *varaaMuistiaJonolle(PUU *pSolmu);
 JONO *vapautaMuistiJono(JONO *pAlku);
 void kirjoitaTiedostoon(char *pKirjoitaTiedostoNimi, PUU *pAlku);
 void tarkistaLoytyykoSyvyyshaulla(char *aNimiKirjoitettava, PUU *pJuuriSolmu, int iArvo);
+int tasapainoitaPuu(PUU *pAlku);
+PUU *oikeaPuoli(PUU *pAlku);
+PUU *vasenPuoli(PUU *pAlku);
+int puunPituus(PUU *pAlku);
+int suurempiLukuVertailu(int iLuku1, int iLuku2);
 
 #endif
