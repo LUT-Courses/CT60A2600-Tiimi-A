@@ -1,0 +1,32 @@
+# Projektin nimi
+PROJECT_NAME = "CT60A2600-TIIMI-A"
+
+# Paikka johon dokumentaatio tallennetaan
+OUTPUT_DIRECTORY = documentation
+
+# Lahdekoodi luetaan src-kansiosta ja vain .c ja .h loppuiset tiedostot luetaan
+INPUT = src include
+FILE_PATTERNS = *.c *.h
+
+# Myos alikansiot luetaan
+RECURSIVE = YES
+
+# LATEX on, mutta HTML ja XML ei tehda
+GENERATE_XML = NO
+GENERATE_HTML = NO
+GENERATE_LATEX = YES
+
+# Kommentit tunnistetaan automaattisesti ja nakyvat dokumentaatiossa
+JAVADOC_AUTOBRIEF = YES
+EXTRACT_ALL = YES
+EXTRACT_STATIC = YES
+HIDE_UNDOC_MEMBERS = NO
+
+# Lahdekoodi naytetaan dokumentaatiossa
+SOURCE_BROWSER = YES
+INLINE_SOURCES = YES
+
+# Kaavioita tulee dokumentaatioon
+HAVE_DOT = YES
+CAL_GRAPH = YES
+CALLER_GRAPH = YES

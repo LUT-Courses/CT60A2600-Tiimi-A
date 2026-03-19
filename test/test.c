@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 TIEDOT *pAlku = NULL;
-PUU *pJuuriSolmu = NULL;
+SOLMU *pJuuriSolmu = NULL;
 
 void setUp(void) {
     pAlku = NULL;
@@ -112,7 +112,7 @@ void test_VaraaMuistiaPuulle() {
 
 // Onnistuuko varata muistia usealle solmulle puussa, kun se on tyhja
 void test_VaraaMuistiaUsealleSolmullePuussa() {
-    PUU *ptr = pJuuriSolmu;
+    SOLMU *ptr = pJuuriSolmu;
     char expectedNimi1[] = "Kosonen";
     int expectedArvo1 = 500;
     char expectedNimi2[] = "Gekko";
@@ -155,12 +155,12 @@ void test_VaraaMuistiaJonolle() {
     JONO *pJono1 = NULL;
     JONO *pJono2 = NULL;
 
-    PUU *pSolmu1 = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
+    SOLMU *pSolmu1 = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
     pJono1 = varaaMuistiaJonolle(pSolmu1);
     TEST_ASSERT_NOT_NULL(pJono1);
     TEST_ASSERT_EQUAL_STRING(expectedNimi1, pJono1->pSolmu->aNimi);
 
-    PUU *pSolmu2 = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
+    SOLMU *pSolmu2 = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
     pJono2 = varaaMuistiaJonolle(pSolmu2);
     TEST_ASSERT_NOT_NULL(pJono2);
     TEST_ASSERT_EQUAL_INT(11900, pJono2->pSolmu->iArvo);
@@ -181,8 +181,8 @@ void test_VapautaMuistiJono() {
     JONO *pJono1 = NULL;
     JONO *pJono2 = NULL;
 
-    PUU *pSolmu1 = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
-    PUU *pSolmu2 = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
+    SOLMU *pSolmu1 = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
+    SOLMU *pSolmu2 = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
 
     pJono1 = varaaMuistiaJonolle(pSolmu1);
     pJono2 = varaaMuistiaJonolle(pSolmu2);

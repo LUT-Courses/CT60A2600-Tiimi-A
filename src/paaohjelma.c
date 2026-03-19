@@ -17,7 +17,7 @@ int main(void) {
     char aNimiKirjoitettava[LEN] = "";
     char aHaettavaNimi[LEN] = "";
     TIEDOT *pAlku = NULL;
-    PUU *pJuuriSolmu = NULL;
+    SOLMU *pJuuriSolmu = NULL;
     int iValinta = 0;
     int iValinta2 = 0;
     int iArvo = 0;
@@ -71,6 +71,14 @@ int main(void) {
                 } else if (iValinta2 == 5) {
                     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
                     printf("Muisti vapautettu.\n");
+                } else if (iValinta2 == 6)
+                {
+                    /* code */
+                } else if (iValinta2 == 7)
+                {
+                    kysyNimi("Anna kirjoitettavan tiedoston nimi: ", aNimiKirjoitettava);
+                    iArvo = kysyArvo("Anna haettava numeroarvo: ", iArvo);
+                    binaariHaku(aNimiKirjoitettava, pJuuriSolmu, iArvo);
                 } else if (iValinta2 == 0) {
                     printf("Palataan takaisin päävalikkoon.\n");
                 } else {

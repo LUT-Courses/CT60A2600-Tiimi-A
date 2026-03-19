@@ -16,6 +16,7 @@ PUU *varaaMuistiaPuulle(char *pSolmu, int iValiMatka) {
 
     strcpy(pUusi->aNimi, pSolmu);
     pUusi->iArvo = iValiMatka;
+    pUusi->iPituus = 1; //Lisatty 18.3.2026
     pUusi->pVasen = NULL;
     pUusi->pOikea = NULL;
     return (pUusi);
@@ -32,6 +33,14 @@ PUU *vapautaMuistiPuu(PUU *pJuuriSolmu) {
     return (pJuuriSolmu);
 }
 
+/**
+ * @brief Lisaa solmun puuhun.
+ * Tasapainottaa puun. 
+ * @param pAlku 
+ * @param pSolmu Lisattava solmu.  
+ * @param iValiMatka Solmun arvo.
+ * @return PUU* 
+ */
 PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka) {
     int iVertailu = 0;
 
@@ -55,6 +64,32 @@ PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka) {
         } else if (iVertailu > 0) {
             pAlku->pOikea = lisaaSolmu(pAlku->pOikea, pSolmu, iValiMatka);
         }
+    }
+
+    // Selvitetaan paikka, johon solmu lisataan. Tasapainotetaan puu.
+    pAlku->iPituus = 1 + suurempiLukuVertailu(puunPituus(pAlku->pVasen), puunPituus(pAlku->pOikea));
+    int tasapaino = tasapainoitaPuu(pAlku);
+
+    // vasen vasen tasapainotus
+    if ((tasapaino > 1) && (iValiMatka < pAlku->pVasen->iArvo)) {
+        return (oikeaPuoli(pAlku));
+    }
+
+    // vasen oikea tasapainotus
+    if ((tasapaino > 1) && (iValiMatka > pAlku->pVasen->iArvo)) {
+        pAlku->pVasen = vasenPuoli(pAlku->pVasen);
+        return (oikeaPuoli(pAlku));
+    }
+
+    //oikea vasen tasapainotus
+    if ((tasapaino < -1) && (iValiMatka < pAlku->pOikea->iArvo)) {
+        pAlku->pOikea = oikeaPuoli(pAlku->pOikea);
+        return(vasenPuoli(pAlku));
+    }
+
+    // oikea oikea tasapainotus
+    if ((tasapaino < -1) && (iValiMatka > pAlku->pOikea->iArvo)) {
+        return(vasenPuoli(pAlku));
     }
 
     return (pAlku);
@@ -103,7 +138,7 @@ PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
             continue;
         }
 
-        lisaaSolmu(pJuuriSolmu, p1, iValiMatka);
+        pJuuriSolmu = lisaaSolmu(pJuuriSolmu, p1, iValiMatka); //pJuuriSolmu = LISATTY HOX TOSI TARKEA!!!! 19.3.2026
     }
 
     fclose(Tiedosto);
@@ -111,10 +146,10 @@ PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
 }
 
 void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku) {
-    if (pAlku == NULL) {
+    /*if (pAlku == NULL) { //Noora kommentoi pois 19.3.2026 klo. 13.08
         printf("Puu on tyhjä, luo puurakenne ennen kirjoittamista.\n");
         return;
-    }
+    }*/
     if (pAlku != NULL) {
         kirjoitaTiedostoon(pNimi, pAlku);
         kirjoitaBinaaripuu(pNimi, pAlku->pVasen);
@@ -250,7 +285,7 @@ void kirjoitaTiedostoon(char *pNimi, PUU *pAlku) {
 
     /* Tiedoston sulkeminen. */
     fclose(Tiedosto);
-    printf("Tiedosto '%s' kirjoitettu.\n", pNimi);
+    //printf("Tiedosto '%s' kirjoitettu.\n", pNimi); //Noora laittoi kommentteihin 19.3.2026 klo. 13.03
     return;
 }
 
@@ -259,5 +294,128 @@ void tarkistaLoytyykoSyvyyshaulla(char *aNimiKirjoitettava, PUU *pJuuriSolmu, in
     iLoytyi = syvyyshaku(aNimiKirjoitettava, pJuuriSolmu, iArvo);
     if (iLoytyi == 0) {
         printf("Arvoa %d ei löytynyt puusta.\n", iArvo);
+    }
+}
+
+/**
+ * @brief Palauttaa solmun tasapainokertoimen.
+ * 
+ * @param pAlku Solmu, josta tasapainokerroin halutaan
+ * @return int 
+ */
+int tasapainoitaPuu(PUU *pAlku) {
+    // Tarkistetaan, onko Null
+    if(pAlku == NULL) {
+        return(0);
+    }
+
+    //Palautetaan tasapainokerroin
+    return (puunPituus(pAlku->pVasen) - puunPituus(pAlku->pOikea));
+}
+
+/**
+ * @brief Oikean puolen kierto.
+ * Puu jarjestetaan, jotta se on tasapainossa.
+ * @param pAlku 
+ * @return PUU* 
+ */
+PUU *oikeaPuoli(PUU *pAlku) {
+    //Tarkistetaan, onko pAlku tai pAlku oikea puoli NULL
+    if ((pAlku->pVasen == NULL) || (pAlku == NULL)) {
+        return (pAlku);
+    }
+
+    //Muuttujien ja vakioden alustaminen
+    PUU *pMuuttuja1 = pAlku->pVasen;
+    PUU *pMuuttuja2 = pMuuttuja1->pOikea;
+
+    //Sijoitetetaan arvoja
+    pMuuttuja1->pOikea = pAlku;
+    pAlku->pVasen = pMuuttuja2;
+
+    //  Verrataan ja sijoitetaan suuremmat korkeudet
+    pAlku->iPituus = suurempiLukuVertailu(puunPituus(pAlku->pVasen), puunPituus(pAlku->pOikea)) + 1;
+    pMuuttuja1->iPituus = suurempiLukuVertailu(puunPituus(pMuuttuja1->pVasen), puunPituus(pMuuttuja1->pOikea)) + 1;
+
+    return pMuuttuja1;
+}
+
+/**
+ * @brief Vasemman puolen kierto.
+ * Puu jarjestetaan, jotta se on tasapainossa.
+ * @param pAlku 
+ * @return PUU* 
+ */
+PUU *vasenPuoli(PUU *pAlku) {
+    //Tarkistetaan, onko pAlku tai pAlku oikea puoli NULL
+    if ((pAlku->pOikea == NULL) || (pAlku == NULL)) {
+        return (pAlku);
+    }
+
+    //Muuttujien ja vakioden alustaminen
+    PUU *pMuuttuja1 = pAlku->pOikea;
+    PUU *pMuuttuja2 = pMuuttuja1->pVasen;
+
+    //Sijoitetetaan arvoja
+    pMuuttuja1->pVasen = pAlku;
+    pAlku->pOikea = pMuuttuja2;
+
+    // Verrataam ja sijoitetaan suuremmat korkeudet
+    pAlku->iPituus = suurempiLukuVertailu(puunPituus(pAlku->pVasen), puunPituus(pAlku->pOikea)) + 1;
+    pMuuttuja1->iPituus = suurempiLukuVertailu(puunPituus(pMuuttuja1->pVasen), puunPituus(pMuuttuja1->pOikea)) + 1;
+
+    return pMuuttuja1;
+}
+
+/**
+ * @brief Hakee solmun korkeuden.
+ * 
+ * @param pAlku Kohta, josta korkeus haetaan
+ * @return int 
+ */
+int puunPituus(PUU *pAlku) {
+    // Tarkistetaan, onko Solmu Null
+    if (pAlku == NULL) {
+        return(0);
+    }
+
+    return (pAlku->iPituus);
+}
+
+/**
+ * @brief Vertaa kahta lukua ja palauttaa suuremman.
+ * 
+ * @param iLuku1 Ensimmainen verrattava kokonaisluku.
+ * @param iLuku2 Toinen verrattava kokonaisluku.
+ * @return int 
+ */
+int suurempiLukuVertailu(int iLuku1, int iLuku2) {
+    int iPalautus = 0;
+
+    // Verrataan kumpi luvuista on suurempi.
+    if (iLuku1 > iLuku2) {
+        iPalautus = iLuku1;
+    } else {
+        iPalautus = iLuku2;
+    }
+    return (iPalautus);
+}
+
+int binaariHaku(char *pNimi, PUU *pJuuriSolmu, int iArvo) {
+
+    if (pJuuriSolmu == NULL) {
+        printf("Puu on tyhjä, luo puurakenne ennen binäärihakua.\n");
+        return (0);
+    }
+
+    kirjoitaTiedostoon(pNimi, pJuuriSolmu);
+
+    if (iArvo == pJuuriSolmu->iArvo) {
+        printf("Hakemasi arvo '%d' löytyi!\n", iArvo);
+        return (1);
+    } else if (iArvo < pJuuriSolmu->iArvo) {
+        return binaariHaku(pNimi, pJuuriSolmu->pVasen, iArvo);
+    } else {
+        return binaariHaku(pNimi, pJuuriSolmu->pOikea, iArvo);
     }
 }

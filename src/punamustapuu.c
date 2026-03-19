@@ -25,38 +25,48 @@ RBSOLMU *varaaMuistiaRB(char *pNimi, int iArvo) {
     return (pUusi);
 }
 
-RBSOLMU *lisaaRBSolmu(RBSOLMU *pAlku, RBSOLMU *pUusi) {
+RBSOLMU *vapautaMuistiRB(RBSOLMU *pJuuriSolmu) {
+    if (pJuuriSolmu != NULL) {
+        vapautaMuistiRB(pJuuriSolmu->pVasen);
+        vapautaMuistiRB(pJuuriSolmu->pOikea);
+        free(pJuuriSolmu);
+    }
+    pJuuriSolmu = NULL;
+    return (pJuuriSolmu);
+}
+
+RBSOLMU *lisaaRBSolmu(RBSOLMU *pJuurisolmu, RBSOLMU *pUusi) {
     int iVertailu = 0;
 
     // Jos puu on tyhjä, palautetaan uusi RBsolmu.
-    if (pAlku == NULL) {
+    if (pJuurisolmu == NULL) {
         return pUusi;
     }
 
-    iVertailu = strcmp(pUusi->aNimi, pAlku->aNimi);
+    iVertailu = strcmp(pUusi->aNimi, pJuurisolmu->aNimi);
 
     // Solmujen lisääminen rekursiivisesti
-    if (pUusi->iArvo < pAlku->iArvo) {
-        pAlku->pVasen = lisaaRBSolmu(pAlku->pVasen, pUusi);
-        pAlku->pVasen->pVanhempi = pAlku;
-    } else if (pUusi->iArvo > pAlku->iArvo) {
-        pAlku->pOikea = lisaaRBSolmu(pAlku->pOikea, pUusi);
-        pAlku->pOikea->pVanhempi = pAlku;
+    if (pUusi->iArvo < pJuurisolmu->iArvo) {
+        pJuurisolmu->pVasen = lisaaRBSolmu(pJuurisolmu->pVasen, pUusi);
+        pJuurisolmu->pVasen->pVanhempi = pJuurisolmu;
+    } else if (pUusi->iArvo > pJuurisolmu->iArvo) {
+        pJuurisolmu->pOikea = lisaaRBSolmu(pJuurisolmu->pOikea, pUusi);
+        pJuurisolmu->pOikea->pVanhempi = pJuurisolmu;
         /** Katsotaan, ovatko arvot samat.
          * Laitetaan aakkosten perusteella vasemmalle tai oikealle. */
-    } else if (pUusi->iArvo == pAlku->iArvo) {
+    } else if (pUusi->iArvo == pJuurisolmu->iArvo) {
         if (iVertailu < 0) {
-            pAlku->pVasen = lisaaRBSolmu(pAlku->pVasen, pUusi);
-            pAlku->pVasen->pVanhempi = pAlku;
+            pJuurisolmu->pVasen = lisaaRBSolmu(pJuurisolmu->pVasen, pUusi);
+            pJuurisolmu->pVasen->pVanhempi = pJuurisolmu;
         } else if (iVertailu > 0) {
-            pAlku->pOikea = lisaaRBSolmu(pAlku->pOikea, pUusi);
-            pAlku->pOikea->pVanhempi = pAlku;
+            pJuurisolmu->pOikea = lisaaRBSolmu(pJuurisolmu->pOikea, pUusi);
+            pJuurisolmu->pOikea->pVanhempi = pJuurisolmu;
         }
     }
-    return (pAlku);
+    return (pJuurisolmu);
 }
 
-RBSOLMU *luoRBPuu(RBSOLMU *pJuuriSolmu, char *pNimi) {
+RBSOLMU *luoRBPuu(RBSOLMU *pJuurisolmu, char *pNimi) {
     FILE *Tiedosto = NULL;
     char aRivi[LEN] = "";
     int iOtsikko = 0;
@@ -88,13 +98,12 @@ RBSOLMU *luoRBPuu(RBSOLMU *pJuuriSolmu, char *pNimi) {
         iArvo = atoi(p2);
 
         RBSOLMU *pUusi = varaaMuistiaRB(p1, iArvo);
-        pJuuriSolmu = lisaaRBSolmu(pJuuriSolmu, pUusi);
-        // korjaaLisays(&pJuuriSolmu, pUusi);
-        pJuuriSolmu->iVariBitti = 1; // juuri aina musta
+        pJuurisolmu = lisaaRBSolmu(pJuurisolmu, pUusi);
+        korjaaLisays(&pJuurisolmu, pUusi);
     }
 
     fclose(Tiedosto);
-    return (pJuuriSolmu);
+    return (pJuurisolmu);
 }
 
 void kierraVasemmalle(RBSOLMU **pJuurisolmu, RBSOLMU *pSolmu) {
@@ -138,4 +147,87 @@ void kierraOikealle(RBSOLMU **pJuurisolmu, RBSOLMU *pSolmu) {
     pSolmu->pVanhempi = pVasenLapsi;
 }
 
-void korjaaLisays(RBSOLMU **pJuurisolmu, RBSOLMU *pUusi) {}
+void korjaaLisays(RBSOLMU **pJuurisolmu, RBSOLMU *pUusi) {
+    // Ilman p-alkua, koska pVanhempi->pVanhempi oli sekava
+    RBSOLMU *vanhempi = NULL;
+    RBSOLMU *seta = NULL;
+    RBSOLMU *isoVanhempi = NULL;
+
+    while ((pUusi != *pJuurisolmu) && (pUusi->pVanhempi->iVariBitti == 0)) {
+        vanhempi = pUusi->pVanhempi;
+        isoVanhempi = vanhempi->pVanhempi;
+
+        if (vanhempi == isoVanhempi->pVasen) {
+            seta = isoVanhempi->pOikea;
+            if (seta != NULL && seta->iVariBitti == 0) {
+                vanhempi->iVariBitti = 1;
+                seta->iVariBitti = 1;
+                isoVanhempi->iVariBitti = 0;
+                pUusi = isoVanhempi;
+            } else {
+                if (pUusi == vanhempi->pOikea) {
+                    pUusi = vanhempi;
+                    kierraVasemmalle(pJuurisolmu, pUusi);
+                    vanhempi = pUusi->pVanhempi;
+                }
+                vanhempi->iVariBitti = 1;
+                isoVanhempi->iVariBitti = 0;
+                kierraOikealle(pJuurisolmu, isoVanhempi);
+            }
+
+        } else {
+            seta = isoVanhempi->pVasen;
+            if (seta != NULL && seta->iVariBitti == 0) {
+                vanhempi->iVariBitti = 1;
+                seta->iVariBitti = 1;
+                isoVanhempi->iVariBitti = 0;
+                pUusi = isoVanhempi;
+            } else {
+                if (pUusi == vanhempi->pVasen) {
+                    pUusi = vanhempi;
+                    kierraOikealle(pJuurisolmu, pUusi);
+                    vanhempi = pUusi->pVanhempi;
+                }
+                vanhempi->iVariBitti = 1;
+                isoVanhempi->iVariBitti = 0;
+                kierraVasemmalle(pJuurisolmu, isoVanhempi);
+            }
+        }
+    }
+    (*pJuurisolmu)->iVariBitti = 1;
+}
+
+// Koska binaaripuu.c versio ottaa parametrina PUU*, tarvitaan uusi kirjoitusaliohjelma.
+void kirjoitaRBTiedostoon(char *pNimi, RBSOLMU *pJuurisolmu) {
+    FILE *Tiedosto = NULL;
+
+    if (pJuurisolmu == NULL) {
+        return;
+    }
+
+    /* Tiedoston avaaminen. */
+    if ((Tiedosto = fopen(pNimi, "a")) == NULL) {
+        perror("Tiedoston avaaminen epäonnistui, lopetetaan");
+        exit(0);
+    }
+    /* Tiedostoon kirjoittaminen. */
+    fprintf(Tiedosto, "%s,%d\n", pJuurisolmu->aNimi, pJuurisolmu->iArvo);
+
+    /* Tiedoston sulkeminen. */
+    fclose(Tiedosto);
+    printf("Tiedosto '%s' kirjoitettu.\n", pNimi);
+    return;
+}
+
+void kirjoitaRB(char *pNimi, RBSOLMU *pJuurisolmu) {
+    /*if (pJuurisolmu == NULL) {
+        printf("Puu on tyhjä, luo puurakenne ennen kirjoittamista.\n");
+        return;
+    }*/
+    if (pJuurisolmu != NULL) {
+        kirjoitaRBTiedostoon(pNimi, pJuurisolmu);
+        kirjoitaRB(pNimi, pJuurisolmu->pVasen);
+        kirjoitaRB(pNimi, pJuurisolmu->pOikea);
+    }
+    return;
+}

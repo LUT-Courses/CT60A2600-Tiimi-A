@@ -39,6 +39,8 @@ int binaaripuuValikko(void) {
     printf("3) Syvyyshaku\n");
     printf("4) Leveyshaku\n");
     printf("5) Tyhjennä puu\n");
+    printf("6) Poista solmu\n");
+    printf("7) Binäärihaku\n");
     printf("0) Takaisin\n");
     printf("Anna valintasi: ");
     scanf("%d", &iValinta);
