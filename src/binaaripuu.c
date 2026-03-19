@@ -423,3 +423,28 @@ int binaariHaku(char *pNimi, PUU *pJuuriSolmu, int iArvo) {
         return binaariHaku(pNimi, pJuuriSolmu->pOikea, iArvo);
     }
 }
+
+PUU *poistaSolmu(char *pNimi, int iArvo, PUU *pJuuriSolmu) {
+
+    if (pJuuriSolmu == NULL) {
+        return (pJuuriSolmu);
+    }
+
+    if (iArvo == pJuuriSolmu->iArvo && (strcmp(pNimi, pJuuriSolmu->aNimi) == 0)) {
+        free(pJuuriSolmu);
+        pJuuriSolmu = NULL;
+        printf("Solmu poistettu.\n");
+        return (pJuuriSolmu);
+    } else if (iArvo < pJuuriSolmu->iArvo) {
+        printf("Vertailu: '%s' vs '%s'\n", pNimi, pJuuriSolmu->aNimi);
+        pJuuriSolmu->pVasen = poistaSolmu(pNimi, iArvo, pJuuriSolmu->pVasen);
+    } else if (iArvo > pJuuriSolmu->iArvo) {
+        printf("Vertailu: '%s' vs '%s'\n", pNimi, pJuuriSolmu->aNimi);
+        pJuuriSolmu->pOikea = poistaSolmu(pNimi, iArvo, pJuuriSolmu->pOikea);
+    } else {
+        pJuuriSolmu->pVasen = poistaSolmu(pNimi, iArvo, pJuuriSolmu->pVasen);
+        pJuuriSolmu->pOikea = poistaSolmu(pNimi, iArvo, pJuuriSolmu->pOikea);
+    }
+
+    return (pJuuriSolmu);
+}
