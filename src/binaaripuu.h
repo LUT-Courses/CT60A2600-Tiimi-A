@@ -32,6 +32,7 @@ PUU *oikeaPuoli(PUU *pAlku);
 PUU *vasenPuoli(PUU *pAlku);
 int puunPituus(PUU *pAlku);
 int suurempiLukuVertailu(int iLuku1, int iLuku2);
+PUU *poistaSolmu(char *pNimi, int iArvo, PUU *pJuuriSolmu);
 int binaariHaku(char *pNimi, PUU *pJuuriSolmu, int iArvo);
 
 #endif
