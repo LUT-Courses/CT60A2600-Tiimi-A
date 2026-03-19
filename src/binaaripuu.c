@@ -285,7 +285,7 @@ void kirjoitaTiedostoon(char *pNimi, PUU *pAlku) {
 
     /* Tiedoston sulkeminen. */
     fclose(Tiedosto);
-    //printf("Tiedosto '%s' kirjoitettu.\n", pNimi);
+    printf("Tiedosto '%s' kirjoitettu.\n", pNimi);
     return;
 }
 
