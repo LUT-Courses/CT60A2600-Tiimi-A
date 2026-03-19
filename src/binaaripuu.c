@@ -33,6 +33,14 @@ PUU *vapautaMuistiPuu(PUU *pJuuriSolmu) {
     return (pJuuriSolmu);
 }
 
+/**
+ * @brief Lisaa solmun puuhun.
+ * Tasapainottaa puun. 
+ * @param pAlku 
+ * @param pSolmu Lisattava solmu.  
+ * @param iValiMatka Solmun arvo.
+ * @return PUU* 
+ */
 PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka) {
     int iVertailu = 0;
 
@@ -58,18 +66,13 @@ PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka) {
         }
     }
 
-    // Tasta eteenpain tahan aliohjelmaan lisatty 18.3.2026
+    // Selvitetaan paikka, johon solmu lisataan. Tasapainotetaan puu.
     pAlku->iPituus = 1 + suurempiLukuVertailu(puunPituus(pAlku->pVasen), puunPituus(pAlku->pOikea));
     int tasapaino = tasapainoitaPuu(pAlku);
 
     // vasen vasen tasapainotus
     if ((tasapaino > 1) && (iValiMatka < pAlku->pVasen->iArvo)) {
         return (oikeaPuoli(pAlku));
-    }
-
-    // oikea oikea tasapainotus
-    if ((tasapaino < -1) && (iValiMatka > pAlku->pOikea->iArvo)) {//} && (pAlku->pOikea != NULL)) { //lisatty loppu
-        return(vasenPuoli(pAlku));
     }
 
     // vasen oikea tasapainotus
@@ -79,11 +82,17 @@ PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka) {
     }
 
     //oikea vasen tasapainotus
-    if ((tasapaino < -1) && (iValiMatka < pAlku->pOikea->iArvo)) {//} && (pAlku->pOikea != NULL)) { //lisatty loppu
+    if ((tasapaino < -1) && (iValiMatka < pAlku->pOikea->iArvo)) {
         pAlku->pOikea = oikeaPuoli(pAlku->pOikea);
         return(vasenPuoli(pAlku));
     }
     return (pAlku);
+
+    // oikea oikea tasapainotus
+    if ((tasapaino < -1) && (iValiMatka > pAlku->pOikea->iArvo)) {
+        return(vasenPuoli(pAlku));
+    }
+
 }
 
 PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
@@ -288,57 +297,102 @@ void tarkistaLoytyykoSyvyyshaulla(char *aNimiKirjoitettava, PUU *pJuuriSolmu, in
     }
 }
 
-
+/**
+ * @brief Palauttaa solmun tasapainokertoimen.
+ * 
+ * @param pAlku Solmu, josta tasapainokerroin halutaan
+ * @return int 
+ */
 int tasapainoitaPuu(PUU *pAlku) {
+    // Tarkistetaan, onko Null
     if(pAlku == NULL) {
         return(0);
     }
+
+    //Palautetaan tasapainokerroin
     return (puunPituus(pAlku->pVasen) - puunPituus(pAlku->pOikea));
 }
 
+/**
+ * @brief Oikean puolen kierto.
+ * Puu jarjestetaan, jotta se on tasapainossa.
+ * @param pAlku 
+ * @return PUU* 
+ */
 PUU *oikeaPuoli(PUU *pAlku) {
+    //Tarkistetaan, onko pAlku tai pAlku oikea puoli NULL
     if ((pAlku->pVasen == NULL) || (pAlku == NULL)) {
         return (pAlku);
     }
 
+    //Muuttujien ja vakioden alustaminen
     PUU *pMuuttuja1 = pAlku->pVasen;
     PUU *pMuuttuja2 = pMuuttuja1->pOikea;
 
+    //Sijoitetetaan arvoja
     pMuuttuja1->pOikea = pAlku;
     pAlku->pVasen = pMuuttuja2;
 
+    //  Verrataan ja sijoitetaan suuremmat korkeudet
     pAlku->iPituus = suurempiLukuVertailu(puunPituus(pAlku->pVasen), puunPituus(pAlku->pOikea)) + 1;
     pMuuttuja1->iPituus = suurempiLukuVertailu(puunPituus(pMuuttuja1->pVasen), puunPituus(pMuuttuja1->pOikea)) + 1;
 
     return pMuuttuja1;
 }
 
+/**
+ * @brief Vasemman puolen kierto.
+ * Puu jarjestetaan, jotta se on tasapainossa.
+ * @param pAlku 
+ * @return PUU* 
+ */
 PUU *vasenPuoli(PUU *pAlku) {
+    //Tarkistetaan, onko pAlku tai pAlku oikea puoli NULL
     if ((pAlku->pOikea == NULL) || (pAlku == NULL)) {
         return (pAlku);
     }
 
+    //Muuttujien ja vakioden alustaminen
     PUU *pMuuttuja1 = pAlku->pOikea;
     PUU *pMuuttuja2 = pMuuttuja1->pVasen;
 
+    //Sijoitetetaan arvoja
     pMuuttuja1->pVasen = pAlku;
     pAlku->pOikea = pMuuttuja2;
 
+    // Verrataam ja sijoitetaan suuremmat korkeudet
     pAlku->iPituus = suurempiLukuVertailu(puunPituus(pAlku->pVasen), puunPituus(pAlku->pOikea)) + 1;
     pMuuttuja1->iPituus = suurempiLukuVertailu(puunPituus(pMuuttuja1->pVasen), puunPituus(pMuuttuja1->pOikea)) + 1;
 
     return pMuuttuja1;
 }
 
+/**
+ * @brief Hakee solmun korkeuden.
+ * 
+ * @param pAlku Kohta, josta korkeus haetaan
+ * @return int 
+ */
 int puunPituus(PUU *pAlku) {
+    // Tarkistetaan, onko Solmu Null
     if (pAlku == NULL) {
         return(0);
     }
+
     return (pAlku->iPituus);
 }
 
+/**
+ * @brief Vertaa kahta lukua ja palauttaa suuremman.
+ * 
+ * @param iLuku1 Ensimmainen verrattava kokonaisluku.
+ * @param iLuku2 Toinen verrattava kokonaisluku.
+ * @return int 
+ */
 int suurempiLukuVertailu(int iLuku1, int iLuku2) {
     int iPalautus = 0;
+
+    // Verrataan kumpi luvuista on suurempi.
     if (iLuku1 > iLuku2) {
         iPalautus = iLuku1;
     } else {
