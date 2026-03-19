@@ -36,6 +36,7 @@ void test_VaraaMuistia(void) {
     TEST_ASSERT_EQUAL_INT(expectedYhteensa, pAlku->iYhteensa);
 }
 
+// Testataan, onnistuuko muistin vapauttaminen.
 void test_VapautaMuisti(void) {
     pAlku = varaaMuistia(NULL, "Kosonen", 500);
     pAlku = varaaMuistia(pAlku, "Toropainen", 400);
@@ -48,7 +49,7 @@ void test_OtsikonOhi(void) {
     int expectedLuku = 1;
     int iOtsikko = 0;
 
-    // Onko otsikko menty ohi
+    // Onko otsikko ohitettu?
     if (iOtsikko == 0) {
         iOtsikko = 1;
     }
