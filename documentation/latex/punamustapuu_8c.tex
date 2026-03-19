@@ -1,0 +1,392 @@
+\hypertarget{punamustapuu_8c}{}\doxysection{src/punamustapuu.c File Reference}
+\label{punamustapuu_8c}\index{src/punamustapuu.c@{src/punamustapuu.c}}
+{\ttfamily \#include \char`\"{}binaaripuu.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for punamustapuu.\+c\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$ \mbox{\hyperlink{punamustapuu_8c_a935f23f605c2cacef5119f4753773cbd}{varaa\+Muistia\+RB}} (char $\ast$p\+Nimi, int i\+Arvo)
+\begin{DoxyCompactList}\small\item\em L10 / Punamustapuu Vaatii oman structin takia omat aliohjelmat, jotka ovat \mbox{\hyperlink{binaaripuu_8c}{binaaripuu.\+c}} tiedoston aliohjelmia muokattuina. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$ \mbox{\hyperlink{punamustapuu_8c_a2161d4028ad314a2dd09e94e1b3512f7}{vapauta\+Muisti\+RB}} (\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$p\+Juuri\+Solmu)
+\item 
+\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$ \mbox{\hyperlink{punamustapuu_8c_a980acf020d1cdf2b149368c7ffa7dcf4}{lisaa\+RBSolmu}} (\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$p\+Juurisolmu, \mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$p\+Uusi)
+\item 
+\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$ \mbox{\hyperlink{punamustapuu_8c_a3ccac62ca46478538a67e4ce15968581}{luo\+RBPuu}} (\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$p\+Juurisolmu, char $\ast$p\+Nimi)
+\item 
+void \mbox{\hyperlink{punamustapuu_8c_a82dc21776a315cfdd0188d3157b09bd1}{kierra\+Vasemmalle}} (\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$$\ast$p\+Juurisolmu, \mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$p\+Solmu)
+\item 
+void \mbox{\hyperlink{punamustapuu_8c_a2d8353bad8dfdf70303bc5902cf7a46c}{kierra\+Oikealle}} (\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$$\ast$p\+Juurisolmu, \mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$p\+Solmu)
+\item 
+void \mbox{\hyperlink{punamustapuu_8c_ab5bec4d35272fead193e0e7778e50a11}{korjaa\+Lisays}} (\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$$\ast$p\+Juurisolmu, \mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$p\+Uusi)
+\item 
+void \mbox{\hyperlink{punamustapuu_8c_a57db3e52e32329de3f4587ef3ddf1753}{kirjoita\+RBTiedostoon}} (char $\ast$p\+Nimi, \mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$p\+Juurisolmu)
+\item 
+void \mbox{\hyperlink{punamustapuu_8c_a883833544b0f5d8952df9bc3297aba37}{kirjoita\+RB}} (char $\ast$p\+Nimi, \mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$p\+Juurisolmu)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{punamustapuu_8c_a2d8353bad8dfdf70303bc5902cf7a46c}\label{punamustapuu_8c_a2d8353bad8dfdf70303bc5902cf7a46c}} 
+\index{punamustapuu.c@{punamustapuu.c}!kierraOikealle@{kierraOikealle}}
+\index{kierraOikealle@{kierraOikealle}!punamustapuu.c@{punamustapuu.c}}
+\doxysubsubsection{\texorpdfstring{kierraOikealle()}{kierraOikealle()}}
+{\footnotesize\ttfamily void kierra\+Oikealle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$$\ast$}]{p\+Juurisolmu,  }\item[{\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$}]{p\+Solmu }\end{DoxyParamCaption})}
+
+
+
+Definition at line 130 of file punamustapuu.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{130                                                             \{}
+\DoxyCodeLine{131     \mbox{\hyperlink{structRBSolmu}{RBSOLMU}} *pVasenLapsi = pSolmu-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}};}
+\DoxyCodeLine{132     pSolmu-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}} = pVasenLapsi-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}};}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     \textcolor{keywordflow}{if} (pSolmu-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}} != NULL)}
+\DoxyCodeLine{135         pSolmu-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}}-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}} = pSolmu;}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     pVasenLapsi-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}} = pSolmu-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}};}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139     \textcolor{keywordflow}{if} (pSolmu-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}} == NULL)}
+\DoxyCodeLine{140         *pJuurisolmu = pVasenLapsi;}
+\DoxyCodeLine{141     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (pSolmu == pSolmu-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}}-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}})}
+\DoxyCodeLine{142         pSolmu-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}}-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}} = pVasenLapsi;}
+\DoxyCodeLine{143     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{144         pSolmu-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}}-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}} = pVasenLapsi;}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146     pVasenLapsi-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}} = pSolmu;}
+\DoxyCodeLine{147     pSolmu-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}} = pVasenLapsi;}
+\DoxyCodeLine{148 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{punamustapuu_8c_a82dc21776a315cfdd0188d3157b09bd1}\label{punamustapuu_8c_a82dc21776a315cfdd0188d3157b09bd1}} 
+\index{punamustapuu.c@{punamustapuu.c}!kierraVasemmalle@{kierraVasemmalle}}
+\index{kierraVasemmalle@{kierraVasemmalle}!punamustapuu.c@{punamustapuu.c}}
+\doxysubsubsection{\texorpdfstring{kierraVasemmalle()}{kierraVasemmalle()}}
+{\footnotesize\ttfamily void kierra\+Vasemmalle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$$\ast$}]{p\+Juurisolmu,  }\item[{\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$}]{p\+Solmu }\end{DoxyParamCaption})}
+
+
+
+Definition at line 109 of file punamustapuu.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{109                                                               \{}
+\DoxyCodeLine{110     \mbox{\hyperlink{structRBSolmu}{RBSOLMU}} *pOikeaLapsi = pSolmu-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}};}
+\DoxyCodeLine{111     pSolmu-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}} = pOikeaLapsi-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}};}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113     \textcolor{keywordflow}{if} (pSolmu-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}} != NULL)}
+\DoxyCodeLine{114         pSolmu-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}}-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}} = pSolmu;}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116     \textcolor{comment}{// Solmun oikea lapsi nousee ylös puussa}}
+\DoxyCodeLine{117     pOikeaLapsi-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}} = pSolmu-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}};}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119     \textcolor{keywordflow}{if} (pSolmu-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}} == NULL)}
+\DoxyCodeLine{120         *pJuurisolmu = pOikeaLapsi;}
+\DoxyCodeLine{121     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (pSolmu == pSolmu-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}}-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}})}
+\DoxyCodeLine{122         pSolmu-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}}-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}} = pOikeaLapsi;}
+\DoxyCodeLine{123     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{124         pSolmu-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}}-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}} = pOikeaLapsi;}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126     pOikeaLapsi-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}} = pSolmu;}
+\DoxyCodeLine{127     pSolmu-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}} = pOikeaLapsi;}
+\DoxyCodeLine{128 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{punamustapuu_8c_a883833544b0f5d8952df9bc3297aba37}\label{punamustapuu_8c_a883833544b0f5d8952df9bc3297aba37}} 
+\index{punamustapuu.c@{punamustapuu.c}!kirjoitaRB@{kirjoitaRB}}
+\index{kirjoitaRB@{kirjoitaRB}!punamustapuu.c@{punamustapuu.c}}
+\doxysubsubsection{\texorpdfstring{kirjoitaRB()}{kirjoitaRB()}}
+{\footnotesize\ttfamily void kirjoita\+RB (\begin{DoxyParamCaption}\item[{char $\ast$}]{p\+Nimi,  }\item[{\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$}]{p\+Juurisolmu }\end{DoxyParamCaption})}
+
+
+
+Definition at line 222 of file punamustapuu.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{222                                                    \{}
+\DoxyCodeLine{223     \textcolor{comment}{/*if (pJuurisolmu == NULL) \{ }}
+\DoxyCodeLine{224 \textcolor{comment}{        printf("{}Puu on tyhjä, luo puurakenne ennen kirjoittamista.\(\backslash\)n"{}); }}
+\DoxyCodeLine{225 \textcolor{comment}{        return; }}
+\DoxyCodeLine{226 \textcolor{comment}{    \}*/}}
+\DoxyCodeLine{227     \textcolor{keywordflow}{if} (pJuurisolmu != NULL) \{}
+\DoxyCodeLine{228         \mbox{\hyperlink{punamustapuu_8c_a57db3e52e32329de3f4587ef3ddf1753}{kirjoitaRBTiedostoon}}(pNimi, pJuurisolmu);}
+\DoxyCodeLine{229         \mbox{\hyperlink{punamustapuu_8c_a883833544b0f5d8952df9bc3297aba37}{kirjoitaRB}}(pNimi, pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}});}
+\DoxyCodeLine{230         \mbox{\hyperlink{punamustapuu_8c_a883833544b0f5d8952df9bc3297aba37}{kirjoitaRB}}(pNimi, pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}});}
+\DoxyCodeLine{231     \}}
+\DoxyCodeLine{232     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{233 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{punamustapuu_8c_a57db3e52e32329de3f4587ef3ddf1753}\label{punamustapuu_8c_a57db3e52e32329de3f4587ef3ddf1753}} 
+\index{punamustapuu.c@{punamustapuu.c}!kirjoitaRBTiedostoon@{kirjoitaRBTiedostoon}}
+\index{kirjoitaRBTiedostoon@{kirjoitaRBTiedostoon}!punamustapuu.c@{punamustapuu.c}}
+\doxysubsubsection{\texorpdfstring{kirjoitaRBTiedostoon()}{kirjoitaRBTiedostoon()}}
+{\footnotesize\ttfamily void kirjoita\+RBTiedostoon (\begin{DoxyParamCaption}\item[{char $\ast$}]{p\+Nimi,  }\item[{\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$}]{p\+Juurisolmu }\end{DoxyParamCaption})}
+
+
+
+Definition at line 201 of file punamustapuu.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{201                                                              \{}
+\DoxyCodeLine{202     FILE *Tiedosto = NULL;}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204     \textcolor{keywordflow}{if} (pJuurisolmu == NULL) \{}
+\DoxyCodeLine{205         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{206     \}}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208     \textcolor{comment}{/* Tiedoston avaaminen. */}}
+\DoxyCodeLine{209     \textcolor{keywordflow}{if} ((Tiedosto = fopen(pNimi, \textcolor{stringliteral}{"{}a"{}})) == NULL) \{}
+\DoxyCodeLine{210         perror(\textcolor{stringliteral}{"{}Tiedoston avaaminen epäonnistui, lopetetaan"{}});}
+\DoxyCodeLine{211         exit(0);}
+\DoxyCodeLine{212     \}}
+\DoxyCodeLine{213     \textcolor{comment}{/* Tiedostoon kirjoittaminen. */}}
+\DoxyCodeLine{214     fprintf(Tiedosto, \textcolor{stringliteral}{"{}\%s,\%d\(\backslash\)n"{}}, pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_ad6d8fc8d213df72ab785eaaddf92a0e5}{aNimi}}, pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_a187ac54c54ce63f000f615d753e007a6}{iArvo}});}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{216     \textcolor{comment}{/* Tiedoston sulkeminen. */}}
+\DoxyCodeLine{217     fclose(Tiedosto);}
+\DoxyCodeLine{218     printf(\textcolor{stringliteral}{"{}Tiedosto '\%s' kirjoitettu.\(\backslash\)n"{}}, pNimi);}
+\DoxyCodeLine{219     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{220 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{punamustapuu_8c_ab5bec4d35272fead193e0e7778e50a11}\label{punamustapuu_8c_ab5bec4d35272fead193e0e7778e50a11}} 
+\index{punamustapuu.c@{punamustapuu.c}!korjaaLisays@{korjaaLisays}}
+\index{korjaaLisays@{korjaaLisays}!punamustapuu.c@{punamustapuu.c}}
+\doxysubsubsection{\texorpdfstring{korjaaLisays()}{korjaaLisays()}}
+{\footnotesize\ttfamily void korjaa\+Lisays (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$$\ast$}]{p\+Juurisolmu,  }\item[{\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$}]{p\+Uusi }\end{DoxyParamCaption})}
+
+
+
+Definition at line 150 of file punamustapuu.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{150                                                          \{}
+\DoxyCodeLine{151     \textcolor{comment}{// Ilman p-\/alkua, koska pVanhempi-\/>pVanhempi oli sekava}}
+\DoxyCodeLine{152     \mbox{\hyperlink{structRBSolmu}{RBSOLMU}} *vanhempi = NULL;}
+\DoxyCodeLine{153     \mbox{\hyperlink{structRBSolmu}{RBSOLMU}} *seta = NULL;}
+\DoxyCodeLine{154     \mbox{\hyperlink{structRBSolmu}{RBSOLMU}} *isoVanhempi = NULL;}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156     \textcolor{keywordflow}{while} ((pUusi != *pJuurisolmu) \&\& (pUusi-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}}-\/>\mbox{\hyperlink{structRBSolmu_ab238ed84345df035137c59b45dd49c57}{iVariBitti}} == 0)) \{}
+\DoxyCodeLine{157         vanhempi = pUusi-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}};}
+\DoxyCodeLine{158         isoVanhempi = vanhempi-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}};}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160         \textcolor{keywordflow}{if} (vanhempi == isoVanhempi-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}}) \{}
+\DoxyCodeLine{161             seta = isoVanhempi-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}};}
+\DoxyCodeLine{162             \textcolor{keywordflow}{if} (seta != NULL \&\& seta-\/>\mbox{\hyperlink{structRBSolmu_ab238ed84345df035137c59b45dd49c57}{iVariBitti}} == 0) \{}
+\DoxyCodeLine{163                 vanhempi-\/>\mbox{\hyperlink{structRBSolmu_ab238ed84345df035137c59b45dd49c57}{iVariBitti}} = 1;}
+\DoxyCodeLine{164                 seta-\/>\mbox{\hyperlink{structRBSolmu_ab238ed84345df035137c59b45dd49c57}{iVariBitti}} = 1;}
+\DoxyCodeLine{165                 isoVanhempi-\/>\mbox{\hyperlink{structRBSolmu_ab238ed84345df035137c59b45dd49c57}{iVariBitti}} = 0;}
+\DoxyCodeLine{166                 pUusi = isoVanhempi;}
+\DoxyCodeLine{167             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{168                 \textcolor{keywordflow}{if} (pUusi == vanhempi-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}}) \{}
+\DoxyCodeLine{169                     pUusi = vanhempi;}
+\DoxyCodeLine{170                     \mbox{\hyperlink{punamustapuu_8c_a82dc21776a315cfdd0188d3157b09bd1}{kierraVasemmalle}}(pJuurisolmu, pUusi);}
+\DoxyCodeLine{171                     vanhempi = pUusi-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}};}
+\DoxyCodeLine{172                 \}}
+\DoxyCodeLine{173                 vanhempi-\/>\mbox{\hyperlink{structRBSolmu_ab238ed84345df035137c59b45dd49c57}{iVariBitti}} = 1;}
+\DoxyCodeLine{174                 isoVanhempi-\/>\mbox{\hyperlink{structRBSolmu_ab238ed84345df035137c59b45dd49c57}{iVariBitti}} = 0;}
+\DoxyCodeLine{175                 \mbox{\hyperlink{punamustapuu_8c_a2d8353bad8dfdf70303bc5902cf7a46c}{kierraOikealle}}(pJuurisolmu, isoVanhempi);}
+\DoxyCodeLine{176             \}}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{179             seta = isoVanhempi-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}};}
+\DoxyCodeLine{180             \textcolor{keywordflow}{if} (seta != NULL \&\& seta-\/>\mbox{\hyperlink{structRBSolmu_ab238ed84345df035137c59b45dd49c57}{iVariBitti}} == 0) \{}
+\DoxyCodeLine{181                 vanhempi-\/>\mbox{\hyperlink{structRBSolmu_ab238ed84345df035137c59b45dd49c57}{iVariBitti}} = 1;}
+\DoxyCodeLine{182                 seta-\/>\mbox{\hyperlink{structRBSolmu_ab238ed84345df035137c59b45dd49c57}{iVariBitti}} = 1;}
+\DoxyCodeLine{183                 isoVanhempi-\/>\mbox{\hyperlink{structRBSolmu_ab238ed84345df035137c59b45dd49c57}{iVariBitti}} = 0;}
+\DoxyCodeLine{184                 pUusi = isoVanhempi;}
+\DoxyCodeLine{185             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{186                 \textcolor{keywordflow}{if} (pUusi == vanhempi-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}}) \{}
+\DoxyCodeLine{187                     pUusi = vanhempi;}
+\DoxyCodeLine{188                     \mbox{\hyperlink{punamustapuu_8c_a2d8353bad8dfdf70303bc5902cf7a46c}{kierraOikealle}}(pJuurisolmu, pUusi);}
+\DoxyCodeLine{189                     vanhempi = pUusi-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}};}
+\DoxyCodeLine{190                 \}}
+\DoxyCodeLine{191                 vanhempi-\/>\mbox{\hyperlink{structRBSolmu_ab238ed84345df035137c59b45dd49c57}{iVariBitti}} = 1;}
+\DoxyCodeLine{192                 isoVanhempi-\/>\mbox{\hyperlink{structRBSolmu_ab238ed84345df035137c59b45dd49c57}{iVariBitti}} = 0;}
+\DoxyCodeLine{193                 \mbox{\hyperlink{punamustapuu_8c_a82dc21776a315cfdd0188d3157b09bd1}{kierraVasemmalle}}(pJuurisolmu, isoVanhempi);}
+\DoxyCodeLine{194             \}}
+\DoxyCodeLine{195         \}}
+\DoxyCodeLine{196     \}}
+\DoxyCodeLine{197     (*pJuurisolmu)-\/>iVariBitti = 1;}
+\DoxyCodeLine{198 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{punamustapuu_8c_a980acf020d1cdf2b149368c7ffa7dcf4}\label{punamustapuu_8c_a980acf020d1cdf2b149368c7ffa7dcf4}} 
+\index{punamustapuu.c@{punamustapuu.c}!lisaaRBSolmu@{lisaaRBSolmu}}
+\index{lisaaRBSolmu@{lisaaRBSolmu}!punamustapuu.c@{punamustapuu.c}}
+\doxysubsubsection{\texorpdfstring{lisaaRBSolmu()}{lisaaRBSolmu()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}}$\ast$ lisaa\+RBSolmu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$}]{p\+Juurisolmu,  }\item[{\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$}]{p\+Uusi }\end{DoxyParamCaption})}
+
+Katsotaan, ovatko arvot samat. Laitetaan aakkosten perusteella vasemmalle tai oikealle.
+
+Definition at line 38 of file punamustapuu.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{38                                                             \{}
+\DoxyCodeLine{39     \textcolor{keywordtype}{int} iVertailu = 0;}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     \textcolor{comment}{// Jos puu on tyhjä, palautetaan uusi RBsolmu.}}
+\DoxyCodeLine{42     \textcolor{keywordflow}{if} (pJuurisolmu == NULL) \{}
+\DoxyCodeLine{43         \textcolor{keywordflow}{return} pUusi;}
+\DoxyCodeLine{44     \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     iVertailu = strcmp(pUusi-\/>\mbox{\hyperlink{structRBSolmu_ad6d8fc8d213df72ab785eaaddf92a0e5}{aNimi}}, pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_ad6d8fc8d213df72ab785eaaddf92a0e5}{aNimi}});}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{comment}{// Solmujen lisääminen rekursiivisesti}}
+\DoxyCodeLine{49     \textcolor{keywordflow}{if} (pUusi-\/>\mbox{\hyperlink{structRBSolmu_a187ac54c54ce63f000f615d753e007a6}{iArvo}} < pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_a187ac54c54ce63f000f615d753e007a6}{iArvo}}) \{}
+\DoxyCodeLine{50         pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}} = \mbox{\hyperlink{punamustapuu_8c_a980acf020d1cdf2b149368c7ffa7dcf4}{lisaaRBSolmu}}(pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}}, pUusi);}
+\DoxyCodeLine{51         pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}}-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}} = pJuurisolmu;}
+\DoxyCodeLine{52     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (pUusi-\/>\mbox{\hyperlink{structRBSolmu_a187ac54c54ce63f000f615d753e007a6}{iArvo}} > pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_a187ac54c54ce63f000f615d753e007a6}{iArvo}}) \{}
+\DoxyCodeLine{53         pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}} = \mbox{\hyperlink{punamustapuu_8c_a980acf020d1cdf2b149368c7ffa7dcf4}{lisaaRBSolmu}}(pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}}, pUusi);}
+\DoxyCodeLine{54         pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}}-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}} = pJuurisolmu;}
+\DoxyCodeLine{57     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (pUusi-\/>\mbox{\hyperlink{structRBSolmu_a187ac54c54ce63f000f615d753e007a6}{iArvo}} == pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_a187ac54c54ce63f000f615d753e007a6}{iArvo}}) \{}
+\DoxyCodeLine{58         \textcolor{keywordflow}{if} (iVertailu < 0) \{}
+\DoxyCodeLine{59             pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}} = \mbox{\hyperlink{punamustapuu_8c_a980acf020d1cdf2b149368c7ffa7dcf4}{lisaaRBSolmu}}(pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}}, pUusi);}
+\DoxyCodeLine{60             pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}}-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}} = pJuurisolmu;}
+\DoxyCodeLine{61         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iVertailu > 0) \{}
+\DoxyCodeLine{62             pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}} = \mbox{\hyperlink{punamustapuu_8c_a980acf020d1cdf2b149368c7ffa7dcf4}{lisaaRBSolmu}}(pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}}, pUusi);}
+\DoxyCodeLine{63             pJuurisolmu-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}}-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}} = pJuurisolmu;}
+\DoxyCodeLine{64         \}}
+\DoxyCodeLine{65     \}}
+\DoxyCodeLine{66     \textcolor{keywordflow}{return} (pJuurisolmu);}
+\DoxyCodeLine{67 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{punamustapuu_8c_a3ccac62ca46478538a67e4ce15968581}\label{punamustapuu_8c_a3ccac62ca46478538a67e4ce15968581}} 
+\index{punamustapuu.c@{punamustapuu.c}!luoRBPuu@{luoRBPuu}}
+\index{luoRBPuu@{luoRBPuu}!punamustapuu.c@{punamustapuu.c}}
+\doxysubsubsection{\texorpdfstring{luoRBPuu()}{luoRBPuu()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}}$\ast$ luo\+RBPuu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$}]{p\+Juurisolmu,  }\item[{char $\ast$}]{p\+Nimi }\end{DoxyParamCaption})}
+
+
+
+Definition at line 69 of file punamustapuu.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{69                                                      \{}
+\DoxyCodeLine{70     FILE *Tiedosto = NULL;}
+\DoxyCodeLine{71     \textcolor{keywordtype}{char} aRivi[\mbox{\hyperlink{yleiset_8h_a05b49c662c073f89e86804f7856622a0}{LEN}}] = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{72     \textcolor{keywordtype}{int} iOtsikko = 0;}
+\DoxyCodeLine{73     \textcolor{keywordtype}{char} *p1 = NULL, *p2 = NULL;}
+\DoxyCodeLine{74     \textcolor{keywordtype}{int} iArvo = 0;}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76     \textcolor{keywordflow}{if} ((Tiedosto = fopen(pNimi, \textcolor{stringliteral}{"{}r"{}})) == NULL) \{}
+\DoxyCodeLine{77         perror(\textcolor{stringliteral}{"{}Tiedoston avaaminen epäonnistui, lopetetaan"{}});}
+\DoxyCodeLine{78         exit(0);}
+\DoxyCodeLine{79     \}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81     \textcolor{keywordflow}{while} ((fgets(aRivi, \mbox{\hyperlink{yleiset_8h_a05b49c662c073f89e86804f7856622a0}{LEN}}, Tiedosto)) != NULL) \{}
+\DoxyCodeLine{82         aRivi[strlen(aRivi) -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{83         \textcolor{keywordflow}{if} (iOtsikko == 0) \{}
+\DoxyCodeLine{84             iOtsikko++;}
+\DoxyCodeLine{85             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{86         \}}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88         \textcolor{keywordflow}{if} ((p1 = strtok(aRivi, \textcolor{stringliteral}{"{};"{}})) == NULL) \{}
+\DoxyCodeLine{89             perror(\textcolor{stringliteral}{"{}Tiedoston pilkkominen epäonnistui, lopetetaan"{}});}
+\DoxyCodeLine{90             exit(0);}
+\DoxyCodeLine{91         \}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93         \textcolor{keywordflow}{if} ((p2 = strtok(NULL, \textcolor{stringliteral}{"{};"{}})) == NULL) \{}
+\DoxyCodeLine{94             perror(\textcolor{stringliteral}{"{}Tiedoston pilkkominen epäonnistui, lopetetaan"{}});}
+\DoxyCodeLine{95             exit(0);}
+\DoxyCodeLine{96         \}}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98         iArvo = atoi(p2);}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100         \mbox{\hyperlink{structRBSolmu}{RBSOLMU}} *pUusi = \mbox{\hyperlink{punamustapuu_8c_a935f23f605c2cacef5119f4753773cbd}{varaaMuistiaRB}}(p1, iArvo);}
+\DoxyCodeLine{101         pJuurisolmu = \mbox{\hyperlink{punamustapuu_8c_a980acf020d1cdf2b149368c7ffa7dcf4}{lisaaRBSolmu}}(pJuurisolmu, pUusi);}
+\DoxyCodeLine{102         \mbox{\hyperlink{punamustapuu_8c_ab5bec4d35272fead193e0e7778e50a11}{korjaaLisays}}(\&pJuurisolmu, pUusi);}
+\DoxyCodeLine{103     \}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105     fclose(Tiedosto);}
+\DoxyCodeLine{106     \textcolor{keywordflow}{return} (pJuurisolmu);}
+\DoxyCodeLine{107 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{punamustapuu_8c_a2161d4028ad314a2dd09e94e1b3512f7}\label{punamustapuu_8c_a2161d4028ad314a2dd09e94e1b3512f7}} 
+\index{punamustapuu.c@{punamustapuu.c}!vapautaMuistiRB@{vapautaMuistiRB}}
+\index{vapautaMuistiRB@{vapautaMuistiRB}!punamustapuu.c@{punamustapuu.c}}
+\doxysubsubsection{\texorpdfstring{vapautaMuistiRB()}{vapautaMuistiRB()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}}$\ast$ vapauta\+Muisti\+RB (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}} $\ast$}]{p\+Juuri\+Solmu }\end{DoxyParamCaption})}
+
+
+
+Definition at line 28 of file punamustapuu.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{28                                                \{}
+\DoxyCodeLine{29     \textcolor{keywordflow}{if} (pJuuriSolmu != NULL) \{}
+\DoxyCodeLine{30         \mbox{\hyperlink{punamustapuu_8c_a2161d4028ad314a2dd09e94e1b3512f7}{vapautaMuistiRB}}(pJuuriSolmu-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}});}
+\DoxyCodeLine{31         \mbox{\hyperlink{punamustapuu_8c_a2161d4028ad314a2dd09e94e1b3512f7}{vapautaMuistiRB}}(pJuuriSolmu-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}});}
+\DoxyCodeLine{32         free(pJuuriSolmu);}
+\DoxyCodeLine{33     \}}
+\DoxyCodeLine{34     pJuuriSolmu = NULL;}
+\DoxyCodeLine{35     \textcolor{keywordflow}{return} (pJuuriSolmu);}
+\DoxyCodeLine{36 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{punamustapuu_8c_a935f23f605c2cacef5119f4753773cbd}\label{punamustapuu_8c_a935f23f605c2cacef5119f4753773cbd}} 
+\index{punamustapuu.c@{punamustapuu.c}!varaaMuistiaRB@{varaaMuistiaRB}}
+\index{varaaMuistiaRB@{varaaMuistiaRB}!punamustapuu.c@{punamustapuu.c}}
+\doxysubsubsection{\texorpdfstring{varaaMuistiaRB()}{varaaMuistiaRB()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{binaaripuu_8h_a6b2254cb5f1942a35c810338ade12a27}{RBSOLMU}}$\ast$ varaa\+Muistia\+RB (\begin{DoxyParamCaption}\item[{char $\ast$}]{p\+Nimi,  }\item[{int}]{i\+Arvo }\end{DoxyParamCaption})}
+
+
+
+L10 / Punamustapuu Vaatii oman structin takia omat aliohjelmat, jotka ovat \mbox{\hyperlink{binaaripuu_8c}{binaaripuu.\+c}} tiedoston aliohjelmia muokattuina. 
+
+Punamustapuu, ehkä oma header olisi kätevämpi, kun omat aliohjelmat oman structin takia. 
+
+Definition at line 11 of file punamustapuu.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{11                                                 \{}
+\DoxyCodeLine{12     \mbox{\hyperlink{structRBSolmu}{RBSOLMU}} *pUusi = NULL;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keywordflow}{if} ((pUusi = (\mbox{\hyperlink{structRBSolmu}{RBSOLMU}} *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structRBSolmu}{RBSOLMU}}))) == NULL) \{}
+\DoxyCodeLine{15         perror(\textcolor{stringliteral}{"{}Muistin varaus epäonnistui, lopetetaan"{}});}
+\DoxyCodeLine{16         exit(0);}
+\DoxyCodeLine{17     \}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     pUusi-\/>\mbox{\hyperlink{structRBSolmu_ab238ed84345df035137c59b45dd49c57}{iVariBitti}} = 0; \textcolor{comment}{// uudet aina punaisia}}
+\DoxyCodeLine{20     strcpy(pUusi-\/>\mbox{\hyperlink{structRBSolmu_ad6d8fc8d213df72ab785eaaddf92a0e5}{aNimi}}, pNimi);}
+\DoxyCodeLine{21     pUusi-\/>\mbox{\hyperlink{structRBSolmu_a187ac54c54ce63f000f615d753e007a6}{iArvo}} = iArvo;}
+\DoxyCodeLine{22     pUusi-\/>\mbox{\hyperlink{structRBSolmu_a78b7691036fc03de25d15fcd51d0830b}{pVasen}} = NULL;}
+\DoxyCodeLine{23     pUusi-\/>\mbox{\hyperlink{structRBSolmu_ab7c114970ec70e99e701f492ca5c4ed3}{pOikea}} = NULL;}
+\DoxyCodeLine{24     pUusi-\/>\mbox{\hyperlink{structRBSolmu_a94988df70db4076d18a2d96e65bd3f5b}{pVanhempi}} = NULL;}
+\DoxyCodeLine{25     \textcolor{keywordflow}{return} (pUusi);}
+\DoxyCodeLine{26 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 9

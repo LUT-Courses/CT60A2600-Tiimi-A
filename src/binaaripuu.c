@@ -3,9 +3,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-// L09 / Binääripuu:
+// Tasapainoitettu binääripuu AVL:
 
-PUU *varaaMuistiaPuulle(char *pSolmu, int iValiMatka) {
+/**
+ * @brief Muistin varaaminen puu structin alkioille
+ * 
+ * @param pSolmu Solmu, jolle muistia varataan
+ * @param iArvo Arvo, jolle muistia varataan
+ * @return PUU* 
+ */
+PUU *varaaMuistiaPuulle(char *pSolmu, int iArvo) {
     PUU *pUusi = NULL;
 
     // Muistin varaaminen
@@ -15,13 +22,19 @@ PUU *varaaMuistiaPuulle(char *pSolmu, int iValiMatka) {
     }
 
     strcpy(pUusi->aNimi, pSolmu);
-    pUusi->iArvo = iValiMatka;
-    pUusi->iPituus = 1; // Lisatty 18.3.2026
+    pUusi->iArvo = iArvo;
+    pUusi->iPituus = 1;
     pUusi->pVasen = NULL;
     pUusi->pOikea = NULL;
     return (pUusi);
 }
 
+/**
+ * @brief Muistin vapauttaminen puu structin alkiosta
+ * Juurisolmun ja kaikkien sen lapsie solmujen muisti vapautetaan.
+ * @param pJuuriSolmu Puun juurisolmu
+ * @return PUU* 
+ */
 PUU *vapautaMuistiPuu(PUU *pJuuriSolmu) {
     // Muistin vapauttaminen
     if (pJuuriSolmu != NULL) {
@@ -38,31 +51,31 @@ PUU *vapautaMuistiPuu(PUU *pJuuriSolmu) {
  * Tasapainottaa puun.
  * @param pAlku
  * @param pSolmu Lisattava solmu.
- * @param iValiMatka Solmun arvo.
+ * @param iArvo Solmun arvo.
  * @return PUU*
  */
-PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka) {
+PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iArvo) {
     int iVertailu = 0;
 
     // Varataan muistia, jos muisti tyhjä.
     if (pAlku == NULL) {
-        return varaaMuistiaPuulle(pSolmu, iValiMatka);
+        return varaaMuistiaPuulle(pSolmu, iArvo);
     }
 
     iVertailu = strcmp(pSolmu, pAlku->aNimi);
 
     // Solmujen lisääminen.
-    if (iValiMatka < pAlku->iArvo) {
-        pAlku->pVasen = lisaaSolmu(pAlku->pVasen, pSolmu, iValiMatka);
-    } else if (iValiMatka > pAlku->iArvo) {
-        pAlku->pOikea = lisaaSolmu(pAlku->pOikea, pSolmu, iValiMatka);
+    if (iArvo < pAlku->iArvo) {
+        pAlku->pVasen = lisaaSolmu(pAlku->pVasen, pSolmu, iArvo);
+    } else if (iArvo > pAlku->iArvo) {
+        pAlku->pOikea = lisaaSolmu(pAlku->pOikea, pSolmu, iArvo);
 
-        // Testataan, ovatko arvot samat.
-    } else if (iValiMatka == pAlku->iArvo) {
+    // Testataan, ovatko arvot samat.
+    } else if (iArvo == pAlku->iArvo) {
         if (iVertailu < 0) {
-            pAlku->pVasen = lisaaSolmu(pAlku->pVasen, pSolmu, iValiMatka);
+            pAlku->pVasen = lisaaSolmu(pAlku->pVasen, pSolmu, iArvo);
         } else if (iVertailu > 0) {
-            pAlku->pOikea = lisaaSolmu(pAlku->pOikea, pSolmu, iValiMatka);
+            pAlku->pOikea = lisaaSolmu(pAlku->pOikea, pSolmu, iArvo);
         }
     }
 
@@ -71,36 +84,43 @@ PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka) {
     int tasapaino = tasapainoitaPuu(pAlku);
 
     // vasen vasen tasapainotus
-    if ((tasapaino > 1) && (iValiMatka < pAlku->pVasen->iArvo)) {
+    if ((tasapaino > 1) && (iArvo < pAlku->pVasen->iArvo)) {
         return (oikeaPuoli(pAlku));
     }
 
     // vasen oikea tasapainotus
-    if ((tasapaino > 1) && (iValiMatka > pAlku->pVasen->iArvo)) {
+    if ((tasapaino > 1) && (iArvo > pAlku->pVasen->iArvo)) {
         pAlku->pVasen = vasenPuoli(pAlku->pVasen);
         return (oikeaPuoli(pAlku));
     }
 
     // oikea vasen tasapainotus
-    if ((tasapaino < -1) && (iValiMatka < pAlku->pOikea->iArvo)) {
+    if ((tasapaino < -1) && (iArvo < pAlku->pOikea->iArvo)) {
         pAlku->pOikea = oikeaPuoli(pAlku->pOikea);
         return (vasenPuoli(pAlku));
     }
 
     // oikea oikea tasapainotus
-    if ((tasapaino < -1) && (iValiMatka > pAlku->pOikea->iArvo)) {
+    if ((tasapaino < -1) && (iArvo > pAlku->pOikea->iArvo)) {
         return (vasenPuoli(pAlku));
     }
 
     return (pAlku);
 }
 
+/**
+ * @brief Luetaan tiedosto ja luodaan puu rakenne.
+ * Pilkotaan luetut rivit.
+ * @param pNimi Luettavan tiedoston nimi.
+ * @param pJuuriSolmu Puun juurisolmu.
+ * @return PUU* Palauttaa juuriSolmun.
+ */
 PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
     FILE *Tiedosto = NULL;
     char aRivi[LEN] = "";
     int iOtsikko = 0;
     char *p1 = NULL, *p2 = NULL;
-    int iValiMatka = 0;
+    int iArvo = 0;
 
     // Tiedoston avaus
     if ((Tiedosto = fopen(pNimi, "r")) == NULL) {
@@ -129,23 +149,29 @@ PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
             exit(0);
         }
 
-        iValiMatka = atoi(p2);
+        iArvo = atoi(p2);
 
         // Maaritetaan juuri solmu jos sitä ei ole määritelty.
         if (pJuuriSolmu == NULL) {
-            pJuuriSolmu = lisaaSolmu(pJuuriSolmu, p1, iValiMatka);
+            pJuuriSolmu = lisaaSolmu(pJuuriSolmu, p1, iArvo);
             iOtsikko++;
             continue;
         }
 
-        pJuuriSolmu = lisaaSolmu(pJuuriSolmu, p1,
-                                 iValiMatka); // pJuuriSolmu = LISATTY HOX TOSI TARKEA!!!! 19.3.2026
+        pJuuriSolmu = lisaaSolmu(pJuuriSolmu, p1, iArvo);
     }
 
+    // Suljetaan tiedosto
     fclose(Tiedosto);
     return (pJuuriSolmu);
 }
 
+/**
+ * @brief Tasapainoitetun binaaripuun kirjoittaminen tiedostoon
+ * 
+ * @param pNimi Kirjoitettavan tiedoston nimi.
+ * @param pAlku 
+ */
 void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku) {
     /*if (pAlku == NULL) { //Noora kommentoi pois 19.3.2026 klo. 13.08
         printf("Puu on tyhjä, luo puurakenne ennen kirjoittamista.\n");
@@ -159,6 +185,13 @@ void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku) {
     return;
 }
 
+/**
+ * @brief Kysyy arvon, joka halutaan etsia/poistaa puusta
+ * 
+ * @param pPrompti Kysymys esim. "Anna haettava numeroarvo: "
+ * @param iArvo Arvo, joka halutaan poistaa/etsiä
+ * @return int Palauttaa kayttajan antaman arvon
+ */
 int kysyArvo(char *pPrompti, int iArvo) {
     printf("%s", pPrompti);
     scanf("%d", &iArvo);
@@ -269,6 +302,12 @@ JONO *vapautaMuistiJono(JONO *pAlku) {
     return (pAlku);
 }
 
+/**
+ * @brief Kirjoittaa binaaripuun tiedostoon
+ * 
+ * @param pNimi Kirjoitettavan tiedoston nimi
+ * @param pAlku Solmu, joka kirjoitetaan tiedostoon
+ */
 void kirjoitaTiedostoon(char *pNimi, PUU *pAlku) {
     FILE *Tiedosto = NULL;
 
@@ -286,8 +325,6 @@ void kirjoitaTiedostoon(char *pNimi, PUU *pAlku) {
 
     /* Tiedoston sulkeminen. */
     fclose(Tiedosto);
-    // printf("Tiedosto '%s' kirjoitettu.\n", pNimi); //Noora laittoi kommentteihin 19.3.2026
-    // klo. 13.03
     return;
 }
 
@@ -319,7 +356,7 @@ int tasapainoitaPuu(PUU *pAlku) {
  * @brief Oikean puolen kierto.
  * Puu jarjestetaan, jotta se on tasapainossa.
  * @param pAlku
- * @return PUU*
+ * @return PUU* Palauttaa solmun.
  */
 PUU *oikeaPuoli(PUU *pAlku) {
     // Tarkistetaan, onko pAlku tai pAlku oikea puoli NULL
@@ -347,7 +384,7 @@ PUU *oikeaPuoli(PUU *pAlku) {
  * @brief Vasemman puolen kierto.
  * Puu jarjestetaan, jotta se on tasapainossa.
  * @param pAlku
- * @return PUU*
+ * @return PUU* Palauttaa solmun.
  */
 PUU *vasenPuoli(PUU *pAlku) {
     // Tarkistetaan, onko pAlku tai pAlku oikea puoli NULL
@@ -375,7 +412,7 @@ PUU *vasenPuoli(PUU *pAlku) {
  * @brief Hakee solmun korkeuden.
  *
  * @param pAlku Kohta, josta korkeus haetaan
- * @return int
+ * @return int Palauttaa solmun korkeuden
  */
 int puunPituus(PUU *pAlku) {
     // Tarkistetaan, onko Solmu Null
@@ -383,6 +420,7 @@ int puunPituus(PUU *pAlku) {
         return (0);
     }
 
+    // Palauttaa solmun korkeuden
     return (pAlku->iPituus);
 }
 
@@ -391,7 +429,7 @@ int puunPituus(PUU *pAlku) {
  *
  * @param iLuku1 Ensimmainen verrattava kokonaisluku.
  * @param iLuku2 Toinen verrattava kokonaisluku.
- * @return int
+ * @return int Palauttaa suuremman luvun.
  */
 int suurempiLukuVertailu(int iLuku1, int iLuku2) {
     int iPalautus = 0;
@@ -402,6 +440,8 @@ int suurempiLukuVertailu(int iLuku1, int iLuku2) {
     } else {
         iPalautus = iLuku2;
     }
+
+    // Palauttaa suuremman luvun.
     return (iPalautus);
 }
 

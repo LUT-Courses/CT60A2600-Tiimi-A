@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.3.18)  18 MAR 2026 18:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.3.18)  19 MAR 2026 18:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**refman.tex
+**refman
 (./refman.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21>
@@ -865,7 +865,7 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 8.99994pt on input line 169.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 6.29996pt on input line 169.
- [1] [2
+ [1] [2] [3] [4
 
 ]
 Package hyperref Info: Option `pageanchor' set `true' on input line 171.
@@ -892,40 +892,198 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 
 ]
 Chapter 2.
-(./structjono.tex) (./structpuu.tex
+(./files.tex) [3] [4
+
+]
+Chapter 3.
+(./structjono.tex
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 5.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 7.
+(Font)              scaled to size 10.79993pt on input line 11.
 LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
-0.
+4.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 8.99994pt on input line 10.
-) (./structtiedot.tex [3]) [4]
+(Font)              scaled to size 8.99994pt on input line 14.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.19995pt on input line 32.
+) (./structpuu.tex
+[5] [6]) (./structRBSolmu.tex [7]) (./structtiedot.tex [8] [9]) [10]
+Chapter 4.
+(./binaaripuu_8c.tex) (./binaaripuu_8h.tex
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 8.09995pt on input line 30.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 30.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 8.09995pt on input line 30.
+ [11
+
+] [12]
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 113.
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <7> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 113.
+ [13] [14] [15] [16]
+Underfull \hbox (badness 10000) detected at line 445
+[][][]
+ []
+
+[17] [18]
+Underfull \hbox (badness 10000) detected at line 589
+[][][]
+ []
+
+[19]
+Underfull \hbox (badness 10000) detected at line 672
+[][][]
+ []
+
+[20] [21]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 4.6 on input line 804.
+
+
+Underfull \hbox (badness 10000) detected at line 805
+[][][]
+ []
+
+[22]
+Underfull \hbox (badness 10000) detected at line 894
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 933
+[][][]
+ []
+
+[23] [24]
+Underfull \hbox (badness 10000) detected at line 1039
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 1105
+[][][]
+ []
+
+[25] [26]
+Underfull \hbox (badness 10000) detected at line 1200
+[][][]
+ []
+
+[27]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 4.12 on input line 1279.
+
+
+Underfull \hbox (badness 10000) detected at line 1280
+[][][]
+ []
+
+) (./linkitettylista_8c.tex [28] [29] [30]) (./linkitettylista_8h.tex [31]
+[32] [33]) (./paaohjelma_8c.tex [34] [35]) (./punamustapuu_8c.tex [36] [37]
+[38] [39] [40]) (./yleiset_8c.tex [41] [42]) (./yleiset_8h.tex [43] [44])
+[45] [46
+
+]
 No file refman.ind.
+
+Package longtable Warning: Table widths have changed. Rerun LaTeX.
+
 (./refman.aux)
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 29540039AFD0FEC996150547A6A38019;1361.
+(rerunfilecheck)             Checksum: 953CF6BF9CA35E92ED80C81E3D0C4E42;21880.
  ) 
 Here is how much of TeX's memory you used:
- 17166 strings out of 480247
- 274750 string characters out of 5896151
- 573866 words of memory out of 5000000
- 34780 multiletter control sequences out of 15000+600000
- 506324 words of font info for 65 fonts, out of 8000000 for 9000
+ 17781 strings out of 480247
+ 289667 string characters out of 5896151
+ 616948 words of memory out of 5000000
+ 35081 multiletter control sequences out of 15000+600000
+ 526871 words of font info for 97 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 99i,11n,117p,325b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/urw/helvetic/uhvb8ac.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
-helvetic/uhvr8a.pfb>
-Output written on refman.pdf (8 pages, 44105 bytes).
+ 99i,14n,117p,571b,633s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{binaaripuu_8c_a46f9908c0ee584b5957b299590d445ed} 
+has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_ae36e90c4570ff61efae7b18bfddb8d13} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_a2a49ee5fed200eb26e411ea0316577b7} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_adf1f6dcb26fdbc7dd2ad11a7e7450a53} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_a1939c9494c418cf9a626bacade1695be} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_aeb3241991f8a34143f5f78dfe6cc0da8} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_af435b1beffb7d31d3280723bd6161022} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_a9a6ced04a914e8d1334d0497800af03d} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_a89f18fc11283e8b495c7576b8d21a5d2} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_ad8add727db4ff44aec050585137d977b} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_abc36f8e1374d272f964633afcb007b88} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_a09e0a17eb567cedd5c2d2c8b57f324db} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_a14d2e91051da74b27375b9cfb65c0b40} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_a4787647d52dc0138643b92f8aad2ebff} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_a33c2d3aa646be652e2f0423f76592d59} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_ac756329791d6dbcfd0b72ad464bdcf89} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_a1da0b4ddeeee811ecd74423851dedda7} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_a46fd4c50e32904be1c4ebe95c236ee37} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{binaaripuu_8c_a62bef642f877e08144bea2c2e3303d6c} ha
+s been referenced but does not exist, replaced by a fixed one
+
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
+/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr
+o8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8ac.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on refman.pdf (52 pages, 222957 bytes).
 PDF statistics:
- 132 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
- 28 named destinations out of 1000 (max. 500000)
- 65 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1848 PDF objects out of 2073 (max. 8388607)
+ 1756 compressed objects within 18 object streams
+ 299 named destinations out of 1000 (max. 500000)
+ 913 words of extra memory for PDF output out of 10000 (max. 10000000)
 

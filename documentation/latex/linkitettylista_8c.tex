@@ -1,0 +1,247 @@
+\hypertarget{linkitettylista_8c}{}\doxysection{src/linkitettylista.c File Reference}
+\label{linkitettylista_8c}\index{src/linkitettylista.c@{src/linkitettylista.c}}
+{\ttfamily \#include \char`\"{}linkitettylista.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for linkitettylista.\+c\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{linkitettylista_8h_afe008a34a6c783e83c932aa029a349a8}{TIEDOT}} $\ast$ \mbox{\hyperlink{linkitettylista_8c_aa42c807692f4bf18089adfd76e991e30}{lue}} (char $\ast$p\+Nimi, \mbox{\hyperlink{linkitettylista_8h_afe008a34a6c783e83c932aa029a349a8}{TIEDOT}} $\ast$p\+Alku)
+\item 
+\mbox{\hyperlink{linkitettylista_8h_afe008a34a6c783e83c932aa029a349a8}{TIEDOT}} $\ast$ \mbox{\hyperlink{linkitettylista_8c_a582d9750e5ba972950d2aef0b02b4f85}{varaa\+Muistia}} (\mbox{\hyperlink{linkitettylista_8h_afe008a34a6c783e83c932aa029a349a8}{TIEDOT}} $\ast$p\+Alku, char $\ast$p\+Sukunimi, int i\+Maara)
+\item 
+\mbox{\hyperlink{linkitettylista_8h_afe008a34a6c783e83c932aa029a349a8}{TIEDOT}} $\ast$ \mbox{\hyperlink{linkitettylista_8c_a9210dc0304d77b8259ea5b8611371176}{vapauta\+Muisti}} (\mbox{\hyperlink{linkitettylista_8h_afe008a34a6c783e83c932aa029a349a8}{TIEDOT}} $\ast$p\+Alku)
+\item 
+void \mbox{\hyperlink{linkitettylista_8c_aee85c7f9c4fb1d7efe5b379d8a7657c9}{kirjoita\+Tiedosto\+Alusta\+Loppuun}} (char $\ast$p\+Nimi, \mbox{\hyperlink{linkitettylista_8h_afe008a34a6c783e83c932aa029a349a8}{TIEDOT}} $\ast$p\+Alku)
+\item 
+void \mbox{\hyperlink{linkitettylista_8c_aeb9cadb7733a12c123fc9d9c2ada15dc}{kirjoita\+Tiedosto\+Lopusta\+Alkuun}} (char $\ast$p\+Nimi, \mbox{\hyperlink{linkitettylista_8h_afe008a34a6c783e83c932aa029a349a8}{TIEDOT}} $\ast$p\+Alku)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{linkitettylista_8c_aee85c7f9c4fb1d7efe5b379d8a7657c9}\label{linkitettylista_8c_aee85c7f9c4fb1d7efe5b379d8a7657c9}} 
+\index{linkitettylista.c@{linkitettylista.c}!kirjoitaTiedostoAlustaLoppuun@{kirjoitaTiedostoAlustaLoppuun}}
+\index{kirjoitaTiedostoAlustaLoppuun@{kirjoitaTiedostoAlustaLoppuun}!linkitettylista.c@{linkitettylista.c}}
+\doxysubsubsection{\texorpdfstring{kirjoitaTiedostoAlustaLoppuun()}{kirjoitaTiedostoAlustaLoppuun()}}
+{\footnotesize\ttfamily void kirjoita\+Tiedosto\+Alusta\+Loppuun (\begin{DoxyParamCaption}\item[{char $\ast$}]{p\+Nimi,  }\item[{\mbox{\hyperlink{linkitettylista_8h_afe008a34a6c783e83c932aa029a349a8}{TIEDOT}} $\ast$}]{p\+Alku }\end{DoxyParamCaption})}
+
+
+
+Definition at line 98 of file linkitettylista.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{98                                                                \{}
+\DoxyCodeLine{99     FILE *Tiedosto = NULL;}
+\DoxyCodeLine{100     \mbox{\hyperlink{structtiedot}{TIEDOT}} *ptr = NULL;}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102     \textcolor{keywordflow}{if} (pAlku == NULL) \{}
+\DoxyCodeLine{103         printf(\textcolor{stringliteral}{"{}Lista on tyhjä, lue tiedosto ennen kirjoittamista.\(\backslash\)n"{}});}
+\DoxyCodeLine{104         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{105     \}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107     \textcolor{comment}{// Kirjoitus tiedoston avaaminen}}
+\DoxyCodeLine{108     \textcolor{keywordflow}{if} ((Tiedosto = fopen(pNimi, \textcolor{stringliteral}{"{}a"{}})) == NULL) \{}
+\DoxyCodeLine{109         perror(\textcolor{stringliteral}{"{}Tiedoston avaaminen epäonnistui, lopetetaan"{}});}
+\DoxyCodeLine{110         exit(0);}
+\DoxyCodeLine{111     \}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113     \textcolor{comment}{// Tiedostoon kirjoittaminen}}
+\DoxyCodeLine{114     ptr = pAlku;}
+\DoxyCodeLine{115     \textcolor{keywordflow}{while} (ptr != NULL) \{}
+\DoxyCodeLine{116         fprintf(Tiedosto, \textcolor{stringliteral}{"{}\%s,\%d\(\backslash\)n"{}}, ptr-\/>\mbox{\hyperlink{structtiedot_aa833c8bc86f2b4b9b21dfd2c21465ad4}{aSukunimi}}, ptr-\/>\mbox{\hyperlink{structtiedot_a3b48ece87461abb5412ebcf3d7a769dc}{iYhteensa}});}
+\DoxyCodeLine{117         ptr = ptr-\/>\mbox{\hyperlink{structtiedot_a01814224f0469cd265a80726ae04f6ee}{pSeuraava}};}
+\DoxyCodeLine{118     \}}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120     \textcolor{comment}{// Tiedoston sulkeminen}}
+\DoxyCodeLine{121     fclose(Tiedosto);}
+\DoxyCodeLine{122     printf(\textcolor{stringliteral}{"{}Tiedosto \%s kirjoitettu.\(\backslash\)n"{}}, pNimi);}
+\DoxyCodeLine{123     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{124 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{linkitettylista_8c_aeb9cadb7733a12c123fc9d9c2ada15dc}\label{linkitettylista_8c_aeb9cadb7733a12c123fc9d9c2ada15dc}} 
+\index{linkitettylista.c@{linkitettylista.c}!kirjoitaTiedostoLopustaAlkuun@{kirjoitaTiedostoLopustaAlkuun}}
+\index{kirjoitaTiedostoLopustaAlkuun@{kirjoitaTiedostoLopustaAlkuun}!linkitettylista.c@{linkitettylista.c}}
+\doxysubsubsection{\texorpdfstring{kirjoitaTiedostoLopustaAlkuun()}{kirjoitaTiedostoLopustaAlkuun()}}
+{\footnotesize\ttfamily void kirjoita\+Tiedosto\+Lopusta\+Alkuun (\begin{DoxyParamCaption}\item[{char $\ast$}]{p\+Nimi,  }\item[{\mbox{\hyperlink{linkitettylista_8h_afe008a34a6c783e83c932aa029a349a8}{TIEDOT}} $\ast$}]{p\+Alku }\end{DoxyParamCaption})}
+
+
+
+Definition at line 126 of file linkitettylista.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{126                                                                \{}
+\DoxyCodeLine{127     FILE *Tiedosto = NULL;}
+\DoxyCodeLine{128     \mbox{\hyperlink{structtiedot}{TIEDOT}} *ptr = pAlku;}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130     \textcolor{keywordflow}{if} (pAlku == NULL) \{}
+\DoxyCodeLine{131         printf(\textcolor{stringliteral}{"{}Lista on tyhjä, lue tiedosto ennen kirjoittamista.\(\backslash\)n"{}});}
+\DoxyCodeLine{132         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{133     \}}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135     \textcolor{keywordflow}{if} ((Tiedosto = fopen(pNimi, \textcolor{stringliteral}{"{}a"{}})) == NULL) \{}
+\DoxyCodeLine{136         perror(\textcolor{stringliteral}{"{}Tiedoston avaaminen epäonnistui, lopetetaan"{}});}
+\DoxyCodeLine{137         exit(0);}
+\DoxyCodeLine{138     \}}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140     \textcolor{comment}{// Mennään listan loppuun.}}
+\DoxyCodeLine{141     \textcolor{keywordflow}{while} (ptr-\/>\mbox{\hyperlink{structtiedot_a01814224f0469cd265a80726ae04f6ee}{pSeuraava}} != NULL) \{}
+\DoxyCodeLine{142         ptr = ptr-\/>\mbox{\hyperlink{structtiedot_a01814224f0469cd265a80726ae04f6ee}{pSeuraava}};}
+\DoxyCodeLine{143     \}}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145     \textcolor{comment}{// Lopusta alkuun, kirjoitetaan tiedostoon.}}
+\DoxyCodeLine{146     \textcolor{keywordflow}{while} (ptr != NULL) \{}
+\DoxyCodeLine{147         fprintf(Tiedosto, \textcolor{stringliteral}{"{}\%s,\%d\(\backslash\)n"{}}, ptr-\/>\mbox{\hyperlink{structtiedot_aa833c8bc86f2b4b9b21dfd2c21465ad4}{aSukunimi}}, ptr-\/>\mbox{\hyperlink{structtiedot_a3b48ece87461abb5412ebcf3d7a769dc}{iYhteensa}});}
+\DoxyCodeLine{148         ptr = ptr-\/>\mbox{\hyperlink{structtiedot_a8041e510b56336c4a88696726a841563}{pEdellinen}};}
+\DoxyCodeLine{149     \}}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151     fclose(Tiedosto);}
+\DoxyCodeLine{152     printf(\textcolor{stringliteral}{"{}Tiedosto \%s kirjoitettu.\(\backslash\)n"{}}, pNimi);}
+\DoxyCodeLine{153     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{154 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{linkitettylista_8c_aa42c807692f4bf18089adfd76e991e30}\label{linkitettylista_8c_aa42c807692f4bf18089adfd76e991e30}} 
+\index{linkitettylista.c@{linkitettylista.c}!lue@{lue}}
+\index{lue@{lue}!linkitettylista.c@{linkitettylista.c}}
+\doxysubsubsection{\texorpdfstring{lue()}{lue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{linkitettylista_8h_afe008a34a6c783e83c932aa029a349a8}{TIEDOT}}$\ast$ lue (\begin{DoxyParamCaption}\item[{char $\ast$}]{p\+Nimi,  }\item[{\mbox{\hyperlink{linkitettylista_8h_afe008a34a6c783e83c932aa029a349a8}{TIEDOT}} $\ast$}]{p\+Alku }\end{DoxyParamCaption})}
+
+
+
+Definition at line 8 of file linkitettylista.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{8                                         \{}
+\DoxyCodeLine{9     FILE *Tiedosto = NULL;}
+\DoxyCodeLine{10     \textcolor{keywordtype}{char} aRivi[\mbox{\hyperlink{yleiset_8h_a05b49c662c073f89e86804f7856622a0}{LEN}}] = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{11     \textcolor{keywordtype}{char} *p1 = NULL, *p2 = NULL;}
+\DoxyCodeLine{12     \textcolor{keywordtype}{int} iOtsikko = 0;}
+\DoxyCodeLine{13     \textcolor{keywordtype}{int} iMaara = 0;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     \textcolor{comment}{/* Tiedoston avaaminen. */}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \textcolor{keywordflow}{if} ((Tiedosto = fopen(pNimi, \textcolor{stringliteral}{"{}r"{}})) == NULL) \{}
+\DoxyCodeLine{18         perror(\textcolor{stringliteral}{"{}Tiedoston avaaminen epäonnistui, lopetetaan"{}});}
+\DoxyCodeLine{19         exit(0);}
+\DoxyCodeLine{20     \}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{comment}{/* Tiedoston lukeminen */}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keywordflow}{while} ((fgets(aRivi, \mbox{\hyperlink{yleiset_8h_a05b49c662c073f89e86804f7856622a0}{LEN}}, Tiedosto)) != NULL) \{}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26         aRivi[strlen(aRivi) -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{keywordflow}{if} (iOtsikko == 0) \{}
+\DoxyCodeLine{29             iOtsikko = 1;}
+\DoxyCodeLine{30             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{31         \}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \textcolor{keywordflow}{if} ((p1 = strtok(aRivi, \textcolor{stringliteral}{"{};"{}})) == NULL) \{}
+\DoxyCodeLine{34             perror(\textcolor{stringliteral}{"{}Tiedoston pilkkominen epäonnistui, lopetetaan"{}});}
+\DoxyCodeLine{35             exit(0);}
+\DoxyCodeLine{36         \}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38         \textcolor{keywordflow}{if} ((p2 = strtok(NULL, \textcolor{stringliteral}{"{};"{}})) == NULL) \{}
+\DoxyCodeLine{39             perror(\textcolor{stringliteral}{"{}Tiedoston pilkkominen epäonnistui, lopetetaan"{}});}
+\DoxyCodeLine{40             exit(0);}
+\DoxyCodeLine{41         \}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43         iMaara = atoi(p2);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         \textcolor{comment}{/* Muistin varaaminen ja linkitetyn listan luominen. */}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47         pAlku = \mbox{\hyperlink{linkitettylista_8c_a582d9750e5ba972950d2aef0b02b4f85}{varaaMuistia}}(pAlku, p1, iMaara);}
+\DoxyCodeLine{48     \}}
+\DoxyCodeLine{49     \textcolor{comment}{/* Tiedoston sulkeminen. */}}
+\DoxyCodeLine{50     fclose(Tiedosto);}
+\DoxyCodeLine{51     printf(\textcolor{stringliteral}{"{}Tiedosto '\%s' luettu.\(\backslash\)n"{}}, pNimi);}
+\DoxyCodeLine{52     \textcolor{keywordflow}{return} (pAlku);}
+\DoxyCodeLine{53 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{linkitettylista_8c_a9210dc0304d77b8259ea5b8611371176}\label{linkitettylista_8c_a9210dc0304d77b8259ea5b8611371176}} 
+\index{linkitettylista.c@{linkitettylista.c}!vapautaMuisti@{vapautaMuisti}}
+\index{vapautaMuisti@{vapautaMuisti}!linkitettylista.c@{linkitettylista.c}}
+\doxysubsubsection{\texorpdfstring{vapautaMuisti()}{vapautaMuisti()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{linkitettylista_8h_afe008a34a6c783e83c932aa029a349a8}{TIEDOT}}$\ast$ vapauta\+Muisti (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{linkitettylista_8h_afe008a34a6c783e83c932aa029a349a8}{TIEDOT}} $\ast$}]{p\+Alku }\end{DoxyParamCaption})}
+
+
+
+Definition at line 86 of file linkitettylista.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{86                                      \{}
+\DoxyCodeLine{87     \textcolor{comment}{/* Muistin vapauttaminen. */}}
+\DoxyCodeLine{88     \mbox{\hyperlink{structtiedot}{TIEDOT}} *ptr = pAlku;}
+\DoxyCodeLine{89     \textcolor{keywordflow}{while} (ptr != NULL) \{}
+\DoxyCodeLine{90         pAlku = ptr-\/>\mbox{\hyperlink{structtiedot_a01814224f0469cd265a80726ae04f6ee}{pSeuraava}};}
+\DoxyCodeLine{91         free(ptr);}
+\DoxyCodeLine{92         ptr = pAlku;}
+\DoxyCodeLine{93     \}}
+\DoxyCodeLine{94     pAlku = NULL;}
+\DoxyCodeLine{95     \textcolor{keywordflow}{return} (pAlku);}
+\DoxyCodeLine{96 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{linkitettylista_8c_a582d9750e5ba972950d2aef0b02b4f85}\label{linkitettylista_8c_a582d9750e5ba972950d2aef0b02b4f85}} 
+\index{linkitettylista.c@{linkitettylista.c}!varaaMuistia@{varaaMuistia}}
+\index{varaaMuistia@{varaaMuistia}!linkitettylista.c@{linkitettylista.c}}
+\doxysubsubsection{\texorpdfstring{varaaMuistia()}{varaaMuistia()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{linkitettylista_8h_afe008a34a6c783e83c932aa029a349a8}{TIEDOT}}$\ast$ varaa\+Muistia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{linkitettylista_8h_afe008a34a6c783e83c932aa029a349a8}{TIEDOT}} $\ast$}]{p\+Alku,  }\item[{char $\ast$}]{p\+Sukunimi,  }\item[{int}]{i\+Maara }\end{DoxyParamCaption})}
+
+
+
+Definition at line 55 of file linkitettylista.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{55                                                                  \{}
+\DoxyCodeLine{56     \mbox{\hyperlink{structtiedot}{TIEDOT}} *pUusi = NULL;}
+\DoxyCodeLine{57     \mbox{\hyperlink{structtiedot}{TIEDOT}} *ptr = NULL;}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     \textcolor{comment}{/* Muistin varaaminen. */}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     \textcolor{keywordflow}{if} ((pUusi = (\mbox{\hyperlink{structtiedot}{TIEDOT}} *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structtiedot}{TIEDOT}}))) == NULL) \{}
+\DoxyCodeLine{62         perror(\textcolor{stringliteral}{"{}Muistin varaus epäonnistui, lopetetaan"{}});}
+\DoxyCodeLine{63         exit(0);}
+\DoxyCodeLine{64     \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     \textcolor{comment}{/* Kaksisuuntaisen linkitetyn listan luominen. */}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     strcpy(pUusi-\/>\mbox{\hyperlink{structtiedot_aa833c8bc86f2b4b9b21dfd2c21465ad4}{aSukunimi}}, pSukunimi);}
+\DoxyCodeLine{69     pUusi-\/>\mbox{\hyperlink{structtiedot_a3b48ece87461abb5412ebcf3d7a769dc}{iYhteensa}} = iMaara;}
+\DoxyCodeLine{70     pUusi-\/>\mbox{\hyperlink{structtiedot_a01814224f0469cd265a80726ae04f6ee}{pSeuraava}} = NULL;}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     \textcolor{keywordflow}{if} (pAlku == NULL) \{}
+\DoxyCodeLine{73         pUusi-\/>\mbox{\hyperlink{structtiedot_a8041e510b56336c4a88696726a841563}{pEdellinen}} = NULL;}
+\DoxyCodeLine{74         pAlku = pUusi;}
+\DoxyCodeLine{75     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{76         ptr = pAlku;}
+\DoxyCodeLine{77         \textcolor{keywordflow}{while} (ptr-\/>\mbox{\hyperlink{structtiedot_a01814224f0469cd265a80726ae04f6ee}{pSeuraava}} != NULL) \{}
+\DoxyCodeLine{78             ptr = ptr-\/>\mbox{\hyperlink{structtiedot_a01814224f0469cd265a80726ae04f6ee}{pSeuraava}};}
+\DoxyCodeLine{79         \}}
+\DoxyCodeLine{80         ptr-\/>\mbox{\hyperlink{structtiedot_a01814224f0469cd265a80726ae04f6ee}{pSeuraava}} = pUusi;}
+\DoxyCodeLine{81         pUusi-\/>\mbox{\hyperlink{structtiedot_a8041e510b56336c4a88696726a841563}{pEdellinen}} = ptr;}
+\DoxyCodeLine{82     \}}
+\DoxyCodeLine{83     \textcolor{keywordflow}{return} (pAlku);}
+\DoxyCodeLine{84 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 5

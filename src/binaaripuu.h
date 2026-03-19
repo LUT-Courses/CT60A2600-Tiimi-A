@@ -24,9 +24,9 @@ typedef struct RBSolmu {
     struct RBSolmu *pVanhempi;
 } RBSOLMU;
 
-PUU *varaaMuistiaPuulle(char *pSolmu, int iValiMatka);
+PUU *varaaMuistiaPuulle(char *pSolmu, int iArvo);
 PUU *vapautaMuistiPuu(PUU *pJuuriSolmu);
-PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka);
+PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iArvo);
 PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu);
 void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku);
 int kysyArvo(char *pPrompti, int iArvo);

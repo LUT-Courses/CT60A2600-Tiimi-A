@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Viikko 1 / Lista:
+// Linkitettylista
 
 TIEDOT *lue(char *pNimi, TIEDOT *pAlku) {
     FILE *Tiedosto = NULL;
