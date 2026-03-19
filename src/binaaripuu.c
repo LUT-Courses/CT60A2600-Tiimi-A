@@ -86,13 +86,13 @@ PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iValiMatka) {
         pAlku->pOikea = oikeaPuoli(pAlku->pOikea);
         return(vasenPuoli(pAlku));
     }
-    return (pAlku);
 
     // oikea oikea tasapainotus
     if ((tasapaino < -1) && (iValiMatka > pAlku->pOikea->iArvo)) {
         return(vasenPuoli(pAlku));
     }
 
+    return (pAlku);
 }
 
 PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
@@ -138,7 +138,7 @@ PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
             continue;
         }
 
-        lisaaSolmu(pJuuriSolmu, p1, iValiMatka);
+        pJuuriSolmu = lisaaSolmu(pJuuriSolmu, p1, iValiMatka); //pJuuriSolmu = LISATTY HOX TOSI TARKEA!!!! 19.3.2026
     }
 
     fclose(Tiedosto);
@@ -146,10 +146,10 @@ PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
 }
 
 void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku) {
-    if (pAlku == NULL) {
+    /*if (pAlku == NULL) { //Noora kommentoi pois 19.3.2026 klo. 13.08
         printf("Puu on tyhjä, luo puurakenne ennen kirjoittamista.\n");
         return;
-    }
+    }*/
     if (pAlku != NULL) {
         kirjoitaTiedostoon(pNimi, pAlku);
         kirjoitaBinaaripuu(pNimi, pAlku->pVasen);
@@ -285,7 +285,7 @@ void kirjoitaTiedostoon(char *pNimi, PUU *pAlku) {
 
     /* Tiedoston sulkeminen. */
     fclose(Tiedosto);
-    printf("Tiedosto '%s' kirjoitettu.\n", pNimi);
+    //printf("Tiedosto '%s' kirjoitettu.\n", pNimi); //Noora laittoi kommentteihin 19.3.2026 klo. 13.03
     return;
 }
 
