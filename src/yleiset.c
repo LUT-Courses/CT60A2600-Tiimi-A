@@ -35,12 +35,13 @@ int binaaripuuValikko(void) {
     int iValinta = 0;
     printf("\nValitse haluamasi toiminto:\n");
     printf("1) Luo puu\n");
-    printf("2) Kirjoita puu tiedostoon\n");
+    printf("2) Kirjoita AVL puu tiedostoon\n");
     printf("3) Syvyyshaku\n");
     printf("4) Leveyshaku\n");
     printf("5) Tyhjennä puu\n");
     printf("6) Poista solmu\n");
-    printf("7) Binäärihaku\n");
+    printf("7) Binäärihaku AVL puusta\n");
+    printf("8) Punamustapuu\n");
     printf("0) Takaisin\n");
     printf("Anna valintasi: ");
     scanf("%d", &iValinta);

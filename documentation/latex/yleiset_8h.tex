@@ -1,0 +1,147 @@
+\hypertarget{yleiset_8h}{}\doxysection{src/yleiset.h File Reference}
+\label{yleiset_8h}\index{src/yleiset.h@{src/yleiset.h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{yleiset_8h_a05b49c662c073f89e86804f7856622a0}{LEN}}~50
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{yleiset_8h_a22c615c1314062df5f9ca94047e58931}{valikko}} (void)
+\item 
+int \mbox{\hyperlink{yleiset_8h_a119a4015313d4b3d73d544a48eecb359}{lista\+Valikko}} (void)
+\item 
+int \mbox{\hyperlink{yleiset_8h_a2fbf4b5e72b7fd9fabcd8b1ca0094f5b}{binaaripuu\+Valikko}} (void)
+\item 
+char $\ast$ \mbox{\hyperlink{yleiset_8h_a7ab01e1b743720eda83f3ce483eba8e0}{kysy\+Nimi}} (char $\ast$p\+Prompti, char $\ast$p\+Nimi)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{yleiset_8h_a05b49c662c073f89e86804f7856622a0}\label{yleiset_8h_a05b49c662c073f89e86804f7856622a0}} 
+\index{yleiset.h@{yleiset.h}!LEN@{LEN}}
+\index{LEN@{LEN}!yleiset.h@{yleiset.h}}
+\doxysubsubsection{\texorpdfstring{LEN}{LEN}}
+{\footnotesize\ttfamily \#define LEN~50}
+
+
+
+Definition at line 4 of file yleiset.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{yleiset_8h_a2fbf4b5e72b7fd9fabcd8b1ca0094f5b}\label{yleiset_8h_a2fbf4b5e72b7fd9fabcd8b1ca0094f5b}} 
+\index{yleiset.h@{yleiset.h}!binaaripuuValikko@{binaaripuuValikko}}
+\index{binaaripuuValikko@{binaaripuuValikko}!yleiset.h@{yleiset.h}}
+\doxysubsubsection{\texorpdfstring{binaaripuuValikko()}{binaaripuuValikko()}}
+{\footnotesize\ttfamily int binaaripuu\+Valikko (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 34 of file yleiset.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{34                             \{}
+\DoxyCodeLine{35     \textcolor{keywordtype}{int} iValinta = 0;}
+\DoxyCodeLine{36     printf(\textcolor{stringliteral}{"{}\(\backslash\)nValitse haluamasi toiminto:\(\backslash\)n"{}});}
+\DoxyCodeLine{37     printf(\textcolor{stringliteral}{"{}1) Luo puu\(\backslash\)n"{}});}
+\DoxyCodeLine{38     printf(\textcolor{stringliteral}{"{}2) Kirjoita AVL puu tiedostoon\(\backslash\)n"{}});}
+\DoxyCodeLine{39     printf(\textcolor{stringliteral}{"{}3) Syvyyshaku\(\backslash\)n"{}});}
+\DoxyCodeLine{40     printf(\textcolor{stringliteral}{"{}4) Leveyshaku\(\backslash\)n"{}});}
+\DoxyCodeLine{41     printf(\textcolor{stringliteral}{"{}5) Tyhjennä puu\(\backslash\)n"{}});}
+\DoxyCodeLine{42     printf(\textcolor{stringliteral}{"{}6) Poista solmu\(\backslash\)n"{}});}
+\DoxyCodeLine{43     printf(\textcolor{stringliteral}{"{}7) Binäärihaku AVL puusta\(\backslash\)n"{}});}
+\DoxyCodeLine{44     printf(\textcolor{stringliteral}{"{}8) Punamustapuu\(\backslash\)n"{}});}
+\DoxyCodeLine{45     printf(\textcolor{stringliteral}{"{}0) Takaisin\(\backslash\)n"{}});}
+\DoxyCodeLine{46     printf(\textcolor{stringliteral}{"{}Anna valintasi: "{}});}
+\DoxyCodeLine{47     scanf(\textcolor{stringliteral}{"{}\%d"{}}, \&iValinta);}
+\DoxyCodeLine{48     getchar();}
+\DoxyCodeLine{49     \textcolor{keywordflow}{return} iValinta;}
+\DoxyCodeLine{50 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{yleiset_8h_a7ab01e1b743720eda83f3ce483eba8e0}\label{yleiset_8h_a7ab01e1b743720eda83f3ce483eba8e0}} 
+\index{yleiset.h@{yleiset.h}!kysyNimi@{kysyNimi}}
+\index{kysyNimi@{kysyNimi}!yleiset.h@{yleiset.h}}
+\doxysubsubsection{\texorpdfstring{kysyNimi()}{kysyNimi()}}
+{\footnotesize\ttfamily char$\ast$ kysy\+Nimi (\begin{DoxyParamCaption}\item[{char $\ast$}]{p\+Prompti,  }\item[{char $\ast$}]{p\+Nimi }\end{DoxyParamCaption})}
+
+
+
+Definition at line 52 of file yleiset.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{52                                             \{}
+\DoxyCodeLine{53     printf(\textcolor{stringliteral}{"{}\%s"{}}, pPrompti);}
+\DoxyCodeLine{54     scanf(\textcolor{stringliteral}{"{}\%s"{}}, pNimi);}
+\DoxyCodeLine{55     getchar();}
+\DoxyCodeLine{56     \textcolor{keywordflow}{return} (pNimi);}
+\DoxyCodeLine{57 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{yleiset_8h_a119a4015313d4b3d73d544a48eecb359}\label{yleiset_8h_a119a4015313d4b3d73d544a48eecb359}} 
+\index{yleiset.h@{yleiset.h}!listaValikko@{listaValikko}}
+\index{listaValikko@{listaValikko}!yleiset.h@{yleiset.h}}
+\doxysubsubsection{\texorpdfstring{listaValikko()}{listaValikko()}}
+{\footnotesize\ttfamily int lista\+Valikko (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file yleiset.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{20                        \{}
+\DoxyCodeLine{21     \textcolor{keywordtype}{int} iValinta = 0;}
+\DoxyCodeLine{22     printf(\textcolor{stringliteral}{"{}\(\backslash\)nValitse haluamasi toiminto:\(\backslash\)n"{}});}
+\DoxyCodeLine{23     printf(\textcolor{stringliteral}{"{}1) Lue tiedosto\(\backslash\)n"{}});}
+\DoxyCodeLine{24     printf(\textcolor{stringliteral}{"{}2) Kirjoita tiedosto alusta loppuun\(\backslash\)n"{}});}
+\DoxyCodeLine{25     printf(\textcolor{stringliteral}{"{}3) Kirjoita tiedosto lopusta alkuun\(\backslash\)n"{}});}
+\DoxyCodeLine{26     printf(\textcolor{stringliteral}{"{}4) Tyhjennä taulukko\(\backslash\)n"{}});}
+\DoxyCodeLine{27     printf(\textcolor{stringliteral}{"{}0) Takaisin\(\backslash\)n"{}});}
+\DoxyCodeLine{28     printf(\textcolor{stringliteral}{"{}Anna valintasi: "{}});}
+\DoxyCodeLine{29     scanf(\textcolor{stringliteral}{"{}\%d"{}}, \&iValinta);}
+\DoxyCodeLine{30     getchar();}
+\DoxyCodeLine{31     \textcolor{keywordflow}{return} iValinta;}
+\DoxyCodeLine{32 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{yleiset_8h_a22c615c1314062df5f9ca94047e58931}\label{yleiset_8h_a22c615c1314062df5f9ca94047e58931}} 
+\index{yleiset.h@{yleiset.h}!valikko@{valikko}}
+\index{valikko@{valikko}!yleiset.h@{yleiset.h}}
+\doxysubsubsection{\texorpdfstring{valikko()}{valikko()}}
+{\footnotesize\ttfamily int valikko (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 8 of file yleiset.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{8                   \{}
+\DoxyCodeLine{9     \textcolor{keywordtype}{int} iValinta = 0;}
+\DoxyCodeLine{10     printf(\textcolor{stringliteral}{"{}Valitse haluamasi toiminto:\(\backslash\)n"{}});}
+\DoxyCodeLine{11     printf(\textcolor{stringliteral}{"{}1) Lista\(\backslash\)n"{}});}
+\DoxyCodeLine{12     printf(\textcolor{stringliteral}{"{}2) Binääripuu\(\backslash\)n"{}});}
+\DoxyCodeLine{13     printf(\textcolor{stringliteral}{"{}0) Lopeta\(\backslash\)n"{}});}
+\DoxyCodeLine{14     printf(\textcolor{stringliteral}{"{}Anna valintasi: "{}});}
+\DoxyCodeLine{15     scanf(\textcolor{stringliteral}{"{}\%d"{}}, \&iValinta);}
+\DoxyCodeLine{16     getchar();}
+\DoxyCodeLine{17     \textcolor{keywordflow}{return} iValinta;}
+\DoxyCodeLine{18 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 4

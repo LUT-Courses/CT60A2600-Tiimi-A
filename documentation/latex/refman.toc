@@ -1,9 +1,115 @@
 \@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
 \contentsline {chapter}{\numberline {1}Class Index}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Class List}{1}{section.1.1}%
-\contentsline {chapter}{\numberline {2}Class Documentation}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}jono Struct Reference}{3}{section.2.1}%
-\contentsline {section}{\numberline {2.2}puu Struct Reference}{3}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Detailed Description}{3}{subsection.2.2.1}%
-\contentsline {section}{\numberline {2.3}tiedot Struct Reference}{3}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Detailed Description}{4}{subsection.2.3.1}%
+\contentsline {chapter}{\numberline {2}File Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}File List}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Class Documentation}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}jono Struct Reference}{5}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Detailed Description}{5}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Member Data Documentation}{5}{subsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.2.1}pSeuraava}{5}{subsubsection.3.1.2.1}%
+\contentsline {subsubsection}{\numberline {3.1.2.2}pSolmu}{6}{subsubsection.3.1.2.2}%
+\contentsline {section}{\numberline {3.2}puu Struct Reference}{6}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Detailed Description}{6}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Member Data Documentation}{6}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}aNimi}{6}{subsubsection.3.2.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2.2}iArvo}{6}{subsubsection.3.2.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.3}iPituus}{7}{subsubsection.3.2.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.2.4}pOikea}{7}{subsubsection.3.2.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.2.5}pVasen}{7}{subsubsection.3.2.2.5}%
+\contentsline {section}{\numberline {3.3}RBSolmu Struct Reference}{7}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Detailed Description}{7}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Member Data Documentation}{8}{subsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.2.1}aNimi}{8}{subsubsection.3.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.3.2.2}iArvo}{8}{subsubsection.3.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.3.2.3}iVariBitti}{8}{subsubsection.3.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.3.2.4}pOikea}{8}{subsubsection.3.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.3.2.5}pVanhempi}{8}{subsubsection.3.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.3.2.6}pVasen}{9}{subsubsection.3.3.2.6}%
+\contentsline {section}{\numberline {3.4}tiedot Struct Reference}{9}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Detailed Description}{9}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Member Data Documentation}{9}{subsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.2.1}aSukunimi}{9}{subsubsection.3.4.2.1}%
+\contentsline {subsubsection}{\numberline {3.4.2.2}iYhteensa}{9}{subsubsection.3.4.2.2}%
+\contentsline {subsubsection}{\numberline {3.4.2.3}pEdellinen}{10}{subsubsection.3.4.2.3}%
+\contentsline {subsubsection}{\numberline {3.4.2.4}pSeuraava}{10}{subsubsection.3.4.2.4}%
+\contentsline {chapter}{\numberline {4}File Documentation}{11}{chapter.4}%
+\contentsline {section}{\numberline {4.1}src/binaaripuu.c File Reference}{11}{section.4.1}%
+\contentsline {section}{\numberline {4.2}src/binaaripuu.h File Reference}{11}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Typedef Documentation}{12}{subsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.1.1}JONO}{13}{subsubsection.4.2.1.1}%
+\contentsline {subsubsection}{\numberline {4.2.1.2}PUU}{13}{subsubsection.4.2.1.2}%
+\contentsline {subsubsection}{\numberline {4.2.1.3}RBSOLMU}{13}{subsubsection.4.2.1.3}%
+\contentsline {subsection}{\numberline {4.2.2}Function Documentation}{13}{subsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}binaariHaku()}{13}{subsubsection.4.2.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}kierraOikealle()}{14}{subsubsection.4.2.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}kierraVasemmalle()}{14}{subsubsection.4.2.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.2.4}kirjoitaBinaaripuu()}{14}{subsubsection.4.2.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.2.5}kirjoitaRB()}{15}{subsubsection.4.2.2.5}%
+\contentsline {subsubsection}{\numberline {4.2.2.6}kirjoitaRBTiedostoon()}{15}{subsubsection.4.2.2.6}%
+\contentsline {subsubsection}{\numberline {4.2.2.7}kirjoitaTiedostoon()}{16}{subsubsection.4.2.2.7}%
+\contentsline {subsubsection}{\numberline {4.2.2.8}korjaaLisays()}{16}{subsubsection.4.2.2.8}%
+\contentsline {subsubsection}{\numberline {4.2.2.9}kysyArvo()}{17}{subsubsection.4.2.2.9}%
+\contentsline {subsubsection}{\numberline {4.2.2.10}leveyshaku()}{17}{subsubsection.4.2.2.10}%
+\contentsline {subsubsection}{\numberline {4.2.2.11}lisaaRBSolmu()}{18}{subsubsection.4.2.2.11}%
+\contentsline {subsubsection}{\numberline {4.2.2.12}lisaaSolmu()}{19}{subsubsection.4.2.2.12}%
+\contentsline {subsubsection}{\numberline {4.2.2.13}luoPuu()}{20}{subsubsection.4.2.2.13}%
+\contentsline {subsubsection}{\numberline {4.2.2.14}luoRBPuu()}{21}{subsubsection.4.2.2.14}%
+\contentsline {subsubsection}{\numberline {4.2.2.15}oikeaPuoli()}{21}{subsubsection.4.2.2.15}%
+\contentsline {subsubsection}{\numberline {4.2.2.16}poistaSolmu()}{22}{subsubsection.4.2.2.16}%
+\contentsline {subsubsection}{\numberline {4.2.2.17}puunPituus()}{22}{subsubsection.4.2.2.17}%
+\contentsline {subsubsection}{\numberline {4.2.2.18}suurempiLukuVertailu()}{23}{subsubsection.4.2.2.18}%
+\contentsline {subsubsection}{\numberline {4.2.2.19}syvyyshaku()}{23}{subsubsection.4.2.2.19}%
+\contentsline {subsubsection}{\numberline {4.2.2.20}tarkistaLoytyykoSyvyyshaulla()}{24}{subsubsection.4.2.2.20}%
+\contentsline {subsubsection}{\numberline {4.2.2.21}tasapainoitaPuu()}{24}{subsubsection.4.2.2.21}%
+\contentsline {subsubsection}{\numberline {4.2.2.22}vapautaMuistiJono()}{25}{subsubsection.4.2.2.22}%
+\contentsline {subsubsection}{\numberline {4.2.2.23}vapautaMuistiPuu()}{25}{subsubsection.4.2.2.23}%
+\contentsline {subsubsection}{\numberline {4.2.2.24}vapautaMuistiRB()}{26}{subsubsection.4.2.2.24}%
+\contentsline {subsubsection}{\numberline {4.2.2.25}varaaMuistiaJonolle()}{26}{subsubsection.4.2.2.25}%
+\contentsline {subsubsection}{\numberline {4.2.2.26}varaaMuistiaPuulle()}{26}{subsubsection.4.2.2.26}%
+\contentsline {subsubsection}{\numberline {4.2.2.27}varaaMuistiaRB()}{27}{subsubsection.4.2.2.27}%
+\contentsline {subsubsection}{\numberline {4.2.2.28}vasenPuoli()}{27}{subsubsection.4.2.2.28}%
+\contentsline {section}{\numberline {4.3}src/linkitettylista.c File Reference}{28}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Function Documentation}{28}{subsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.1}kirjoitaTiedostoAlustaLoppuun()}{29}{subsubsection.4.3.1.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.2}kirjoitaTiedostoLopustaAlkuun()}{29}{subsubsection.4.3.1.2}%
+\contentsline {subsubsection}{\numberline {4.3.1.3}lue()}{30}{subsubsection.4.3.1.3}%
+\contentsline {subsubsection}{\numberline {4.3.1.4}vapautaMuisti()}{30}{subsubsection.4.3.1.4}%
+\contentsline {subsubsection}{\numberline {4.3.1.5}varaaMuistia()}{31}{subsubsection.4.3.1.5}%
+\contentsline {section}{\numberline {4.4}src/linkitettylista.h File Reference}{31}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Typedef Documentation}{32}{subsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.1.1}TIEDOT}{32}{subsubsection.4.4.1.1}%
+\contentsline {subsection}{\numberline {4.4.2}Function Documentation}{32}{subsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.2.1}kirjoitaTiedostoAlustaLoppuun()}{32}{subsubsection.4.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.4.2.2}kirjoitaTiedostoLopustaAlkuun()}{32}{subsubsection.4.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.4.2.3}lue()}{33}{subsubsection.4.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.4.2.4}vapautaMuisti()}{34}{subsubsection.4.4.2.4}%
+\contentsline {subsubsection}{\numberline {4.4.2.5}varaaMuistia()}{34}{subsubsection.4.4.2.5}%
+\contentsline {section}{\numberline {4.5}src/paaohjelma.c File Reference}{34}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Function Documentation}{35}{subsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.1.1}main()}{35}{subsubsection.4.5.1.1}%
+\contentsline {section}{\numberline {4.6}src/punamustapuu.c File Reference}{36}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Function Documentation}{37}{subsection.4.6.1}%
+\contentsline {subsubsection}{\numberline {4.6.1.1}kierraOikealle()}{37}{subsubsection.4.6.1.1}%
+\contentsline {subsubsection}{\numberline {4.6.1.2}kierraVasemmalle()}{37}{subsubsection.4.6.1.2}%
+\contentsline {subsubsection}{\numberline {4.6.1.3}kirjoitaRB()}{38}{subsubsection.4.6.1.3}%
+\contentsline {subsubsection}{\numberline {4.6.1.4}kirjoitaRBTiedostoon()}{38}{subsubsection.4.6.1.4}%
+\contentsline {subsubsection}{\numberline {4.6.1.5}korjaaLisays()}{38}{subsubsection.4.6.1.5}%
+\contentsline {subsubsection}{\numberline {4.6.1.6}lisaaRBSolmu()}{39}{subsubsection.4.6.1.6}%
+\contentsline {subsubsection}{\numberline {4.6.1.7}luoRBPuu()}{40}{subsubsection.4.6.1.7}%
+\contentsline {subsubsection}{\numberline {4.6.1.8}vapautaMuistiRB()}{40}{subsubsection.4.6.1.8}%
+\contentsline {subsubsection}{\numberline {4.6.1.9}varaaMuistiaRB()}{41}{subsubsection.4.6.1.9}%
+\contentsline {section}{\numberline {4.7}src/yleiset.c File Reference}{41}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Function Documentation}{41}{subsection.4.7.1}%
+\contentsline {subsubsection}{\numberline {4.7.1.1}binaaripuuValikko()}{42}{subsubsection.4.7.1.1}%
+\contentsline {subsubsection}{\numberline {4.7.1.2}kysyNimi()}{42}{subsubsection.4.7.1.2}%
+\contentsline {subsubsection}{\numberline {4.7.1.3}listaValikko()}{42}{subsubsection.4.7.1.3}%
+\contentsline {subsubsection}{\numberline {4.7.1.4}valikko()}{43}{subsubsection.4.7.1.4}%
+\contentsline {section}{\numberline {4.8}src/yleiset.h File Reference}{43}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}Macro Definition Documentation}{43}{subsection.4.8.1}%
+\contentsline {subsubsection}{\numberline {4.8.1.1}LEN}{43}{subsubsection.4.8.1.1}%
+\contentsline {subsection}{\numberline {4.8.2}Function Documentation}{43}{subsection.4.8.2}%
+\contentsline {subsubsection}{\numberline {4.8.2.1}binaaripuuValikko()}{44}{subsubsection.4.8.2.1}%
+\contentsline {subsubsection}{\numberline {4.8.2.2}kysyNimi()}{44}{subsubsection.4.8.2.2}%
+\contentsline {subsubsection}{\numberline {4.8.2.3}listaValikko()}{44}{subsubsection.4.8.2.3}%
+\contentsline {subsubsection}{\numberline {4.8.2.4}valikko()}{45}{subsubsection.4.8.2.4}%
