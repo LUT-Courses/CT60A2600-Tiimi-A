@@ -6,7 +6,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Yleisiä aliohjelmia
+// Yleisiä aliohjelmia.
+
+ /**
+ * @brief Tekee käyttäjän valinnan perusteella listan toiminnot.
+ * 
+ * Funktio näyttää valikon ja suorittaa käyttäjän valinnan mukaiset
+ * listaan liittyvät toiminnot.
+ */
 
 void mainLista() {
     char aNimiLuettava[LEN] = "";
@@ -49,10 +56,18 @@ void mainLista() {
     } while (iValinta != 0);
 
     /* Vapautetaan listan varaama muisti varmuuden vuoksi vielä täällä lopussa erikseen, jos
-        * käyttäjä ei muista sitä tehdä. */
+    * käyttäjä ei muista sitä tehdä. */
+
     pAlku = vapautaMuisti(pAlku);
     return;
 }
+
+/**
+ * @brief Tekee käyttäjän valinnan perusteella binääripuun toiminnot.
+ * 
+ * Funktio näyttää valikon ja suorittaa käyttäjän valinnan mukaiset
+ * binääripuuhun liittyvät toiminnot.
+ */
 
 void mainBinaaripuu() {
     char aNimiLuettava[LEN] = "";
@@ -113,7 +128,10 @@ void mainBinaaripuu() {
             } else {
                 kysyNimi("Anna kirjoitettavan tiedoston nimi: ", aNimiKirjoitettava);
                 iArvo = kysyArvo("Anna haettava numeroarvo: ", iArvo);
-                binaariHaku(aNimiKirjoitettava, pJuuriSolmu, iArvo);
+                iArvo = binaariHaku(aNimiKirjoitettava, pJuuriSolmu, iArvo);
+                if (iArvo == 0) {
+                    printf("Hakemaasi arvoa ei löytynyt binääripuusta.\n");
+                }
             }
 
         } else if (iValinta == 8) {
@@ -133,11 +151,18 @@ void mainBinaaripuu() {
     } while (iValinta != 0);
 
     /* Vapautetaan puun varaama muisti varmuuden vuoksi vielä täällä lopussa erikseen, jos
-        * käyttäjä ei muista sitä tehdä. */
+    * käyttäjä ei muista sitä tehdä. */
+
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
     return;
 }
 
+/**
+ * @brief Ensimmainen valikko, jossa käyttäjä valitsee listan tai binaaripuun.
+ * 
+ * @param iValinta Kayttajan antama syote.
+ * @return int Palauttaa kayttajan valinnan.
+ */
 
 int valikko(void) {
     int iValinta = 0;
@@ -150,6 +175,13 @@ int valikko(void) {
     getchar();
     return iValinta;
 }
+
+/**
+ * @brief Tulostaa lista valikon ja kysyy kayttajan valinnan.
+ * 
+ * @param iValinta Kayttajan antama syote vaihtoehtojen pohjalta.
+ * @return int Palauttaa kayttajan valinnan.
+ */
 
 int listaValikko(void) {
     int iValinta = 0;
@@ -164,6 +196,13 @@ int listaValikko(void) {
     getchar();
     return iValinta;
 }
+
+/**
+ * @brief Tulostaa binaariluku valikon ja kysyy kayttajalta valinnan.
+ * 
+ * @param iValinta Kayttajan antama syote vaihtoehtojen pohjalta.
+ * @return int Palauttaa kayttajan valinnan.
+ */
 
 int binaaripuuValikko(void) {
     int iValinta = 0;
@@ -183,6 +222,14 @@ int binaaripuuValikko(void) {
     return iValinta;
 }
 
+/**
+ * @brief Kysyy tiedoston/haettavan nimen.
+ * 
+ * @param pPrompti Kysymys esim. "Anna kirjoitettavan tiedoston nimi: "
+ * @param pNimi Tiedoston nimi/haettava nimi, jota halutaan kayttaa.
+ * @return char Palauttaa kayttajan antaman merkkijonon.
+ */
+
 char *kysyNimi(char *pPrompti, char *pNimi) {
     printf("%s", pPrompti);
     scanf("%s", pNimi);
@@ -191,11 +238,11 @@ char *kysyNimi(char *pPrompti, char *pNimi) {
 }
 
 /**
- * @brief Kysyy arvon, joka halutaan etsia/poistaa puusta
+ * @brief Kysyy arvon, joka halutaan etsia/poistaa puusta.
  * 
  * @param pPrompti Kysymys esim. "Anna haettava numeroarvo: "
- * @param iArvo Arvo, joka halutaan poistaa/etsiä
- * @return int Palauttaa kayttajan antaman arvon
+ * @param iArvo Arvo, joka halutaan poistaa/etsiä.
+ * @return int Palauttaa kayttajan antaman arvon.
  */
 
 int kysyArvo(char *pPrompti, int iArvo) {

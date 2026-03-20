@@ -3,6 +3,18 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+ * @brief Tekee syvyyshaun numeroarvon pohjalta.
+ * 
+ * Tekee syvyyshaun kayttajan antaman numeroarvon pohjalta.
+ * Kirjoittaa syvyyshaun polun kayttajan maarittelemaan tiedostoon.
+ * 
+ * @param pNimi Kayttajan antama kirjoitettavan tiedoston nimi.
+ * @param pAlku Osoitin puu tietueen alkuun, eli ensimmaiseen solmuun.
+ * @param iArvo Arvo, jota etsitaan syvyyshaussa.
+ * @return int Palauttaa arvon 0 tai 1, riippuen siita, loytyyko etsitty arvo.
+ */
+
 int syvyyshaku(char *pNimi, PUU *pAlku, int iArvo) {
     // Syvyyshaku arvon mukaan, kirjoitetaan käydyt solmut tiedostoon.
     int iLoytyi = 0;
@@ -29,6 +41,18 @@ int syvyyshaku(char *pNimi, PUU *pAlku, int iArvo) {
     return (iLoytyi);
 }
 
+/**
+ * @brief Tarkistaa, loytyyko etsitty arvo syvyyshaussa.
+ * 
+ * Tarkistaa, loytyyko syvyyshaussa etsitty arvo.
+ * Jos arvoa ei loydy, tulostaa tiedon siita.
+ * 
+ * @param aNimiKirjoitettava Kayttajan antama kirjoitettavan tiedoston nimi.
+ * @param pJuuriSolmu Osoitin puu tietueen alkuun, eli ensimmaiseen solmuun.
+ * @param iArvo Syvyyhaussa haettava numeroarvo.
+ * @return void
+ */
+
 void tarkistaLoytyykoSyvyyshaulla(char *aNimiKirjoitettava, PUU *pJuuriSolmu, int iArvo) {
     int iLoytyi = 0;
     iLoytyi = syvyyshaku(aNimiKirjoitettava, pJuuriSolmu, iArvo);
@@ -36,6 +60,18 @@ void tarkistaLoytyykoSyvyyshaulla(char *aNimiKirjoitettava, PUU *pJuuriSolmu, in
         printf("Arvoa %d ei löytynyt puusta.\n", iArvo);
     }
 }
+
+/**
+ * @brief Tekee leveyshaun nimen pohjalta.
+ * 
+ * Tekee leveyshaun kayttajan antaman nimen pohjalta.
+ * Kirjoittaa leveyshaun polun kayttajan maarittelemaan tiedostoon.
+ * 
+ * @param pNimi Kayttajan antama kirjoitettavan tiedoston nimi.
+ * @param pAlku Osoitin puu tietueen alkuun, eli ensimmaiseen solmuun.
+ * @param pHaku Osoitin haettavan nimen merkkijonoon.
+ * @return void
+ */
 
 void leveyshaku(char *pNimi, PUU *pJuuriSolmu, char *pHaku) {
     // Leveyshaku nimen mukaan, kirjoitetaan käydyt solmut tiedostoon.
@@ -84,6 +120,15 @@ void leveyshaku(char *pNimi, PUU *pJuuriSolmu, char *pHaku) {
     return;
 }
 
+/**
+ * @brief Varaa muistia jonolle.
+ * 
+ * Varaa muistia jonon uudelle alkiolle leveyshakua varten. 
+ * 
+ * @param pSolmu Osoitin kasiteltavaan puun solmuun.
+ * @return pUusi Osoitin uuteen jonon alkioon.
+ */
+
 JONO *varaaMuistiaJonolle(PUU *pSolmu) {
     JONO *pUusi = NULL;
 
@@ -99,6 +144,15 @@ JONO *varaaMuistiaJonolle(PUU *pSolmu) {
     return (pUusi);
 }
 
+/**
+ * @brief Vapauttaa jonon varaaman muistin.
+ * 
+ * Vapauttaa jonon alkioita varten varatun muistin.
+ * 
+ * @param pAlku Osoitin jonon ensimmaiseen alkioon.
+ * @return pAlku Palauttaa NULL, koska jono on tyhja.
+ */
+
 JONO *vapautaMuistiJono(JONO *pAlku) {
     // Jonon muistin vapauttaminen.
     JONO *ptr = pAlku;
@@ -113,10 +167,20 @@ JONO *vapautaMuistiJono(JONO *pAlku) {
     return (pAlku);
 }
 
+/**
+ * @brief Binaarihaku perustuen numeroarvoon.
+ * 
+ * Binaarihaku, joka tehdaan kayttajan antaman numeroarvon perusteella.
+ * 
+ * @param pNimi Kirjoitettavan tiedoston nimi.
+ * @param pJuuriSolmu Osoitin kasiteltavaan puun solmuun.
+ * @param iArvo Haettava numeroarvo.
+ * @return int Palauttaa joko 0 tai 1, riippuen siitä, loytyyko numeroarvo binaaripuusta.
+ */
+
 int binaariHaku(char *pNimi, PUU *pJuuriSolmu, int iArvo) {
 
     if (pJuuriSolmu == NULL) {
-        printf("Puu on tyhjä, luo puurakenne ennen binäärihakua.\n");
         return (0);
     }
 
