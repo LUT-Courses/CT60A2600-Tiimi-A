@@ -41,8 +41,12 @@ PUU *oikeaPuoli(PUU *pAlku);
 PUU *vasenPuoli(PUU *pAlku);
 int puunPituus(PUU *pAlku);
 int suurempiLukuVertailu(int iLuku1, int iLuku2);
-PUU *poistaSolmu(char *pNimi, int iArvo, PUU *pJuuriSolmu);
+PUU *poistaSolmu(char *pNimi, PUU *pJuuriSolmu);
+int onkoLuku(char *pNimi);
+int nimenArvo(char *pNimi, PUU *pJuuriSolmu);
 int binaariHaku(char *pNimi, PUU *pJuuriSolmu, int iArvo);
+
+
 
 /**
  * Punamustapuu, ehkä oma header olisi kätevämpi,

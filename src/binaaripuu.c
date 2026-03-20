@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 // Tasapainoitettu binääripuu AVL:
 
@@ -464,29 +465,35 @@ int binaariHaku(char *pNimi, PUU *pJuuriSolmu, int iArvo) {
     }
 }
 
-PUU *poistaSolmu(char *pNimi, int iArvo, PUU *pJuuriSolmu) {
+PUU *poistaSolmu(char *pNimi, PUU *pJuuriSolmu) {
+    int iArvo = 0;
 
     if (pJuuriSolmu == NULL) {
         printf("Solmua ei löytynyt.\n");
         return (pJuuriSolmu);
     }
-    
+
+    // Testataan, onko syöte nimi vai lukuarvo, ja määritetään lukuarvo puun läpikäymiseksi.
+    if (onkoLuku(pNimi)) {
+        iArvo = atoi(pNimi);
+    } else {
+        iArvo = nimenArvo(pNimi, pJuuriSolmu);
+    }
+
     // Lehtisolmun poistaminen.
     if (iArvo < pJuuriSolmu->iArvo) {
-        pJuuriSolmu->pVasen = poistaSolmu(pNimi, iArvo, pJuuriSolmu->pVasen);
+        pJuuriSolmu->pVasen = poistaSolmu(pNimi, pJuuriSolmu->pVasen);
     } else if (iArvo > pJuuriSolmu->iArvo) {
-        pJuuriSolmu->pOikea = poistaSolmu(pNimi, iArvo, pJuuriSolmu->pOikea);
+        pJuuriSolmu->pOikea = poistaSolmu(pNimi, pJuuriSolmu->pOikea);
     } else {
-        if (strcmp(pNimi, pJuuriSolmu->aNimi) == 0) {
-            if (pJuuriSolmu->pVasen == NULL && pJuuriSolmu->pOikea == NULL) {
-                free(pJuuriSolmu);
-                pJuuriSolmu = NULL;
-                printf("Solmu '%s - %d' poistettu.\n", pNimi, iArvo);
-                return (pJuuriSolmu);
-            } else {
-                printf("Voit poistaa vain lehtisolmun.\n");
-                return (pJuuriSolmu);
-            }
+        if (pJuuriSolmu->pVasen == NULL && pJuuriSolmu->pOikea == NULL) {
+            free(pJuuriSolmu);
+            pJuuriSolmu = NULL;
+            printf("Solmu poistettu.\n");
+            return (pJuuriSolmu);
+        } else {
+            printf("Voit poistaa vain lehtisolmun.\n");
+            return (pJuuriSolmu);
         }
     }
 
@@ -524,4 +531,36 @@ PUU *poistaSolmu(char *pNimi, int iArvo, PUU *pJuuriSolmu) {
     }
 
     return (pJuuriSolmu);
+}
+
+int onkoLuku(char *pNimi) {
+    int tosi = 0;
+    char *ptr = pNimi;
+    
+    while (*ptr) {
+        if (!isdigit(*ptr)) {
+            return tosi;
+        }
+        ptr++;
+    }
+    tosi = 1;
+    return (tosi);
+}
+
+int nimenArvo(char *pNimi, PUU *pJuuriSolmu) {  
+    if (pJuuriSolmu == NULL) {
+        return (-1);
+    }
+
+    if (strcmp(pJuuriSolmu->aNimi, pNimi) == 0) {
+        int iArvo = pJuuriSolmu->iArvo;
+        return (iArvo);
+    }
+
+    int iArvo = nimenArvo(pNimi, pJuuriSolmu->pVasen);
+    if (iArvo != -1) {
+        return iArvo; 
+    } else {
+        return nimenArvo(pNimi, pJuuriSolmu->pOikea);
+    }
 }

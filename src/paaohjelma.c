@@ -73,9 +73,8 @@ int main(void) {
                     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
                     printf("Muisti vapautettu.\n");
                 } else if (iValinta2 == 6) {
-                    kysyNimi("Anna poistettava nimi: ", aHaettavaNimi);
-                    iArvo = kysyArvo("Anna poistettavan nimen arvo: ", iArvo);
-                    pJuuriSolmu = poistaSolmu(aHaettavaNimi, iArvo, pJuuriSolmu);
+                    kysyNimi("Anna poistettava nimi tai arvo: ", aHaettavaNimi);
+                    pJuuriSolmu = poistaSolmu(aHaettavaNimi, pJuuriSolmu);
                 } else if (iValinta2 == 7) {
                     kysyNimi("Anna kirjoitettavan tiedoston nimi: ", aNimiKirjoitettava);
                     iArvo = kysyArvo("Anna haettava numeroarvo: ", iArvo);
