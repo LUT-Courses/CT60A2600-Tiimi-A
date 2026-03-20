@@ -485,6 +485,7 @@ PUU *poistaSolmu(char *pNimi, int iArvo, PUU *pJuuriSolmu) {
                 return (pJuuriSolmu);
             } else {
                 printf("Voit poistaa vain lehtisolmun.\n");
+                return (pJuuriSolmu);
             }
         }
     }
