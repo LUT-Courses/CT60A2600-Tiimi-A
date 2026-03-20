@@ -496,7 +496,7 @@ PUU *poistaSolmu(char *pNimi, int iArvo, PUU *pJuuriSolmu) {
 
     int iLuku1 = puunPituus(pJuuriSolmu->pVasen);
     int iLuku2 = puunPituus(pJuuriSolmu->pOikea);
-    pJuuriSolmu->iPituus = suurempiLukuVertailu(iLuku1, iLuku2);
+    pJuuriSolmu->iPituus = suurempiLukuVertailu(iLuku1, iLuku2) + 1;
 
     // Puun tasapanottaminen.
     int iTasapaino = tasapainoitaPuu(pJuuriSolmu);
@@ -512,11 +512,13 @@ PUU *poistaSolmu(char *pNimi, int iArvo, PUU *pJuuriSolmu) {
 
     // Vasen-oikea tapaus.
     if (iTasapaino > 1 && tasapainoitaPuu(pJuuriSolmu->pVasen) < 0) {
+        pJuuriSolmu->pVasen = vasenPuoli(pJuuriSolmu->pVasen);
         return oikeaPuoli(pJuuriSolmu);
     }
 
     // Oikea-vasen tapaus.
     if (iTasapaino < 1 && tasapainoitaPuu(pJuuriSolmu->pOikea) > 0) {
+        pJuuriSolmu->pOikea = oikeaPuoli(pJuuriSolmu->pOikea);
         return vasenPuoli(pJuuriSolmu);
     }
 
