@@ -1,17 +1,17 @@
 #include "binaaripuu.h"
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
 // Tasapainoitettu binääripuu AVL:
 
 /**
  * @brief Muistin varaaminen puu structin alkioille
- * 
+ *
  * @param pSolmu Solmu, jolle muistia varataan
  * @param iArvo Arvo, jolle muistia varataan
- * @return PUU* 
+ * @return PUU*
  */
 
 PUU *varaaMuistiaPuulle(char *pSolmu, int iArvo) {
@@ -35,7 +35,7 @@ PUU *varaaMuistiaPuulle(char *pSolmu, int iArvo) {
  * @brief Muistin vapauttaminen puu structin alkiosta
  * Juurisolmun ja kaikkien sen lapsie solmujen muisti vapautetaan.
  * @param pJuuriSolmu Puun juurisolmu
- * @return PUU* 
+ * @return PUU*
  */
 
 PUU *vapautaMuistiPuu(PUU *pJuuriSolmu) {
@@ -74,7 +74,7 @@ PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iArvo) {
     } else if (iArvo > pAlku->iArvo) {
         pAlku->pOikea = lisaaSolmu(pAlku->pOikea, pSolmu, iArvo);
 
-    // Testataan, ovatko arvot samat.
+        // Testataan, ovatko arvot samat.
     } else if (iArvo == pAlku->iArvo) {
         if (iVertailu < 0) {
             pAlku->pVasen = lisaaSolmu(pAlku->pVasen, pSolmu, iArvo);
@@ -173,9 +173,9 @@ PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
 
 /**
  * @brief Tasapainoitetun binaaripuun kirjoittaminen tiedostoon
- * 
+ *
  * @param pNimi Kirjoitettavan tiedoston nimi.
- * @param pAlku 
+ * @param pAlku
  */
 
 void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku) {
@@ -193,7 +193,7 @@ void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku) {
 
 /**
  * @brief Kirjoittaa binaaripuun tiedostoon
- * 
+ *
  * @param pNimi Kirjoitettavan tiedoston nimi
  * @param pAlku Solmu, joka kirjoitetaan tiedostoon
  */
@@ -334,9 +334,9 @@ int suurempiLukuVertailu(int iLuku1, int iLuku2) {
 
 /**
  * @brief Lehtisolmun poistaminen.
- * 
+ *
  * Poistaa lehtisolmun joko numeroarvon tai nimen perusteella.
- * 
+ *
  * @param pNimi Poistettava nimi tai numeroarvo merkkijonona.
  * @param pJuuriSolmu Osoitin kasiteltavaan puun solmuun.
  * @param iArvo Haettava numeroarvo.
@@ -375,6 +375,68 @@ PUU *poistaSolmu(char *pNimi, PUU *pJuuriSolmu) {
         }
     }
 
+    pJuuriSolmu = paivitaPuu(pJuuriSolmu);
+    return (pJuuriSolmu);
+}
+
+/**
+ * @brief Testaa, onko kayttajan antama arvo nimi vai numeroarvo.
+ *
+ * Ilmoittaa, onko kayttajan antama numero vai ei.
+ *
+ * @param pNimi Poistettava nimi tai numeroarvo merkkijonona.
+ *
+ * @return int Palauttaa 0 tai 1, riippuen siita onko kayttajan syote numero.
+ */
+
+int onkoLuku(char *pNimi) {
+    int tosi = 0;
+    char *ptr = pNimi;
+
+    while (*ptr) {
+        if (!isdigit(*ptr)) {
+            return tosi;
+        }
+        ptr++;
+    }
+    tosi = 1;
+    return (tosi);
+}
+
+/**
+ * @brief Etsii nimen perusteella sen arvon.
+ *
+ * @param pNimi Poistettava nimi merkkijonona.
+ * @param pJuuriSolmu Osoitin kasiteltavaan solmuun.
+ * @return int Palauttaa 0 tai 1, riippuen siita, loytyyko nimen nimen pohjalta arvoa.
+ */
+
+int nimenArvo(char *pNimi, PUU *pJuuriSolmu) {
+    if (pJuuriSolmu == NULL) {
+        return (-1);
+    }
+
+    if (strcmp(pJuuriSolmu->aNimi, pNimi) == 0) {
+        int iArvo = pJuuriSolmu->iArvo;
+        return (iArvo);
+    }
+
+    int iArvo = nimenArvo(pNimi, pJuuriSolmu->pVasen);
+    if (iArvo != -1) {
+        return (iArvo);
+    } else {
+        int iArvo = nimenArvo(pNimi, pJuuriSolmu->pOikea);
+        return (iArvo);
+    }
+}
+
+/**
+ * @brief Tasapainotetaan puu poiston jalkeen.
+ *
+ * @param pJuuriSolmu Osoitin kasiteltavaan solmuun.
+ * @return PUU* palauttaa tasapinotetun solmun.
+ */
+PUU *paivitaPuu(PUU *pJuuriSolmu) {
     // Puun korkeuden päivittäminen.
     if (pJuuriSolmu == NULL) {
         return (pJuuriSolmu);
@@ -409,55 +471,4 @@ PUU *poistaSolmu(char *pNimi, PUU *pJuuriSolmu) {
     }
 
     return (pJuuriSolmu);
-}
-
-/**
- * @brief Testaa, onko kayttajan antama arvo nimi vai numeroarvo.
- * 
- * Ilmoittaa, onko kayttajan antama numero vai ei.
- * 
- * @param pNimi Poistettava nimi tai numeroarvo merkkijonona.
- *
- * @return int Palauttaa 0 tai 1, riippuen siita onko kayttajan syote numero.
- */
-
-int onkoLuku(char *pNimi) {
-    int tosi = 0;
-    char *ptr = pNimi;
-    
-    while (*ptr) {
-        if (!isdigit(*ptr)) {
-            return tosi;
-        }
-        ptr++;
-    }
-    tosi = 1;
-    return (tosi);
-}
-
-/**
- * @brief Etsii nimen perusteella sen arvon.
- * 
- * @param pNimi Poistettava nimi merkkijonona.
- * @param pJuuriSolmu Osoitin kasiteltavaan solmuun.
- * @return int Palauttaa 0 tai 1, riippuen siita, loytyyko nimen nimen pohjalta arvoa.
- */
-
-int nimenArvo(char *pNimi, PUU *pJuuriSolmu) {  
-    if (pJuuriSolmu == NULL) {
-        return (-1);
-    }
-
-    if (strcmp(pJuuriSolmu->aNimi, pNimi) == 0) {
-        int iArvo = pJuuriSolmu->iArvo;
-        return (iArvo);
-    }
-
-    int iArvo = nimenArvo(pNimi, pJuuriSolmu->pVasen);
-    if (iArvo != -1) {
-        return (iArvo); 
-    } else {
-        int iArvo = nimenArvo(pNimi, pJuuriSolmu->pOikea);
-        return (iArvo);
-    }
 }

@@ -33,6 +33,7 @@ int suurempiLukuVertailu(int iLuku1, int iLuku2);
 PUU *poistaSolmu(char *pNimi, PUU *pJuuriSolmu);
 int onkoLuku(char *pNimi);
 int nimenArvo(char *pNimi, PUU *pJuuriSolmu);
+PUU *paivitaPuu(PUU *pJuurisolmu);
 
 void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku);
 void kirjoitaTiedostoon(char *pKirjoitaTiedostoNimi, PUU *pAlku);
