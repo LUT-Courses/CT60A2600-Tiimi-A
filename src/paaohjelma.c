@@ -6,10 +6,9 @@
 #include <string.h>
 
 /**
- * 13.3.: Main ei enää tee null checkkejä. Johtaa siihen, että kirjoitettavien
- * tiedostojen nimet kysytään turhaan. Onko tämä kuitenkin selkeämpi?
- *
- * Syvyyshaku siistittiin binaaripuu.c sijaitsevalla helper-aliohjelmalla.
+ * @brief Paaohjelma, pyorittaa koko ohjelmaa.
+*
+ * @return int Palauttaa aina 0, kun ohjelma tulee päätökseen.
  */
 
 int main(void) {

@@ -5,6 +5,17 @@
 
 // Linkitettylista
 
+/**
+ * @brief Lukee tiedoston.
+ * 
+ * Avaa ja lukee kayttajan syotteen mukaisen tiedoston.
+ * Kutsuu muistinvaraus aliohjelmaa muistin varaamiseksi.
+ * 
+ * @param pNimi Luettavan tiedoston nimi.
+ * @param pAlku Osoitin linkitetyn listan alkuun.
+ * @return pAlku Uusi osoitin linkitetyn listan alkuun.
+ */
+
 TIEDOT *lue(char *pNimi, TIEDOT *pAlku) {
     FILE *Tiedosto = NULL;
     char aRivi[LEN] = "";
@@ -52,7 +63,16 @@ TIEDOT *lue(char *pNimi, TIEDOT *pAlku) {
     return (pAlku);
 }
 
-TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pSukunimi, int iMaara) {
+/**
+ * @brief Varaa muistin ja lisää uuden solmun kaksisuuntaisen linkitetyn listan.
+ * 
+ * @param pAlku Osoitin linkitetyn listan alkuun.
+ * @param pNimi Merkkijono solmun nimeksi.
+ * @param iMaara Luku, joka asetetaan solmuun maaraksi.
+ * @return pAlku Uusi osoitin linkitetyn listan alkuun.
+ */
+
+TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pNimi, int iMaara) {
     TIEDOT *pUusi = NULL;
     TIEDOT *ptr = NULL;
 
@@ -65,7 +85,7 @@ TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pSukunimi, int iMaara) {
 
     /* Kaksisuuntaisen linkitetyn listan luominen. */
 
-    strcpy(pUusi->aSukunimi, pSukunimi);
+    strcpy(pUusi->aSukunimi, pNimi);
     pUusi->iYhteensa = iMaara;
     pUusi->pSeuraava = NULL;
 
@@ -83,6 +103,13 @@ TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pSukunimi, int iMaara) {
     return (pAlku);
 }
 
+/**
+ * @brief Vapauttaa linkitetyn listan varaaman muistin.
+ * 
+ * @param pAlku Osoitin linkitetyn listan alkuun.
+ * @return pAlku Osoitin, joka on NULL, koska lista on tyhja.
+ */
+
 TIEDOT *vapautaMuisti(TIEDOT *pAlku) {
     /* Muistin vapauttaminen. */
     TIEDOT *ptr = pAlku;
@@ -94,6 +121,14 @@ TIEDOT *vapautaMuisti(TIEDOT *pAlku) {
     pAlku = NULL;
     return (pAlku);
 }
+
+/**
+ * @brief Kirjoittaa linkitetyn listan tiedostoon alusta loppuun.
+ * 
+ * @param pNimi Kirjoitettavan tiedoston nimi.
+ * @param pAlku Osoitin linkitetyn listan alkuun.
+ * @return void
+ */
 
 void kirjoitaTiedostoAlustaLoppuun(char *pNimi, TIEDOT *pAlku) {
     FILE *Tiedosto = NULL;
@@ -122,6 +157,14 @@ void kirjoitaTiedostoAlustaLoppuun(char *pNimi, TIEDOT *pAlku) {
     printf("Tiedosto %s kirjoitettu.\n", pNimi);
     return;
 }
+
+/**
+ * @brief Kirjoittaa linkitetyn listan tiedostoon lopusta alkuun.
+ * 
+ * @param pNimi Kirjoitettavan tiedoston nimi.
+ * @param pAlku Osoitin linkitetyn listan alkuun.
+ * @return void
+ */
 
 void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku) {
     FILE *Tiedosto = NULL;
