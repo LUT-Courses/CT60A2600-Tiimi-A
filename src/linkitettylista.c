@@ -15,7 +15,6 @@
  * @param pAlku Osoitin linkitetyn listan alkuun.
  * @return pAlku Uusi osoitin linkitetyn listan alkuun.
  */
-
 TIEDOT *lue(char *pNimi, TIEDOT *pAlku) {
     FILE *Tiedosto = NULL;
     char aRivi[LEN] = "";
@@ -71,7 +70,6 @@ TIEDOT *lue(char *pNimi, TIEDOT *pAlku) {
  * @param iMaara Luku, joka asetetaan solmuun maaraksi.
  * @return pAlku Uusi osoitin linkitetyn listan alkuun.
  */
-
 TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pNimi, int iMaara) {
     TIEDOT *pUusi = NULL;
     TIEDOT *ptr = NULL;
@@ -109,7 +107,6 @@ TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pNimi, int iMaara) {
  * @param pAlku Osoitin linkitetyn listan alkuun.
  * @return pAlku Osoitin, joka on NULL, koska lista on tyhja.
  */
-
 TIEDOT *vapautaMuisti(TIEDOT *pAlku) {
     /* Muistin vapauttaminen. */
     TIEDOT *ptr = pAlku;
@@ -129,7 +126,6 @@ TIEDOT *vapautaMuisti(TIEDOT *pAlku) {
  * @param pAlku Osoitin linkitetyn listan alkuun.
  * @return void
  */
-
 void kirjoitaTiedostoAlustaLoppuun(char *pNimi, TIEDOT *pAlku) {
     FILE *Tiedosto = NULL;
     TIEDOT *ptr = NULL;
@@ -165,7 +161,6 @@ void kirjoitaTiedostoAlustaLoppuun(char *pNimi, TIEDOT *pAlku) {
  * @param pAlku Osoitin linkitetyn listan alkuun.
  * @return void
  */
-
 void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku) {
     FILE *Tiedosto = NULL;
     TIEDOT *ptr = pAlku;

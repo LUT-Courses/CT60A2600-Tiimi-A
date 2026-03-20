@@ -10,7 +10,6 @@
 *
  * @return int Palauttaa aina 0, kun ohjelma tulee päätökseen.
  */
-
 int main(void) {
     int iValinta = 0;
 

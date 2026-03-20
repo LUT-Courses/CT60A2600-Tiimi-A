@@ -14,7 +14,6 @@
  * Funktio näyttää valikon ja suorittaa käyttäjän valinnan mukaiset
  * listaan liittyvät toiminnot.
  */
-
 void mainLista() {
     char aNimiLuettava[LEN] = "";
     char aNimiKirjoitettava[LEN] = "";
@@ -68,7 +67,6 @@ void mainLista() {
  * Funktio näyttää valikon ja suorittaa käyttäjän valinnan mukaiset
  * binääripuuhun liittyvät toiminnot.
  */
-
 void mainBinaaripuu() {
     char aNimiLuettava[LEN] = "";
     char aNimiKirjoitettava[LEN] = "";
@@ -163,7 +161,6 @@ void mainBinaaripuu() {
  * @param iValinta Kayttajan antama syote.
  * @return int Palauttaa kayttajan valinnan.
  */
-
 int valikko(void) {
     int iValinta = 0;
     printf("Valitse haluamasi toiminto:\n");
@@ -182,7 +179,6 @@ int valikko(void) {
  * @param iValinta Kayttajan antama syote vaihtoehtojen pohjalta.
  * @return int Palauttaa kayttajan valinnan.
  */
-
 int listaValikko(void) {
     int iValinta = 0;
     printf("\nValitse haluamasi toiminto:\n");
@@ -203,7 +199,6 @@ int listaValikko(void) {
  * @param iValinta Kayttajan antama syote vaihtoehtojen pohjalta.
  * @return int Palauttaa kayttajan valinnan.
  */
-
 int binaaripuuValikko(void) {
     int iValinta = 0;
     printf("\nValitse haluamasi toiminto:\n");
@@ -229,7 +224,6 @@ int binaaripuuValikko(void) {
  * @param pNimi Tiedoston nimi/haettava nimi, jota halutaan kayttaa.
  * @return char Palauttaa kayttajan antaman merkkijonon.
  */
-
 char *kysyNimi(char *pPrompti, char *pNimi) {
     printf("%s", pPrompti);
     scanf("%s", pNimi);
@@ -244,7 +238,6 @@ char *kysyNimi(char *pPrompti, char *pNimi) {
  * @param iArvo Arvo, joka halutaan poistaa/etsiä.
  * @return int Palauttaa kayttajan antaman arvon.
  */
-
 int kysyArvo(char *pPrompti, int iArvo) {
     printf("%s", pPrompti);
     scanf("%d", &iArvo);
