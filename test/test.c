@@ -6,11 +6,13 @@
 #include <stdlib.h>
 
 TIEDOT *pAlku = NULL;
-SOLMU *pJuuriSolmu = NULL;
+PUU *pJuuriSolmu = NULL;
+RBSOLMU *pJuuriSolmuRB = NULL;
 
 void setUp(void) {
     pAlku = NULL;
     pJuuriSolmu = NULL;
+    pJuuriSolmuRB = NULL;
 }
 
 // Vapautetaan muisti jokaisen testin jälkeen
@@ -19,7 +21,8 @@ void tearDown(void) {
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
 }
 
-// Onnistuuko varaaMuistia, kun lista on tyhjä
+
+//Onnistuuko varaaMuistia, kun lista on tyhjä
 void test_VaraaMuistia(void) {
     char expectedNimi[LEN] = "Kosonen";
     int expectedYhteensa = 500;
@@ -42,20 +45,6 @@ void test_VapautaMuisti(void) {
     pAlku = varaaMuistia(pAlku, "Toropainen", 400);
     pAlku = vapautaMuisti(pAlku);
     TEST_ASSERT_NULL(pAlku);
-}
-
-// Onnistuuko ohittaa otsikkorivi, kun luetaan tiedostoa
-void test_OtsikonOhi(void) {
-    int expectedLuku = 1;
-    int iOtsikko = 0;
-
-    // Onko otsikko ohitettu?
-    if (iOtsikko == 0) {
-        iOtsikko = 1;
-    }
-
-    // Loytyyko oikeat arvot
-    TEST_ASSERT_EQUAL_INT(expectedLuku, iOtsikko);
 }
 
 // Onnistuuko varata muistia usealle alkiolle kun lista on tyhjä
@@ -113,7 +102,7 @@ void test_VaraaMuistiaPuulle() {
 
 // Onnistuuko varata muistia usealle solmulle puussa, kun se on tyhja
 void test_VaraaMuistiaUsealleSolmullePuussa() {
-    SOLMU *ptr = pJuuriSolmu;
+    PUU *ptr = pJuuriSolmu;
     char expectedNimi1[] = "Kosonen";
     int expectedArvo1 = 500;
     char expectedNimi2[] = "Gekko";
@@ -146,6 +135,32 @@ void test_VaraaMuistiaUsealleSolmullePuussa() {
     TEST_ASSERT_EQUAL_INT(expectedArvo3, ptr->iArvo);
 }
 
+// Onnistuuko Puun muistin vapauttaminen
+void test_VapautaPuunMuisti() {
+    // Varataan muistia
+    pJuuriSolmu = varaaMuistiaPuulle("Kosonen", 500);
+
+    // Vapautetaan muisti
+    pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+    // Tarkistetaan, onko vapautus onnistunut
+    TEST_ASSERT_NULL(pJuuriSolmu);
+}
+
+// Onnistuuko Puun muistin vapauttaminen useasta alkiosta
+void test_VapautaPuunMuistiUseastaSolmusta() {
+    // Varataan muistia
+    pJuuriSolmu = varaaMuistiaPuulle("Kosonen", 500);
+    pJuuriSolmu = varaaMuistiaPuulle("Gekko", 560);
+    pJuuriSolmu = varaaMuistiaPuulle("Karjalainen", 245);
+    pJuuriSolmu = varaaMuistiaPuulle("Suomalainen", 4);
+
+    // Vapautetaan muisti
+    pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+
+    // Tarkistetaan, onko vapautus onnistunut
+    TEST_ASSERT_NULL(pJuuriSolmu);
+}
+
 // Onnistuuko muistin varaaminen jonolle.
 void test_VaraaMuistiaJonolle() {
     char expectedNimi1[LEN] = "Kosonen";
@@ -156,12 +171,12 @@ void test_VaraaMuistiaJonolle() {
     JONO *pJono1 = NULL;
     JONO *pJono2 = NULL;
 
-    SOLMU *pSolmu1 = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
+    JONO *pSolmu1 = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
     pJono1 = varaaMuistiaJonolle(pSolmu1);
     TEST_ASSERT_NOT_NULL(pJono1);
     TEST_ASSERT_EQUAL_STRING(expectedNimi1, pJono1->pSolmu->aNimi);
 
-    SOLMU *pSolmu2 = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
+    JONO *pSolmu2 = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
     pJono2 = varaaMuistiaJonolle(pSolmu2);
     TEST_ASSERT_NOT_NULL(pJono2);
     TEST_ASSERT_EQUAL_INT(11900, pJono2->pSolmu->iArvo);
@@ -182,8 +197,8 @@ void test_VapautaMuistiJono() {
     JONO *pJono1 = NULL;
     JONO *pJono2 = NULL;
 
-    SOLMU *pSolmu1 = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
-    SOLMU *pSolmu2 = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
+    JONO *pSolmu1 = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
+    JONO *pSolmu2 = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
 
     pJono1 = varaaMuistiaJonolle(pSolmu1);
     pJono2 = varaaMuistiaJonolle(pSolmu2);
@@ -198,15 +213,42 @@ void test_VapautaMuistiJono() {
     free(pSolmu2);
 }
 
+// Onnistuuko varata muistia RBSolmulle
+void test_VaraaMuistiaRBSolmulle() {
+    char expectedNimi[] = "Kosonen";
+    int expectedArvo = 500;
+
+    pJuuriSolmuRB = varaaMuistiaRB(expectedNimi, expectedArvo);
+    TEST_ASSERT_NOT_NULL(pJuuriSolmuRB);
+
+    //Pitaisi olla ainut solmu
+    TEST_ASSERT_NULL(pJuuriSolmuRB->pOikea);
+    TEST_ASSERT_NULL(pJuuriSolmuRB->pVasen);
+
+    // Loytyyko oikeat arvot
+    TEST_ASSERT_EQUAL_STRING(expectedNimi, pJuuriSolmuRB->aNimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo, pJuuriSolmuRB->iArvo); 
+}
+
 int main(void) {
     UNITY_BEGIN();
+    // Tiedot struct testit
     RUN_TEST(test_VaraaMuistia);
     RUN_TEST(test_VapautaMuisti);
-    RUN_TEST(test_OtsikonOhi);
     RUN_TEST(test_VaraaMuistiUsealleAlkiolle);
+
+    // Puu structin testit
     RUN_TEST(test_VaraaMuistiaPuulle);
     RUN_TEST(test_VaraaMuistiaUsealleSolmullePuussa);
+    RUN_TEST(test_VapautaPuunMuisti);
+    RUN_TEST(test_VapautaPuunMuistiUseastaSolmusta);
+
+    // Jono structin testit
     RUN_TEST(test_VaraaMuistiaJonolle);
     RUN_TEST(test_VapautaMuistiJono);
+
+    // RBSolmu structin testit
+    RUN_TEST(test_VaraaMuistiaRBSolmulle);
+
     return UNITY_END();
 }
