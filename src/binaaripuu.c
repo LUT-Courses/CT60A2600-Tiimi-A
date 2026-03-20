@@ -506,7 +506,7 @@ PUU *poistaSolmu(char *pNimi, int iArvo, PUU *pJuuriSolmu) {
     }
 
     // Oikea-oikea tapaus.
-    if (iTasapaino < 1 && tasapainoitaPuu(pJuuriSolmu->pOikea) <= 0) {
+    if (iTasapaino < -1 && tasapainoitaPuu(pJuuriSolmu->pOikea) <= 0) {
         return vasenPuoli(pJuuriSolmu);
     }
 
@@ -517,7 +517,7 @@ PUU *poistaSolmu(char *pNimi, int iArvo, PUU *pJuuriSolmu) {
     }
 
     // Oikea-vasen tapaus.
-    if (iTasapaino < 1 && tasapainoitaPuu(pJuuriSolmu->pOikea) > 0) {
+    if (iTasapaino < -1 && tasapainoitaPuu(pJuuriSolmu->pOikea) > 0) {
         pJuuriSolmu->pOikea = oikeaPuoli(pJuuriSolmu->pOikea);
         return vasenPuoli(pJuuriSolmu);
     }
