@@ -74,7 +74,7 @@ int main(void) {
                     printf("Muisti vapautettu.\n");
                 } else if (iValinta2 == 6) {
                     kysyNimi("Anna poistettava nimi: ", aHaettavaNimi);
-                    kysyArvo("Anna poistettavan nimen arvo: ", iArvo);
+                    iArvo = kysyArvo("Anna poistettavan nimen arvo: ", iArvo);
                     pJuuriSolmu = poistaSolmu(aHaettavaNimi, iArvo, pJuuriSolmu);
                 } else if (iValinta2 == 7) {
                     kysyNimi("Anna kirjoitettavan tiedoston nimi: ", aNimiKirjoitettava);

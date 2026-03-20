@@ -467,23 +467,25 @@ int binaariHaku(char *pNimi, PUU *pJuuriSolmu, int iArvo) {
 PUU *poistaSolmu(char *pNimi, int iArvo, PUU *pJuuriSolmu) {
 
     if (pJuuriSolmu == NULL) {
+        printf("Solmua ei löytynyt.\n");
         return (pJuuriSolmu);
     }
-
-    if (iArvo == pJuuriSolmu->iArvo && (strcmp(pNimi, pJuuriSolmu->aNimi) == 0)) {
-        free(pJuuriSolmu);
-        pJuuriSolmu = NULL;
-        printf("Solmu poistettu.\n");
-        return (pJuuriSolmu);
-    } else if (iArvo < pJuuriSolmu->iArvo) {
-        printf("Vertailu: '%s' vs '%s'\n", pNimi, pJuuriSolmu->aNimi);
+    
+    if (iArvo < pJuuriSolmu->iArvo) {
         pJuuriSolmu->pVasen = poistaSolmu(pNimi, iArvo, pJuuriSolmu->pVasen);
     } else if (iArvo > pJuuriSolmu->iArvo) {
-        printf("Vertailu: '%s' vs '%s'\n", pNimi, pJuuriSolmu->aNimi);
         pJuuriSolmu->pOikea = poistaSolmu(pNimi, iArvo, pJuuriSolmu->pOikea);
     } else {
-        pJuuriSolmu->pVasen = poistaSolmu(pNimi, iArvo, pJuuriSolmu->pVasen);
-        pJuuriSolmu->pOikea = poistaSolmu(pNimi, iArvo, pJuuriSolmu->pOikea);
+        if (strcmp(pNimi, pJuuriSolmu->aNimi) == 0) {
+            if (pJuuriSolmu->pVasen == NULL && pJuuriSolmu->pOikea == NULL) {
+                free(pJuuriSolmu);
+                pJuuriSolmu = NULL;
+                printf("Solmu '%s - %d' poistettu.\n", pNimi, iArvo);
+                return (pJuuriSolmu);
+            } else {
+                printf("Voit poistaa vain lehtisolmun.\n");
+            }
+        }
     }
 
     return (pJuuriSolmu);
