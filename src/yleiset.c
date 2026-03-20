@@ -128,7 +128,7 @@ void mainBinaaripuu() {
             } else {
                 kysyNimi("Anna kirjoitettavan tiedoston nimi: ", aNimiKirjoitettava);
                 iArvo = kysyArvo("Anna haettava numeroarvo: ", iArvo);
-                iArvo = binaariHaku(aNimiKirjoitettava, pJuuriSolmu, iArvo);
+                iArvo = binaarihaku(aNimiKirjoitettava, pJuuriSolmu, iArvo);
                 if (iArvo == 0) {
                     printf("Hakemaasi arvoa ei löytynyt binääripuusta.\n");
                 }

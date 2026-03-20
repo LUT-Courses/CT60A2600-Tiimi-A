@@ -178,7 +178,7 @@ JONO *vapautaMuistiJono(JONO *pAlku) {
  * @return int Palauttaa joko 0 tai 1, riippuen siitä, loytyyko numeroarvo binaaripuusta.
  */
 
-int binaariHaku(char *pNimi, PUU *pJuuriSolmu, int iArvo) {
+int binaarihaku(char *pNimi, PUU *pJuuriSolmu, int iArvo) {
 
     if (pJuuriSolmu == NULL) {
         return (0);
@@ -190,8 +190,8 @@ int binaariHaku(char *pNimi, PUU *pJuuriSolmu, int iArvo) {
         printf("Hakemasi arvo '%d' löytyi!\n", iArvo);
         return (1);
     } else if (iArvo < pJuuriSolmu->iArvo) {
-        return binaariHaku(pNimi, pJuuriSolmu->pVasen, iArvo);
+        return binaarihaku(pNimi, pJuuriSolmu->pVasen, iArvo);
     } else {
-        return binaariHaku(pNimi, pJuuriSolmu->pOikea, iArvo);
+        return binaarihaku(pNimi, pJuuriSolmu->pOikea, iArvo);
     }
 }

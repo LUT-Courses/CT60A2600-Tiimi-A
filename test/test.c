@@ -172,12 +172,12 @@ void test_VaraaMuistiaJonolle() {
     JONO *pJono1 = NULL;
     JONO *pJono2 = NULL;
 
-    JONO *pSolmu1 = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
+    PUU *pSolmu1 = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
     pJono1 = varaaMuistiaJonolle(pSolmu1);
     TEST_ASSERT_NOT_NULL(pJono1);
     TEST_ASSERT_EQUAL_STRING(expectedNimi1, pJono1->pSolmu->aNimi);
 
-    JONO *pSolmu2 = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
+    PUU *pSolmu2 = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
     pJono2 = varaaMuistiaJonolle(pSolmu2);
     TEST_ASSERT_NOT_NULL(pJono2);
     TEST_ASSERT_EQUAL_INT(11900, pJono2->pSolmu->iArvo);
@@ -198,8 +198,8 @@ void test_VapautaMuistiJono() {
     JONO *pJono1 = NULL;
     JONO *pJono2 = NULL;
 
-    JONO *pSolmu1 = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
-    JONO *pSolmu2 = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
+    PUU *pSolmu1 = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
+    PUU *pSolmu2 = varaaMuistiaPuulle(expectedNimi2, expectedArvo2);
 
     pJono1 = varaaMuistiaJonolle(pSolmu1);
     pJono2 = varaaMuistiaJonolle(pSolmu2);
@@ -212,6 +212,50 @@ void test_VapautaMuistiJono() {
 
     free(pSolmu1);
     free(pSolmu2);
+}
+
+// Testataan, toimiiko lukuarvon tarkistus.
+void test_onkoLuku() {
+    char aLuku1[] = "50";
+    char aLuku2[] = "abc";
+
+    TEST_ASSERT_EQUAL_INT(1, onkoLuku(aLuku1));
+    TEST_ASSERT_EQUAL_INT(0, onkoLuku(aLuku2));
+}
+
+// Testataan, löytyykö nimen avulla arvo.
+void test_nimenArvo() {
+    char expectedNimi1[] = "Kosonen";
+    int expectedArvo1 = 500;
+
+    pJuuriSolmu = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
+
+    TEST_ASSERT_EQUAL(500, nimenArvo("Kosonen", pJuuriSolmu));
+    TEST_ASSERT_EQUAL(-1, nimenArvo("Karjalainen", pJuuriSolmu));
+}
+
+// Testataan, poistuuko solmu nimellä.
+void test_poistaSolmuNimi() {
+    char expectedNimi1[] = "Kosonen";
+    int expectedArvo1 = 500;
+
+    pJuuriSolmu = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
+
+    pJuuriSolmu = poistaSolmu(expectedNimi1, pJuuriSolmu);
+
+    TEST_ASSERT_NULL(pJuuriSolmu);
+}
+
+void test_poistaSolmuArvo() {
+    char expectedNimi1[] = "Kosonen";
+    char aExpectedArvo[] = "500";
+    int expectedArvo1 = 500;
+
+    pJuuriSolmu = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
+
+    pJuuriSolmu = poistaSolmu(aExpectedArvo, pJuuriSolmu);
+
+    TEST_ASSERT_NULL(pJuuriSolmu);
 }
 
 // Onnistuuko varata muistia RBSolmulle
@@ -247,6 +291,12 @@ int main(void) {
     // Jono structin testit
     RUN_TEST(test_VaraaMuistiaJonolle);
     RUN_TEST(test_VapautaMuistiJono);
+
+    // Poistoon liittyvät testit
+    RUN_TEST(test_onkoLuku);
+    RUN_TEST(test_nimenArvo);
+    RUN_TEST(test_poistaSolmuNimi);
+    RUN_TEST(test_poistaSolmuArvo);
 
     // RBSolmu structin testit
     RUN_TEST(test_VaraaMuistiaRBSolmulle);

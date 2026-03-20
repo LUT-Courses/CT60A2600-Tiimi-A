@@ -12,6 +12,6 @@ void tarkistaLoytyykoSyvyyshaulla(char *aNimiKirjoitettava, PUU *pJuuriSolmu, in
 void leveyshaku(char *pKirjoitaTiedostoNimi, PUU *pAlku, char *pHaku);
 JONO *varaaMuistiaJonolle(PUU *pSolmu);
 JONO *vapautaMuistiJono(JONO *pAlku);
-int binaariHaku(char *pNimi, PUU *pJuuriSolmu, int iArvo);
+int binaarihaku(char *pNimi, PUU *pJuuriSolmu, int iArvo);
 
 #endif
