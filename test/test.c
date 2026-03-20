@@ -2,6 +2,7 @@
 #include "../src/binaaripuu.h"
 #include "../src/linkitettylista.h"
 #include "../src/yleiset.h"
+#include "../src/haut.h"
 #include "unity.h"
 #include <stdlib.h>
 

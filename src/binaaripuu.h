@@ -10,11 +10,6 @@ typedef struct puu {
     struct puu *pVasen;
 } PUU;
 
-typedef struct jono {
-    PUU *pSolmu;
-    struct jono *pSeuraava;
-} JONO;
-
 typedef struct RBSolmu {
     char aNimi[LEN];
     int iArvo;
@@ -28,25 +23,19 @@ PUU *varaaMuistiaPuulle(char *pSolmu, int iArvo);
 PUU *vapautaMuistiPuu(PUU *pJuuriSolmu);
 PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iArvo);
 PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu);
-void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku);
-int kysyArvo(char *pPrompti, int iArvo);
-int syvyyshaku(char *pKirjoitaTiedostoNimi, PUU *pJuuriSolmu, int iArvo);
-void leveyshaku(char *pKirjoitaTiedostoNimi, PUU *pAlku, char *pHaku);
-JONO *varaaMuistiaJonolle(PUU *pSolmu);
-JONO *vapautaMuistiJono(JONO *pAlku);
-void kirjoitaTiedostoon(char *pKirjoitaTiedostoNimi, PUU *pAlku);
-void tarkistaLoytyykoSyvyyshaulla(char *aNimiKirjoitettava, PUU *pJuuriSolmu, int iArvo);
+
 int tasapainoitaPuu(PUU *pAlku);
 PUU *oikeaPuoli(PUU *pAlku);
 PUU *vasenPuoli(PUU *pAlku);
 int puunPituus(PUU *pAlku);
 int suurempiLukuVertailu(int iLuku1, int iLuku2);
+
 PUU *poistaSolmu(char *pNimi, PUU *pJuuriSolmu);
 int onkoLuku(char *pNimi);
 int nimenArvo(char *pNimi, PUU *pJuuriSolmu);
-int binaariHaku(char *pNimi, PUU *pJuuriSolmu, int iArvo);
 
-
+void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku);
+void kirjoitaTiedostoon(char *pKirjoitaTiedostoNimi, PUU *pAlku);
 
 /**
  * Punamustapuu, ehkä oma header olisi kätevämpi,
