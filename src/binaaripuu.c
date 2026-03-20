@@ -471,6 +471,7 @@ PUU *poistaSolmu(char *pNimi, int iArvo, PUU *pJuuriSolmu) {
         return (pJuuriSolmu);
     }
     
+    // Lehtisolmun poistaminen.
     if (iArvo < pJuuriSolmu->iArvo) {
         pJuuriSolmu->pVasen = poistaSolmu(pNimi, iArvo, pJuuriSolmu->pVasen);
     } else if (iArvo > pJuuriSolmu->iArvo) {
@@ -486,6 +487,37 @@ PUU *poistaSolmu(char *pNimi, int iArvo, PUU *pJuuriSolmu) {
                 printf("Voit poistaa vain lehtisolmun.\n");
             }
         }
+    }
+
+    // Puun korkeuden päivittäminen.
+    if (pJuuriSolmu == NULL) {
+        return (pJuuriSolmu);
+    }
+
+    int iLuku1 = puunPituus(pJuuriSolmu->pVasen);
+    int iLuku2 = puunPituus(pJuuriSolmu->pOikea);
+    pJuuriSolmu->iPituus = suurempiLukuVertailu(iLuku1, iLuku2);
+
+    // Puun tasapanottaminen.
+    int iTasapaino = tasapainoitaPuu(pJuuriSolmu);
+    // Vasen-vasen tapaus.
+    if (iTasapaino > 1 && tasapainoitaPuu(pJuuriSolmu->pVasen) >= 0) {
+        return oikeaPuoli(pJuuriSolmu);
+    }
+
+    // Oikea-oikea tapaus.
+    if (iTasapaino < 1 && tasapainoitaPuu(pJuuriSolmu->pOikea) <= 0) {
+        return vasenPuoli(pJuuriSolmu);
+    }
+
+    // Vasen-oikea tapaus.
+    if (iTasapaino > 1 && tasapainoitaPuu(pJuuriSolmu->pVasen) < 0) {
+        return oikeaPuoli(pJuuriSolmu);
+    }
+
+    // Oikea-vasen tapaus.
+    if (iTasapaino < 1 && tasapainoitaPuu(pJuuriSolmu->pOikea) > 0) {
+        return vasenPuoli(pJuuriSolmu);
     }
 
     return (pJuuriSolmu);
