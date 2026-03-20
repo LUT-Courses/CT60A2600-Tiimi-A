@@ -13,6 +13,7 @@
  * @param iArvo Arvo, jolle muistia varataan
  * @return PUU* 
  */
+
 PUU *varaaMuistiaPuulle(char *pSolmu, int iArvo) {
     PUU *pUusi = NULL;
 
@@ -36,6 +37,7 @@ PUU *varaaMuistiaPuulle(char *pSolmu, int iArvo) {
  * @param pJuuriSolmu Puun juurisolmu
  * @return PUU* 
  */
+
 PUU *vapautaMuistiPuu(PUU *pJuuriSolmu) {
     // Muistin vapauttaminen
     if (pJuuriSolmu != NULL) {
@@ -55,6 +57,7 @@ PUU *vapautaMuistiPuu(PUU *pJuuriSolmu) {
  * @param iArvo Solmun arvo.
  * @return PUU*
  */
+
 PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iArvo) {
     int iVertailu = 0;
 
@@ -116,6 +119,7 @@ PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iArvo) {
  * @param pJuuriSolmu Puun juurisolmu.
  * @return PUU* Palauttaa juuriSolmun.
  */
+
 PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
     FILE *Tiedosto = NULL;
     char aRivi[LEN] = "";
@@ -173,6 +177,7 @@ PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
  * @param pNimi Kirjoitettavan tiedoston nimi.
  * @param pAlku 
  */
+
 void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku) {
     /*if (pAlku == NULL) { //Noora kommentoi pois 19.3.2026 klo. 13.08
         printf("Puu on tyhjä, luo puurakenne ennen kirjoittamista.\n");
@@ -192,6 +197,7 @@ void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku) {
  * @param pNimi Kirjoitettavan tiedoston nimi
  * @param pAlku Solmu, joka kirjoitetaan tiedostoon
  */
+
 void kirjoitaTiedostoon(char *pNimi, PUU *pAlku) {
     FILE *Tiedosto = NULL;
 
@@ -218,6 +224,7 @@ void kirjoitaTiedostoon(char *pNimi, PUU *pAlku) {
  * @param pAlku Solmu, josta tasapainokerroin halutaan
  * @return int
  */
+
 int tasapainoitaPuu(PUU *pAlku) {
     // Tarkistetaan, onko Null
     if (pAlku == NULL) {
@@ -234,6 +241,7 @@ int tasapainoitaPuu(PUU *pAlku) {
  * @param pAlku
  * @return PUU* Palauttaa solmun.
  */
+
 PUU *oikeaPuoli(PUU *pAlku) {
     // Tarkistetaan, onko pAlku tai pAlku oikea puoli NULL
     if ((pAlku->pVasen == NULL) || (pAlku == NULL)) {
@@ -262,6 +270,7 @@ PUU *oikeaPuoli(PUU *pAlku) {
  * @param pAlku
  * @return PUU* Palauttaa solmun.
  */
+
 PUU *vasenPuoli(PUU *pAlku) {
     // Tarkistetaan, onko pAlku tai pAlku oikea puoli NULL
     if ((pAlku->pOikea == NULL) || (pAlku == NULL)) {
@@ -290,6 +299,7 @@ PUU *vasenPuoli(PUU *pAlku) {
  * @param pAlku Kohta, josta korkeus haetaan
  * @return int Palauttaa solmun korkeuden
  */
+
 int puunPituus(PUU *pAlku) {
     // Tarkistetaan, onko Solmu Null
     if (pAlku == NULL) {
@@ -307,6 +317,7 @@ int puunPituus(PUU *pAlku) {
  * @param iLuku2 Toinen verrattava kokonaisluku.
  * @return int Palauttaa suuremman luvun.
  */
+
 int suurempiLukuVertailu(int iLuku1, int iLuku2) {
     int iPalautus = 0;
 
@@ -320,6 +331,17 @@ int suurempiLukuVertailu(int iLuku1, int iLuku2) {
     // Palauttaa suuremman luvun.
     return (iPalautus);
 }
+
+/**
+ * @brief Lehtisolmun poistaminen.
+ * 
+ * Poistaa lehtisolmun joko numeroarvon tai nimen perusteella.
+ * 
+ * @param pNimi Poistettava nimi tai numeroarvo merkkijonona.
+ * @param pJuuriSolmu Osoitin kasiteltavaan puun solmuun.
+ * @param iArvo Haettava numeroarvo.
+ * @return pJuuriSolmu Uusi osoitin puun solmuun, NULL jos puu tyhjeni.
+ */
 
 PUU *poistaSolmu(char *pNimi, PUU *pJuuriSolmu) {
     int iArvo = 0;
@@ -389,6 +411,16 @@ PUU *poistaSolmu(char *pNimi, PUU *pJuuriSolmu) {
     return (pJuuriSolmu);
 }
 
+/**
+ * @brief Testaa, onko kayttajan antama arvo nimi vai numeroarvo.
+ * 
+ * Ilmoittaa, onko kayttajan antama numero vai ei.
+ * 
+ * @param pNimi Poistettava nimi tai numeroarvo merkkijonona.
+ *
+ * @return int Palauttaa 0 tai 1, riippuen siita onko kayttajan syote numero.
+ */
+
 int onkoLuku(char *pNimi) {
     int tosi = 0;
     char *ptr = pNimi;
@@ -402,6 +434,14 @@ int onkoLuku(char *pNimi) {
     tosi = 1;
     return (tosi);
 }
+
+/**
+ * @brief Etsii nimen perusteella sen arvon.
+ * 
+ * @param pNimi Poistettava nimi merkkijonona.
+ * @param pJuuriSolmu Osoitin kasiteltavaan solmuun.
+ * @return int Palauttaa 0 tai 1, riippuen siita, loytyyko nimen nimen pohjalta arvoa.
+ */
 
 int nimenArvo(char *pNimi, PUU *pJuuriSolmu) {  
     if (pJuuriSolmu == NULL) {
