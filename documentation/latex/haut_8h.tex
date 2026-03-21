@@ -1,0 +1,346 @@
+\hypertarget{haut_8h}{}\doxysection{/home/noora/c-\/projekti/\+CT60\+A2600-\/\+Tiimi-\/\+A/src/haut.h File Reference}
+\label{haut_8h}\index{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/haut.h@{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/haut.h}}
+{\ttfamily \#include \char`\"{}binaaripuu.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structjono}{jono}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structjono}{jono}} \mbox{\hyperlink{haut_8h_a58364f74fffbcb8892f775bb6e7317c6}{JONO}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{haut_8h_afd2a7a6a54ef041d591d60c72c3b9c53}{syvyyshaku}} (char $\ast$p\+Kirjoita\+Tiedosto\+Nimi, \mbox{\hyperlink{binaaripuu_8h_a20a9e9e26598f289d8a3659a3659d741}{PUU}} $\ast$p\+Juuri\+Solmu, int i\+Arvo)
+\begin{DoxyCompactList}\small\item\em Tekee syvyyshaun numeroarvon pohjalta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{haut_8h_ae36e90c4570ff61efae7b18bfddb8d13}{tarkista\+Loytyyko\+Syvyyshaulla}} (char $\ast$a\+Nimi\+Kirjoitettava, \mbox{\hyperlink{binaaripuu_8h_a20a9e9e26598f289d8a3659a3659d741}{PUU}} $\ast$p\+Juuri\+Solmu, int i\+Arvo)
+\begin{DoxyCompactList}\small\item\em Tarkistaa, loytyyko etsitty arvo syvyyshaussa. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{haut_8h_ad553ec659c6aa608fdd3746036fe3dad}{leveyshaku}} (char $\ast$p\+Kirjoita\+Tiedosto\+Nimi, \mbox{\hyperlink{binaaripuu_8h_a20a9e9e26598f289d8a3659a3659d741}{PUU}} $\ast$p\+Alku, char $\ast$p\+Haku)
+\begin{DoxyCompactList}\small\item\em Tekee leveyshaun nimen pohjalta. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{haut_8h_a58364f74fffbcb8892f775bb6e7317c6}{JONO}} $\ast$ \mbox{\hyperlink{haut_8h_ac756329791d6dbcfd0b72ad464bdcf89}{varaa\+Muistia\+Jonolle}} (\mbox{\hyperlink{binaaripuu_8h_a20a9e9e26598f289d8a3659a3659d741}{PUU}} $\ast$p\+Solmu)
+\begin{DoxyCompactList}\small\item\em Varaa muistia jonolle. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{haut_8h_a58364f74fffbcb8892f775bb6e7317c6}{JONO}} $\ast$ \mbox{\hyperlink{haut_8h_a33c2d3aa646be652e2f0423f76592d59}{vapauta\+Muisti\+Jono}} (\mbox{\hyperlink{haut_8h_a58364f74fffbcb8892f775bb6e7317c6}{JONO}} $\ast$p\+Alku)
+\begin{DoxyCompactList}\small\item\em Vapauttaa jonon varaaman muistin. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{haut_8h_a7cc7c92e5f204e6b6d4c3a1727ba2060}{binaarihaku}} (char $\ast$p\+Nimi, \mbox{\hyperlink{binaaripuu_8h_a20a9e9e26598f289d8a3659a3659d741}{PUU}} $\ast$p\+Juuri\+Solmu, int i\+Arvo)
+\begin{DoxyCompactList}\small\item\em Binaarihaku perustuen numeroarvoon. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{haut_8h_a58364f74fffbcb8892f775bb6e7317c6}\label{haut_8h_a58364f74fffbcb8892f775bb6e7317c6}} 
+\index{haut.h@{haut.h}!JONO@{JONO}}
+\index{JONO@{JONO}!haut.h@{haut.h}}
+\doxysubsubsection{\texorpdfstring{JONO}{JONO}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structjono}{jono}} \mbox{\hyperlink{haut_8h_a58364f74fffbcb8892f775bb6e7317c6}{JONO}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{haut_8h_a7cc7c92e5f204e6b6d4c3a1727ba2060}\label{haut_8h_a7cc7c92e5f204e6b6d4c3a1727ba2060}} 
+\index{haut.h@{haut.h}!binaarihaku@{binaarihaku}}
+\index{binaarihaku@{binaarihaku}!haut.h@{haut.h}}
+\doxysubsubsection{\texorpdfstring{binaarihaku()}{binaarihaku()}}
+{\footnotesize\ttfamily int binaarihaku (\begin{DoxyParamCaption}\item[{char $\ast$}]{p\+Nimi,  }\item[{\mbox{\hyperlink{binaaripuu_8h_a20a9e9e26598f289d8a3659a3659d741}{PUU}} $\ast$}]{p\+Juuri\+Solmu,  }\item[{int}]{i\+Arvo }\end{DoxyParamCaption})}
+
+
+
+Binaarihaku perustuen numeroarvoon. 
+
+Binaarihaku, joka tehdaan kayttajan antaman numeroarvon perusteella.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Nimi} & Kirjoitettavan tiedoston nimi. \\
+\hline
+{\em p\+Juuri\+Solmu} & Osoitin kasiteltavaan puun solmuun. \\
+\hline
+{\em i\+Arvo} & Haettava numeroarvo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Palauttaa joko 0 tai 1, riippuen siitä, loytyyko numeroarvo binaaripuusta. 
+\end{DoxyReturn}
+
+
+Definition at line 181 of file haut.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{181                                                           \{}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183     \textcolor{keywordflow}{if} (pJuuriSolmu == NULL) \{}
+\DoxyCodeLine{184         \textcolor{keywordflow}{return} (0);}
+\DoxyCodeLine{185     \}}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187     \mbox{\hyperlink{binaaripuu_8c_a62bef642f877e08144bea2c2e3303d6c}{kirjoitaTiedostoon}}(pNimi, pJuuriSolmu);}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189     \textcolor{keywordflow}{if} (iArvo == pJuuriSolmu-\/>\mbox{\hyperlink{structpuu_afc777883078abdf6f4feb2198a323117}{iArvo}}) \{}
+\DoxyCodeLine{190         printf(\textcolor{stringliteral}{"{}Hakemasi arvo '\%d' löytyi!\(\backslash\)n"{}}, iArvo);}
+\DoxyCodeLine{191         \textcolor{keywordflow}{return} (1);}
+\DoxyCodeLine{192     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iArvo < pJuuriSolmu-\/>iArvo) \{}
+\DoxyCodeLine{193         \textcolor{keywordflow}{return} \mbox{\hyperlink{haut_8c_a7cc7c92e5f204e6b6d4c3a1727ba2060}{binaarihaku}}(pNimi, pJuuriSolmu-\/>\mbox{\hyperlink{structpuu_a40537288b77d88c022fb967e7ce1a836}{pVasen}}, iArvo);}
+\DoxyCodeLine{194     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{195         \textcolor{keywordflow}{return} \mbox{\hyperlink{haut_8c_a7cc7c92e5f204e6b6d4c3a1727ba2060}{binaarihaku}}(pNimi, pJuuriSolmu-\/>\mbox{\hyperlink{structpuu_a2b80d16f64414edd049ee81725f61344}{pOikea}}, iArvo);}
+\DoxyCodeLine{196     \}}
+\DoxyCodeLine{197 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{haut_8h_ad553ec659c6aa608fdd3746036fe3dad}\label{haut_8h_ad553ec659c6aa608fdd3746036fe3dad}} 
+\index{haut.h@{haut.h}!leveyshaku@{leveyshaku}}
+\index{leveyshaku@{leveyshaku}!haut.h@{haut.h}}
+\doxysubsubsection{\texorpdfstring{leveyshaku()}{leveyshaku()}}
+{\footnotesize\ttfamily void leveyshaku (\begin{DoxyParamCaption}\item[{char $\ast$}]{p\+Nimi,  }\item[{\mbox{\hyperlink{binaaripuu_8h_a20a9e9e26598f289d8a3659a3659d741}{PUU}} $\ast$}]{p\+Juuri\+Solmu,  }\item[{char $\ast$}]{p\+Haku }\end{DoxyParamCaption})}
+
+
+
+Tekee leveyshaun nimen pohjalta. 
+
+Tekee leveyshaun kayttajan antaman nimen pohjalta. Kirjoittaa leveyshaun polun kayttajan maarittelemaan tiedostoon.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Nimi} & Kayttajan antama kirjoitettavan tiedoston nimi. \\
+\hline
+{\em p\+Alku} & Osoitin puu tietueen alkuun, eli ensimmaiseen solmuun. \\
+\hline
+{\em p\+Haku} & Osoitin haettavan nimen merkkijonoon. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line 76 of file haut.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{76                                                             \{}
+\DoxyCodeLine{77     \textcolor{comment}{// Leveyshaku nimen mukaan, kirjoitetaan käydyt solmut tiedostoon.}}
+\DoxyCodeLine{78     \mbox{\hyperlink{structjono}{JONO}} *pAlku = \mbox{\hyperlink{haut_8c_ac756329791d6dbcfd0b72ad464bdcf89}{varaaMuistiaJonolle}}(pJuuriSolmu);}
+\DoxyCodeLine{79     \mbox{\hyperlink{structjono}{JONO}} *pLoppu = pAlku;}
+\DoxyCodeLine{80     \mbox{\hyperlink{structjono}{JONO}} *pEdellinen = NULL;}
+\DoxyCodeLine{81     \textcolor{keywordtype}{int} iVertailu = 0;}
+\DoxyCodeLine{82     \textcolor{keywordtype}{int} iLoytyi = 0;}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84     \textcolor{keywordflow}{if} (pJuuriSolmu == NULL) \{}
+\DoxyCodeLine{85         printf(\textcolor{stringliteral}{"{}Puu on tyhjä, luo puurakenne ennen leveyshakua.\(\backslash\)n"{}});}
+\DoxyCodeLine{86         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{87     \}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89     \textcolor{keywordflow}{while} (pAlku != NULL) \{}
+\DoxyCodeLine{90         \mbox{\hyperlink{structpuu}{PUU}} *ptr = pAlku-\/>\mbox{\hyperlink{structjono_a10b26838a553b6a87e05dafa52bf92ea}{pSolmu}};}
+\DoxyCodeLine{91         \mbox{\hyperlink{binaaripuu_8c_a62bef642f877e08144bea2c2e3303d6c}{kirjoitaTiedostoon}}(pNimi, ptr);}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93         iVertailu = strcmp(ptr-\/>\mbox{\hyperlink{structpuu_a3bb3dd36cb152672b1c1eaa9451bacf2}{aNimi}}, pHaku);}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95         \textcolor{keywordflow}{if} (iVertailu == 0) \{}
+\DoxyCodeLine{96             printf(\textcolor{stringliteral}{"{}Nimi '\%s' löytyi puusta.\(\backslash\)n"{}}, ptr-\/>\mbox{\hyperlink{structpuu_a3bb3dd36cb152672b1c1eaa9451bacf2}{aNimi}});}
+\DoxyCodeLine{97             iLoytyi = 1;}
+\DoxyCodeLine{98             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{99         \}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101         \textcolor{keywordflow}{if} (ptr-\/>\mbox{\hyperlink{structpuu_a40537288b77d88c022fb967e7ce1a836}{pVasen}} != NULL) \{}
+\DoxyCodeLine{102             pLoppu-\/>\mbox{\hyperlink{structjono_a8bf7349f0913782f9592448a3282b522}{pSeuraava}} = \mbox{\hyperlink{haut_8c_ac756329791d6dbcfd0b72ad464bdcf89}{varaaMuistiaJonolle}}(ptr-\/>\mbox{\hyperlink{structpuu_a40537288b77d88c022fb967e7ce1a836}{pVasen}});}
+\DoxyCodeLine{103             pLoppu = pLoppu-\/>\mbox{\hyperlink{structjono_a8bf7349f0913782f9592448a3282b522}{pSeuraava}};}
+\DoxyCodeLine{104         \}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106         \textcolor{keywordflow}{if} (ptr-\/>\mbox{\hyperlink{structpuu_a2b80d16f64414edd049ee81725f61344}{pOikea}} != NULL) \{}
+\DoxyCodeLine{107             pLoppu-\/>\mbox{\hyperlink{structjono_a8bf7349f0913782f9592448a3282b522}{pSeuraava}} = \mbox{\hyperlink{haut_8c_ac756329791d6dbcfd0b72ad464bdcf89}{varaaMuistiaJonolle}}(ptr-\/>\mbox{\hyperlink{structpuu_a2b80d16f64414edd049ee81725f61344}{pOikea}});}
+\DoxyCodeLine{108             pLoppu = pLoppu-\/>\mbox{\hyperlink{structjono_a8bf7349f0913782f9592448a3282b522}{pSeuraava}};}
+\DoxyCodeLine{109         \}}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111         pEdellinen = pAlku;}
+\DoxyCodeLine{112         pAlku = pAlku-\/>\mbox{\hyperlink{structjono_a8bf7349f0913782f9592448a3282b522}{pSeuraava}};}
+\DoxyCodeLine{113         free(pEdellinen);}
+\DoxyCodeLine{114     \}}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116     \textcolor{keywordflow}{if} (iLoytyi == 0) \{}
+\DoxyCodeLine{117         printf(\textcolor{stringliteral}{"{}Hakemaasi nimeä ei löytynyt puusta.\(\backslash\)n"{}});}
+\DoxyCodeLine{118     \}}
+\DoxyCodeLine{119     pAlku = \mbox{\hyperlink{haut_8c_a33c2d3aa646be652e2f0423f76592d59}{vapautaMuistiJono}}(pAlku);}
+\DoxyCodeLine{120     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{121 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{haut_8h_afd2a7a6a54ef041d591d60c72c3b9c53}\label{haut_8h_afd2a7a6a54ef041d591d60c72c3b9c53}} 
+\index{haut.h@{haut.h}!syvyyshaku@{syvyyshaku}}
+\index{syvyyshaku@{syvyyshaku}!haut.h@{haut.h}}
+\doxysubsubsection{\texorpdfstring{syvyyshaku()}{syvyyshaku()}}
+{\footnotesize\ttfamily int syvyyshaku (\begin{DoxyParamCaption}\item[{char $\ast$}]{p\+Nimi,  }\item[{\mbox{\hyperlink{binaaripuu_8h_a20a9e9e26598f289d8a3659a3659d741}{PUU}} $\ast$}]{p\+Alku,  }\item[{int}]{i\+Arvo }\end{DoxyParamCaption})}
+
+
+
+Tekee syvyyshaun numeroarvon pohjalta. 
+
+Tekee syvyyshaun kayttajan antaman numeroarvon pohjalta. Kirjoittaa syvyyshaun polun kayttajan maarittelemaan tiedostoon.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Nimi} & Kayttajan antama kirjoitettavan tiedoston nimi. \\
+\hline
+{\em p\+Alku} & Osoitin puu tietueen alkuun, eli ensimmaiseen solmuun. \\
+\hline
+{\em i\+Arvo} & Arvo, jota etsitaan syvyyshaussa. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Palauttaa arvon 0 tai 1, riippuen siita, loytyyko etsitty arvo. 
+\end{DoxyReturn}
+
+
+Definition at line 18 of file haut.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{18                                                    \{}
+\DoxyCodeLine{19     \textcolor{comment}{// Syvyyshaku arvon mukaan, kirjoitetaan käydyt solmut tiedostoon.}}
+\DoxyCodeLine{20     \textcolor{keywordtype}{int} iLoytyi = 0;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keywordflow}{if} (pAlku == NULL) \{}
+\DoxyCodeLine{23         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{24     \}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{keywordflow}{if} (pAlku != NULL) \{}
+\DoxyCodeLine{27         \mbox{\hyperlink{binaaripuu_8c_a62bef642f877e08144bea2c2e3303d6c}{kirjoitaTiedostoon}}(pNimi, pAlku);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29         \textcolor{keywordflow}{if} (pAlku-\/>\mbox{\hyperlink{structpuu_afc777883078abdf6f4feb2198a323117}{iArvo}} == iArvo) \{}
+\DoxyCodeLine{30             iLoytyi = 1;}
+\DoxyCodeLine{31             printf(\textcolor{stringliteral}{"{}Arvo \%d löytyi.\(\backslash\)n"{}}, iArvo);}
+\DoxyCodeLine{32         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{33             \textcolor{keywordflow}{if} (iLoytyi == 0) \{}
+\DoxyCodeLine{34                 iLoytyi = \mbox{\hyperlink{haut_8c_aeb3241991f8a34143f5f78dfe6cc0da8}{syvyyshaku}}(pNimi, pAlku-\/>\mbox{\hyperlink{structpuu_a40537288b77d88c022fb967e7ce1a836}{pVasen}}, iArvo);}
+\DoxyCodeLine{35             \}}
+\DoxyCodeLine{36             \textcolor{keywordflow}{if} (iLoytyi == 0) \{}
+\DoxyCodeLine{37                 iLoytyi = \mbox{\hyperlink{haut_8c_aeb3241991f8a34143f5f78dfe6cc0da8}{syvyyshaku}}(pNimi, pAlku-\/>\mbox{\hyperlink{structpuu_a2b80d16f64414edd049ee81725f61344}{pOikea}}, iArvo);}
+\DoxyCodeLine{38             \}}
+\DoxyCodeLine{39         \}}
+\DoxyCodeLine{40     \}}
+\DoxyCodeLine{41     \textcolor{keywordflow}{return} (iLoytyi);}
+\DoxyCodeLine{42 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{haut_8h_ae36e90c4570ff61efae7b18bfddb8d13}\label{haut_8h_ae36e90c4570ff61efae7b18bfddb8d13}} 
+\index{haut.h@{haut.h}!tarkistaLoytyykoSyvyyshaulla@{tarkistaLoytyykoSyvyyshaulla}}
+\index{tarkistaLoytyykoSyvyyshaulla@{tarkistaLoytyykoSyvyyshaulla}!haut.h@{haut.h}}
+\doxysubsubsection{\texorpdfstring{tarkistaLoytyykoSyvyyshaulla()}{tarkistaLoytyykoSyvyyshaulla()}}
+{\footnotesize\ttfamily void tarkista\+Loytyyko\+Syvyyshaulla (\begin{DoxyParamCaption}\item[{char $\ast$}]{a\+Nimi\+Kirjoitettava,  }\item[{\mbox{\hyperlink{binaaripuu_8h_a20a9e9e26598f289d8a3659a3659d741}{PUU}} $\ast$}]{p\+Juuri\+Solmu,  }\item[{int}]{i\+Arvo }\end{DoxyParamCaption})}
+
+
+
+Tarkistaa, loytyyko etsitty arvo syvyyshaussa. 
+
+Tarkistaa, loytyyko syvyyshaussa etsitty arvo. Jos arvoa ei loydy, tulostaa tiedon siita.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+Nimi\+Kirjoitettava} & Kayttajan antama kirjoitettavan tiedoston nimi. \\
+\hline
+{\em p\+Juuri\+Solmu} & Osoitin puu tietueen alkuun, eli ensimmaiseen solmuun. \\
+\hline
+{\em i\+Arvo} & Syvyyhaussa haettava numeroarvo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line 56 of file haut.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{56                                                                                          \{}
+\DoxyCodeLine{57     \textcolor{keywordtype}{int} iLoytyi = 0;}
+\DoxyCodeLine{58     iLoytyi = \mbox{\hyperlink{haut_8c_aeb3241991f8a34143f5f78dfe6cc0da8}{syvyyshaku}}(aNimiKirjoitettava, pJuuriSolmu, iArvo);}
+\DoxyCodeLine{59     \textcolor{keywordflow}{if} (iLoytyi == 0) \{}
+\DoxyCodeLine{60         printf(\textcolor{stringliteral}{"{}Arvoa \%d ei löytynyt puusta.\(\backslash\)n"{}}, iArvo);}
+\DoxyCodeLine{61     \}}
+\DoxyCodeLine{62 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{haut_8h_a33c2d3aa646be652e2f0423f76592d59}\label{haut_8h_a33c2d3aa646be652e2f0423f76592d59}} 
+\index{haut.h@{haut.h}!vapautaMuistiJono@{vapautaMuistiJono}}
+\index{vapautaMuistiJono@{vapautaMuistiJono}!haut.h@{haut.h}}
+\doxysubsubsection{\texorpdfstring{vapautaMuistiJono()}{vapautaMuistiJono()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{haut_8h_a58364f74fffbcb8892f775bb6e7317c6}{JONO}}$\ast$ vapauta\+Muisti\+Jono (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{haut_8h_a58364f74fffbcb8892f775bb6e7317c6}{JONO}} $\ast$}]{p\+Alku }\end{DoxyParamCaption})}
+
+
+
+Vapauttaa jonon varaaman muistin. 
+
+Vapauttaa jonon alkioita varten varatun muistin.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Alku} & Osoitin jonon ensimmaiseen alkioon. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+p\+Alku Palauttaa NULL, koska jono on tyhja. 
+\end{DoxyReturn}
+
+
+Definition at line 156 of file haut.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{156                                      \{}
+\DoxyCodeLine{157     \textcolor{comment}{// Jonon muistin vapauttaminen.}}
+\DoxyCodeLine{158     \mbox{\hyperlink{structjono}{JONO}} *ptr = pAlku;}
+\DoxyCodeLine{159     \mbox{\hyperlink{structjono}{JONO}} *pSeuraava = NULL;}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161     \textcolor{keywordflow}{while} (ptr != NULL) \{}
+\DoxyCodeLine{162         pSeuraava = ptr-\/>\mbox{\hyperlink{structjono_a8bf7349f0913782f9592448a3282b522}{pSeuraava}};}
+\DoxyCodeLine{163         free(ptr);}
+\DoxyCodeLine{164         ptr = pSeuraava;}
+\DoxyCodeLine{165     \}}
+\DoxyCodeLine{166     pAlku = NULL;}
+\DoxyCodeLine{167     \textcolor{keywordflow}{return} (pAlku);}
+\DoxyCodeLine{168 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{haut_8h_ac756329791d6dbcfd0b72ad464bdcf89}\label{haut_8h_ac756329791d6dbcfd0b72ad464bdcf89}} 
+\index{haut.h@{haut.h}!varaaMuistiaJonolle@{varaaMuistiaJonolle}}
+\index{varaaMuistiaJonolle@{varaaMuistiaJonolle}!haut.h@{haut.h}}
+\doxysubsubsection{\texorpdfstring{varaaMuistiaJonolle()}{varaaMuistiaJonolle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{haut_8h_a58364f74fffbcb8892f775bb6e7317c6}{JONO}}$\ast$ varaa\+Muistia\+Jonolle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{binaaripuu_8h_a20a9e9e26598f289d8a3659a3659d741}{PUU}} $\ast$}]{p\+Solmu }\end{DoxyParamCaption})}
+
+
+
+Varaa muistia jonolle. 
+
+Varaa muistia jonon uudelle alkiolle leveyshakua varten.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Solmu} & Osoitin kasiteltavaan puun solmuun. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+p\+Uusi Osoitin uuteen jonon alkioon. 
+\end{DoxyReturn}
+
+
+Definition at line 132 of file haut.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{132                                        \{}
+\DoxyCodeLine{133     \mbox{\hyperlink{structjono}{JONO}} *pUusi = NULL;}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135     \textcolor{comment}{// Muistin varaaminen jonolle.}}
+\DoxyCodeLine{136     \textcolor{keywordflow}{if} ((pUusi = (\mbox{\hyperlink{structjono}{JONO}} *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structjono}{JONO}}))) == NULL) \{}
+\DoxyCodeLine{137         perror(\textcolor{stringliteral}{"{}Muistin varaus epäonnistui, lopetetaan"{}});}
+\DoxyCodeLine{138         exit(0);}
+\DoxyCodeLine{139     \}}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141     pUusi-\/>\mbox{\hyperlink{structjono_a10b26838a553b6a87e05dafa52bf92ea}{pSolmu}} = pSolmu;}
+\DoxyCodeLine{142     pUusi-\/>\mbox{\hyperlink{structjono_a8bf7349f0913782f9592448a3282b522}{pSeuraava}} = NULL;}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144     \textcolor{keywordflow}{return} (pUusi);}
+\DoxyCodeLine{145 \}}
+
+\end{DoxyCode}

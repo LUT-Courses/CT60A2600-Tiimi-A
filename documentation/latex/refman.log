@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.3.18)  19 MAR 2026 18:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.3.18)  21 MAR 2026 12:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**refman
+**refman.tex
 (./refman.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21>
@@ -865,9 +865,7 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 8.99994pt on input line 169.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 6.29996pt on input line 169.
- [1] [2] [3] [4
-
-]
+ [1] [2] [3] [4]
 Package hyperref Info: Option `pageanchor' set `true' on input line 171.
 
 Chapter 1.
@@ -888,6 +886,7 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 12.9599pt on input line 1.
 ) [1
 
+
 ] [2
 
 ]
@@ -903,187 +902,419 @@ LaTeX Font Info:    Trying to load font information for T1+pcr on input line 5.
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 11.
+(Font)              scaled to size 10.79993pt on input line 7.
 LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
-4.
+0.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 8.99994pt on input line 14.
+(Font)              scaled to size 8.99994pt on input line 10.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.19995pt on input line 32.
+(Font)              scaled to size 7.19995pt on input line 28.
 ) (./structpuu.tex
-[5] [6]) (./structRBSolmu.tex [7]) (./structtiedot.tex [8] [9]) [10]
-Chapter 4.
-(./binaaripuu_8c.tex) (./binaaripuu_8h.tex
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.09995pt on input line 30.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 30.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 8.09995pt on input line 30.
- [11
+[5]) (./structRBSolmu.tex [6] [7]) (./structtiedot.tex [8]) [9] [10
 
-] [12]
+]
+Chapter 4.
+(./binaaripuu_8c.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--8
+
+ []
+
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 8.09995pt on input line 12.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 12.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 8.09995pt on input line 12.
+[11]
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 113.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 48.
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <7> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 113.
- [13] [14] [15] [16]
-Underfull \hbox (badness 10000) detected at line 445
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 48.
+
+Overfull \vbox (7.85933pt too high) has occurred while \output is active []
+
+
+[12]
+Underfull \hbox (badness 10000) detected at line 144
 [][][]
  []
 
-[17] [18]
-Underfull \hbox (badness 10000) detected at line 589
+[13]
+Underfull \hbox (badness 10000) detected at line 225
+[][][]
+ []
+
+[14]
+Underfull \hbox (badness 10000) detected at line 303
+[][][]
+ []
+
+[15]
+Underfull \hbox (badness 10000) detected at line 347
+[][][]
+ []
+
+
+Overfull \vbox (2.81107pt too high) has occurred while \output is active []
+
+
+[16]
+Underfull \hbox (badness 10000) detected at line 396
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 435
+[][][]
+ []
+
+[17]
+Underfull \hbox (badness 10000) detected at line 503
+[][][]
+ []
+
+[18]
+Underfull \hbox (badness 10000) detected at line 564
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 601
 [][][]
  []
 
 [19]
-Underfull \hbox (badness 10000) detected at line 672
-[][][]
- []
-
-[20] [21]
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 4.6 on input line 804.
-
-
-Underfull \hbox (badness 10000) detected at line 805
-[][][]
- []
-
-[22]
-Underfull \hbox (badness 10000) detected at line 894
+Underfull \hbox (badness 10000) detected at line 640
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 933
+Underfull \hbox (badness 10000) detected at line 675
 [][][]
  []
 
-[23] [24]
-Underfull \hbox (badness 10000) detected at line 1039
+[20]
+Underfull \hbox (badness 10000) detected at line 713
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1105
+Underfull \hbox (badness 10000) detected at line 755
 [][][]
  []
 
-[25] [26]
-Underfull \hbox (badness 10000) detected at line 1200
+[21]) (./binaaripuu_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+[22] [23] [24] [25] [26] [27]
+Underfull \hbox (badness 10000) detected at line 419
 [][][]
  []
 
-[27]
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 4.12 on input line 1279.
-
-
-Underfull \hbox (badness 10000) detected at line 1280
+[28]
+Underfull \hbox (badness 10000) detected at line 500
 [][][]
  []
 
-) (./linkitettylista_8c.tex [28] [29] [30]) (./linkitettylista_8h.tex [31]
-[32] [33]) (./paaohjelma_8c.tex [34] [35]) (./punamustapuu_8c.tex [36] [37]
-[38] [39] [40]) (./yleiset_8c.tex [41] [42]) (./yleiset_8h.tex [43] [44])
-[45] [46
+[29]
+Underfull \hbox (badness 10000) detected at line 631
+[][][]
+ []
+
+[30]
+Underfull \hbox (badness 10000) detected at line 675
+[][][]
+ []
+
+[31]
+Underfull \hbox (badness 10000) detected at line 724
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 763
+[][][]
+ []
+
+[32]
+Underfull \hbox (badness 10000) detected at line 831
+[][][]
+ []
+
+[33]
+Underfull \hbox (badness 10000) detected at line 892
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 929
+[][][]
+ []
+
+[34]
+Underfull \hbox (badness 10000) detected at line 968
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 1003
+[][][]
+ []
+
+[35]
+Underfull \hbox (badness 10000) detected at line 1064
+[][][]
+ []
+
+[36]
+Underfull \hbox (badness 10000) detected at line 1140
+[][][]
+ []
+
+[37]) (./haut_8c.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--7
+
+ []
+
+[38]
+Underfull \hbox (badness 10000) detected at line 46
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 95
+[][][]
+ []
+
+[39]
+Underfull \hbox (badness 10000) detected at line 173
+[][][]
+ []
+
+[40]
+Underfull \hbox (badness 10000) detected at line 230
+[][][]
+ []
+
+[41] [42]
+Underfull \hbox (badness 10000) detected at line 265
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 306
+[][][]
+ []
+
+) (./haut_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+[43] [44]
+Underfull \hbox (badness 10000) detected at line 62
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 111
+[][][]
+ []
+
+[45]
+Underfull \hbox (badness 10000) detected at line 189
+[][][]
+ []
+
+[46]
+Underfull \hbox (badness 10000) detected at line 246
+[][][]
+ []
+
+[47] [48]
+Underfull \hbox (badness 10000) detected at line 281
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 322
+[][][]
+ []
+
+) (./linkitettylista_8c.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--7
+
+ []
+
+[49]
+Underfull \hbox (badness 10000) detected at line 40
+[][][]
+ []
+
+[50]
+Underfull \hbox (badness 10000) detected at line 95
+[][][]
+ []
+
+[51]
+Underfull \hbox (badness 10000) detected at line 154
+[][][]
+ []
+
+[52]
+Underfull \hbox (badness 10000) detected at line 226
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 267
+[][][]
+ []
+
+[53]) (./linkitettylista_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+[54]
+Underfull \hbox (badness 10000) detected at line 56
+[][][]
+ []
+
+[55]
+Underfull \hbox (badness 10000) detected at line 111
+[][][]
+ []
+
+
+Overfull \vbox (13.98169pt too high) has occurred while \output is active []
+
+
+[56]
+Underfull \hbox (badness 10000) detected at line 170
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 242
+[][][]
+ []
+
+[57]
+Underfull \hbox (badness 10000) detected at line 283
+[][][]
+ []
+
+) (./paaohjelma_8c.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--9
+
+ []
+
+[58]
+Underfull \hbox (badness 10000) detected at line 27
+[][][]
+ []
+
+) (./punamustapuu_8c.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--7
+
+ []
+
+[59] [60] [61] [62] [63]) (./yleiset_8c.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--10
+
+ []
+
+[64]
+Underfull \hbox (badness 10000) detected at line 45
+[][][]
+ []
+
+[65]
+Underfull \hbox (badness 10000) detected at line 90
+[][][]
+ []
+
+
+Overfull \vbox (6.19275pt too high) has occurred while \output is active []
+
+
+[66]
+Underfull \hbox (badness 10000) detected at line 124
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 156
+[][][]
+ []
+
+[67] [68] [69]
+Underfull \hbox (badness 10000) detected at line 364
+[][][]
+ []
+
+) (./yleiset_8h.tex [70]
+Underfull \hbox (badness 10000) detected at line 56
+[][][]
+ []
+
+[71]
+Underfull \hbox (badness 10000) detected at line 101
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 135
+[][][]
+ []
+
+[72]
+Underfull \hbox (badness 10000) detected at line 167
+[][][]
+ []
+
+[73] [74]
+Underfull \hbox (badness 10000) detected at line 375
+[][][]
+ []
+
+) [75] [76
 
 ]
 No file refman.ind.
-
-Package longtable Warning: Table widths have changed. Rerun LaTeX.
-
 (./refman.aux)
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 953CF6BF9CA35E92ED80C81E3D0C4E42;21880.
+(rerunfilecheck)             Checksum: BBD3724376FB3D1A518E98C1745904CC;30922.
  ) 
 Here is how much of TeX's memory you used:
- 17781 strings out of 480247
- 289667 string characters out of 5896151
- 616948 words of memory out of 5000000
- 35081 multiletter control sequences out of 15000+600000
+ 18039 strings out of 480247
+ 294146 string characters out of 5896151
+ 628236 words of memory out of 5000000
+ 35203 multiletter control sequences out of 15000+600000
  526871 words of font info for 97 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 99i,14n,117p,571b,633s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{binaaripuu_8c_a46f9908c0ee584b5957b299590d445ed} 
-has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_ae36e90c4570ff61efae7b18bfddb8d13} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_a2a49ee5fed200eb26e411ea0316577b7} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_adf1f6dcb26fdbc7dd2ad11a7e7450a53} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_a1939c9494c418cf9a626bacade1695be} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_aeb3241991f8a34143f5f78dfe6cc0da8} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_af435b1beffb7d31d3280723bd6161022} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_a9a6ced04a914e8d1334d0497800af03d} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_a89f18fc11283e8b495c7576b8d21a5d2} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_ad8add727db4ff44aec050585137d977b} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_abc36f8e1374d272f964633afcb007b88} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_a09e0a17eb567cedd5c2d2c8b57f324db} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_a14d2e91051da74b27375b9cfb65c0b40} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_a4787647d52dc0138643b92f8aad2ebff} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_a33c2d3aa646be652e2f0423f76592d59} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_ac756329791d6dbcfd0b72ad464bdcf89} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_a1da0b4ddeeee811ecd74423851dedda7} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_a46fd4c50e32904be1c4ebe95c236ee37} ha
-s been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{binaaripuu_8c_a62bef642f877e08144bea2c2e3303d6c} ha
-s been referenced but does not exist, replaced by a fixed one
-
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
-/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr
-o8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8ac.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (52 pages, 222957 bytes).
+ 99i,16n,117p,575b,633s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/uc
+rro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8ac.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on refman.pdf (82 pages, 294054 bytes).
 PDF statistics:
- 1848 PDF objects out of 2073 (max. 8388607)
- 1756 compressed objects within 18 object streams
- 299 named destinations out of 1000 (max. 500000)
- 913 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2602 PDF objects out of 2984 (max. 8388607)
+ 2473 compressed objects within 25 object streams
+ 431 named destinations out of 1000 (max. 500000)
+ 1193 words of extra memory for PDF output out of 10000 (max. 10000000)
 

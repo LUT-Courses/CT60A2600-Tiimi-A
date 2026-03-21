@@ -1,18 +1,16 @@
-\hypertarget{paaohjelma_8c}{}\doxysection{src/paaohjelma.c File Reference}
-\label{paaohjelma_8c}\index{src/paaohjelma.c@{src/paaohjelma.c}}
+\hypertarget{paaohjelma_8c}{}\doxysection{/home/noora/c-\/projekti/\+CT60\+A2600-\/\+Tiimi-\/\+A/src/paaohjelma.c File Reference}
+\label{paaohjelma_8c}\index{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/paaohjelma.c@{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/paaohjelma.c}}
 {\ttfamily \#include \char`\"{}binaaripuu.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}linkitettylista.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}yleiset.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
-Include dependency graph for paaohjelma.\+c\+:
-% FIG 0
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{paaohjelma_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
-\begin{DoxyCompactList}\small\item\em 13.\+3. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Paaohjelma, pyorittaa koko ohjelmaa. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -24,111 +22,36 @@ int \mbox{\hyperlink{paaohjelma_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (vo
 
 
 
-13.\+3. 
+Paaohjelma, pyorittaa koko ohjelmaa. 
 
-\+: Main ei enää tee null checkkejä. Johtaa siihen, että kirjoitettavien tiedostojen nimet kysytään turhaan. Onko tämä kuitenkin selkeämpi?
+\begin{DoxyReturn}{Returns}
+int Palauttaa aina 0, kun ohjelma tulee päätökseen. 
+\end{DoxyReturn}
 
-Syvyyshaku siistittiin \mbox{\hyperlink{binaaripuu_8c}{binaaripuu.\+c}} sijaitsevalla helper-\/aliohjelmalla. 
 
-Definition at line 15 of file paaohjelma.\+c.
+Definition at line 13 of file paaohjelma.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{15                \{}
-\DoxyCodeLine{16     \textcolor{keywordtype}{char} aNimiLuettava[\mbox{\hyperlink{yleiset_8h_a05b49c662c073f89e86804f7856622a0}{LEN}}] = \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{17     \textcolor{keywordtype}{char} aNimiKirjoitettava[\mbox{\hyperlink{yleiset_8h_a05b49c662c073f89e86804f7856622a0}{LEN}}] = \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{18     \textcolor{keywordtype}{char} aHaettavaNimi[\mbox{\hyperlink{yleiset_8h_a05b49c662c073f89e86804f7856622a0}{LEN}}] = \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{19     \mbox{\hyperlink{structtiedot}{TIEDOT}} *pAlku = NULL;}
-\DoxyCodeLine{20     \mbox{\hyperlink{structpuu}{PUU}} *pJuuriSolmu = NULL;}
-\DoxyCodeLine{21     \mbox{\hyperlink{structRBSolmu}{RBSOLMU}} *pRBJuuri = NULL;}
-\DoxyCodeLine{22     \textcolor{keywordtype}{int} iValinta = 0;}
-\DoxyCodeLine{23     \textcolor{keywordtype}{int} iValinta2 = 0;}
-\DoxyCodeLine{24     \textcolor{keywordtype}{int} iArvo = 0;}
-\DoxyCodeLine{25 }
-\DoxyCodeLine{26     \textcolor{keywordflow}{do} \{}
-\DoxyCodeLine{27         iValinta = \mbox{\hyperlink{yleiset_8c_a22c615c1314062df5f9ca94047e58931}{valikko}}();}
-\DoxyCodeLine{28         \textcolor{keywordflow}{if} (iValinta == 1) \{}
-\DoxyCodeLine{29             \textcolor{comment}{// Lista:}}
-\DoxyCodeLine{30             \textcolor{keywordflow}{do} \{}
-\DoxyCodeLine{31                 iValinta2 = \mbox{\hyperlink{yleiset_8c_a119a4015313d4b3d73d544a48eecb359}{listaValikko}}();}
-\DoxyCodeLine{32                 \textcolor{keywordflow}{if} (iValinta2 == 1) \{}
-\DoxyCodeLine{33                     \mbox{\hyperlink{yleiset_8c_a7ab01e1b743720eda83f3ce483eba8e0}{kysyNimi}}(\textcolor{stringliteral}{"{}Anna luettavan tiedoston nimi: "{}}, aNimiLuettava);}
-\DoxyCodeLine{34                     pAlku = \mbox{\hyperlink{linkitettylista_8c_aa42c807692f4bf18089adfd76e991e30}{lue}}(aNimiLuettava, pAlku);}
-\DoxyCodeLine{35                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iValinta2 == 2) \{}
-\DoxyCodeLine{36                     \mbox{\hyperlink{yleiset_8c_a7ab01e1b743720eda83f3ce483eba8e0}{kysyNimi}}(\textcolor{stringliteral}{"{}Anna kirjoitettavan tiedoston nimi: "{}}, aNimiKirjoitettava);}
-\DoxyCodeLine{37                     \mbox{\hyperlink{linkitettylista_8c_aee85c7f9c4fb1d7efe5b379d8a7657c9}{kirjoitaTiedostoAlustaLoppuun}}(aNimiKirjoitettava, pAlku);}
-\DoxyCodeLine{38                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iValinta2 == 3) \{}
-\DoxyCodeLine{39                     \mbox{\hyperlink{yleiset_8c_a7ab01e1b743720eda83f3ce483eba8e0}{kysyNimi}}(\textcolor{stringliteral}{"{}Anna kirjoitettavan tiedoston nimi: "{}}, aNimiKirjoitettava);}
-\DoxyCodeLine{40                     \mbox{\hyperlink{linkitettylista_8c_aeb9cadb7733a12c123fc9d9c2ada15dc}{kirjoitaTiedostoLopustaAlkuun}}(aNimiKirjoitettava, pAlku);}
-\DoxyCodeLine{41                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iValinta2 == 4) \{}
-\DoxyCodeLine{42                     pAlku = \mbox{\hyperlink{linkitettylista_8c_a9210dc0304d77b8259ea5b8611371176}{vapautaMuisti}}(pAlku);}
-\DoxyCodeLine{43                     printf(\textcolor{stringliteral}{"{}Muisti vapautettu.\(\backslash\)n"{}});}
-\DoxyCodeLine{44                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iValinta2 == 0) \{}
-\DoxyCodeLine{45                     printf(\textcolor{stringliteral}{"{}Palataan takaisin päävalikkoon.\(\backslash\)n"{}});}
-\DoxyCodeLine{46                 \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{47                     printf(\textcolor{stringliteral}{"{}Tuntematon valinta, yritä uudestaan.\(\backslash\)n"{}});}
-\DoxyCodeLine{48                 \}}
-\DoxyCodeLine{49             \} \textcolor{keywordflow}{while} (iValinta2 != 0);}
-\DoxyCodeLine{50 }
-\DoxyCodeLine{51             \textcolor{comment}{/* Vapautetaan listan varaama muisti varmuuden vuoksi vielä täällä lopussa erikseen, jos }}
-\DoxyCodeLine{52 \textcolor{comment}{             * käyttäjä ei muista sitä tehdä. */}}
-\DoxyCodeLine{53             pAlku = \mbox{\hyperlink{linkitettylista_8c_a9210dc0304d77b8259ea5b8611371176}{vapautaMuisti}}(pAlku);}
-\DoxyCodeLine{54         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iValinta == 2) \{}
-\DoxyCodeLine{55             \textcolor{comment}{// Binääripuu}}
-\DoxyCodeLine{56             \textcolor{keywordflow}{do} \{}
-\DoxyCodeLine{57                 iValinta2 = \mbox{\hyperlink{yleiset_8c_a2fbf4b5e72b7fd9fabcd8b1ca0094f5b}{binaaripuuValikko}}();}
-\DoxyCodeLine{58                 \textcolor{keywordflow}{if} (iValinta2 == 1) \{}
-\DoxyCodeLine{59                     \mbox{\hyperlink{yleiset_8c_a7ab01e1b743720eda83f3ce483eba8e0}{kysyNimi}}(\textcolor{stringliteral}{"{}Tiedoston nimi: "{}}, aNimiLuettava);}
-\DoxyCodeLine{60                     pJuuriSolmu = \mbox{\hyperlink{binaaripuu_8c_adf1f6dcb26fdbc7dd2ad11a7e7450a53}{luoPuu}}(aNimiLuettava, pJuuriSolmu);}
-\DoxyCodeLine{61                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iValinta2 == 2) \{}
-\DoxyCodeLine{62                     \mbox{\hyperlink{yleiset_8c_a7ab01e1b743720eda83f3ce483eba8e0}{kysyNimi}}(\textcolor{stringliteral}{"{}Anna kirjoitettavan tiedoston nimi: "{}}, aNimiKirjoitettava);}
-\DoxyCodeLine{63                     \mbox{\hyperlink{binaaripuu_8c_a1da0b4ddeeee811ecd74423851dedda7}{kirjoitaBinaaripuu}}(aNimiKirjoitettava, pJuuriSolmu);}
-\DoxyCodeLine{64                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iValinta2 == 3) \{}
-\DoxyCodeLine{65                     iArvo = \mbox{\hyperlink{binaaripuu_8c_a2a49ee5fed200eb26e411ea0316577b7}{kysyArvo}}(\textcolor{stringliteral}{"{}Anna haettava numeroarvo: "{}}, iArvo);}
-\DoxyCodeLine{66                     \mbox{\hyperlink{yleiset_8c_a7ab01e1b743720eda83f3ce483eba8e0}{kysyNimi}}(\textcolor{stringliteral}{"{}Anna kirjoitettavan tiedoston nimi: "{}}, aNimiKirjoitettava);}
-\DoxyCodeLine{67                     \mbox{\hyperlink{binaaripuu_8c_ae36e90c4570ff61efae7b18bfddb8d13}{tarkistaLoytyykoSyvyyshaulla}}(aNimiKirjoitettava, pJuuriSolmu, iArvo);}
-\DoxyCodeLine{68                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iValinta2 == 4) \{}
-\DoxyCodeLine{69                     \mbox{\hyperlink{yleiset_8c_a7ab01e1b743720eda83f3ce483eba8e0}{kysyNimi}}(\textcolor{stringliteral}{"{}Anna haettava nimi: "{}}, aHaettavaNimi);}
-\DoxyCodeLine{70                     \mbox{\hyperlink{yleiset_8c_a7ab01e1b743720eda83f3ce483eba8e0}{kysyNimi}}(\textcolor{stringliteral}{"{}Anna kirjoitettavan tiedoston nimi: "{}}, aNimiKirjoitettava);}
-\DoxyCodeLine{71                     \mbox{\hyperlink{binaaripuu_8c_a46f9908c0ee584b5957b299590d445ed}{leveyshaku}}(aNimiKirjoitettava, pJuuriSolmu, aHaettavaNimi);}
-\DoxyCodeLine{72                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iValinta2 == 5) \{}
-\DoxyCodeLine{73                     pJuuriSolmu = \mbox{\hyperlink{binaaripuu_8c_a1939c9494c418cf9a626bacade1695be}{vapautaMuistiPuu}}(pJuuriSolmu);}
-\DoxyCodeLine{74                     printf(\textcolor{stringliteral}{"{}Muisti vapautettu.\(\backslash\)n"{}});}
-\DoxyCodeLine{75                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iValinta2 == 6) \{}
-\DoxyCodeLine{76                     \mbox{\hyperlink{yleiset_8c_a7ab01e1b743720eda83f3ce483eba8e0}{kysyNimi}}(\textcolor{stringliteral}{"{}Anna poistettava nimi: "{}}, aHaettavaNimi);}
-\DoxyCodeLine{77                     \mbox{\hyperlink{binaaripuu_8c_a2a49ee5fed200eb26e411ea0316577b7}{kysyArvo}}(\textcolor{stringliteral}{"{}Anna poistettavan nimen arvo: "{}}, iArvo);}
-\DoxyCodeLine{78                     pJuuriSolmu = \mbox{\hyperlink{binaaripuu_8c_af435b1beffb7d31d3280723bd6161022}{poistaSolmu}}(aHaettavaNimi, iArvo, pJuuriSolmu);}
-\DoxyCodeLine{79                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iValinta2 == 7) \{}
-\DoxyCodeLine{80                     \mbox{\hyperlink{yleiset_8c_a7ab01e1b743720eda83f3ce483eba8e0}{kysyNimi}}(\textcolor{stringliteral}{"{}Anna kirjoitettavan tiedoston nimi: "{}}, aNimiKirjoitettava);}
-\DoxyCodeLine{81                     iArvo = \mbox{\hyperlink{binaaripuu_8c_a2a49ee5fed200eb26e411ea0316577b7}{kysyArvo}}(\textcolor{stringliteral}{"{}Anna haettava numeroarvo: "{}}, iArvo);}
-\DoxyCodeLine{82                     \mbox{\hyperlink{binaaripuu_8c_a46fd4c50e32904be1c4ebe95c236ee37}{binaariHaku}}(aNimiKirjoitettava, pJuuriSolmu, iArvo);}
-\DoxyCodeLine{83                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iValinta2 == 8) \{}
-\DoxyCodeLine{84                     \textcolor{comment}{// Aino säätää ja testaa}}
-\DoxyCodeLine{85                     \mbox{\hyperlink{yleiset_8c_a7ab01e1b743720eda83f3ce483eba8e0}{kysyNimi}}(\textcolor{stringliteral}{"{}Anna luettavan tiedoston nimi: "{}}, aNimiLuettava);}
-\DoxyCodeLine{86                     \mbox{\hyperlink{yleiset_8c_a7ab01e1b743720eda83f3ce483eba8e0}{kysyNimi}}(\textcolor{stringliteral}{"{}Anna kirjoitettavan tiedoston nimi: "{}}, aNimiKirjoitettava);}
-\DoxyCodeLine{87                     pRBJuuri = \mbox{\hyperlink{binaaripuu_8h_a3ccac62ca46478538a67e4ce15968581}{luoRBPuu}}(pRBJuuri, aNimiLuettava);}
-\DoxyCodeLine{88                     \mbox{\hyperlink{binaaripuu_8h_a883833544b0f5d8952df9bc3297aba37}{kirjoitaRB}}(aNimiKirjoitettava, pRBJuuri);}
-\DoxyCodeLine{89                     pRBJuuri = \mbox{\hyperlink{binaaripuu_8h_a2161d4028ad314a2dd09e94e1b3512f7}{vapautaMuistiRB}}(pRBJuuri);}
-\DoxyCodeLine{90                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iValinta2 == 0) \{}
-\DoxyCodeLine{91                     printf(\textcolor{stringliteral}{"{}Palataan takaisin päävalikkoon.\(\backslash\)n"{}});}
-\DoxyCodeLine{92                 \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{93                     printf(\textcolor{stringliteral}{"{}Tuntematon valinta, yritä uudestaan.\(\backslash\)n"{}});}
-\DoxyCodeLine{94                 \}}
-\DoxyCodeLine{95             \} \textcolor{keywordflow}{while} (iValinta2 != 0);}
-\DoxyCodeLine{96 }
-\DoxyCodeLine{97             \textcolor{comment}{/* Vapautetaan puun varaama muisti varmuuden vuoksi vielä täällä lopussa erikseen, jos }}
-\DoxyCodeLine{98 \textcolor{comment}{             * käyttäjä ei muista sitä tehdä. */}}
-\DoxyCodeLine{99             pJuuriSolmu = \mbox{\hyperlink{binaaripuu_8c_a1939c9494c418cf9a626bacade1695be}{vapautaMuistiPuu}}(pJuuriSolmu);}
-\DoxyCodeLine{100         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iValinta == 0) \{}
-\DoxyCodeLine{101             printf(\textcolor{stringliteral}{"{}Lopetetaan.\(\backslash\)n"{}});}
-\DoxyCodeLine{102         \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{103             printf(\textcolor{stringliteral}{"{}Tuntematon valinta, yritä uudestaan.\(\backslash\)n"{}});}
-\DoxyCodeLine{104         \}}
-\DoxyCodeLine{105         printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
-\DoxyCodeLine{106     \} \textcolor{keywordflow}{while} (iValinta != 0);}
-\DoxyCodeLine{107 }
-\DoxyCodeLine{108     printf(\textcolor{stringliteral}{"{}Kiitos ohjelman käytöstä.\(\backslash\)n"{}});}
-\DoxyCodeLine{109     \textcolor{keywordflow}{return} (0);}
-\DoxyCodeLine{110 \}}
+\DoxyCodeLine{13                \{}
+\DoxyCodeLine{14     \textcolor{keywordtype}{int} iValinta = 0;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{17         iValinta = \mbox{\hyperlink{yleiset_8c_a22c615c1314062df5f9ca94047e58931}{valikko}}();}
+\DoxyCodeLine{18         \textcolor{keywordflow}{if} (iValinta == 1) \{}
+\DoxyCodeLine{19             \mbox{\hyperlink{yleiset_8c_aea13faff8065d4f8678d8eb733a2e37c}{mainLista}}();}
+\DoxyCodeLine{20         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iValinta == 2) \{}
+\DoxyCodeLine{21             \mbox{\hyperlink{yleiset_8c_ad4bd13e057c9b33075c7a854a4c45ea7}{mainBinaaripuu}}();}
+\DoxyCodeLine{22         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iValinta == 0) \{}
+\DoxyCodeLine{23             printf(\textcolor{stringliteral}{"{}Lopetetaan.\(\backslash\)n"{}});}
+\DoxyCodeLine{24         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{25             printf(\textcolor{stringliteral}{"{}Tuntematon valinta, yritä uudestaan.\(\backslash\)n"{}});}
+\DoxyCodeLine{26         \}}
+\DoxyCodeLine{27         printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{28     \} \textcolor{keywordflow}{while} (iValinta != 0);}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     printf(\textcolor{stringliteral}{"{}Kiitos ohjelman käytöstä.\(\backslash\)n"{}});}
+\DoxyCodeLine{31     \textcolor{keywordflow}{return} (0);}
+\DoxyCodeLine{32 \}}
 
 \end{DoxyCode}
