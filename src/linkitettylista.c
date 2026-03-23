@@ -190,3 +190,4 @@ void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku) {
     printf("Tiedosto %s kirjoitettu.\n", pNimi);
     return;
 }
+

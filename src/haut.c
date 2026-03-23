@@ -14,7 +14,6 @@
  * @param iArvo Arvo, jota etsitaan syvyyshaussa.
  * @return int Palauttaa arvon 0 tai 1, riippuen siita, loytyyko etsitty arvo.
  */
-
 int syvyyshaku(char *pNimi, PUU *pAlku, int iArvo) {
     // Syvyyshaku arvon mukaan, kirjoitetaan käydyt solmut tiedostoon.
     int iLoytyi = 0;
@@ -52,7 +51,6 @@ int syvyyshaku(char *pNimi, PUU *pAlku, int iArvo) {
  * @param iArvo Syvyyhaussa haettava numeroarvo.
  * @return void
  */
-
 void tarkistaLoytyykoSyvyyshaulla(char *aNimiKirjoitettava, PUU *pJuuriSolmu, int iArvo) {
     int iLoytyi = 0;
     iLoytyi = syvyyshaku(aNimiKirjoitettava, pJuuriSolmu, iArvo);
@@ -72,7 +70,6 @@ void tarkistaLoytyykoSyvyyshaulla(char *aNimiKirjoitettava, PUU *pJuuriSolmu, in
  * @param pHaku Osoitin haettavan nimen merkkijonoon.
  * @return void
  */
-
 void leveyshaku(char *pNimi, PUU *pJuuriSolmu, char *pHaku) {
     // Leveyshaku nimen mukaan, kirjoitetaan käydyt solmut tiedostoon.
     JONO *pAlku = varaaMuistiaJonolle(pJuuriSolmu);
@@ -128,7 +125,6 @@ void leveyshaku(char *pNimi, PUU *pJuuriSolmu, char *pHaku) {
  * @param pSolmu Osoitin kasiteltavaan puun solmuun.
  * @return pUusi Osoitin uuteen jonon alkioon.
  */
-
 JONO *varaaMuistiaJonolle(PUU *pSolmu) {
     JONO *pUusi = NULL;
 
@@ -152,7 +148,6 @@ JONO *varaaMuistiaJonolle(PUU *pSolmu) {
  * @param pAlku Osoitin jonon ensimmaiseen alkioon.
  * @return pAlku Palauttaa NULL, koska jono on tyhja.
  */
-
 JONO *vapautaMuistiJono(JONO *pAlku) {
     // Jonon muistin vapauttaminen.
     JONO *ptr = pAlku;
@@ -177,7 +172,6 @@ JONO *vapautaMuistiJono(JONO *pAlku) {
  * @param iArvo Haettava numeroarvo.
  * @return int Palauttaa joko 0 tai 1, riippuen siitä, loytyyko numeroarvo binaaripuusta.
  */
-
 int binaarihaku(char *pNimi, PUU *pJuuriSolmu, int iArvo) {
 
     if (pJuuriSolmu == NULL) {

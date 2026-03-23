@@ -36,7 +36,7 @@
 \indexentry{pEdellinen@{pEdellinen}!tiedot@{tiedot}|hyperpage}{9}
 \indexentry{tiedot@{tiedot}!pSeuraava@{pSeuraava}|hyperpage}{9}
 \indexentry{pSeuraava@{pSeuraava}!tiedot@{tiedot}|hyperpage}{9}
-\indexentry{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/binaaripuu.c@{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/binaaripuu.c}|hyperpage}{11}
+\indexentry{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/binaaripuu.c@{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/binaaripuu.c}|hyperpage}{11}
 \indexentry{binaaripuu.c@{binaaripuu.c}!kirjoitaBinaaripuu@{kirjoitaBinaaripuu}|hyperpage}{12}
 \indexentry{kirjoitaBinaaripuu@{kirjoitaBinaaripuu}!binaaripuu.c@{binaaripuu.c}|hyperpage}{12}
 \indexentry{binaaripuu.c@{binaaripuu.c}!kirjoitaTiedostoon@{kirjoitaTiedostoon}|hyperpage}{12}
@@ -67,7 +67,7 @@
 \indexentry{varaaMuistiaPuulle@{varaaMuistiaPuulle}!binaaripuu.c@{binaaripuu.c}|hyperpage}{20}
 \indexentry{binaaripuu.c@{binaaripuu.c}!vasenPuoli@{vasenPuoli}|hyperpage}{21}
 \indexentry{vasenPuoli@{vasenPuoli}!binaaripuu.c@{binaaripuu.c}|hyperpage}{21}
-\indexentry{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/binaaripuu.h@{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/binaaripuu.h}|hyperpage}{22}
+\indexentry{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/binaaripuu.h@{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/binaaripuu.h}|hyperpage}{22}
 \indexentry{binaaripuu.h@{binaaripuu.h}!PUU@{PUU}|hyperpage}{23}
 \indexentry{PUU@{PUU}!binaaripuu.h@{binaaripuu.h}|hyperpage}{23}
 \indexentry{binaaripuu.h@{binaaripuu.h}!RBSOLMU@{RBSOLMU}|hyperpage}{23}
@@ -120,7 +120,7 @@
 \indexentry{varaaMuistiaRB@{varaaMuistiaRB}!binaaripuu.h@{binaaripuu.h}|hyperpage}{37}
 \indexentry{binaaripuu.h@{binaaripuu.h}!vasenPuoli@{vasenPuoli}|hyperpage}{37}
 \indexentry{vasenPuoli@{vasenPuoli}!binaaripuu.h@{binaaripuu.h}|hyperpage}{37}
-\indexentry{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/haut.c@{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/haut.c}|hyperpage}{38}
+\indexentry{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/haut.c@{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/haut.c}|hyperpage}{38}
 \indexentry{haut.c@{haut.c}!binaarihaku@{binaarihaku}|hyperpage}{38}
 \indexentry{binaarihaku@{binaarihaku}!haut.c@{haut.c}|hyperpage}{38}
 \indexentry{haut.c@{haut.c}!leveyshaku@{leveyshaku}|hyperpage}{39}
@@ -133,7 +133,7 @@
 \indexentry{vapautaMuistiJono@{vapautaMuistiJono}!haut.c@{haut.c}|hyperpage}{41}
 \indexentry{haut.c@{haut.c}!varaaMuistiaJonolle@{varaaMuistiaJonolle}|hyperpage}{43}
 \indexentry{varaaMuistiaJonolle@{varaaMuistiaJonolle}!haut.c@{haut.c}|hyperpage}{43}
-\indexentry{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/haut.h@{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/haut.h}|hyperpage}{43}
+\indexentry{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/haut.h@{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/haut.h}|hyperpage}{44}
 \indexentry{haut.h@{haut.h}!JONO@{JONO}|hyperpage}{44}
 \indexentry{JONO@{JONO}!haut.h@{haut.h}|hyperpage}{44}
 \indexentry{haut.h@{haut.h}!binaarihaku@{binaarihaku}|hyperpage}{44}
@@ -148,7 +148,7 @@
 \indexentry{vapautaMuistiJono@{vapautaMuistiJono}!haut.h@{haut.h}|hyperpage}{47}
 \indexentry{haut.h@{haut.h}!varaaMuistiaJonolle@{varaaMuistiaJonolle}|hyperpage}{49}
 \indexentry{varaaMuistiaJonolle@{varaaMuistiaJonolle}!haut.h@{haut.h}|hyperpage}{49}
-\indexentry{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/linkitettylista.c@{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/linkitettylista.c}|hyperpage}{50}
+\indexentry{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/linkitettylista.c@{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/linkitettylista.c}|hyperpage}{50}
 \indexentry{linkitettylista.c@{linkitettylista.c}!kirjoitaTiedostoAlustaLoppuun@{kirjoitaTiedostoAlustaLoppuun}|hyperpage}{50}
 \indexentry{kirjoitaTiedostoAlustaLoppuun@{kirjoitaTiedostoAlustaLoppuun}!linkitettylista.c@{linkitettylista.c}|hyperpage}{50}
 \indexentry{linkitettylista.c@{linkitettylista.c}!kirjoitaTiedostoLopustaAlkuun@{kirjoitaTiedostoLopustaAlkuun}|hyperpage}{51}
@@ -159,7 +159,7 @@
 \indexentry{vapautaMuisti@{vapautaMuisti}!linkitettylista.c@{linkitettylista.c}|hyperpage}{53}
 \indexentry{linkitettylista.c@{linkitettylista.c}!varaaMuistia@{varaaMuistia}|hyperpage}{53}
 \indexentry{varaaMuistia@{varaaMuistia}!linkitettylista.c@{linkitettylista.c}|hyperpage}{53}
-\indexentry{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/linkitettylista.h@{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/linkitettylista.h}|hyperpage}{54}
+\indexentry{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/linkitettylista.h@{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/linkitettylista.h}|hyperpage}{54}
 \indexentry{linkitettylista.h@{linkitettylista.h}!TIEDOT@{TIEDOT}|hyperpage}{55}
 \indexentry{TIEDOT@{TIEDOT}!linkitettylista.h@{linkitettylista.h}|hyperpage}{55}
 \indexentry{linkitettylista.h@{linkitettylista.h}!kirjoitaTiedostoAlustaLoppuun@{kirjoitaTiedostoAlustaLoppuun}|hyperpage}{55}
@@ -172,10 +172,10 @@
 \indexentry{vapautaMuisti@{vapautaMuisti}!linkitettylista.h@{linkitettylista.h}|hyperpage}{57}
 \indexentry{linkitettylista.h@{linkitettylista.h}!varaaMuistia@{varaaMuistia}|hyperpage}{58}
 \indexentry{varaaMuistia@{varaaMuistia}!linkitettylista.h@{linkitettylista.h}|hyperpage}{58}
-\indexentry{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/paaohjelma.c@{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/paaohjelma.c}|hyperpage}{59}
+\indexentry{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/paaohjelma.c@{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/paaohjelma.c}|hyperpage}{59}
 \indexentry{paaohjelma.c@{paaohjelma.c}!main@{main}|hyperpage}{59}
 \indexentry{main@{main}!paaohjelma.c@{paaohjelma.c}|hyperpage}{59}
-\indexentry{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/punamustapuu.c@{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/punamustapuu.c}|hyperpage}{60}
+\indexentry{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/punamustapuu.c@{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/punamustapuu.c}|hyperpage}{60}
 \indexentry{punamustapuu.c@{punamustapuu.c}!kierraOikealle@{kierraOikealle}|hyperpage}{60}
 \indexentry{kierraOikealle@{kierraOikealle}!punamustapuu.c@{punamustapuu.c}|hyperpage}{60}
 \indexentry{punamustapuu.c@{punamustapuu.c}!kierraVasemmalle@{kierraVasemmalle}|hyperpage}{60}
@@ -194,7 +194,7 @@
 \indexentry{vapautaMuistiRB@{vapautaMuistiRB}!punamustapuu.c@{punamustapuu.c}|hyperpage}{64}
 \indexentry{punamustapuu.c@{punamustapuu.c}!varaaMuistiaRB@{varaaMuistiaRB}|hyperpage}{64}
 \indexentry{varaaMuistiaRB@{varaaMuistiaRB}!punamustapuu.c@{punamustapuu.c}|hyperpage}{64}
-\indexentry{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/yleiset.c@{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/yleiset.c}|hyperpage}{65}
+\indexentry{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/yleiset.c@{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/yleiset.c}|hyperpage}{65}
 \indexentry{yleiset.c@{yleiset.c}!binaaripuuValikko@{binaaripuuValikko}|hyperpage}{65}
 \indexentry{binaaripuuValikko@{binaaripuuValikko}!yleiset.c@{yleiset.c}|hyperpage}{65}
 \indexentry{yleiset.c@{yleiset.c}!kysyArvo@{kysyArvo}|hyperpage}{66}
@@ -209,7 +209,7 @@
 \indexentry{mainLista@{mainLista}!yleiset.c@{yleiset.c}|hyperpage}{68}
 \indexentry{yleiset.c@{yleiset.c}!valikko@{valikko}|hyperpage}{69}
 \indexentry{valikko@{valikko}!yleiset.c@{yleiset.c}|hyperpage}{69}
-\indexentry{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/yleiset.h@{/home/noora/c-\/projekti/CT60A2600-\/Tiimi-\/A/src/yleiset.h}|hyperpage}{70}
+\indexentry{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/yleiset.h@{/home/sofia\_toropainen/CT60A2600-\/Tiimi-\/A/src/yleiset.h}|hyperpage}{70}
 \indexentry{yleiset.h@{yleiset.h}!LEN@{LEN}|hyperpage}{70}
 \indexentry{LEN@{LEN}!yleiset.h@{yleiset.h}|hyperpage}{70}
 \indexentry{yleiset.h@{yleiset.h}!binaaripuuValikko@{binaaripuuValikko}|hyperpage}{71}

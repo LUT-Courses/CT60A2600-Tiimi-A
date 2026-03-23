@@ -45,6 +45,17 @@ void mainLista() {
         } else if (iValinta == 4) {
             pAlku = vapautaMuisti(pAlku);
             printf("Muisti vapautettu.\n");
+        } else if (iValinta == 5) {
+            
+
+        } else if (iValinta == 6) {
+
+
+        } else if (iValinta == 7) {
+
+
+        } else if (iValinta == 8) {
+
 
         } else if (iValinta == 0) {
             printf("Palataan takaisin päävalikkoon.\n");
@@ -186,6 +197,10 @@ int listaValikko(void) {
     printf("2) Kirjoita tiedosto alusta loppuun\n");
     printf("3) Kirjoita tiedosto lopusta alkuun\n");
     printf("4) Tyhjennä taulukko\n");
+    printf("5) Lajittele nousevasti\n");
+    printf("6) Lajittele laskevasti\n");
+    printf("7) Lisää tietoja listaan\n");
+    printf("8) Poista listalta tietoja\n");
     printf("0) Takaisin\n");
     printf("Anna valintasi: ");
     scanf("%d", &iValinta);

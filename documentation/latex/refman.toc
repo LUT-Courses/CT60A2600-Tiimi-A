@@ -34,7 +34,7 @@
 \contentsline {subsubsection}{\numberline {3.4.2.3}pEdellinen}{9}{subsubsection.3.4.2.3}%
 \contentsline {subsubsection}{\numberline {3.4.2.4}pSeuraava}{9}{subsubsection.3.4.2.4}%
 \contentsline {chapter}{\numberline {4}File Documentation}{11}{chapter.4}%
-\contentsline {section}{\numberline {4.1}/home/noora/c-\/projekti/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/binaaripuu.c File Reference}{11}{section.4.1}%
+\contentsline {section}{\numberline {4.1}/home/sofia\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}toropainen/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/binaaripuu.c File Reference}{11}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Function Documentation}{12}{subsection.4.1.1}%
 \contentsline {subsubsection}{\numberline {4.1.1.1}kirjoitaBinaaripuu()}{12}{subsubsection.4.1.1.1}%
 \contentsline {subsubsection}{\numberline {4.1.1.2}kirjoitaTiedostoon()}{12}{subsubsection.4.1.1.2}%
@@ -51,7 +51,7 @@
 \contentsline {subsubsection}{\numberline {4.1.1.13}vapautaMuistiPuu()}{20}{subsubsection.4.1.1.13}%
 \contentsline {subsubsection}{\numberline {4.1.1.14}varaaMuistiaPuulle()}{21}{subsubsection.4.1.1.14}%
 \contentsline {subsubsection}{\numberline {4.1.1.15}vasenPuoli()}{21}{subsubsection.4.1.1.15}%
-\contentsline {section}{\numberline {4.2}/home/noora/c-\/projekti/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/binaaripuu.h File Reference}{22}{section.4.2}%
+\contentsline {section}{\numberline {4.2}/home/sofia\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}toropainen/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/binaaripuu.h File Reference}{22}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Typedef Documentation}{23}{subsection.4.2.1}%
 \contentsline {subsubsection}{\numberline {4.2.1.1}PUU}{23}{subsubsection.4.2.1.1}%
 \contentsline {subsubsection}{\numberline {4.2.1.2}RBSOLMU}{23}{subsubsection.4.2.1.2}%
@@ -80,7 +80,7 @@
 \contentsline {subsubsection}{\numberline {4.2.2.22}varaaMuistiaPuulle()}{36}{subsubsection.4.2.2.22}%
 \contentsline {subsubsection}{\numberline {4.2.2.23}varaaMuistiaRB()}{37}{subsubsection.4.2.2.23}%
 \contentsline {subsubsection}{\numberline {4.2.2.24}vasenPuoli()}{37}{subsubsection.4.2.2.24}%
-\contentsline {section}{\numberline {4.3}/home/noora/c-\/projekti/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/haut.c File Reference}{38}{section.4.3}%
+\contentsline {section}{\numberline {4.3}/home/sofia\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}toropainen/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/haut.c File Reference}{38}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Function Documentation}{38}{subsection.4.3.1}%
 \contentsline {subsubsection}{\numberline {4.3.1.1}binaarihaku()}{38}{subsubsection.4.3.1.1}%
 \contentsline {subsubsection}{\numberline {4.3.1.2}leveyshaku()}{39}{subsubsection.4.3.1.2}%
@@ -88,7 +88,7 @@
 \contentsline {subsubsection}{\numberline {4.3.1.4}tarkistaLoytyykoSyvyyshaulla()}{41}{subsubsection.4.3.1.4}%
 \contentsline {subsubsection}{\numberline {4.3.1.5}vapautaMuistiJono()}{41}{subsubsection.4.3.1.5}%
 \contentsline {subsubsection}{\numberline {4.3.1.6}varaaMuistiaJonolle()}{43}{subsubsection.4.3.1.6}%
-\contentsline {section}{\numberline {4.4}/home/noora/c-\/projekti/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/haut.h File Reference}{43}{section.4.4}%
+\contentsline {section}{\numberline {4.4}/home/sofia\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}toropainen/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/haut.h File Reference}{44}{section.4.4}%
 \contentsline {subsection}{\numberline {4.4.1}Typedef Documentation}{44}{subsection.4.4.1}%
 \contentsline {subsubsection}{\numberline {4.4.1.1}JONO}{44}{subsubsection.4.4.1.1}%
 \contentsline {subsection}{\numberline {4.4.2}Function Documentation}{44}{subsection.4.4.2}%
@@ -98,14 +98,14 @@
 \contentsline {subsubsection}{\numberline {4.4.2.4}tarkistaLoytyykoSyvyyshaulla()}{47}{subsubsection.4.4.2.4}%
 \contentsline {subsubsection}{\numberline {4.4.2.5}vapautaMuistiJono()}{47}{subsubsection.4.4.2.5}%
 \contentsline {subsubsection}{\numberline {4.4.2.6}varaaMuistiaJonolle()}{49}{subsubsection.4.4.2.6}%
-\contentsline {section}{\numberline {4.5}/home/noora/c-\/projekti/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/linkitettylista.c File Reference}{50}{section.4.5}%
+\contentsline {section}{\numberline {4.5}/home/sofia\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}toropainen/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/linkitettylista.c File Reference}{50}{section.4.5}%
 \contentsline {subsection}{\numberline {4.5.1}Function Documentation}{50}{subsection.4.5.1}%
 \contentsline {subsubsection}{\numberline {4.5.1.1}kirjoitaTiedostoAlustaLoppuun()}{50}{subsubsection.4.5.1.1}%
 \contentsline {subsubsection}{\numberline {4.5.1.2}kirjoitaTiedostoLopustaAlkuun()}{51}{subsubsection.4.5.1.2}%
 \contentsline {subsubsection}{\numberline {4.5.1.3}lue()}{52}{subsubsection.4.5.1.3}%
 \contentsline {subsubsection}{\numberline {4.5.1.4}vapautaMuisti()}{53}{subsubsection.4.5.1.4}%
 \contentsline {subsubsection}{\numberline {4.5.1.5}varaaMuistia()}{53}{subsubsection.4.5.1.5}%
-\contentsline {section}{\numberline {4.6}/home/noora/c-\/projekti/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/linkitettylista.h File Reference}{54}{section.4.6}%
+\contentsline {section}{\numberline {4.6}/home/sofia\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}toropainen/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/linkitettylista.h File Reference}{54}{section.4.6}%
 \contentsline {subsection}{\numberline {4.6.1}Typedef Documentation}{55}{subsection.4.6.1}%
 \contentsline {subsubsection}{\numberline {4.6.1.1}TIEDOT}{55}{subsubsection.4.6.1.1}%
 \contentsline {subsection}{\numberline {4.6.2}Function Documentation}{55}{subsection.4.6.2}%
@@ -114,10 +114,10 @@
 \contentsline {subsubsection}{\numberline {4.6.2.3}lue()}{56}{subsubsection.4.6.2.3}%
 \contentsline {subsubsection}{\numberline {4.6.2.4}vapautaMuisti()}{57}{subsubsection.4.6.2.4}%
 \contentsline {subsubsection}{\numberline {4.6.2.5}varaaMuistia()}{58}{subsubsection.4.6.2.5}%
-\contentsline {section}{\numberline {4.7}/home/noora/c-\/projekti/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/paaohjelma.c File Reference}{59}{section.4.7}%
+\contentsline {section}{\numberline {4.7}/home/sofia\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}toropainen/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/paaohjelma.c File Reference}{59}{section.4.7}%
 \contentsline {subsection}{\numberline {4.7.1}Function Documentation}{59}{subsection.4.7.1}%
 \contentsline {subsubsection}{\numberline {4.7.1.1}main()}{59}{subsubsection.4.7.1.1}%
-\contentsline {section}{\numberline {4.8}/home/noora/c-\/projekti/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/punamustapuu.c File Reference}{60}{section.4.8}%
+\contentsline {section}{\numberline {4.8}/home/sofia\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}toropainen/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/punamustapuu.c File Reference}{60}{section.4.8}%
 \contentsline {subsection}{\numberline {4.8.1}Function Documentation}{60}{subsection.4.8.1}%
 \contentsline {subsubsection}{\numberline {4.8.1.1}kierraOikealle()}{60}{subsubsection.4.8.1.1}%
 \contentsline {subsubsection}{\numberline {4.8.1.2}kierraVasemmalle()}{61}{subsubsection.4.8.1.2}%
@@ -128,7 +128,7 @@
 \contentsline {subsubsection}{\numberline {4.8.1.7}luoRBPuu()}{63}{subsubsection.4.8.1.7}%
 \contentsline {subsubsection}{\numberline {4.8.1.8}vapautaMuistiRB()}{64}{subsubsection.4.8.1.8}%
 \contentsline {subsubsection}{\numberline {4.8.1.9}varaaMuistiaRB()}{64}{subsubsection.4.8.1.9}%
-\contentsline {section}{\numberline {4.9}/home/noora/c-\/projekti/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/yleiset.c File Reference}{65}{section.4.9}%
+\contentsline {section}{\numberline {4.9}/home/sofia\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}toropainen/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/yleiset.c File Reference}{65}{section.4.9}%
 \contentsline {subsection}{\numberline {4.9.1}Function Documentation}{65}{subsection.4.9.1}%
 \contentsline {subsubsection}{\numberline {4.9.1.1}binaaripuuValikko()}{65}{subsubsection.4.9.1.1}%
 \contentsline {subsubsection}{\numberline {4.9.1.2}kysyArvo()}{66}{subsubsection.4.9.1.2}%
@@ -137,7 +137,7 @@
 \contentsline {subsubsection}{\numberline {4.9.1.5}mainBinaaripuu()}{67}{subsubsection.4.9.1.5}%
 \contentsline {subsubsection}{\numberline {4.9.1.6}mainLista()}{69}{subsubsection.4.9.1.6}%
 \contentsline {subsubsection}{\numberline {4.9.1.7}valikko()}{69}{subsubsection.4.9.1.7}%
-\contentsline {section}{\numberline {4.10}/home/noora/c-\/projekti/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/yleiset.h File Reference}{70}{section.4.10}%
+\contentsline {section}{\numberline {4.10}/home/sofia\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}toropainen/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CT60\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A2600-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tiimi-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A/src/yleiset.h File Reference}{70}{section.4.10}%
 \contentsline {subsection}{\numberline {4.10.1}Macro Definition Documentation}{70}{subsection.4.10.1}%
 \contentsline {subsubsection}{\numberline {4.10.1.1}LEN}{70}{subsubsection.4.10.1.1}%
 \contentsline {subsection}{\numberline {4.10.2}Function Documentation}{71}{subsection.4.10.2}%
