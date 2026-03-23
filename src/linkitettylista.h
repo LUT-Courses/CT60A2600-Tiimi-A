@@ -15,5 +15,8 @@ TIEDOT *vapautaMuisti(TIEDOT *pAlku);
 void kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku);
 void kirjoitaTiedostoLopustaAlkuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku);
 TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo);
+TIEDOT *poistaListastaLkmPeruusteella(TIEDOT *pAlku, int iLKM);
+int useammallaAlkiollaSamaLKM(TIEDOT *pAlku, int iLKM);
+TIEDOT *poistaListastaNimenPerusteella(TIEDOT *pAlku, char *pNimi);
 
 #endif

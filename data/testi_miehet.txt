@@ -1,3 +1,4 @@
+Etunimi;Lukumäärä
 Antero;131502
 Kalevi;87082
 Ilmari;68555
@@ -6,6 +7,7 @@ Kristian;54451
 Matias;64817
 Petteri;73354
 Tapio;112447
+Heikki;62874
 Mikael;106442
 Johannes;130996
 Olavi;137393

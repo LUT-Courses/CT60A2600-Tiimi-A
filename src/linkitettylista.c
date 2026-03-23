@@ -253,3 +253,98 @@ TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
     }
     return (pAlku);
 }
+
+/**
+ * @brief Poistetaan linkitetystä listasta alkio lukumäärän perusteella.
+ * Käyttäjä on antanut lukumäärän. Alkio, jossa on tämä lukumääärä poistetaan.
+ * @param pAlku Osoitin linkitetyn listan alkuun.
+ * @param iLKM Käyttäjän antama lukumäärä. Alkio, jossa on tämä lukumäärä poistetaan. 
+ * @return TIEDOT* Palautetaan linkitettylista, josta on poistettu alkio. 
+ */
+TIEDOT *poistaListastaLkmPeruusteella(TIEDOT *pAlku, int iLKM) {
+    TIEDOT *ptr = pAlku;
+    TIEDOT *pEdellinen = NULL;
+
+    // Tarkistetaan, onko poistettava alkio ensimmäinen.
+    if ((ptr != NULL) && (ptr->iYhteensa == iLKM)) {
+        // Sijoitetaan osoitin osoittamaan seuraavaan alkioon.
+        pAlku = ptr->pSeuraava;
+        free(ptr);
+        printf("Alkio poistettu.\n");
+
+    // Jos poistettava alkio ei ole ensimmäinen. 
+    } else {
+        // Etsitään kohtaa, jossa poistettava alkio on. 
+        while(ptr != NULL) {
+            if (ptr->iYhteensa == iLKM) {
+                pEdellinen->pSeuraava = ptr->pSeuraava;
+                free(ptr);
+                printf("Alkio poistettu.\n");
+                break;
+            }
+            pEdellinen = ptr;
+            ptr = ptr->pSeuraava;
+        }
+    }
+
+    return (pAlku);
+}
+
+/**
+ * @brief Poistetaan linkitetystä listasta alkio nimen perusteella.
+ * Käyttäjä on antanut nimen. Alkio, jossa on tämä nimi poistetaan.
+ * @param pAlku Osoitin linkitetyn listan alkuun.
+ * @param pNimi Käyttäjän antama nimi. Alkio, jossa on tämä nimi poistetaan.
+ * @return TIEDOT* TIEDOT* Palautetaan linkitettylista, josta on poistettu alkio.
+ */
+TIEDOT *poistaListastaNimenPerusteella(TIEDOT *pAlku, char *pNimi) {
+    TIEDOT *ptr = pAlku;
+    TIEDOT *pEdellinen = NULL;
+
+    // Tarkistetaan, onko poistettava alkio ensimmäinen.
+    if ((ptr != NULL) && (strcmp(ptr->aSukunimi, pNimi) == 0)) {
+        // Sijoitetaan osoitin osoittamaan seuraavaan alkioon.
+        pAlku = ptr->pSeuraava;
+        free(ptr);
+        printf("Alkio poistettu.\n");
+
+    // Jos poistettava alkio ei ole ensimmäinen. 
+    } else {
+        // Etsitään kohtaa, jossa poistettava alkio on.
+        while(ptr != NULL) {
+            if (strcmp(ptr->aSukunimi, pNimi) == 0) {
+                pEdellinen->pSeuraava = ptr->pSeuraava;
+                free(ptr);
+                printf("Alkio poistettu.\n");
+                break;
+            }
+            pEdellinen = ptr;
+            ptr = ptr->pSeuraava;
+        }
+    }
+    return (pAlku);
+}
+
+/**
+ * @brief Etsii kaikki alkiot, joiden nimien lukumäärä on käyttäjän antama luku. 
+ * 
+ * @param pAlku Osoitin linkitetyn listan alkuun.
+ * @param iLKM Käytäjän antama lukumäärä, joiden määrä selvitetään. 
+ * @return int Palauttaa luvun, jossa on kaikki alkiot, joissa on käyttäjän antama luku.
+ */
+int useammallaAlkiollaSamaLKM(TIEDOT *pAlku, int iLKM) {
+    int iSamoja = 0;
+    TIEDOT *ptr = NULL;
+    ptr = pAlku;
+
+    // Käydään linkitettylista läpi
+    while(ptr != NULL) {
+        // Lisätään summaan yksi, jos linkitetyn listan alkion lukumäärä on sama kuin käyttäjän antama luku. 
+        if(ptr->iYhteensa == iLKM) {
+            iSamoja++;
+        }
+        ptr = ptr->pSeuraava;
+    }
+
+    return (iSamoja);
+}
