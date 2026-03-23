@@ -14,6 +14,6 @@ TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pSukunimi, int iMaara);
 TIEDOT *vapautaMuisti(TIEDOT *pAlku);
 void kirjoitaTiedostoAlustaLoppuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku);
 void kirjoitaTiedostoLopustaAlkuun(char *pKirjoitaTiedostoNimi, TIEDOT *pAlku);
-TIEDOT *lisaaTietoja(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo);
+TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo);
 
 #endif

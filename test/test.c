@@ -275,6 +275,74 @@ void test_VaraaMuistiaRBSolmulle() {
     TEST_ASSERT_EQUAL_INT(expectedArvo, pJuuriSolmuRB->iArvo); 
 }
 
+// Testataan, onnistuuko tietojen lisaaminen tyhjaan listaan (lisataan automaattisesti alkuun, indeksista valittamatta).
+void test_lisaaListaan_tyhja() {
+    char expectedNimi[] = "Kosonen";
+    int expectedArvo = 500;
+    int iIndeksi = 20;
+
+    pAlku = lisaaListaan(pAlku, iIndeksi, expectedNimi, expectedArvo);
+    TEST_ASSERT_NULL(pAlku->pSeuraava);
+    TEST_ASSERT_NULL(pAlku->pEdellinen);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo, pAlku->iYhteensa);
+}
+
+// Testataan, onnistuuko listan alkuun lisaaminen.
+void test_lisaaListaan_alkuun() {
+    char expectedNimi1[] = "Kosonen";
+    int expectedArvo1 = 500;
+    int iIndeksi1 = 0;
+
+    pAlku = lisaaListaan(pAlku, iIndeksi1, expectedNimi1, expectedArvo1);
+
+    char expectedNimi2[] = "Karjalainen";
+    int expectedArvo2 = 300;
+    int iIndeksi2 = 1;
+
+    pAlku = lisaaListaan(pAlku, iIndeksi2, expectedNimi2, expectedArvo2);
+
+    char expectedNimi3[] = "Suomalainen";
+    int expectedArvo3 = 200;
+    int iIndeksi3 = 0;
+
+    pAlku = lisaaListaan(pAlku, iIndeksi3, expectedNimi3, expectedArvo3);
+
+    TEST_ASSERT_NULL(pAlku->pEdellinen);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo3, pAlku->iYhteensa);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->aSukunimi);
+}
+
+// Testataan indeksin mukaan lisaaminen.
+void test_lisaaListaan_indeksilla() {
+    char expectedNimi1[] = "Kosonen";
+    int expectedArvo1 = 500;
+    int iIndeksi1 = 0;
+
+    pAlku = lisaaListaan(pAlku, iIndeksi1, expectedNimi1, expectedArvo1);
+
+    char expectedNimi2[] = "Karjalainen";
+    int expectedArvo2 = 300;
+    int iIndeksi2 = 1;
+
+    pAlku = lisaaListaan(pAlku, iIndeksi2, expectedNimi2, expectedArvo2);
+
+    char expectedNimi3[] = "Suomalainen";
+    int expectedArvo3 = 200;
+    int iIndeksi3 = 1;
+
+    pAlku = lisaaListaan(pAlku, iIndeksi3, expectedNimi3, expectedArvo3);
+
+    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo3, pAlku->pSeuraava->iYhteensa);
+
+    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->pSeuraava->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo2, pAlku->pSeuraava->pSeuraava->iYhteensa);
+
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->aSukunimi);
+}
+
 int main(void) {
     UNITY_BEGIN();
     // Tiedot struct testit
@@ -301,5 +369,9 @@ int main(void) {
     // RBSolmu structin testit
     RUN_TEST(test_VaraaMuistiaRBSolmulle);
 
+    // Listaan lisaamiseen liittyvat testit.
+    RUN_TEST(test_lisaaListaan_tyhja);
+    RUN_TEST(test_lisaaListaan_alkuun);
+    RUN_TEST(test_lisaaListaan_indeksilla);
     return UNITY_END();
 }

@@ -204,7 +204,7 @@ void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku) {
  * @param iArvo Lisattavan nimen lukumaara.
  * @return pAlku Osoitin listan nykyiseen alkuun.
  */
-TIEDOT *lisaaTietoja(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
+TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
     TIEDOT *pUusi = NULL;
     TIEDOT *ptr = pAlku;
     int i = 0;

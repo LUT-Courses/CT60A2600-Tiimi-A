@@ -58,7 +58,7 @@ void mainLista() {
             iIndeksi = kysyArvo("Mihin kohtaan listaa haluat lisätä tietoja (indeksi): ", iIndeksi);
             kysyNimi("Anna lisättävä nimi: ", aNimiKirjoitettava);
             iArvo = kysyArvo("Anna tämän nimisten lukumäärä: ", iArvo);
-            pAlku = lisaaTietoja(pAlku, iIndeksi, aNimiKirjoitettava, iArvo);
+            pAlku = lisaaListaan(pAlku, iIndeksi, aNimiKirjoitettava, iArvo);
 
         } else if (iValinta == 8) {
             // Poistaminen listalta
