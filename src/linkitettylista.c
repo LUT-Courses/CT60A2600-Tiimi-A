@@ -191,3 +191,65 @@ void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku) {
     return;
 }
 
+/**
+ * @brief Lisää linkitettyyn listaan kayttajan syottamat tiedot.
+ * 
+ * Lisaa kayttajan haluamaan kohtaan (indeksi) tiedot lisattavasta nimesta ja niiden lukumaarasta.
+ * 
+ * @param pAlku Osoitin linkitetyn listan alkuun.
+ * @param iIndeksi Kayttajan antama indeksi, eli kohta, johon tietue lisataan linkitetyssa listassa.
+ * Jos lista on tyhja, lisataan automaattisesti ensimmaiseksi elementiksi.
+ * Jos indeksi on suurempi kuin listan elementtien maara, lisataan automaattisesti viimeiseksi.
+ * @param pNimi Lisattava nimi.
+ * @param iArvo Lisattavan nimen lukumaara.
+ * @return pAlku Osoitin listan nykyiseen alkuun.
+ */
+TIEDOT *lisaaTietoja(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
+    TIEDOT *pUusi = NULL;
+    TIEDOT *ptr = pAlku;
+    int i = 0;
+
+    // Varataan muistia uudelle linkitetyn listan solmulle.
+    if ((pUusi = (TIEDOT *)malloc(sizeof(TIEDOT))) == NULL) {
+        perror("Muistin varaus epäonnistui, lopetetaan");
+        exit (0);
+    }
+
+    // Lisataan tiedot tietueeseen.
+    strcpy(pUusi->aSukunimi, pNimi);
+    pUusi->iYhteensa = iArvo;
+
+    // Jos lista on tyhja, lisataan uusi solmu ensimmaiseksi.
+    if (pAlku == NULL) {
+        pUusi->pEdellinen = NULL;
+        pUusi->pSeuraava = NULL;
+        pAlku = pUusi;
+        return (pAlku);
+    } else {
+        // Jos lisataan listan alkuun, eli indeksi = 0.
+        if (iIndeksi == 0) {
+            pUusi->pEdellinen = NULL;
+            pUusi->pSeuraava = pAlku;
+            pAlku->pEdellinen = pUusi;
+            pAlku = pUusi;
+            return (pAlku);
+        }
+
+        // Etsitaan listalta oikea kohta, johon tiedot lisataan.
+        while (ptr->pSeuraava != NULL && i < (iIndeksi - 1)) {
+            ptr = ptr->pSeuraava;
+            i++;
+        }
+        // Lisataan tiedot oikeaan kohtaan linkitettya listaa.
+        // Paivitetaan osoittimet osoittamaan oikeisiin kohtiin.
+        pUusi->pSeuraava = ptr->pSeuraava;
+        pUusi->pEdellinen = ptr;
+
+        if (ptr->pSeuraava != NULL) {
+            ptr->pSeuraava->pEdellinen = pUusi;
+        }
+
+        ptr->pSeuraava = pUusi;
+    }
+    return (pAlku);
+}

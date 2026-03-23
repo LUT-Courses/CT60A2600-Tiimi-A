@@ -17,6 +17,8 @@
 void mainLista() {
     char aNimiLuettava[LEN] = "";
     char aNimiKirjoitettava[LEN] = "";
+    int iArvo = 0;
+    int iIndeksi = 0; 
     int iValinta = 0;
     TIEDOT *pAlku = NULL;
 
@@ -45,17 +47,21 @@ void mainLista() {
         } else if (iValinta == 4) {
             pAlku = vapautaMuisti(pAlku);
             printf("Muisti vapautettu.\n");
+
         } else if (iValinta == 5) {
-            
+            // Nouseva lajittelu
 
         } else if (iValinta == 6) {
-
+            // Laskeva lajittelu
 
         } else if (iValinta == 7) {
-
+            iIndeksi = kysyArvo("Mihin kohtaan listaa haluat lisätä tietoja (indeksi): ", iIndeksi);
+            kysyNimi("Anna lisättävä nimi: ", aNimiKirjoitettava);
+            iArvo = kysyArvo("Anna tämän nimisten lukumäärä: ", iArvo);
+            pAlku = lisaaTietoja(pAlku, iIndeksi, aNimiKirjoitettava, iArvo);
 
         } else if (iValinta == 8) {
-
+            // Poistaminen listalta
 
         } else if (iValinta == 0) {
             printf("Palataan takaisin päävalikkoon.\n");
