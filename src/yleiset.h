@@ -3,8 +3,8 @@
 
 #define LEN 50
 
-void mainLista();
-void mainBinaaripuu();
+void mainLista(void);
+void mainBinaaripuu(void);
 int valikko(void);
 int listaValikko(void);
 int binaaripuuValikko(void);

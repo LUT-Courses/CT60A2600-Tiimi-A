@@ -7,10 +7,10 @@
 
 /**
  * @brief Lukee tiedoston.
- * 
+ *
  * Avaa ja lukee kayttajan syotteen mukaisen tiedoston.
  * Kutsuu muistinvaraus aliohjelmaa muistin varaamiseksi.
- * 
+ *
  * @param pNimi Luettavan tiedoston nimi.
  * @param pAlku Osoitin linkitetyn listan alkuun.
  * @return pAlku Uusi osoitin linkitetyn listan alkuun.
@@ -64,7 +64,7 @@ TIEDOT *lue(char *pNimi, TIEDOT *pAlku) {
 
 /**
  * @brief Varaa muistin ja lisää uuden solmun kaksisuuntaisen linkitetyn listan.
- * 
+ *
  * @param pAlku Osoitin linkitetyn listan alkuun.
  * @param pNimi Merkkijono solmun nimeksi.
  * @param iMaara Luku, joka asetetaan solmuun maaraksi.
@@ -103,7 +103,7 @@ TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pNimi, int iMaara) {
 
 /**
  * @brief Vapauttaa linkitetyn listan varaaman muistin.
- * 
+ *
  * @param pAlku Osoitin linkitetyn listan alkuun.
  * @return pAlku Osoitin, joka on NULL, koska lista on tyhja.
  */
@@ -121,7 +121,7 @@ TIEDOT *vapautaMuisti(TIEDOT *pAlku) {
 
 /**
  * @brief Kirjoittaa linkitetyn listan tiedostoon alusta loppuun.
- * 
+ *
  * @param pNimi Kirjoitettavan tiedoston nimi.
  * @param pAlku Osoitin linkitetyn listan alkuun.
  * @return void
@@ -156,7 +156,7 @@ void kirjoitaTiedostoAlustaLoppuun(char *pNimi, TIEDOT *pAlku) {
 
 /**
  * @brief Kirjoittaa linkitetyn listan tiedostoon lopusta alkuun.
- * 
+ *
  * @param pNimi Kirjoitettavan tiedoston nimi.
  * @param pAlku Osoitin linkitetyn listan alkuun.
  * @return void
@@ -193,9 +193,9 @@ void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku) {
 
 /**
  * @brief Lisää linkitettyyn listaan kayttajan syottamat tiedot.
- * 
+ *
  * Lisaa kayttajan haluamaan kohtaan (indeksi) tiedot lisattavasta nimesta ja niiden lukumaarasta.
- * 
+ *
  * @param pAlku Osoitin linkitetyn listan alkuun.
  * @param iIndeksi Kayttajan antama indeksi, eli kohta, johon tietue lisataan linkitetyssa listassa.
  * Jos lista on tyhja, lisataan automaattisesti ensimmaiseksi elementiksi.
@@ -212,7 +212,7 @@ TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
     // Varataan muistia uudelle linkitetyn listan solmulle.
     if ((pUusi = (TIEDOT *)malloc(sizeof(TIEDOT))) == NULL) {
         perror("Muistin varaus epäonnistui, lopetetaan");
-        exit (0);
+        exit(0);
     }
 
     // Lisataan tiedot tietueeseen.
@@ -258,8 +258,8 @@ TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
  * @brief Poistetaan linkitetystä listasta alkio lukumäärän perusteella.
  * Käyttäjä on antanut lukumäärän. Alkio, jossa on tämä lukumääärä poistetaan.
  * @param pAlku Osoitin linkitetyn listan alkuun.
- * @param iLKM Käyttäjän antama lukumäärä. Alkio, jossa on tämä lukumäärä poistetaan. 
- * @return TIEDOT* Palautetaan linkitettylista, josta on poistettu alkio. 
+ * @param iLKM Käyttäjän antama lukumäärä. Alkio, jossa on tämä lukumäärä poistetaan.
+ * @return TIEDOT* Palautetaan linkitettylista, josta on poistettu alkio.
  */
 TIEDOT *poistaListastaLkmPeruusteella(TIEDOT *pAlku, int iLKM) {
     TIEDOT *ptr = pAlku;
@@ -272,10 +272,10 @@ TIEDOT *poistaListastaLkmPeruusteella(TIEDOT *pAlku, int iLKM) {
         free(ptr);
         printf("Alkio poistettu.\n");
 
-    // Jos poistettava alkio ei ole ensimmäinen. 
+        // Jos poistettava alkio ei ole ensimmäinen.
     } else {
-        // Etsitään kohtaa, jossa poistettava alkio on. 
-        while(ptr != NULL) {
+        // Etsitään kohtaa, jossa poistettava alkio on.
+        while (ptr != NULL) {
             if (ptr->iYhteensa == iLKM) {
                 pEdellinen->pSeuraava = ptr->pSeuraava;
                 free(ptr);
@@ -308,10 +308,10 @@ TIEDOT *poistaListastaNimenPerusteella(TIEDOT *pAlku, char *pNimi) {
         free(ptr);
         printf("Alkio poistettu.\n");
 
-    // Jos poistettava alkio ei ole ensimmäinen. 
+        // Jos poistettava alkio ei ole ensimmäinen.
     } else {
         // Etsitään kohtaa, jossa poistettava alkio on.
-        while(ptr != NULL) {
+        while (ptr != NULL) {
             if (strcmp(ptr->aSukunimi, pNimi) == 0) {
                 pEdellinen->pSeuraava = ptr->pSeuraava;
                 free(ptr);
@@ -326,10 +326,10 @@ TIEDOT *poistaListastaNimenPerusteella(TIEDOT *pAlku, char *pNimi) {
 }
 
 /**
- * @brief Etsii kaikki alkiot, joiden nimien lukumäärä on käyttäjän antama luku. 
- * 
+ * @brief Etsii kaikki alkiot, joiden nimien lukumäärä on käyttäjän antama luku.
+ *
  * @param pAlku Osoitin linkitetyn listan alkuun.
- * @param iLKM Käytäjän antama lukumäärä, joiden määrä selvitetään. 
+ * @param iLKM Käytäjän antama lukumäärä, joiden määrä selvitetään.
  * @return int Palauttaa luvun, jossa on kaikki alkiot, joissa on käyttäjän antama luku.
  */
 int useammallaAlkiollaSamaLKM(TIEDOT *pAlku, int iLKM) {
@@ -338,13 +338,181 @@ int useammallaAlkiollaSamaLKM(TIEDOT *pAlku, int iLKM) {
     ptr = pAlku;
 
     // Käydään linkitettylista läpi
-    while(ptr != NULL) {
-        // Lisätään summaan yksi, jos linkitetyn listan alkion lukumäärä on sama kuin käyttäjän antama luku. 
-        if(ptr->iYhteensa == iLKM) {
+    while (ptr != NULL) {
+        // Lisätään summaan yksi, jos linkitetyn listan alkion lukumäärä on sama kuin käyttäjän
+        // antama luku.
+        if (ptr->iYhteensa == iLKM) {
             iSamoja++;
         }
         ptr = ptr->pSeuraava;
     }
 
     return (iSamoja);
+}
+
+/* L11 / Lomituslajittelu (merge sort)
+ */
+
+/**
+ * @brief Laskee linkitetyn listan pituuden.
+ *
+ * @param pAlku Osoitin linkitetyn listan alkuun.
+ * @return int Linkitetyn listan alkioiden lukumäärä.
+ */
+int laskeListanPituus(TIEDOT *pAlku) {
+    int i = 0;
+    while (pAlku != NULL) {
+        i++;
+        pAlku = pAlku->pSeuraava;
+    }
+    return i;
+}
+
+/**
+ * @brief Halkaisee linkitetyn listan kahteen puoliskoon.
+ *
+ * @param pAlku Osoitin linkitetyn listan alkuun.
+ * @return TIEDOT* Osoitin listan jälkimmäisen puoliskon alkuun.
+ */
+TIEDOT *halkaise(TIEDOT *pAlku) {
+    TIEDOT *p1 = NULL, *p2 = NULL;
+    int i;
+    int iPituus = 0;
+    int iKeskikohta = 0;
+
+    iPituus = laskeListanPituus(pAlku);
+    iKeskikohta = iPituus / 2 - 1;
+
+    p1 = pAlku;
+    for (i = 0; i < iKeskikohta; i++) {
+        p1 = p1->pSeuraava;
+    }
+
+    // Halkaistaan lista kahtia, p1 päättyy siihen mistä p2 alkaa
+    p2 = p1->pSeuraava;
+    p1->pSeuraava = NULL;
+    if (p2 != NULL) {
+        p2->pEdellinen = NULL;
+    }
+
+    // palautetaan osoitin toisen listan alkuun
+    return p2;
+}
+
+/**
+ * @brief Lomittaa (merge) kaksi lajiteltua listaa yhdeksi.
+ *
+ * @param p1 Osoitin ensimmäisen lajitellun listan alkuun.
+ * @param p2 Osoitin jälkimmäisen lajitellun listan alkuun.
+ * @return TIEDOT* yhdistetty lajiteltu lista.
+ */
+TIEDOT *lomitus(TIEDOT *p1, TIEDOT *p2) {
+    // Jos kumpikaan lista on tyhjä, palautetaan toinen.
+    if (p1 == NULL)
+        return p2;
+    if (p2 == NULL)
+        return p1;
+
+    TIEDOT *p3 = NULL;      // Uuden listan alku.
+    TIEDOT *p3Loppu = NULL; // Uuden lista loppu, jotta loppuun lisääminen onnistuu helposti.
+
+    // Käydään molempia listoja läpi:
+    while (p1 != NULL && p2 != NULL) {
+        if (p1->iYhteensa > p2->iYhteensa) {
+            TIEDOT *ptr = p2; // p2[0] talteen
+            // Poistetaan p2[0] listasta.
+            p2 = p2->pSeuraava;
+            if (p2 != NULL) {
+                p2->pEdellinen = NULL;
+            }
+            // Lisätään p2[0] uuden listan loppuun.
+            ptr->pSeuraava = NULL;
+            ptr->pEdellinen = p3Loppu;
+            if (p3Loppu != NULL) {
+                p3Loppu->pSeuraava = ptr;
+            } else {
+                p3 = ptr; // ensimmäinen alkio, jos lista tyhjä
+            }
+            p3Loppu = ptr; // päivitetään loppu.
+        } else {
+            TIEDOT *ptr = p1; // p1[0] talteen
+            p1 = p1->pSeuraava;
+            // Poistetaan p1[0] listasta.
+            if (p1 != NULL) {
+                p1->pEdellinen = NULL;
+            }
+            // Lisätään p1[0] uuden listan loppuun.
+            ptr->pSeuraava = NULL;
+            ptr->pEdellinen = p3Loppu;
+            if (p3Loppu != NULL) {
+                p3Loppu->pSeuraava = ptr;
+            } else {
+                p3 = ptr; // ensimmäinen alkio, jos lista tyhjä
+            }
+            p3Loppu = ptr; // päivitetään loppu.
+        }
+    }
+
+    // Tässä kohtaa joko p1 tai p2 on tyhjä.
+
+    // Lisätään loput p1:stä uuden listan loppuun.
+    while (p1 != NULL) {
+        TIEDOT *ptr = p1;
+        p1 = p1->pSeuraava;
+        if (p1 != NULL) {
+            p1->pEdellinen = NULL;
+        }
+        ptr->pSeuraava = NULL;
+        ptr->pEdellinen = p3Loppu;
+        if (p3Loppu != NULL) {
+            p3Loppu->pSeuraava = ptr;
+        } else {
+            p3 = ptr;
+        }
+        p3Loppu = ptr;
+    }
+
+    // Lisätään loput p2:stä uuden listan loppuun.
+    while (p2 != NULL) {
+        TIEDOT *ptr = p2;
+        p2 = p2->pSeuraava;
+        if (p2 != NULL) {
+            p2->pEdellinen = NULL;
+        }
+        ptr->pSeuraava = NULL;
+        ptr->pEdellinen = p3Loppu;
+        if (p3Loppu != NULL) {
+            p3Loppu->pSeuraava = ptr;
+        } else {
+            p3 = ptr;
+        }
+        p3Loppu = ptr;
+    }
+    return p3;
+}
+
+/**
+ * @brief Lajittelee listan rekursiivisella lomituslajittelulla.
+ *
+ * @param pAlku Osoitin lajiteltavan linkitetyn listan alkuun.
+ * @return TIEDOT* Lajiteltu lista.
+ */
+TIEDOT *lomitusLajittelu(TIEDOT *pAlku) {
+    TIEDOT *p1 = NULL, *p2 = NULL;
+
+    // Jos lista on tyhjä tai sisältää vain yhden alkion
+    if (pAlku == NULL || pAlku->pSeuraava == NULL) {
+        return pAlku;
+    }
+
+    // Jaetaan lista kahtia
+    p2 = halkaise(pAlku);
+    p1 = pAlku;
+
+    // Lajitellaan molemmat puolikkaat
+    p1 = lomitusLajittelu(p1);
+    p2 = lomitusLajittelu(p2);
+
+    // Yhdistetään lajitellut puolikkaat
+    return lomitus(p1, p2);
 }
