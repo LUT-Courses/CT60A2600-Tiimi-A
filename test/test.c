@@ -231,7 +231,7 @@ void test_nimenArvo() {
     pJuuriSolmu = varaaMuistiaPuulle(expectedNimi1, expectedArvo1);
 
     TEST_ASSERT_EQUAL(500, nimenArvo("Kosonen", pJuuriSolmu));
-    TEST_ASSERT_EQUAL(-1, nimenArvo("Karjalainen", pJuuriSolmu));
+    TEST_ASSERT_EQUAL(0, nimenArvo("Karjalainen", pJuuriSolmu));
 }
 
 // Testataan, poistuuko solmu nimellä.
@@ -343,6 +343,63 @@ void test_lisaaListaan_indeksilla() {
     TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->aSukunimi);
 }
 
+// Testataan, onnistuuko alkioiden maaran laskeminen.
+void test_useammalleAlkiolleSamaLKM() {
+    char expectedNimi1[] = "Kosonen";
+    int expectedArvo1 = 500;
+    int iIndeksi1 = 0;
+    pAlku = lisaaListaan(pAlku, iIndeksi1, expectedNimi1, expectedArvo1);
+
+    char expectedNimi2[] = "Karjalainen";
+    int expectedArvo2 = 500;
+    int iIndeksi2 = 1;
+    pAlku = lisaaListaan(pAlku, iIndeksi2, expectedNimi2, expectedArvo2);
+
+    int iLKMSama = useammallaAlkiollaSamaLKM(pAlku, 500);
+    
+    TEST_ASSERT_EQUAL_INT(2, iLKMSama);
+}
+
+// Testataan, onnistuuko poistaminen lukumaaran perusteella.
+void test_poistaListaLkmPerusteella() {
+    char expectedNimi1[] = "Kosonen";
+    int expectedArvo1 = 500;
+    int iIndeksi1 = 0;
+    pAlku = lisaaListaan(pAlku, iIndeksi1, expectedNimi1, expectedArvo1);
+
+    char expectedNimi2[] = "Karjalainen";
+    int expectedArvo2 = 300;
+    int iIndeksi2 = 1;
+    pAlku = lisaaListaan(pAlku, iIndeksi2, expectedNimi2, expectedArvo2);
+
+    TEST_ASSERT_EQUAL_INT(expectedArvo2, pAlku->pSeuraava->iYhteensa);
+
+    pAlku = poistaListastaLkmPeruusteella(pAlku, 300);
+
+    TEST_ASSERT_NULL(pAlku->pSeuraava);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->aSukunimi);
+}
+
+// Testataan, onnistuuko poistaminen nimen perusteella.
+void test_poistaListaNimenPerusteella() {
+    char expectedNimi1[] = "Kosonen";
+    int expectedArvo1 = 500;
+    int iIndeksi1 = 0;
+    pAlku = lisaaListaan(pAlku, iIndeksi1, expectedNimi1, expectedArvo1);
+
+    char expectedNimi2[] = "Karjalainen";
+    int expectedArvo2 = 300;
+    int iIndeksi2 = 1;
+    pAlku = lisaaListaan(pAlku, iIndeksi2, expectedNimi2, expectedArvo2);
+
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->aSukunimi);
+
+    pAlku = poistaListastaNimenPerusteella(pAlku, "Kosonen");
+
+    TEST_ASSERT_NULL(pAlku->pSeuraava);
+    TEST_ASSERT_EQUAL_STRING("Karjalainen", pAlku->aSukunimi);
+}
+
 int main(void) {
     UNITY_BEGIN();
     // Tiedot struct testit
@@ -373,5 +430,10 @@ int main(void) {
     RUN_TEST(test_lisaaListaan_tyhja);
     RUN_TEST(test_lisaaListaan_alkuun);
     RUN_TEST(test_lisaaListaan_indeksilla);
+
+    // Listasta poistamiseen liittyvat testit.
+    RUN_TEST(test_useammalleAlkiolleSamaLKM);
+    RUN_TEST(test_poistaListaLkmPerusteella);
+    RUN_TEST(test_poistaListaNimenPerusteella);
     return UNITY_END();
 }
