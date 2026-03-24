@@ -5,10 +5,10 @@
 
 /**
  * @brief Tekee syvyyshaun numeroarvon pohjalta.
- * 
+ *
  * Tekee syvyyshaun kayttajan antaman numeroarvon pohjalta.
  * Kirjoittaa syvyyshaun polun kayttajan maarittelemaan tiedostoon.
- * 
+ *
  * @param pNimi Kayttajan antama kirjoitettavan tiedoston nimi.
  * @param pAlku Osoitin puu tietueen alkuun, eli ensimmaiseen solmuun.
  * @param iArvo Arvo, jota etsitaan syvyyshaussa.
@@ -42,10 +42,10 @@ int syvyyshaku(char *pNimi, PUU *pAlku, int iArvo) {
 
 /**
  * @brief Tarkistaa, loytyyko etsitty arvo syvyyshaussa.
- * 
+ *
  * Tarkistaa, loytyyko syvyyshaussa etsitty arvo.
  * Jos arvoa ei loydy, tulostaa tiedon siita.
- * 
+ *
  * @param aNimiKirjoitettava Kayttajan antama kirjoitettavan tiedoston nimi.
  * @param pJuuriSolmu Osoitin puu tietueen alkuun, eli ensimmaiseen solmuun.
  * @param iArvo Syvyyhaussa haettava numeroarvo.
@@ -61,10 +61,10 @@ void tarkistaLoytyykoSyvyyshaulla(char *aNimiKirjoitettava, PUU *pJuuriSolmu, in
 
 /**
  * @brief Tekee leveyshaun nimen pohjalta.
- * 
+ *
  * Tekee leveyshaun kayttajan antaman nimen pohjalta.
  * Kirjoittaa leveyshaun polun kayttajan maarittelemaan tiedostoon.
- * 
+ *
  * @param pNimi Kayttajan antama kirjoitettavan tiedoston nimi.
  * @param pAlku Osoitin puu tietueen alkuun, eli ensimmaiseen solmuun.
  * @param pHaku Osoitin haettavan nimen merkkijonoon.
@@ -119,9 +119,9 @@ void leveyshaku(char *pNimi, PUU *pJuuriSolmu, char *pHaku) {
 
 /**
  * @brief Varaa muistia jonolle.
- * 
- * Varaa muistia jonon uudelle alkiolle leveyshakua varten. 
- * 
+ *
+ * Varaa muistia jonon uudelle alkiolle leveyshakua varten.
+ *
  * @param pSolmu Osoitin kasiteltavaan puun solmuun.
  * @return pUusi Osoitin uuteen jonon alkioon.
  */
@@ -142,9 +142,9 @@ JONO *varaaMuistiaJonolle(PUU *pSolmu) {
 
 /**
  * @brief Vapauttaa jonon varaaman muistin.
- * 
+ *
  * Vapauttaa jonon alkioita varten varatun muistin.
- * 
+ *
  * @param pAlku Osoitin jonon ensimmaiseen alkioon.
  * @return pAlku Palauttaa NULL, koska jono on tyhja.
  */
@@ -164,9 +164,9 @@ JONO *vapautaMuistiJono(JONO *pAlku) {
 
 /**
  * @brief Binaarihaku perustuen numeroarvoon.
- * 
+ *
  * Binaarihaku, joka tehdaan kayttajan antaman numeroarvon perusteella.
- * 
+ *
  * @param pNimi Kirjoitettavan tiedoston nimi.
  * @param pJuuriSolmu Osoitin kasiteltavaan puun solmuun.
  * @param iArvo Haettava numeroarvo.

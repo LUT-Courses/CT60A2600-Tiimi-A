@@ -19,4 +19,9 @@ TIEDOT *poistaListastaLkmPeruusteella(TIEDOT *pAlku, int iLKM);
 int useammallaAlkiollaSamaLKM(TIEDOT *pAlku, int iLKM);
 TIEDOT *poistaListastaNimenPerusteella(TIEDOT *pAlku, char *pNimi);
 
+int laskeListanPituus(TIEDOT *pAlku);
+TIEDOT *halkaise(TIEDOT *pAlku);
+TIEDOT *lomitus(TIEDOT *p1, TIEDOT *p2);
+TIEDOT *lomitusLajittelu(TIEDOT *pAlku);
+
 #endif

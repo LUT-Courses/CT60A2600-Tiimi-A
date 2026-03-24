@@ -1,24 +1,24 @@
 #include "yleiset.h"
-#include "linkitettylista.h"
 #include "binaaripuu.h"
 #include "haut.h"
+#include "linkitettylista.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 // Yleisiä aliohjelmia.
 
- /**
+/**
  * @brief Tekee käyttäjän valinnan perusteella listan toiminnot.
- * 
+ *
  * Funktio näyttää valikon ja suorittaa käyttäjän valinnan mukaiset
  * listaan liittyvät toiminnot.
  */
-void mainLista() {
+void mainLista(void) {
     char aNimiLuettava[LEN] = "";
     char aNimiKirjoitettava[LEN] = "";
     int iArvo = 0;
-    int iIndeksi = 0; 
+    int iIndeksi = 0;
     int iValinta = 0;
     int iSamaLKM = 0;
     TIEDOT *pAlku = NULL;
@@ -44,13 +44,14 @@ void mainLista() {
                 kysyNimi("Anna kirjoitettavan tiedoston nimi: ", aNimiKirjoitettava);
                 kirjoitaTiedostoLopustaAlkuun(aNimiKirjoitettava, pAlku);
             }
-            
+
         } else if (iValinta == 4) {
             pAlku = vapautaMuisti(pAlku);
             printf("Muisti vapautettu.\n");
 
         } else if (iValinta == 5) {
-            // Nouseva lajittelu
+            pAlku = lomitusLajittelu(pAlku);
+            printf("Numerot lajiteltu nousevasti.\n");
 
         } else if (iValinta == 6) {
             // Laskeva lajittelu
@@ -81,7 +82,7 @@ void mainLista() {
     } while (iValinta != 0);
 
     /* Vapautetaan listan varaama muisti varmuuden vuoksi vielä täällä lopussa erikseen, jos
-    * käyttäjä ei muista sitä tehdä. */
+     * käyttäjä ei muista sitä tehdä. */
 
     pAlku = vapautaMuisti(pAlku);
     return;
@@ -89,11 +90,11 @@ void mainLista() {
 
 /**
  * @brief Tekee käyttäjän valinnan perusteella binääripuun toiminnot.
- * 
+ *
  * Funktio näyttää valikon ja suorittaa käyttäjän valinnan mukaiset
  * binääripuuhun liittyvät toiminnot.
  */
-void mainBinaaripuu() {
+void mainBinaaripuu(void) {
     char aNimiLuettava[LEN] = "";
     char aNimiKirjoitettava[LEN] = "";
     char aHaettavaNimi[LEN] = "";
@@ -175,7 +176,7 @@ void mainBinaaripuu() {
     } while (iValinta != 0);
 
     /* Vapautetaan puun varaama muisti varmuuden vuoksi vielä täällä lopussa erikseen, jos
-    * käyttäjä ei muista sitä tehdä. */
+     * käyttäjä ei muista sitä tehdä. */
 
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
     return;
@@ -183,7 +184,7 @@ void mainBinaaripuu() {
 
 /**
  * @brief Ensimmainen valikko, jossa käyttäjä valitsee listan tai binaaripuun.
- * 
+ *
  * @param iValinta Kayttajan antama syote.
  * @return int Palauttaa kayttajan valinnan.
  */
@@ -201,7 +202,7 @@ int valikko(void) {
 
 /**
  * @brief Tulostaa lista valikon ja kysyy kayttajan valinnan.
- * 
+ *
  * @param iValinta Kayttajan antama syote vaihtoehtojen pohjalta.
  * @return int Palauttaa kayttajan valinnan.
  */
@@ -225,7 +226,7 @@ int listaValikko(void) {
 
 /**
  * @brief Tulostaa binaariluku valikon ja kysyy kayttajalta valinnan.
- * 
+ *
  * @param iValinta Kayttajan antama syote vaihtoehtojen pohjalta.
  * @return int Palauttaa kayttajan valinnan.
  */
@@ -249,7 +250,7 @@ int binaaripuuValikko(void) {
 
 /**
  * @brief Kysyy tiedoston/haettavan nimen.
- * 
+ *
  * @param pPrompti Kysymys esim. "Anna kirjoitettavan tiedoston nimi: "
  * @param pNimi Tiedoston nimi/haettava nimi, jota halutaan kayttaa.
  * @return char Palauttaa kayttajan antaman merkkijonon.
@@ -263,7 +264,7 @@ char *kysyNimi(char *pPrompti, char *pNimi) {
 
 /**
  * @brief Kysyy arvon, joka halutaan etsia/poistaa puusta.
- * 
+ *
  * @param pPrompti Kysymys esim. "Anna haettava numeroarvo: "
  * @param iArvo Arvo, joka halutaan poistaa/etsiä.
  * @return int Palauttaa kayttajan antaman arvon.
