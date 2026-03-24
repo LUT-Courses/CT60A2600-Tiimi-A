@@ -67,12 +67,10 @@ void mainLista() {
             iSamaLKM = useammallaAlkiollaSamaLKM(pAlku, iArvo);
             if (iSamaLKM == 1) {
                 pAlku = poistaListastaLkmPeruusteella(pAlku, iArvo);
-            } else if (iSamaLKM > 1)
-            {
+            } else if (iSamaLKM > 1) {
                 kysyNimi("Anna poistettava nimi: ", aNimiKirjoitettava);
                 pAlku = poistaListastaNimenPerusteella(pAlku, aNimiKirjoitettava);
             }
-            
 
         } else if (iValinta == 0) {
             printf("Palataan takaisin päävalikkoon.\n");

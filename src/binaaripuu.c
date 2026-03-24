@@ -329,10 +329,11 @@ int suurempiLukuVertailu(int iLuku1, int iLuku2) {
  * @param pNimi Poistettava nimi tai numeroarvo merkkijonona.
  * @param pJuuriSolmu Osoitin kasiteltavaan puun solmuun.
  * @param iArvo Haettava numeroarvo.
- * @return pJuuriSolmu Uusi osoitin puun solmuun, NULL jos puu tyhjeni.
+ * @return PUU* Uusi osoitin puun solmuun, NULL jos puu tyhjeni.
  */
 PUU *poistaSolmu(char *pNimi, PUU *pJuuriSolmu) {
     int iArvo = 0;
+    PUU *pUusiSolmu = NULL;
 
     if (pJuuriSolmu == NULL) {
         printf("Solmua ei löytynyt.\n");
@@ -344,6 +345,11 @@ PUU *poistaSolmu(char *pNimi, PUU *pJuuriSolmu) {
         iArvo = atoi(pNimi);
     } else {
         iArvo = nimenArvo(pNimi, pJuuriSolmu);
+        
+        if (iArvo == 0) {
+            printf("Solmua ei löytynyt tällä nimellä.\n");
+            return (pJuuriSolmu);
+        } 
     }
 
     // Lehtisolmun poistaminen.
@@ -352,13 +358,29 @@ PUU *poistaSolmu(char *pNimi, PUU *pJuuriSolmu) {
     } else if (iArvo > pJuuriSolmu->iArvo) {
         pJuuriSolmu->pOikea = poistaSolmu(pNimi, pJuuriSolmu->pOikea);
     } else {
+
         if (pJuuriSolmu->pVasen == NULL && pJuuriSolmu->pOikea == NULL) {
             free(pJuuriSolmu);
             pJuuriSolmu = NULL;
             printf("Solmu poistettu.\n");
             return (pJuuriSolmu);
+
+        } else if (pJuuriSolmu->pVasen == NULL || pJuuriSolmu->pOikea == NULL) {
+            if (pJuuriSolmu->pVasen != NULL) {
+                pUusiSolmu = pJuuriSolmu->pVasen;
+            } else {
+                pUusiSolmu = pJuuriSolmu->pOikea;
+            }
+            free(pJuuriSolmu);
+            pJuuriSolmu = NULL;
+            printf("Solmu poistettu.\n");
+            return (pUusiSolmu);
+
         } else {
-            printf("Voit poistaa vain lehtisolmun.\n");
+            pUusiSolmu = etsiPienin(pJuuriSolmu->pOikea);
+            pJuuriSolmu->iArvo = pUusiSolmu->iArvo;
+            strcpy(pJuuriSolmu->aNimi, pUusiSolmu->aNimi);
+            pJuuriSolmu->pOikea = poistaSolmu(pUusiSolmu->aNimi, pJuuriSolmu->pOikea);
             return (pJuuriSolmu);
         }
     }
@@ -399,7 +421,7 @@ int onkoLuku(char *pNimi) {
  */
 int nimenArvo(char *pNimi, PUU *pJuuriSolmu) {
     if (pJuuriSolmu == NULL) {
-        return (-1);
+        return (0);
     }
 
     if (strcmp(pJuuriSolmu->aNimi, pNimi) == 0) {
@@ -408,7 +430,7 @@ int nimenArvo(char *pNimi, PUU *pJuuriSolmu) {
     }
 
     int iArvo = nimenArvo(pNimi, pJuuriSolmu->pVasen);
-    if (iArvo != -1) {
+    if (iArvo != 0) {
         return (iArvo);
     } else {
         int iArvo = nimenArvo(pNimi, pJuuriSolmu->pOikea);
@@ -417,10 +439,26 @@ int nimenArvo(char *pNimi, PUU *pJuuriSolmu) {
 }
 
 /**
+ * @brief Etsii pienimmän solmun arvon binääripuusta.
+ *
+ * @param pUusiSolmu Osoitin kasiteltavaan solmuun.
+ * @return PUU* Palauttaa osoittimen puun pienimpaan solmuun.
+ */
+PUU *etsiPienin(PUU *pUusiSolmu) {
+    PUU *pNykyinenSolmu = pUusiSolmu;
+
+    while (pNykyinenSolmu->pVasen != NULL) {
+        pNykyinenSolmu = pNykyinenSolmu->pVasen;
+    }
+
+    return(pNykyinenSolmu);
+}
+
+/**
  * @brief Tasapainotetaan puu poiston jalkeen.
  *
  * @param pJuuriSolmu Osoitin kasiteltavaan solmuun.
- * @return PUU* palauttaa tasapinotetun solmun.
+ * @return PUU* palauttaa tasapainotetun solmun.
  */
 PUU *paivitaPuu(PUU *pJuuriSolmu) {
     // Puun korkeuden päivittäminen.
