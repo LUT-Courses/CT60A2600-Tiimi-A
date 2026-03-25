@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 // Linkitettylista
 
@@ -254,6 +255,27 @@ TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
     return (pAlku);
 }
 
+
+TIEDOT *poistaListastaAlkio(TIEDOT *pAlku, int iLuvuVaiNimi, char *pTieto) {
+    int iSamojenAlkiodenLkm = 0;
+    char aPoistettavaNimi[LEN] = "";
+
+    if(iLuvuVaiNimi == -2) {
+        pAlku = poistaListastaNimenPerusteella(pAlku, pTieto);
+    } else {
+        iSamojenAlkiodenLkm = useammallaAlkiollaSamaLKM(pAlku, iLuvuVaiNimi);
+
+        if (iSamojenAlkiodenLkm > 1) {
+            kysyNimi("Anna nimi, joka poistetaan: ", aPoistettavaNimi);
+            pAlku = poistaListastaNimenPerusteella(pAlku, aPoistettavaNimi);
+        } else {
+            pAlku = poistaListastaLkmPeruusteella(pAlku, iLuvuVaiNimi);
+        }
+    }
+
+    return(pAlku);
+}
+
 /**
  * @brief Poistetaan linkitetystä listasta alkio lukumäärän perusteella.
  * Käyttäjä on antanut lukumäärän. Alkio, jossa on tämä lukumääärä poistetaan.
@@ -348,6 +370,29 @@ int useammallaAlkiollaSamaLKM(TIEDOT *pAlku, int iLKM) {
     }
 
     return (iSamoja);
+}
+
+int onkoLukuVaiNimi(char *Tieto) {
+    int iVastaus = 0;
+    int i = 0;
+    int iPituus = 0;
+
+    iPituus = strlen(Tieto);
+
+    for (i=0; i < iPituus; i++) {
+        if(isdigit(Tieto[i])) {
+            iVastaus = -1;
+        } else {
+            iVastaus = -2;
+            break;
+        }
+    }
+
+    if (iVastaus == -1) {
+        iVastaus = atoi(Tieto);
+    }
+
+    return(iVastaus);
 }
 
 // L11 / Lomituslajittelu (merge sort)

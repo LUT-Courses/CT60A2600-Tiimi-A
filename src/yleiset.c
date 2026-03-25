@@ -17,10 +17,11 @@
 void mainLista(void) {
     char aNimiLuettava[LEN] = "";
     char aNimiKirjoitettava[LEN] = "";
+    char aTietoPoistettava[LEN] = "";
     int iArvo = 0;
     int iIndeksi = 0;
     int iValinta = 0;
-    int iSamaLKM = 0;
+    //int iSamaLKM = 0;
     TIEDOT *pAlku = NULL;
 
     do {
@@ -65,14 +66,20 @@ void mainLista(void) {
 
         } else if (iValinta == 8) {
             // Poistaminen listalta
-            iArvo = kysyArvo("Anna poistettava lukumäärä: ", iArvo);
+
+            /*iArvo = kysyArvo("Anna poistettava lukumäärä: ", iArvo);
             iSamaLKM = useammallaAlkiollaSamaLKM(pAlku, iArvo);
             if (iSamaLKM == 1) {
                 pAlku = poistaListastaLkmPeruusteella(pAlku, iArvo);
             } else if (iSamaLKM > 1) {
                 kysyNimi("Anna poistettava nimi: ", aNimiKirjoitettava);
                 pAlku = poistaListastaNimenPerusteella(pAlku, aNimiKirjoitettava);
-            }
+            }*/
+
+            kysyNimi("Anna poistettava tieto: ", aTietoPoistettava);
+            iArvo = onkoLukuVaiNimi(aTietoPoistettava);
+            pAlku = poistaListastaAlkio(pAlku, iArvo, aTietoPoistettava);
+            //TIEDOT *poistaListastaAlkio(TIEDOT *pAlku, int iLuvuVaiNimi, char *pTieto)
 
         } else if (iValinta == 0) {
             printf("Palataan takaisin päävalikkoon.\n");
@@ -161,7 +168,6 @@ void mainBinaaripuu(void) {
             }
 
         } else if (iValinta == 8) {
-            // Aino säätää ja testaa
             kysyNimi("Anna luettavan tiedoston nimi: ", aNimiLuettava);
             kysyNimi("Anna kirjoitettavan tiedoston nimi: ", aNimiKirjoitettava);
             pRBJuuri = luoRBPuu(pRBJuuri, aNimiLuettava);

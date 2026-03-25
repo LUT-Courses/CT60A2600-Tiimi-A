@@ -23,5 +23,7 @@ TIEDOT *halkaise(TIEDOT *pAlku);
 TIEDOT *lomitus(TIEDOT *p1, TIEDOT *p2);
 TIEDOT *lomitusLajittelu(TIEDOT *pAlku);
 TIEDOT *lisaysLajittelu(TIEDOT *pAlku);
+int onkoLukuVaiNimi(char *Tieto);
+TIEDOT *poistaListastaAlkio(TIEDOT *pAlku, int iLuvuVaiNimi, char *pTieto);
 
 #endif
