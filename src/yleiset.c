@@ -57,13 +57,13 @@ void mainLista(void) {
             pAlku = lisaysLajittelu(pAlku);
             printf("Numerot lajiteltu laskevasti.\n");
 
-        } else if (iValinta == 7) {
+        } else if (iValinta == 8) {
             iIndeksi = kysyArvo("Mihin kohtaan listaa haluat lisätä tietoja (indeksi): ", iIndeksi);
             kysyNimi("Anna lisättävä nimi: ", aNimiKirjoitettava);
             iArvo = kysyArvo("Anna tämän nimisten lukumäärä: ", iArvo);
             pAlku = lisaaListaan(pAlku, iIndeksi, aNimiKirjoitettava, iArvo);
 
-        } else if (iValinta == 8) {
+        } else if (iValinta == 7) {
             // Poistaminen listalta
             iArvo = kysyArvo("Anna poistettava lukumäärä: ", iArvo);
             iSamaLKM = useammallaAlkiollaSamaLKM(pAlku, iArvo);
