@@ -350,8 +350,7 @@ int useammallaAlkiollaSamaLKM(TIEDOT *pAlku, int iLKM) {
     return (iSamoja);
 }
 
-/* L11 / Lomituslajittelu (merge sort)
- */
+// L11 / Lomituslajittelu (merge sort)
 
 /**
  * @brief Laskee linkitetyn listan pituuden.
@@ -492,7 +491,7 @@ TIEDOT *lomitus(TIEDOT *p1, TIEDOT *p2) {
 }
 
 /**
- * @brief Lajittelee listan rekursiivisella lomituslajittelulla.
+ * @brief Lajittelee listan rekursiivisella lomituslajittelulla (Merge sort).
  *
  * @param pAlku Osoitin lajiteltavan linkitetyn listan alkuun.
  * @return TIEDOT* Lajiteltu lista.
@@ -515,4 +514,54 @@ TIEDOT *lomitusLajittelu(TIEDOT *pAlku) {
 
     // Yhdistetään lajitellut puolikkaat
     return lomitus(p1, p2);
+}
+
+// Lisäyslajittelu (Insertion sort)
+
+/**
+ * @brief Lajittelee listan lisayslajittelulla (Insertion sort).
+ *
+ * @param pAlku Osoitin lajiteltavan linkitetyn listan alkuun.
+ * @return TIEDOT* Lajiteltu lista.
+ */
+TIEDOT *lisaysLajittelu(TIEDOT *pAlku) {
+    // Jos lista on tyhjä
+    if (pAlku == NULL) {
+        return pAlku;
+    }
+
+    TIEDOT *pLajittelematon = pAlku; // Osoitin lajiteltavan listan nykyiseen solmuun
+    TIEDOT *pLajiteltu = NULL;       // Tehdään toinen lista, johon lajitellut tiedot laitetaan
+    TIEDOT *pSeuraava = NULL;
+    TIEDOT *ptr = NULL; // Osoitin, jolla läpikäydään lajiteltua listaa.
+
+    /* Käydään lajittelematonta listaa läpi ja lisätään alkiot
+     * lajiteltuun listaan pienenevässä järjestyksessä arvon mukaan.
+     */
+    while (pLajittelematon != NULL) {
+        pSeuraava = pLajittelematon->pSeuraava; // pSeuraava talteen ennen listan läpikäyntiä
+        if (pLajiteltu == NULL || pLajiteltu->iYhteensa <= pLajittelematon->iYhteensa) {
+            // Lisätään lajitellun listan alkuun
+            pLajittelematon->pSeuraava = pLajiteltu;
+            if (pLajiteltu != NULL) {
+                pLajiteltu->pEdellinen = pLajittelematon;
+            }
+            pLajiteltu = pLajittelematon;
+            pLajittelematon->pEdellinen = NULL;
+        } else {
+            ptr = pLajiteltu;
+            while (ptr->pSeuraava != NULL &&
+                   ptr->pSeuraava->iYhteensa > pLajittelematon->iYhteensa) {
+                ptr = ptr->pSeuraava;
+            }
+            pLajittelematon->pSeuraava = ptr->pSeuraava;
+            if (ptr->pSeuraava != NULL) {
+                ptr->pSeuraava->pEdellinen = pLajittelematon;
+            }
+            ptr->pSeuraava = pLajittelematon;
+            pLajittelematon->pEdellinen = ptr;
+        }
+        pLajittelematon = pSeuraava;
+    }
+    return pLajiteltu;
 }

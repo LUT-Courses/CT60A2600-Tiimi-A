@@ -54,7 +54,8 @@ void mainLista(void) {
             printf("Numerot lajiteltu nousevasti.\n");
 
         } else if (iValinta == 6) {
-            // Laskeva lajittelu
+            pAlku = lisaysLajittelu(pAlku);
+            printf("Numerot lajiteltu laskevasti.\n");
 
         } else if (iValinta == 7) {
             iIndeksi = kysyArvo("Mihin kohtaan listaa haluat lisätä tietoja (indeksi): ", iIndeksi);
