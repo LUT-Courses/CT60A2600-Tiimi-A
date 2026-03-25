@@ -60,5 +60,8 @@ bin/
 .vscode
 .DS_Store
 
-#arkkitehtuurikuva
+# arkkitehtuurikuva
 arkkitehtuurikuva.puml
+
+# dokumentation kansio
+doc/documentation/

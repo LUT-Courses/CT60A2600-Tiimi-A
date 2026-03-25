@@ -2,7 +2,7 @@
 PROJECT_NAME = "CT60A2600-TIIMI-A"
 
 # Paikka johon dokumentaatio tallennetaan
-OUTPUT_DIRECTORY = ../documentation
+OUTPUT_DIRECTORY = documentation
 
 # Lahdekoodi luetaan src-kansiosta ja vain .c ja .h loppuiset tiedostot luetaan
 INPUT = ../src
@@ -30,4 +30,18 @@ INLINE_SOURCES = YES
 HAVE_DOT = NO
 CAL_GRAPH = NO
 CALLER_GRAPH = NO
-DIRECTORY_GRAPH = NO
+
+# Poistaa polut
+FULL_PATH_NAMES = NO
+
+# Poista Detailed Description ja Member Data Documentatio osiot Class Documentatioista.
+BRIEF_MEMBER_DESC = YES
+REPEAT_BRIEF = NO
+HIDE_UNDOC_MEMBERS = YES
+HIDE_UNDOC_CLASSES = NO
+
+
+# Nayttaa vain public attribuutit
+EXTRACT_PRIVATE       = NO
+EXTRACT_STATIC        = NO
+EXTRACT_LOCAL_METHODS = NO
