@@ -228,7 +228,7 @@ TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
         return (pAlku);
     } else {
         // Jos lisataan listan alkuun, eli indeksi = 0.
-        if (iIndeksi == 1) {
+        if (iIndeksi <= 1) {
             pUusi->pEdellinen = NULL;
             pUusi->pSeuraava = pAlku;
             pAlku->pEdellinen = pUusi;
