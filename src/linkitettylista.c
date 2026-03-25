@@ -540,6 +540,17 @@ TIEDOT *lisaysLajittelu(TIEDOT *pAlku) {
      */
     while (pLajittelematon != NULL) {
         pSeuraava = pLajittelematon->pSeuraava; // pSeuraava talteen ennen listan läpikäyntiä
+
+        // irrotetaan alkio
+        if (pSeuraava != NULL) {
+            pSeuraava->pEdellinen = pLajittelematon->pEdellinen;
+        }
+        if (pLajittelematon->pEdellinen != NULL) {
+            pLajittelematon->pEdellinen->pSeuraava = pSeuraava;
+        }
+        pLajittelematon->pSeuraava = NULL;
+        pLajittelematon->pEdellinen = NULL;
+
         if (pLajiteltu == NULL || pLajiteltu->iYhteensa <= pLajittelematon->iYhteensa) {
             // Lisätään lajitellun listan alkuun
             pLajittelematon->pSeuraava = pLajiteltu;
@@ -547,7 +558,7 @@ TIEDOT *lisaysLajittelu(TIEDOT *pAlku) {
                 pLajiteltu->pEdellinen = pLajittelematon;
             }
             pLajiteltu = pLajittelematon;
-            pLajittelematon->pEdellinen = NULL;
+
         } else {
             ptr = pLajiteltu;
             while (ptr->pSeuraava != NULL &&
