@@ -95,19 +95,19 @@ void test_lisaaListaan_alkuun() {
 
     char expectedNimi1[] = "Kosonen";
     int expectedArvo1 = 500;
-    int iIndeksi1 = 0;
+    int iIndeksi1 = 1;
 
     pAlku = lisaaListaan(pAlku, iIndeksi1, expectedNimi1, expectedArvo1);
 
     char expectedNimi2[] = "Karjalainen";
     int expectedArvo2 = 300;
-    int iIndeksi2 = 1;
+    int iIndeksi2 = 2;
 
     pAlku = lisaaListaan(pAlku, iIndeksi2, expectedNimi2, expectedArvo2);
 
     char expectedNimi3[] = "Suomalainen";
     int expectedArvo3 = 200;
-    int iIndeksi3 = 0;
+    int iIndeksi3 = 1;
 
     pAlku = lisaaListaan(pAlku, iIndeksi3, expectedNimi3, expectedArvo3);
 
@@ -125,13 +125,13 @@ void test_lisaaListaan_indeksilla() {
 
     char expectedNimi1[] = "Kosonen";
     int expectedArvo1 = 500;
-    int iIndeksi1 = 0;
+    int iIndeksi1 = 1;
 
     pAlku = lisaaListaan(pAlku, iIndeksi1, expectedNimi1, expectedArvo1);
 
     char expectedNimi2[] = "Karjalainen";
     int expectedArvo2 = 300;
-    int iIndeksi2 = 1;
+    int iIndeksi2 = 2;
 
     pAlku = lisaaListaan(pAlku, iIndeksi2, expectedNimi2, expectedArvo2);
 
@@ -141,13 +141,13 @@ void test_lisaaListaan_indeksilla() {
 
     pAlku = lisaaListaan(pAlku, iIndeksi3, expectedNimi3, expectedArvo3);
 
-    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->pSeuraava->aSukunimi);
-    TEST_ASSERT_EQUAL_INT(expectedArvo3, pAlku->pSeuraava->iYhteensa);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo3, pAlku->iYhteensa);
 
     TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->pSeuraava->pSeuraava->aSukunimi);
     TEST_ASSERT_EQUAL_INT(expectedArvo2, pAlku->pSeuraava->pSeuraava->iYhteensa);
 
-    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->aSukunimi);
 
     pAlku = vapautaMuisti(pAlku);
 }
@@ -158,12 +158,12 @@ void test_useammalleAlkiolleSamaLKM() {
 
     char expectedNimi1[] = "Kosonen";
     int expectedArvo1 = 500;
-    int iIndeksi1 = 0;
+    int iIndeksi1 = 1;
     pAlku = lisaaListaan(pAlku, iIndeksi1, expectedNimi1, expectedArvo1);
 
     char expectedNimi2[] = "Karjalainen";
     int expectedArvo2 = 500;
-    int iIndeksi2 = 1;
+    int iIndeksi2 = 2;
     pAlku = lisaaListaan(pAlku, iIndeksi2, expectedNimi2, expectedArvo2);
 
     int iLKMSama = useammallaAlkiollaSamaLKM(pAlku, 500);
@@ -179,12 +179,12 @@ void test_poistaListaLkmPerusteella() {
 
     char expectedNimi1[] = "Kosonen";
     int expectedArvo1 = 500;
-    int iIndeksi1 = 0;
+    int iIndeksi1 = 1;
     pAlku = lisaaListaan(pAlku, iIndeksi1, expectedNimi1, expectedArvo1);
 
     char expectedNimi2[] = "Karjalainen";
     int expectedArvo2 = 300;
-    int iIndeksi2 = 1;
+    int iIndeksi2 = 2;
     pAlku = lisaaListaan(pAlku, iIndeksi2, expectedNimi2, expectedArvo2);
 
     TEST_ASSERT_EQUAL_INT(expectedArvo2, pAlku->pSeuraava->iYhteensa);
@@ -203,12 +203,12 @@ void test_poistaListaNimenPerusteella() {
 
     char expectedNimi1[] = "Kosonen";
     int expectedArvo1 = 500;
-    int iIndeksi1 = 0;
+    int iIndeksi1 = 1;
     pAlku = lisaaListaan(pAlku, iIndeksi1, expectedNimi1, expectedArvo1);
 
     char expectedNimi2[] = "Karjalainen";
     int expectedArvo2 = 300;
-    int iIndeksi2 = 1;
+    int iIndeksi2 = 2;
     pAlku = lisaaListaan(pAlku, iIndeksi2, expectedNimi2, expectedArvo2);
 
     TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->aSukunimi);

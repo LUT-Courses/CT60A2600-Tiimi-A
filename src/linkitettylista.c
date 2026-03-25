@@ -208,7 +208,7 @@ void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku) {
 TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
     TIEDOT *pUusi = NULL;
     TIEDOT *ptr = pAlku;
-    int i = 0;
+    int i = 1;
 
     // Varataan muistia uudelle linkitetyn listan solmulle.
     if ((pUusi = (TIEDOT *)malloc(sizeof(TIEDOT))) == NULL) {
@@ -228,7 +228,7 @@ TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
         return (pAlku);
     } else {
         // Jos lisataan listan alkuun, eli indeksi = 0.
-        if (iIndeksi == 0) {
+        if (iIndeksi == 1) {
             pUusi->pEdellinen = NULL;
             pUusi->pSeuraava = pAlku;
             pAlku->pEdellinen = pUusi;

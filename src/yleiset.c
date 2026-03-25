@@ -59,7 +59,7 @@ void mainLista(void) {
             printf("Numerot lajiteltu laskevasti.\n");
 
         } else if (iValinta == 7) {
-            iIndeksi = kysyArvo("Mihin kohtaan listaa haluat lisätä tietoja (indeksi): ", iIndeksi);
+            iIndeksi = kysyArvo("Mille riville haluat lisätä tietoja: ", iIndeksi);
             kysyNimi("Anna lisättävä nimi: ", aNimiKirjoitettava);
             iArvo = kysyArvo("Anna tämän nimisten lukumäärä: ", iArvo);
             pAlku = lisaaListaan(pAlku, iIndeksi, aNimiKirjoitettava, iArvo);
