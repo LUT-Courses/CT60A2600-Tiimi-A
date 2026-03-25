@@ -18,10 +18,10 @@ TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo);
 TIEDOT *poistaListastaLkmPeruusteella(TIEDOT *pAlku, int iLKM);
 int useammallaAlkiollaSamaLKM(TIEDOT *pAlku, int iLKM);
 TIEDOT *poistaListastaNimenPerusteella(TIEDOT *pAlku, char *pNimi);
-
 int laskeListanPituus(TIEDOT *pAlku);
 TIEDOT *halkaise(TIEDOT *pAlku);
 TIEDOT *lomitus(TIEDOT *p1, TIEDOT *p2);
 TIEDOT *lomitusLajittelu(TIEDOT *pAlku);
+TIEDOT *lisaysLajittelu(TIEDOT *pAlku);
 
 #endif
