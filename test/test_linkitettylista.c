@@ -1,7 +1,7 @@
-#include "unity.h"
 #include "../src/linkitettylista.h"
+#include "unity.h"
 
-//Onnistuuko varaaMuistia, kun lista on tyhjä
+// Onnistuuko varaaMuistia, kun lista on tyhjä
 void test_VaraaMuistia(void) {
     TIEDOT *pAlku = NULL;
 
@@ -167,7 +167,7 @@ void test_useammalleAlkiolleSamaLKM() {
     pAlku = lisaaListaan(pAlku, iIndeksi2, expectedNimi2, expectedArvo2);
 
     int iLKMSama = useammallaAlkiollaSamaLKM(pAlku, 500);
-    
+
     TEST_ASSERT_EQUAL_INT(2, iLKMSama);
 
     pAlku = vapautaMuisti(pAlku);
@@ -217,6 +217,100 @@ void test_poistaListaNimenPerusteella() {
 
     TEST_ASSERT_NULL(pAlku->pSeuraava);
     TEST_ASSERT_EQUAL_STRING("Karjalainen", pAlku->aSukunimi);
+
+    pAlku = vapautaMuisti(pAlku);
+}
+
+// Testataan lomituslajittelu, tyhjä lista
+void test_lomitusLajitteluTyhjaLista() {
+    TIEDOT *pAlku = NULL;
+
+    pAlku = lomitusLajittelu(pAlku);
+    TEST_ASSERT_NULL(pAlku);
+
+    pAlku = vapautaMuisti(pAlku);
+}
+
+// Testataan lomituslajittelu yhdellä alkiolla
+void test_lomituLajitteluYhdellaAlkiolla() {
+    TIEDOT *pAlku = NULL;
+
+    char expectedNimi[] = "Kosonen";
+    int expectedYhteensa = 500;
+
+    pAlku = varaaMuistia(pAlku, expectedNimi, expectedYhteensa);
+    pAlku = lomitusLajittelu(pAlku);
+
+    TEST_ASSERT_NOT_NULL(pAlku);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_INT(expectedYhteensa, pAlku->iYhteensa);
+    TEST_ASSERT_NULL(pAlku->pEdellinen);
+    TEST_ASSERT_NULL(pAlku->pSeuraava);
+
+    pAlku = vapautaMuisti(pAlku);
+}
+
+// Testataan lomituslajittelu kahdella alkiolla
+void test_lomitusLajitteluKahdellaAlkiolla() {
+    TIEDOT *pAlku = NULL;
+
+    char expectedNimi1[] = "Kosonen";
+    int expectedYhteensa1 = 500;
+    char expectedNimi2[] = "Karjalainen";
+    int expectedYhteensa2 = 300;
+
+    pAlku = varaaMuistia(pAlku, expectedNimi1, expectedYhteensa1);
+    pAlku = varaaMuistia(pAlku, expectedNimi2, expectedYhteensa2);
+    pAlku = lomitusLajittelu(pAlku);
+
+    TEST_ASSERT_NOT_NULL(pAlku);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_INT(expectedYhteensa2, pAlku->iYhteensa);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_INT(expectedYhteensa1, pAlku->pSeuraava->iYhteensa);
+    TEST_ASSERT_NULL(pAlku->pEdellinen);
+    TEST_ASSERT_NULL(pAlku->pSeuraava->pSeuraava);
+
+    pAlku = vapautaMuisti(pAlku);
+}
+
+// Testataan lomituslajittelu usealla alkiolla
+void test_lomitusLajitteluUseallaAlkiolla() {
+    TIEDOT *pAlku = NULL;
+
+    char expectedNimi1[] = "Kosonen";
+    int expectedYhteensa1 = 300;
+    char expectedNimi2[] = "Karjalainen";
+    int expectedYhteensa2 = 500;
+    char expectedNimi3[] = "Ankka";
+    int expectedYhteensa3 = 50;
+    char expectedNimi4[] = "Hanhi";
+    int expectedYhteensa4 = 1;
+    char expectedNimi5[] = "Hiiri";
+    int expectedYhteensa5 = 10000;
+
+    pAlku = varaaMuistia(pAlku, expectedNimi1, expectedYhteensa1);
+    pAlku = varaaMuistia(pAlku, expectedNimi2, expectedYhteensa2);
+    pAlku = varaaMuistia(pAlku, expectedNimi3, expectedYhteensa3);
+    pAlku = varaaMuistia(pAlku, expectedNimi4, expectedYhteensa4);
+    pAlku = varaaMuistia(pAlku, expectedNimi5, expectedYhteensa5);
+    pAlku = lomitusLajittelu(pAlku);
+
+    TEST_ASSERT_NOT_NULL(pAlku);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi4, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_INT(expectedYhteensa4, pAlku->iYhteensa);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_INT(expectedYhteensa3, pAlku->pSeuraava->iYhteensa);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_INT(expectedYhteensa1, pAlku->pSeuraava->pSeuraava->iYhteensa);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->pSeuraava->pSeuraava->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_INT(expectedYhteensa2, pAlku->pSeuraava->pSeuraava->pSeuraava->iYhteensa);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi5,
+                             pAlku->pSeuraava->pSeuraava->pSeuraava->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_INT(expectedYhteensa5,
+                          pAlku->pSeuraava->pSeuraava->pSeuraava->pSeuraava->iYhteensa);
+    TEST_ASSERT_NULL(pAlku->pEdellinen);
+    TEST_ASSERT_NULL(pAlku->pSeuraava->pSeuraava->pSeuraava->pSeuraava->pSeuraava);
 
     pAlku = vapautaMuisti(pAlku);
 }

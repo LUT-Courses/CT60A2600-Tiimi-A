@@ -1,7 +1,7 @@
-#include "unity.h"
 #include "../src/binaaripuu.h"
 #include "../src/haut.h"
 #include "../src/linkitettylista.h"
+#include "unity.h"
 
 void setUp(void) {
     // Tyhja, koska alustetaan muuttujat paikallisesti.
@@ -39,6 +39,11 @@ void test_useammalleAlkiolleSamaLKM();
 void test_poistaListaLkmPerusteella();
 void test_poistaListaNimenPerusteella();
 
+void test_lomitusLajitteluTyhjaLista();
+void test_lomituLajitteluYhdellaAlkiolla();
+void test_lomitusLajitteluKahdellaAlkiolla();
+void test_lomitusLajitteluUseallaAlkiolla();
+
 int main(void) {
     UNITY_BEGIN();
     // Tiedot struct testit
@@ -74,5 +79,11 @@ int main(void) {
     RUN_TEST(test_useammalleAlkiolleSamaLKM);
     RUN_TEST(test_poistaListaLkmPerusteella);
     RUN_TEST(test_poistaListaNimenPerusteella);
+
+    // Lomituslajittelun testit
+    RUN_TEST(test_lomitusLajitteluTyhjaLista);
+    RUN_TEST(test_lomituLajitteluYhdellaAlkiolla);
+    RUN_TEST(test_lomitusLajitteluKahdellaAlkiolla);
+    RUN_TEST(test_lomitusLajitteluUseallaAlkiolla);
     return UNITY_END();
 }

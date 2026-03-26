@@ -463,7 +463,7 @@ TIEDOT *lomitus(TIEDOT *p1, TIEDOT *p2) {
     while (p1 != NULL && p2 != NULL) {
         int iVertailu =
             strcmp(p1->aSukunimi, p2->aSukunimi); // Jos sama arvo, lisätään aakkosjärjestyksessä.
-        if (p1->iYhteensa > p2->iYhteensa || p1->iYhteensa == p2->iYhteensa && iVertailu > 0) {
+        if (p1->iYhteensa > p2->iYhteensa || (p1->iYhteensa == p2->iYhteensa && iVertailu > 0)) {
             TIEDOT *ptr = p2; // p2[0] talteen
             // Poistetaan p2[0] listasta.
             p2 = p2->pSeuraava;
