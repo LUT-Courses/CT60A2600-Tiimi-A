@@ -1,8 +1,8 @@
 #include "linkitettylista.h"
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
 // Linkitettylista
 
@@ -255,12 +255,11 @@ TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
     return (pAlku);
 }
 
-
 TIEDOT *poistaListastaAlkio(TIEDOT *pAlku, int iLuvuVaiNimi, char *pTieto) {
     int iSamojenAlkiodenLkm = 0;
     char aPoistettavaNimi[LEN] = "";
 
-    if(iLuvuVaiNimi == -2) {
+    if (iLuvuVaiNimi == -2) {
         pAlku = poistaListastaNimenPerusteella(pAlku, pTieto);
     } else {
         iSamojenAlkiodenLkm = useammallaAlkiollaSamaLKM(pAlku, iLuvuVaiNimi);
@@ -273,7 +272,7 @@ TIEDOT *poistaListastaAlkio(TIEDOT *pAlku, int iLuvuVaiNimi, char *pTieto) {
         }
     }
 
-    return(pAlku);
+    return (pAlku);
 }
 
 /**
@@ -379,8 +378,8 @@ int onkoLukuVaiNimi(char *Tieto) {
 
     iPituus = strlen(Tieto);
 
-    for (i=0; i < iPituus; i++) {
-        if(isdigit(Tieto[i])) {
+    for (i = 0; i < iPituus; i++) {
+        if (isdigit(Tieto[i])) {
             iVastaus = -1;
         } else {
             iVastaus = -2;
@@ -392,7 +391,7 @@ int onkoLukuVaiNimi(char *Tieto) {
         iVastaus = atoi(Tieto);
     }
 
-    return(iVastaus);
+    return (iVastaus);
 }
 
 // L11 / Lomituslajittelu (merge sort)
@@ -462,7 +461,9 @@ TIEDOT *lomitus(TIEDOT *p1, TIEDOT *p2) {
 
     // Käydään molempia listoja läpi:
     while (p1 != NULL && p2 != NULL) {
-        if (p1->iYhteensa > p2->iYhteensa) {
+        int iVertailu =
+            strcmp(p1->aSukunimi, p2->aSukunimi); // Jos sama arvo, lisätään aakkosjärjestyksessä.
+        if (p1->iYhteensa > p2->iYhteensa || p1->iYhteensa == p2->iYhteensa && iVertailu > 0) {
             TIEDOT *ptr = p2; // p2[0] talteen
             // Poistetaan p2[0] listasta.
             p2 = p2->pSeuraava;
@@ -596,7 +597,9 @@ TIEDOT *lisaysLajittelu(TIEDOT *pAlku) {
         pLajittelematon->pSeuraava = NULL;
         pLajittelematon->pEdellinen = NULL;
 
-        if (pLajiteltu == NULL || pLajiteltu->iYhteensa <= pLajittelematon->iYhteensa) {
+        if (pLajiteltu == NULL || pLajiteltu->iYhteensa < pLajittelematon->iYhteensa ||
+            (pLajiteltu->iYhteensa == pLajittelematon->iYhteensa &&
+             strcmp(pLajiteltu->aSukunimi, pLajittelematon->aSukunimi) > 0)) {
             // Lisätään lajitellun listan alkuun
             pLajittelematon->pSeuraava = pLajiteltu;
             if (pLajiteltu != NULL) {
@@ -607,7 +610,9 @@ TIEDOT *lisaysLajittelu(TIEDOT *pAlku) {
         } else {
             ptr = pLajiteltu;
             while (ptr->pSeuraava != NULL &&
-                   ptr->pSeuraava->iYhteensa > pLajittelematon->iYhteensa) {
+                   (ptr->pSeuraava->iYhteensa > pLajittelematon->iYhteensa ||
+                    (ptr->pSeuraava->iYhteensa == pLajittelematon->iYhteensa &&
+                     strcmp(ptr->pSeuraava->aSukunimi, pLajittelematon->aSukunimi) < 0))) {
                 ptr = ptr->pSeuraava;
             }
             pLajittelematon->pSeuraava = ptr->pSeuraava;
