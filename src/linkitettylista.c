@@ -137,7 +137,7 @@ void kirjoitaTiedostoAlustaLoppuun(char *pNimi, TIEDOT *pAlku) {
     }
 
     // Kirjoitus tiedoston avaaminen
-    if ((Tiedosto = fopen(pNimi, "a")) == NULL) {
+    if ((Tiedosto = fopen(pNimi, "w")) == NULL) {
         perror("Tiedoston avaaminen epäonnistui, lopetetaan");
         exit(0);
     }
@@ -171,7 +171,7 @@ void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku) {
         return;
     }
 
-    if ((Tiedosto = fopen(pNimi, "a")) == NULL) {
+    if ((Tiedosto = fopen(pNimi, "w")) == NULL) {
         perror("Tiedoston avaaminen epäonnistui, lopetetaan");
         exit(0);
     }
@@ -599,7 +599,7 @@ TIEDOT *lisaysLajittelu(TIEDOT *pAlku) {
 
         if (pLajiteltu == NULL || pLajiteltu->iYhteensa < pLajittelematon->iYhteensa ||
             (pLajiteltu->iYhteensa == pLajittelematon->iYhteensa &&
-             strcmp(pLajiteltu->aSukunimi, pLajittelematon->aSukunimi) > 0)) {
+             strcmp(pLajiteltu->aSukunimi, pLajittelematon->aSukunimi) < 0)) {
             // Lisätään lajitellun listan alkuun
             pLajittelematon->pSeuraava = pLajiteltu;
             if (pLajiteltu != NULL) {
@@ -612,7 +612,7 @@ TIEDOT *lisaysLajittelu(TIEDOT *pAlku) {
             while (ptr->pSeuraava != NULL &&
                    (ptr->pSeuraava->iYhteensa > pLajittelematon->iYhteensa ||
                     (ptr->pSeuraava->iYhteensa == pLajittelematon->iYhteensa &&
-                     strcmp(ptr->pSeuraava->aSukunimi, pLajittelematon->aSukunimi) < 0))) {
+                     strcmp(ptr->pSeuraava->aSukunimi, pLajittelematon->aSukunimi) > 0))) {
                 ptr = ptr->pSeuraava;
             }
             pLajittelematon->pSeuraava = ptr->pSeuraava;
