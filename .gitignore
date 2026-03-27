@@ -65,3 +65,5 @@ arkkitehtuurikuva.puml
 
 # dokumentation kansio
 doc/documentation/
+#*
+#!doc/documentation/refman.pdf

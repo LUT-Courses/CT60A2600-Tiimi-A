@@ -255,6 +255,14 @@ TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
     return (pAlku);
 }
 
+/**
+ * @brief Poistaa linkitetystä listasta alkion.
+ * 
+ * @param pAlku Osoitin linkitetyn listan alkuun.
+ * @param iLuvuVaiNimi Tieto siitä, haluaako käyttäjä poistaa alkion nimen vai luvun perusteella.  
+ * @param pTieto Poistettavan alkion tieto, nimi tai luku.
+ * @return TIEDOT* pAlku Osoitin listan nykyiseen alkuun.
+ */
 TIEDOT *poistaListastaAlkio(TIEDOT *pAlku, int iLuvuVaiNimi, char *pTieto) {
     int iSamojenAlkiodenLkm = 0;
     char aPoistettavaNimi[LEN] = "";
@@ -371,6 +379,12 @@ int useammallaAlkiollaSamaLKM(TIEDOT *pAlku, int iLKM) {
     return (iSamoja);
 }
 
+/**
+ * @brief Selvittää onko käyttäjän antama syöte luku vai nimi. 
+ * 
+ * @param Tieto Käyttäjän antama syöte.
+ * @return int Tieto, onko luku vai nimi, jos -2, niin käyttäjä antoi luvun, jos joku muu niin se on luku.
+ */
 int onkoLukuVaiNimi(char *Tieto) {
     int iVastaus = 0;
     int i = 0;
