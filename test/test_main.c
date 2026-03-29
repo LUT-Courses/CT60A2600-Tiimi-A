@@ -40,9 +40,16 @@ void test_poistaListaLkmPerusteella();
 void test_poistaListaNimenPerusteella();
 
 void test_lomitusLajitteluTyhjaLista();
-void test_lomituLajitteluYhdellaAlkiolla();
+void test_lomitusLajitteluYhdellaAlkiolla();
 void test_lomitusLajitteluKahdellaAlkiolla();
 void test_lomitusLajitteluUseallaAlkiolla();
+void test_lomitusLajitteluSamaArvo();
+
+void test_lisaysLajitteluTyhjaLista();
+void test_lisaysLajitteluYhdellaAlkiolla();
+void test_lisaysLajitteluKahdellaAlkiolla();
+void test_lisaysLajitteluUseallaAlkiolla();
+void test_lisaysLajitteluSamaArvo();
 
 int main(void) {
     UNITY_BEGIN();
@@ -82,8 +89,17 @@ int main(void) {
 
     // Lomituslajittelun testit
     RUN_TEST(test_lomitusLajitteluTyhjaLista);
-    RUN_TEST(test_lomituLajitteluYhdellaAlkiolla);
+    RUN_TEST(test_lomitusLajitteluYhdellaAlkiolla);
     RUN_TEST(test_lomitusLajitteluKahdellaAlkiolla);
     RUN_TEST(test_lomitusLajitteluUseallaAlkiolla);
+    RUN_TEST(test_lomitusLajitteluSamaArvo);
+
+    // Lisäyslajittelun testit
+    RUN_TEST(test_lisaysLajitteluTyhjaLista);
+    RUN_TEST(test_lisaysLajitteluYhdellaAlkiolla);
+    RUN_TEST(test_lisaysLajitteluKahdellaAlkiolla);
+    RUN_TEST(test_lisaysLajitteluUseallaAlkiolla);
+    RUN_TEST(test_lisaysLajitteluSamaArvo);
+
     return UNITY_END();
 }
