@@ -84,7 +84,7 @@ TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pNimi, int iMaara) {
 
     /* Kaksisuuntaisen linkitetyn listan luominen. */
 
-    strcpy(pUusi->aSukunimi, pNimi);
+    strcpy(pUusi->aNimi, pNimi);
     pUusi->iYhteensa = iMaara;
     pUusi->pSeuraava = NULL;
 
@@ -145,7 +145,7 @@ void kirjoitaTiedostoAlustaLoppuun(char *pNimi, TIEDOT *pAlku) {
     // Tiedostoon kirjoittaminen
     ptr = pAlku;
     while (ptr != NULL) {
-        fprintf(Tiedosto, "%s,%d\n", ptr->aSukunimi, ptr->iYhteensa);
+        fprintf(Tiedosto, "%s,%d\n", ptr->aNimi, ptr->iYhteensa);
         ptr = ptr->pSeuraava;
     }
 
@@ -183,7 +183,7 @@ void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku) {
 
     // Lopusta alkuun, kirjoitetaan tiedostoon.
     while (ptr != NULL) {
-        fprintf(Tiedosto, "%s,%d\n", ptr->aSukunimi, ptr->iYhteensa);
+        fprintf(Tiedosto, "%s,%d\n", ptr->aNimi, ptr->iYhteensa);
         ptr = ptr->pEdellinen;
     }
 
@@ -217,7 +217,7 @@ TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
     }
 
     // Lisataan tiedot tietueeseen.
-    strcpy(pUusi->aSukunimi, pNimi);
+    strcpy(pUusi->aNimi, pNimi);
     pUusi->iYhteensa = iArvo;
 
     // Jos lista on tyhja, lisataan uusi solmu ensimmaiseksi.
@@ -331,7 +331,7 @@ TIEDOT *poistaListastaNimenPerusteella(TIEDOT *pAlku, char *pNimi) {
     TIEDOT *pEdellinen = NULL;
 
     // Tarkistetaan, onko poistettava alkio ensimmäinen.
-    if ((ptr != NULL) && (strcmp(ptr->aSukunimi, pNimi) == 0)) {
+    if ((ptr != NULL) && (strcmp(ptr->aNimi, pNimi) == 0)) {
         // Sijoitetaan osoitin osoittamaan seuraavaan alkioon.
         pAlku = ptr->pSeuraava;
         free(ptr);
@@ -341,7 +341,7 @@ TIEDOT *poistaListastaNimenPerusteella(TIEDOT *pAlku, char *pNimi) {
     } else {
         // Etsitään kohtaa, jossa poistettava alkio on.
         while (ptr != NULL) {
-            if (strcmp(ptr->aSukunimi, pNimi) == 0) {
+            if (strcmp(ptr->aNimi, pNimi) == 0) {
                 pEdellinen->pSeuraava = ptr->pSeuraava;
                 free(ptr);
                 printf("Alkio poistettu.\n");
@@ -476,7 +476,7 @@ TIEDOT *lomitus(TIEDOT *p1, TIEDOT *p2) {
     // Käydään molempia listoja läpi:
     while (p1 != NULL && p2 != NULL) {
         int iVertailu =
-            strcmp(p1->aSukunimi, p2->aSukunimi); // Jos sama arvo, lisätään aakkosjärjestyksessä.
+            strcmp(p1->aNimi, p2->aNimi); // Jos sama arvo, lisätään aakkosjärjestyksessä.
         if (p1->iYhteensa > p2->iYhteensa || (p1->iYhteensa == p2->iYhteensa && iVertailu > 0)) {
             TIEDOT *ptr = p2; // p2[0] talteen
             // Poistetaan p2[0] listasta.
@@ -613,7 +613,7 @@ TIEDOT *lisaysLajittelu(TIEDOT *pAlku) {
 
         if (pLajiteltu == NULL || pLajiteltu->iYhteensa < pLajittelematon->iYhteensa ||
             (pLajiteltu->iYhteensa == pLajittelematon->iYhteensa &&
-             strcmp(pLajiteltu->aSukunimi, pLajittelematon->aSukunimi) < 0)) {
+             strcmp(pLajiteltu->aNimi, pLajittelematon->aNimi) < 0)) {
             // Lisätään lajitellun listan alkuun
             pLajittelematon->pSeuraava = pLajiteltu;
             if (pLajiteltu != NULL) {
@@ -626,7 +626,7 @@ TIEDOT *lisaysLajittelu(TIEDOT *pAlku) {
             while (ptr->pSeuraava != NULL &&
                    (ptr->pSeuraava->iYhteensa > pLajittelematon->iYhteensa ||
                     (ptr->pSeuraava->iYhteensa == pLajittelematon->iYhteensa &&
-                     strcmp(ptr->pSeuraava->aSukunimi, pLajittelematon->aSukunimi) > 0))) {
+                     strcmp(ptr->pSeuraava->aNimi, pLajittelematon->aNimi) > 0))) {
                 ptr = ptr->pSeuraava;
             }
             pLajittelematon->pSeuraava = ptr->pSeuraava;

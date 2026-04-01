@@ -3,7 +3,7 @@
 #include "yleiset.h"
 
 typedef struct tiedot {
-    char aSukunimi[LEN];
+    char aNimi[LEN];
     int iYhteensa;
     struct tiedot *pSeuraava;
     struct tiedot *pEdellinen;

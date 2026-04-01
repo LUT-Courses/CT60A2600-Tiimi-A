@@ -16,7 +16,7 @@ void test_VaraaMuistia(void) {
     TEST_ASSERT_NULL(pAlku->pSeuraava);
 
     // Löytyykö oikeat arvot
-    TEST_ASSERT_EQUAL_STRING(expectedNimi, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi, pAlku->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa, pAlku->iYhteensa);
 
     pAlku = vapautaMuisti(pAlku);
@@ -56,13 +56,13 @@ void test_VaraaMuistiUsealleAlkiolle(void) {
     TEST_ASSERT_NOT_NULL(pAlku);
 
     // Loytyyko oikeat arvot
-    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa1, pAlku->iYhteensa);
     ptr = pAlku->pSeuraava;
-    TEST_ASSERT_EQUAL_STRING(expectedNimi2, ptr->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi2, ptr->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa2, ptr->iYhteensa);
     ptr = ptr->pSeuraava;
-    TEST_ASSERT_EQUAL_STRING(expectedNimi3, ptr->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi3, ptr->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa3, ptr->iYhteensa);
 
     // ptr pitaisi olla viimeisessa solmussa ja pAlku pitaisi olla ensimmainen solmu
@@ -83,7 +83,7 @@ void test_lisaaListaan_tyhja() {
     pAlku = lisaaListaan(pAlku, iIndeksi, expectedNimi, expectedArvo);
     TEST_ASSERT_NULL(pAlku->pSeuraava);
     TEST_ASSERT_NULL(pAlku->pEdellinen);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi, pAlku->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedArvo, pAlku->iYhteensa);
 
     pAlku = vapautaMuisti(pAlku);
@@ -112,9 +112,9 @@ void test_lisaaListaan_alkuun() {
     pAlku = lisaaListaan(pAlku, iIndeksi3, expectedNimi3, expectedArvo3);
 
     TEST_ASSERT_NULL(pAlku->pEdellinen);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedArvo3, pAlku->iYhteensa);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->aNimi);
 
     pAlku = vapautaMuisti(pAlku);
 }
@@ -141,13 +141,13 @@ void test_lisaaListaan_indeksilla() {
 
     pAlku = lisaaListaan(pAlku, iIndeksi3, expectedNimi3, expectedArvo3);
 
-    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedArvo3, pAlku->iYhteensa);
 
-    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->pSeuraava->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->pSeuraava->pSeuraava->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedArvo2, pAlku->pSeuraava->pSeuraava->iYhteensa);
 
-    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->aNimi);
 
     pAlku = vapautaMuisti(pAlku);
 }
@@ -192,7 +192,7 @@ void test_poistaListaLkmPerusteella() {
     pAlku = poistaListastaLkmPeruusteella(pAlku, 300);
 
     TEST_ASSERT_NULL(pAlku->pSeuraava);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->aNimi);
 
     pAlku = vapautaMuisti(pAlku);
 }
@@ -211,12 +211,12 @@ void test_poistaListaNimenPerusteella() {
     int iIndeksi2 = 2;
     pAlku = lisaaListaan(pAlku, iIndeksi2, expectedNimi2, expectedArvo2);
 
-    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->aNimi);
 
     pAlku = poistaListastaNimenPerusteella(pAlku, "Kosonen");
 
     TEST_ASSERT_NULL(pAlku->pSeuraava);
-    TEST_ASSERT_EQUAL_STRING("Karjalainen", pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING("Karjalainen", pAlku->aNimi);
 
     pAlku = vapautaMuisti(pAlku);
 }
@@ -242,7 +242,7 @@ void test_lomitusLajitteluYhdellaAlkiolla() {
     pAlku = lomitusLajittelu(pAlku);
 
     TEST_ASSERT_NOT_NULL(pAlku);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi, pAlku->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa, pAlku->iYhteensa);
     TEST_ASSERT_NULL(pAlku->pEdellinen);
     TEST_ASSERT_NULL(pAlku->pSeuraava);
@@ -264,9 +264,9 @@ void test_lomitusLajitteluKahdellaAlkiolla() {
     pAlku = lomitusLajittelu(pAlku);
 
     TEST_ASSERT_NOT_NULL(pAlku);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa2, pAlku->iYhteensa);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa1, pAlku->pSeuraava->iYhteensa);
     TEST_ASSERT_NULL(pAlku->pEdellinen);
     TEST_ASSERT_NULL(pAlku->pSeuraava->pSeuraava);
@@ -297,16 +297,16 @@ void test_lomitusLajitteluUseallaAlkiolla() {
     pAlku = lomitusLajittelu(pAlku);
 
     TEST_ASSERT_NOT_NULL(pAlku);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi4, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi4, pAlku->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa4, pAlku->iYhteensa);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->pSeuraava->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa3, pAlku->pSeuraava->iYhteensa);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->pSeuraava->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa1, pAlku->pSeuraava->pSeuraava->iYhteensa);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->pSeuraava->pSeuraava->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->pSeuraava->pSeuraava->pSeuraava->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa2, pAlku->pSeuraava->pSeuraava->pSeuraava->iYhteensa);
     TEST_ASSERT_EQUAL_STRING(expectedNimi5,
-                             pAlku->pSeuraava->pSeuraava->pSeuraava->pSeuraava->aSukunimi);
+                             pAlku->pSeuraava->pSeuraava->pSeuraava->pSeuraava->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa5,
                           pAlku->pSeuraava->pSeuraava->pSeuraava->pSeuraava->iYhteensa);
     TEST_ASSERT_NULL(pAlku->pEdellinen);
@@ -332,11 +332,11 @@ void test_lomitusLajitteluSamaArvo() {
     pAlku = lomitusLajittelu(pAlku);
 
     TEST_ASSERT_NOT_NULL(pAlku);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa3, pAlku->iYhteensa);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->pSeuraava->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa2, pAlku->pSeuraava->iYhteensa);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->pSeuraava->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa1, pAlku->pSeuraava->pSeuraava->iYhteensa);
     TEST_ASSERT_NULL(pAlku->pEdellinen);
     TEST_ASSERT_NULL(pAlku->pSeuraava->pSeuraava->pSeuraava);
@@ -365,7 +365,7 @@ void test_lisaysLajitteluYhdellaAlkiolla() {
     pAlku = lisaysLajittelu(pAlku);
 
     TEST_ASSERT_NOT_NULL(pAlku);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi, pAlku->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa, pAlku->iYhteensa);
     TEST_ASSERT_NULL(pAlku->pEdellinen);
     TEST_ASSERT_NULL(pAlku->pSeuraava);
@@ -387,9 +387,9 @@ void test_lisaysLajitteluKahdellaAlkiolla() {
     pAlku = lisaysLajittelu(pAlku);
 
     TEST_ASSERT_NOT_NULL(pAlku);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa2, pAlku->iYhteensa);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa1, pAlku->pSeuraava->iYhteensa);
     TEST_ASSERT_NULL(pAlku->pEdellinen);
     TEST_ASSERT_NULL(pAlku->pSeuraava->pSeuraava);
@@ -420,16 +420,16 @@ void test_lisaysLajitteluUseallaAlkiolla() {
     pAlku = lisaysLajittelu(pAlku);
 
     TEST_ASSERT_NOT_NULL(pAlku);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi5, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi5, pAlku->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa5, pAlku->iYhteensa);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->pSeuraava->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa2, pAlku->pSeuraava->iYhteensa);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->pSeuraava->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa1, pAlku->pSeuraava->pSeuraava->iYhteensa);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->pSeuraava->pSeuraava->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->pSeuraava->pSeuraava->pSeuraava->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa3, pAlku->pSeuraava->pSeuraava->pSeuraava->iYhteensa);
     TEST_ASSERT_EQUAL_STRING(expectedNimi4,
-                             pAlku->pSeuraava->pSeuraava->pSeuraava->pSeuraava->aSukunimi);
+                             pAlku->pSeuraava->pSeuraava->pSeuraava->pSeuraava->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa4,
                           pAlku->pSeuraava->pSeuraava->pSeuraava->pSeuraava->iYhteensa);
     TEST_ASSERT_NULL(pAlku->pEdellinen);
@@ -456,11 +456,11 @@ void test_lisaysLajitteluSamaArvo() {
     pAlku = lisaysLajittelu(pAlku);
 
     TEST_ASSERT_NOT_NULL(pAlku);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pAlku->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa3, pAlku->iYhteensa);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa1, pAlku->pSeuraava->iYhteensa);
-    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->pSeuraava->pSeuraava->aSukunimi);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pAlku->pSeuraava->pSeuraava->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa2, pAlku->pSeuraava->pSeuraava->iYhteensa);
     TEST_ASSERT_NULL(pAlku->pEdellinen);
     TEST_ASSERT_NULL(pAlku->pSeuraava->pSeuraava->pSeuraava);
