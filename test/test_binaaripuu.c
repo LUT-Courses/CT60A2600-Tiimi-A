@@ -85,6 +85,71 @@ void test_VapautaPuunMuistiUseastaSolmusta() {
     TEST_ASSERT_NULL(pJuuriSolmu);
 }
 
+// Onnistuuko vasen-vasen tasapainotus.
+void test_LLtasapainotus() {
+    PUU *pJuuriSolmu = NULL;
+    pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 500);
+    pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Gekko", 400);
+    pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Karjalainen", 300);
+    
+    TEST_ASSERT_EQUAL_STRING(pJuuriSolmu->aNimi, "Gekko");
+    TEST_ASSERT_EQUAL_INT(pJuuriSolmu->iArvo, 400);
+
+    TEST_ASSERT_EQUAL_STRING(pJuuriSolmu->pOikea->aNimi, "Kosonen");
+
+    pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+}
+
+// Onnistuuko oikea-oikea tasapainotus.
+void test_RRtasapainotus() {
+    PUU *pJuuriSolmu = NULL;
+    pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 500);
+    pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Gekko", 600);
+    pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Karjalainen", 700);
+    
+    TEST_ASSERT_EQUAL_STRING(pJuuriSolmu->aNimi, "Gekko");
+    TEST_ASSERT_EQUAL_INT(pJuuriSolmu->iArvo, 600);
+
+    TEST_ASSERT_EQUAL_STRING(pJuuriSolmu->pOikea->aNimi, "Karjalainen");
+    TEST_ASSERT_NULL(pJuuriSolmu->pOikea->pOikea->aNimi);
+
+    pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+}
+
+// Onnistuuko vasen-oikea tasapainotus.
+void test_LRtasapainotus() {
+    PUU *pJuuriSolmu = NULL;
+    pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 500);
+    pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Gekko", 300);
+    pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Karjalainen", 400);
+    
+    TEST_ASSERT_EQUAL_STRING(pJuuriSolmu->aNimi, "Karjalainen");
+    TEST_ASSERT_EQUAL_INT(pJuuriSolmu->iArvo, 400);
+
+    TEST_ASSERT_EQUAL_STRING(pJuuriSolmu->pOikea->aNimi, "Kosonen");
+    TEST_ASSERT_NULL(pJuuriSolmu->pOikea->pOikea->aNimi);
+
+    pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+}
+
+// Onnistuuko oikea-vasen tasapainotus.
+void test_RLtasapainotus() {
+    PUU *pJuuriSolmu = NULL;
+    pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 300);
+    pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Gekko", 500);
+    pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Karjalainen", 400);
+    
+    TEST_ASSERT_EQUAL_STRING(pJuuriSolmu->aNimi, "Karjalainen");
+    TEST_ASSERT_EQUAL_INT(pJuuriSolmu->iArvo, 400);
+
+    TEST_ASSERT_EQUAL_STRING(pJuuriSolmu->pOikea->aNimi, "Gekko");
+    TEST_ASSERT_NULL(pJuuriSolmu->pOikea->pOikea->aNimi);
+
+    pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+}
+
+
+
 // Testataan, toimiiko lukuarvon tarkistus.
 void test_onkoLuku() {
     char aLuku1[] = "50";

@@ -20,6 +20,10 @@ void test_VaraaMuistiaPuulle();
 void test_VaraaMuistiaUsealleSolmullePuussa();
 void test_VapautaPuunMuisti();
 void test_VapautaPuunMuistiUseastaSolmusta();
+void test_LLtasapainotus();
+void test_RRtasapainotus();
+void test_LRtasapainotus();
+void test_RLtasapainotus();
 
 void test_VaraaMuistiaJonolle();
 void test_VapautaMuistiJono();
@@ -63,6 +67,10 @@ int main(void) {
     RUN_TEST(test_VaraaMuistiaUsealleSolmullePuussa);
     RUN_TEST(test_VapautaPuunMuisti);
     RUN_TEST(test_VapautaPuunMuistiUseastaSolmusta);
+    RUN_TEST(test_LLtasapainotus);
+    RUN_TEST(test_RRtasapainotus);
+    RUN_TEST(test_LRtasapainotus);
+    RUN_TEST(test_RLtasapainotus);
 
     // Jono structin testit
     RUN_TEST(test_VaraaMuistiaJonolle);
