@@ -9,7 +9,7 @@
 /**
  * @brief Lukee tiedoston.
  *
- * Avaa ja lukee kayttajan syotteen mukaisen tiedoston.
+ * Avaa ja lukee kayttajan syötteen mukaisen tiedoston.
  * Kutsuu muistinvaraus aliohjelmaa muistin varaamiseksi.
  *
  * @param pNimi Luettavan tiedoston nimi.
@@ -54,7 +54,6 @@ TIEDOT *lue(char *pNimi, TIEDOT *pAlku) {
         iMaara = atoi(p2);
 
         /* Muistin varaaminen ja linkitetyn listan luominen. */
-
         pAlku = varaaMuistia(pAlku, p1, iMaara);
     }
     /* Tiedoston sulkeminen. */
@@ -293,6 +292,7 @@ TIEDOT *poistaListastaAlkio(TIEDOT *pAlku, int iLuvuVaiNimi, char *pTieto) {
 TIEDOT *poistaListastaLkmPeruusteella(TIEDOT *pAlku, int iLKM) {
     TIEDOT *ptr = pAlku;
     TIEDOT *pEdellinen = NULL;
+    int iAlkioLoytyi = 0;
 
     // Tarkistetaan, onko poistettava alkio ensimmäinen.
     if ((ptr != NULL) && (ptr->iYhteensa == iLKM)) {
@@ -308,11 +308,18 @@ TIEDOT *poistaListastaLkmPeruusteella(TIEDOT *pAlku, int iLKM) {
             if (ptr->iYhteensa == iLKM) {
                 pEdellinen->pSeuraava = ptr->pSeuraava;
                 free(ptr);
-                printf("Alkio poistettu.\n");
+                iAlkioLoytyi = 1;
                 break;
             }
             pEdellinen = ptr;
             ptr = ptr->pSeuraava;
+        }
+
+        // Kerrotaan käyttäjälle, poistettiinko alkio.
+        if(iAlkioLoytyi == 1) {
+            printf("Alkio poistettu.\n");
+        } else {
+            printf("Poistettavaa alkiota ei löydetty.\n");
         }
     }
 
@@ -329,6 +336,7 @@ TIEDOT *poistaListastaLkmPeruusteella(TIEDOT *pAlku, int iLKM) {
 TIEDOT *poistaListastaNimenPerusteella(TIEDOT *pAlku, char *pNimi) {
     TIEDOT *ptr = pAlku;
     TIEDOT *pEdellinen = NULL;
+    int iAlkioLoytyi = 0;
 
     // Tarkistetaan, onko poistettava alkio ensimmäinen.
     if ((ptr != NULL) && (strcmp(ptr->aNimi, pNimi) == 0)) {
@@ -344,11 +352,18 @@ TIEDOT *poistaListastaNimenPerusteella(TIEDOT *pAlku, char *pNimi) {
             if (strcmp(ptr->aNimi, pNimi) == 0) {
                 pEdellinen->pSeuraava = ptr->pSeuraava;
                 free(ptr);
-                printf("Alkio poistettu.\n");
+                iAlkioLoytyi = 1;
                 break;
             }
             pEdellinen = ptr;
             ptr = ptr->pSeuraava;
+        }
+
+        // Kerrotaan käyttäjälle, poistettiinko alkio.
+        if(iAlkioLoytyi == 1) {
+            printf("Alkio poistettu.\n");
+        } else {
+            printf("Poistettavaa alkiota ei löydetty.\n");
         }
     }
     return (pAlku);
