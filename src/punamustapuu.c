@@ -8,6 +8,14 @@
  * binaaripuu.c tiedoston aliohjelmia muokattuina.
  */
 
+
+ /**
+  * @brief Varaa muistia punamustalle puulle.
+  * 
+  * @param pNimi Solmun nimi, jolle varataan muistia ja kopioidaan uuteen solmuun.
+  * @param iArvo Solmun arvo, jolle varataan muistia ja kopioidaan uuteen solmuun..
+  * @return RBSOLMU* Palauttaa osoittimen uuteen alustettuun solmuun. 
+  */
 RBSOLMU *varaaMuistiaRB(char *pNimi, int iArvo) {
     RBSOLMU *pUusi = NULL;
 
@@ -25,6 +33,12 @@ RBSOLMU *varaaMuistiaRB(char *pNimi, int iArvo) {
     return (pUusi);
 }
 
+/**
+ * @brief Vapauttaa muistin punamustasta puusta.
+ * 
+ * @param pJuuriSolmu Osoitin punamustapuun solmuun.
+ * @return RBSOLMU* Palauttaa punamustapuun osoittimen.
+ */
 RBSOLMU *vapautaMuistiRB(RBSOLMU *pJuuriSolmu) {
     if (pJuuriSolmu != NULL) {
         vapautaMuistiRB(pJuuriSolmu->pVasen);
@@ -35,6 +49,13 @@ RBSOLMU *vapautaMuistiRB(RBSOLMU *pJuuriSolmu) {
     return (pJuuriSolmu);
 }
 
+/**
+ * @brief Lisää solmun punamustapuuhun.
+ * 
+ * @param pJuurisolmu Punamustapuun juurisolmu.
+ * @param pUusi Lisättävä solmu.
+ * @return RBSOLMU* Palauttaa punamustapuun juurisolmun. 
+ */
 RBSOLMU *lisaaRBSolmu(RBSOLMU *pJuurisolmu, RBSOLMU *pUusi) {
     int iVertailu = 0;
 
@@ -65,6 +86,7 @@ RBSOLMU *lisaaRBSolmu(RBSOLMU *pJuurisolmu, RBSOLMU *pUusi) {
     }
     return (pJuurisolmu);
 }
+
 
 RBSOLMU *luoRBPuu(RBSOLMU *pJuurisolmu, char *pNimi) {
     FILE *Tiedosto = NULL;
@@ -198,6 +220,12 @@ void korjaaLisays(RBSOLMU **pJuurisolmu, RBSOLMU *pUusi) {
 }
 
 // Koska binaaripuu.c versio ottaa parametrina PUU*, tarvitaan uusi kirjoitusaliohjelma.
+/**
+ * @brief Kirjoittaa punamustapuun Tiedostoon.
+ * 
+ * @param pNimi Kirjoitettavan tiedoston nimi.
+ * @param pJuurisolmu Osoitin punamustapuun juurisolmuun.
+ */
 void kirjoitaRBTiedostoon(char *pNimi, RBSOLMU *pJuurisolmu) {
     FILE *Tiedosto = NULL;
 
@@ -219,11 +247,13 @@ void kirjoitaRBTiedostoon(char *pNimi, RBSOLMU *pJuurisolmu) {
     return;
 }
 
+/**
+ * @brief Kirjoittaa punamustapuun. 
+ * Kutsuu tiedostoon kirjoittavaa aliohjelmaa ja antaa sille kirjoitettavat arvot.
+ * @param pNimi Kirjoitettavan tiedoston nimi.
+ * @param pJuurisolmu Osoitin solmuun, jota aliohjelma käsittelee.
+ */
 void kirjoitaRB(char *pNimi, RBSOLMU *pJuurisolmu) {
-    /*if (pJuurisolmu == NULL) {
-        printf("Puu on tyhjä, luo puurakenne ennen kirjoittamista.\n");
-        return;
-    }*/
     if (pJuurisolmu != NULL) {
         kirjoitaRBTiedostoon(pNimi, pJuurisolmu);
         kirjoitaRB(pNimi, pJuurisolmu->pVasen);
