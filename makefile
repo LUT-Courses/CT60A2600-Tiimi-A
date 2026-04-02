@@ -9,6 +9,7 @@ test:
 	test/test_binaaripuu.c \
 	test/test_haut.c \
 	test/test_linkitettylista.c \
+	test/test_punamustapuu.c \
 	src/yleiset.c \
 	src/binaaripuu.c \
 	src/haut.c \

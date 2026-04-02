@@ -1,6 +1,7 @@
 #include "../src/binaaripuu.h"
 #include "../src/haut.h"
 #include "../src/linkitettylista.h"
+#include "../src/punamustapuu.h"
 #include "unity.h"
 
 void setUp(void) {
