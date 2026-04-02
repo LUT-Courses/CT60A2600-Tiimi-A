@@ -25,18 +25,19 @@ EXTRACT_PRIVATE        = NO
 EXTRACT_STATIC         = NO
 EXTRACT_LOCAL_METHODS  = NO
 HIDE_UNDOC_MEMBERS     = YES
-HIDE_UNDOC_CLASSES     = NO
+HIDE_UNDOC_CLASSES     = YES
 STRIP_CODE_COMMENTS    = YES
 
-# Lähdekoodi dokumentaatiossa
-SOURCE_BROWSER         = YES
-INLINE_SOURCES         = YES
+# Ei lähdekoodia dokumentaatiossa
+SOURCE_BROWSER         = NO
+INLINE_SOURCES         = NO
+REFERENCES_LINK_SOURCE = NO
+VERBATIM_HEADERS       = NO
 
 # Kaaviot
 HAVE_DOT               = NO
 CALL_GRAPH             = NO
 CALLER_GRAPH           = NO
-CLASS_DIAGRAMS         = NO
 
 # Polut
 FULL_PATH_NAMES        = NO
