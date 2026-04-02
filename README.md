@@ -1,13 +1,59 @@
-# Project Title (C)
+# TiimiA:n tietorakenteet
 
-> **Short description**: One sentence about what this project does and why it exists.  
+> **Projektin kuvaus**: Tämä ohjelma on C-ohjelmoinnin kurssi projekti, joka sisältää linkitettyyn listaan ja tasapainotettuun binäärihakupuuhun liittyviä ominaisuuksia.
 > *(Students: Replace this block with your own description.)*
 
 ---
 
-## 📁 Project Structure
+## 📁 Projektin rakenne
 
 ```
+.
+├── README.md
+├── bin                         # Käännetyt ohjelmat (buildin tuottamat tiedostot)
+│   ├── app
+│   ├── test
+│   └── tests
+├── data
+│   ├── miehet_2025.txt
+│   ├── naiset_2025.txt
+│   ├── readme.md
+│   ├── sukunimet_2025.txt
+│   ├── testi_miehet.txt
+│   ├── testi_naiset.txt
+│   ├── verkko_iso.txt
+│   ├── verkko_iso_lyhenteilla.txt
+│   └── verkko_pieni.txt
+├── doc
+│   ├── Doxyfile
+│   ├── design.md
+│   ├── readme.md
+│   └── refman.pdf
+├── documentation             # Doxygen dokumentaatio.
+│   └── latex
+│       └── refman.out
+├── makefile                  # Käännöskomennot: käännä, suorita, testaa, siivoa jne.
+├── src                       # C lähdekooditiedostot ja otsikkotiedostot.
+│   ├── binaaripuu.c
+│   ├── binaaripuu.h
+│   ├── haut.c
+│   ├── haut.h
+│   ├── linkitettylista.c
+│   ├── linkitettylista.h
+│   ├── paaohjelma.c
+│   ├── punamustapuu.c
+│   ├── punamustapuu.h
+│   ├── yleiset.c
+│   └── yleiset.h
+└── test
+    ├── test_binaaripuu.c           # Testitiedostot
+    ├── test_haut.c
+    ├── test_linkitettylista.c
+    ├── test_main.c
+    └── test_punamustapuu.c
+
+
+Esimerkki vanhasta:
 .
 ├── Makefile              # Build targets: build, run, test, clean, etc.
 ├── src/                  # C source files and headers
@@ -24,6 +70,7 @@
 │   └── README.md         # Describe data sources and formats
 └── doc/                  # Documentation (design notes, Doxygen config)
     └── design.md
+```
 ```
 
 > **Notes**
@@ -47,33 +94,32 @@ make --version
 
 ---
 
-## 🚀 Quick Start (Build / Run / Test)
+## 🚀 Nopea aloitus (käännös / ajo / testaus)
 
 ```bash
-# Build (creates ./bin/app by default)
+# Käännä (luo oletuksena ./bin/app)
 make
 
-# Run
+# Suorita
 ./bin/app
 
-# Tests
+# Testit
 make test
 
-# Memory check
+# Muistintarkistus
 make memcheck
 ```
 
 ---
-
 ## 🧭 How to Use This Template (Students)
 
 ### 1) Use this template
 
 ### 2) Personalize the Project
 
-- Rename the project in this README.
+- Rename the project in this README. ok
 - Fill in the description, inputs/outputs, and known issues.
-- Replace sample files in `src/` and `test/` with your implementation.
+- Replace sample files in `src/` and `test/` with your implementation. Muutetaan, jos doxygenin sijainti vaihtuu.
 - **Modify** this README as your project evolves.
 
 ### 3) Branching & Commits (Recommended Workflow)
@@ -87,20 +133,6 @@ git commit -m "feat: short description"
 # Push and open a Pull Request (PR)
 git push -u origin feature/<short-name>
 ```
-
-
-### 4) Give the TA Access to Your Fork
-
-> **Required for grading.** Add the TA as a **collaborator** to *your forked repository*.
-
-1. On GitHub, open **Settings → Collaborators** (or **Settings → Collaborators and teams**).
-2. Click **Add people**, enter the TA's GitHub username (IlKaLUT), choose **Write** access (or as instructed), and **Add**.
-3. If the repo is **private**, ensure the TA accepts the email invite.
-4. (Optional) If your course uses an organization, you may instead add the TA via **Manage access** or your course team. Follow the course's instructions if they differ.
-
-> Also share the **repository URL** and, if required, the **commit/tag** of the submitted version.
-
----
 
 ## 📚 Documentation
 
@@ -121,11 +153,78 @@ doxygen doc/Doxyfile
 
 ---
 
-## 🧪 Testing
+## 🧪 Testaus
 
-- Place test sources in `test/`. Choose a C test framework (e.g., Unity, CMocka) or write simple assertion-based tests.
-- Document how to run tests here.
+- Projektissa käytetään Unity testikehystä.
+- Yksikkötestejä ja integraatiotestejä on koodattu viikoittain, ja ne on jaettu tiedostoihin sen perusteella, mitä toimintoja ne testaavat.
+- Ohjelmaa on regressiotestattu jokaisella viikolla.
+- Mustalaatikkotestausta (bloack-box) on tehty viikoittain ajamalla ohjelmaa sekä ns. oikeilla syötteillä, että viallisilla syötteillä.
+- Kaikki 34 yksikkötestiä menevät läpi ajettaessa.
 
+Viikko 08:
+- Uusia yksikkötestejä 3. 
+- Yhteensä 3 testiä.
+- Ohjelmaa regressiotestattu.
+- Uudet testit:
+    - void test_VaraaMuistia(void)
+    - void test_VapautaMuisti(void)
+    - void test_VaraaMuistiUsealleAlkiolle(void) 
+
+Viikko 09:
+- Uusia yksikkötestejä 4.
+- Yhteensä 7 testiä.
+- Testit liittyvät puun muistin varaukseen ja vapautukseen.
+- Uudet testit:
+    - void test_VaraaMuistiaPuulle(void)
+    - void test_VaraaMuistiaUsealleSolmullePuussa(void)  # Muokattu viikolla 4. 
+    - void test_VapautaPuunMuisti(void)
+    - void test_VapautaPuunMuistiUseastaSolmusta(void)
+
+Viikko 10:
+- Uusia yksikkötestejä 7.
+- Yhteensä 14 testiä.
+- Testit liittyvät binääripuun poisto-operaatioon, sekä jonon muistin varaukseen ja vapautukseen.
+- Uudet testit:
+    - void test_onkoLuku(void)
+    - void test_nimenArvo(void)
+    - void test_poistaSolmuNimi(void)
+    - void test_poistaSolmuArvo(void)
+    - void test_VaraaMuistiaRBSolmulle(void)
+    - void test_VapautaMuistiJono(void)
+    - void test_VaraaMuistiaJonolle(void)
+      
+Viikko 11:
+- Uusi yksikkötestejä 16.
+- Yhteensä 30 testiä.
+- Uudet testit:
+    - void test_lisaaListaan_tyhja(void)
+    - void test_lisaaListaan_alkuun(void)
+    - void test_lisaaListaan_indeksilla(void)
+    - void test_useammalleAlkiolleSamaLKM(void)
+    - void test_poistaListaLkmPerusteella(void)
+    - void test_poistaListaNimenPerusteella(void)
+    - void test_lomitusLajitteluTyhjaLista(void)
+    - void test_lomitusLajitteluYhdellaAlkiolla()
+    - void test_lomitusLajitteluKahdellaAlkiolla(void)
+    - void test_lomitusLajitteluUseallaAlkiolla(void)
+    - void test_lomitusLajitteluSamaArvo(void)
+    - void test_lisaysLajitteluTyhjaLista(void)
+    - void test_lisaysLajitteluYhdellaAlkiolla(void)
+    - void test_lisaysLajitteluKahdellaAlkiolla(void)
+    - void test_lisaysLajitteluUseallaAlkiolla(void)
+    - void test_lisaysLajitteluSamaArvo(void)
+
+Viikko 5:
+- Uusia testejä 4.
+- Yhteensä 34 testiä.
+- Testit liittyvät AVL-puun tasapainotuksen rotaatioihin.
+- Uudet testit:
+    - void test_LLtasapainotus();
+    - void test_RRtasapainotus();
+    - void test_LRtasapainotus();
+    - void test_RLtasapainotus();
+
+Aja testit komennolla: 
 ```bash
 make test
 ```
