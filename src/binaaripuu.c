@@ -57,6 +57,7 @@ PUU *vapautaMuistiPuu(PUU *pJuuriSolmu) {
  */
 PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iArvo) {
     int iVertailu = 0;
+    int tasapaino = 0;
 
     // Varataan muistia, jos muisti tyhjä.
     if (pAlku == NULL) {
@@ -82,7 +83,7 @@ PUU *lisaaSolmu(PUU *pAlku, char *pSolmu, int iArvo) {
 
     // Selvitetaan paikka, johon solmu lisataan. Tasapainotetaan puu.
     pAlku->iPituus = 1 + suurempiLukuVertailu(puunPituus(pAlku->pVasen), puunPituus(pAlku->pOikea));
-    int tasapaino = tasapainoitaPuu(pAlku);
+    tasapaino = tasapainoitaPuu(pAlku);
 
     // vasen vasen tasapainotus
     if ((tasapaino > 1) && (iArvo < pAlku->pVasen->iArvo)) {
@@ -174,10 +175,6 @@ PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
  * @param pAlku
  */
 void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku) {
-    /*if (pAlku == NULL) { //Noora kommentoi pois 19.3.2026 klo. 13.08
-        printf("Puu on tyhjä, luo puurakenne ennen kirjoittamista.\n");
-        return;
-    }*/
     if (pAlku != NULL) {
         kirjoitaTiedostoon(pNimi, pAlku);
         kirjoitaBinaaripuu(pNimi, pAlku->pVasen);
@@ -390,13 +387,13 @@ PUU *poistaSolmu(char *pNimi, PUU *pJuuriSolmu) {
 }
 
 /**
- * @brief Testaa, onko kayttajan antama arvo nimi vai numeroarvo.
+ * @brief Testaa, onko käyttäjän antama arvo nimi vai numeroarvo.
  *
- * Ilmoittaa, onko kayttajan antama numero vai ei.
+ * Ilmoittaa, onko käyttäjän antama numero vai ei.
  *
  * @param pNimi Poistettava nimi tai numeroarvo merkkijonona.
  *
- * @return int Palauttaa 0 tai 1, riippuen siita onko kayttajan syote numero.
+ * @return int Palauttaa 0 tai 1, riippuen siita onko käyttäjän syote numero.
  */
 int onkoLuku(char *pNimi) {
     int tosi = 0;

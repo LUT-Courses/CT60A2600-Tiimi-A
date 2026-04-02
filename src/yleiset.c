@@ -2,11 +2,12 @@
 #include "binaaripuu.h"
 #include "haut.h"
 #include "linkitettylista.h"
+#include "punamustapuu.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-// Yleisiä aliohjelmia.
+// Yleisiä ja usein käytettyjä aliohjelmia.
 
 /**
  * @brief Tekee käyttäjän valinnan perusteella listan toiminnot.
@@ -26,10 +27,12 @@ void mainLista(void) {
     do {
         iValinta = listaValikko();
         if (iValinta == 1) {
+            // Luekee tiedoston.
             kysyNimi("Anna luettavan tiedoston nimi: ", aNimiLuettava);
             pAlku = lue(aNimiLuettava, pAlku);
 
         } else if (iValinta == 2) {
+            // Kirjoittaa tiedoston alusta loppuun.
             if (pAlku == NULL) {
                 printf("Lue tiedosto ennen kirjoittamista.\n");
             } else {
@@ -38,6 +41,7 @@ void mainLista(void) {
             }
 
         } else if (iValinta == 3) {
+            // Kirjoittaa tiedoston lopusta alkuun.
             if (pAlku == NULL) {
                 printf("Lue tiedosto ennen kirjoittamista.\n");
             } else {
@@ -46,25 +50,29 @@ void mainLista(void) {
             }
 
         } else if (iValinta == 4) {
+            // Vapauttaa musitin,
             pAlku = vapautaMuisti(pAlku);
             printf("Muisti vapautettu.\n");
 
         } else if (iValinta == 5) {
+            // Lajittelee nousevasti lomistuslajittelulla.
             pAlku = lomitusLajittelu(pAlku);
             printf("Numerot lajiteltu nousevasti.\n");
 
         } else if (iValinta == 6) {
+            // Lajittelee kasjetavastu lisäyslajittelulla.
             pAlku = lisaysLajittelu(pAlku);
             printf("Numerot lajiteltu laskevasti.\n");
 
         } else if (iValinta == 7) {
+            // Lisää tietoja listaan.
             iIndeksi = kysyArvo("Mille riville haluat lisätä tietoja: ", iIndeksi);
             kysyNimi("Anna lisättävä nimi: ", aNimiKirjoitettava);
             iArvo = kysyArvo("Anna tämän nimisten lukumäärä: ", iArvo);
             pAlku = lisaaListaan(pAlku, iIndeksi, aNimiKirjoitettava, iArvo);
 
         } else if (iValinta == 8) {
-            // Poistaminen listalta
+            // Poistaminen listalta.
             kysyNimi("Anna poistettava tieto: ", aTietoPoistettava);
             iArvo = onkoLukuVaiNimi(aTietoPoistettava);
             pAlku = poistaListastaAlkio(pAlku, iArvo, aTietoPoistettava);
@@ -102,10 +110,12 @@ void mainBinaaripuu(void) {
     do {
         iValinta = binaaripuuValikko();
         if (iValinta == 1) {
+            // Luo AVL puun.
             kysyNimi("Tiedoston nimi: ", aNimiLuettava);
             pJuuriSolmu = luoPuu(aNimiLuettava, pJuuriSolmu);
 
         } else if (iValinta == 2) {
+            // Kirjoittaa AVL puun tiedostoon.
             if (pJuuriSolmu == NULL) {
                 printf("Luo binääripuu ennen sen kirjoittamista.\n");
             } else {
@@ -114,6 +124,7 @@ void mainBinaaripuu(void) {
             }
 
         } else if (iValinta == 3) {
+            // Syvyyshaku binääripuulle.
             if (pJuuriSolmu == NULL) {
                 printf("Luo binääripuu ennen syvyyshakua.\n");
             } else {
@@ -123,6 +134,7 @@ void mainBinaaripuu(void) {
             }
 
         } else if (iValinta == 4) {
+            // Leveyshaku binääripuulle.
             if (pJuuriSolmu == NULL) {
                 printf("Luo binääripuu ennen leveyshakua.\n");
             } else {
@@ -132,10 +144,12 @@ void mainBinaaripuu(void) {
             }
 
         } else if (iValinta == 5) {
+            // Vapauttaa muistin.
             pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
             printf("Muisti vapautettu.\n");
 
         } else if (iValinta == 6) {
+            // Poistaa solmun binääripuusta.
             if (pJuuriSolmu == NULL) {
                 printf("Luo binääripuu ennen poistoa.\n");
             } else {
@@ -144,6 +158,7 @@ void mainBinaaripuu(void) {
             }
 
         } else if (iValinta == 7) {
+            // Binäärihaku
             if (pJuuriSolmu == NULL) {
                 printf("Luo binääripuu ennen binäärihakua.\n");
             } else {
@@ -156,10 +171,12 @@ void mainBinaaripuu(void) {
             }
 
         } else if (iValinta == 8) {
+            // Toteuttaa punamustapuun.
             kysyNimi("Anna luettavan tiedoston nimi: ", aNimiLuettava);
             kysyNimi("Anna kirjoitettavan tiedoston nimi: ", aNimiKirjoitettava);
             pRBJuuri = luoRBPuu(pRBJuuri, aNimiLuettava);
             kirjoitaRB(aNimiKirjoitettava, pRBJuuri);
+            printf("Tiedosto '%s' kirjoitettu.\n", aNimiKirjoitettava);
             pRBJuuri = vapautaMuistiRB(pRBJuuri);
 
         } else if (iValinta == 0) {
@@ -178,10 +195,10 @@ void mainBinaaripuu(void) {
 }
 
 /**
- * @brief Ensimmainen valikko, jossa käyttäjä valitsee listan tai binaaripuun.
+ * @brief Ensimmäinen valikko, jossa käyttäjä valitsee listan tai binääripuun.
  *
- * @param iValinta Kayttajan antama syote.
- * @return int Palauttaa kayttajan valinnan.
+ * @param iValinta Käyttäjän antama syöte.
+ * @return int Palauttaa kayttäjän valinnan.
  */
 int valikko(void) {
     int iValinta = 0;
@@ -196,10 +213,10 @@ int valikko(void) {
 }
 
 /**
- * @brief Tulostaa lista valikon ja kysyy kayttajan valinnan.
+ * @brief Tulostaa lista valikon ja kysyy käyttäjän valinnan.
  *
- * @param iValinta Kayttajan antama syote vaihtoehtojen pohjalta.
- * @return int Palauttaa kayttajan valinnan.
+ * @param iValinta Käyttäjän antama syöte vaihtoehtojen pohjalta.
+ * @return int Palauttaa käyttäjän valinnan.
  */
 int listaValikko(void) {
     int iValinta = 0;
@@ -220,10 +237,10 @@ int listaValikko(void) {
 }
 
 /**
- * @brief Tulostaa binaariluku valikon ja kysyy kayttajalta valinnan.
+ * @brief Tulostaa binaariluku valikon ja kysyy käyttäjältä valinnan.
  *
- * @param iValinta Kayttajan antama syote vaihtoehtojen pohjalta.
- * @return int Palauttaa kayttajan valinnan.
+ * @param iValinta Käyttäjän antama syöte vaihtoehtojen pohjalta.
+ * @return int Palauttaa käyttäjän valinnan.
  */
 int binaaripuuValikko(void) {
     int iValinta = 0;
@@ -247,8 +264,8 @@ int binaaripuuValikko(void) {
  * @brief Kysyy tiedoston/haettavan nimen.
  *
  * @param pPrompti Kysymys esim. "Anna kirjoitettavan tiedoston nimi: "
- * @param pNimi Tiedoston nimi/haettava nimi, jota halutaan kayttaa.
- * @return char Palauttaa kayttajan antaman merkkijonon.
+ * @param pNimi Tiedoston nimi/haettava nimi, jota halutaan käyttää.
+ * @return char Palauttaa käyttäjän antaman merkkijonon.
  */
 char *kysyNimi(char *pPrompti, char *pNimi) {
     printf("%s", pPrompti);
@@ -262,7 +279,7 @@ char *kysyNimi(char *pPrompti, char *pNimi) {
  *
  * @param pPrompti Kysymys esim. "Anna haettava numeroarvo: "
  * @param iArvo Arvo, joka halutaan poistaa/etsiä.
- * @return int Palauttaa kayttajan antaman arvon.
+ * @return int Palauttaa käyttäjän antaman arvon.
  */
 int kysyArvo(char *pPrompti, int iArvo) {
     printf("%s", pPrompti);
