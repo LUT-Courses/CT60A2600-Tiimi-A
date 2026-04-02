@@ -1,7 +1,6 @@
 # TiimiA:n tietorakenteet
 
 > **Projektin kuvaus**: Tämä ohjelma on C-ohjelmoinnin kurssi projekti, joka sisältää linkitettyyn listaan ja tasapainotettuun binäärihakupuuhun liittyviä ominaisuuksia.
-> *(Students: Replace this block with your own description.)*
 
 ---
 
@@ -10,11 +9,11 @@
 ```
 .
 ├── README.md
-├── bin                         # Käännetyt ohjelmat (buildin tuottamat tiedostot)
+├── bin                       # Käännetyt ohjelmat (buildin tuottamat tiedostot)
 │   ├── app
 │   ├── test
 │   └── tests
-├── data
+├── data                      # Syötetiedostot
 │   ├── miehet_2025.txt
 │   ├── naiset_2025.txt
 │   ├── readme.md
@@ -29,11 +28,11 @@
 │   ├── design.md
 │   ├── readme.md
 │   └── refman.pdf
-├── documentation             # Doxygen dokumentaatio.
+├── documentation             # Doxygen dokumentaatio
 │   └── latex
 │       └── refman.out
 ├── makefile                  # Käännöskomennot: käännä, suorita, testaa, siivoa jne.
-├── src                       # C lähdekooditiedostot ja otsikkotiedostot.
+├── src                       # C lähdekooditiedostot ja otsikkotiedostot
 │   ├── binaaripuu.c
 │   ├── binaaripuu.h
 │   ├── haut.c
@@ -46,37 +45,11 @@
 │   ├── yleiset.c
 │   └── yleiset.h
 └── test
-    ├── test_binaaripuu.c           # Testitiedostot
+    ├── test_binaaripuu.c     # Testitiedostot
     ├── test_haut.c
     ├── test_linkitettylista.c
     ├── test_main.c
     └── test_punamustapuu.c
-
-
-Esimerkki vanhasta:
-.
-├── Makefile              # Build targets: build, run, test, clean, etc.
-├── src/                  # C source files and headers
-│   ├── main.c
-│   ├── module.c
-│   └── module.h
-├── bin/                  # Compiled binaries (output of build)
-│   └── app               # Example executable name
-├── test/                 # Test sources (e.g., Unity/CMocka) + fixtures
-│   ├── test_main.c
-│   └── fixtures/
-├── data/                 # Input datasets / sample inputs (no secrets)
-│   ├── sample-input.txt
-│   └── README.md         # Describe data sources and formats
-└── doc/                  # Documentation (design notes, Doxygen config)
-    └── design.md
-```
-```
-
-> **Notes**
-> - `bin/` is generated—usually excluded from version control.
-> - Place configuration and design decisions in `doc/`.
-
 ---
 
 ## 🛠 Prerequisites
@@ -111,45 +84,18 @@ make memcheck
 ```
 
 ---
-## 🧭 How to Use This Template (Students)
 
-### 1) Use this template
+## 📚 Dokumentaatio
 
-### 2) Personalize the Project
-
-- Rename the project in this README. ok
-- Fill in the description, inputs/outputs, and known issues.
-- Replace sample files in `src/` and `test/` with your implementation. Muutetaan, jos doxygenin sijainti vaihtuu.
-- **Modify** this README as your project evolves.
-
-### 3) Branching & Commits (Recommended Workflow)
-
-```bash
-# Create a feature branch
-git checkout -b feature/<short-name>
-# Work & commit small, focused changes
-git add .
-git commit -m "feat: short description"
-# Push and open a Pull Request (PR)
-git push -u origin feature/<short-name>
-```
-
-## 📚 Documentation
-
-- High-level design: `doc/design.md`
-- API docs: generate with Doxygen
-
-```bash
-# Generate docs
-doxygen doc/Doxyfile
-```
+- Projektin dokumentaatio on toteutettu doxygen työkalulla.
+- Dokumentaatio löytyy projektin rakenteesta doc/refman.pdf.
 
 ---
 
-## 📏 Coding Standards
+## 📏 Koodin standardit
 
-- **C standard**: C99 
-- **Compiler flags**: `-Wall -pedantic`
+- **C standardi**: C99 
+- **Kääntäjän liput**: `-Wall -pedantic`
 
 ---
 
@@ -231,19 +177,24 @@ make test
 
 ---
 
-## 🗂️ Version History
+## 🗂️ Versio historia
 
-> *(Update this table as you progress. Use semantic versioning if possible.)*
+- Projektin joka viikosta on tehty oma tag, jotta yhden viikon toimivakoodi on tallessa.
 
-| Version | Date       | Author      | Changes                                               |
-|--------:|------------|-------------|-------------------------------------------------------|
-| 0.1.0   | 2026-03-01 | Your Name   | Initial scaffold: folders, Makefile, sample main      |
+| Versio     | Päivämäärä | Tekijä        | Muutokset                 |
+|------------|------------|-------------------|-----------------------|
+| viikko1    | 2026-03-09 | Noora Vepsäläinen | Viikon 08 koko koodi. |
+| binaaripuu | 2026-03-16 | Aino Pöyhönen     | Viikon 09 koko koodi. |
+| L10TA      | 2026-03-23 | Aino Pöyhönen     | Viikon 10 koko koodi. | 
 
 Tag releases:
 ```bash
 git tag -a v0.1.0 -m "Initial scaffold"
 git push origin v0.1.0
 ```
+
+---
+## Tunnetut ongelmat
 
 ---
 
