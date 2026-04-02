@@ -4,11 +4,11 @@
 #include "unity.h"
 
 void setUp(void) {
-    // Tyhja, koska alustetaan muuttujat paikallisesti.
+    // Tyhjä, koska alustetaan muuttujat paikallisesti.
 }
 
 void tearDown(void) {
-    // Tyhja, koska muisti vapautetaan testeissa.
+    // Tyhjä, koska muisti vapautetaan testeissä.
 }
 
 // Testien esittelyt.
@@ -85,12 +85,12 @@ int main(void) {
     // RBSolmu structin testit
     RUN_TEST(test_VaraaMuistiaRBSolmulle);
 
-    // Listaan lisaamiseen liittyvat testit.
+    // Listaan lisaamiseen liittyvat testit
     RUN_TEST(test_lisaaListaan_tyhja);
     RUN_TEST(test_lisaaListaan_alkuun);
     RUN_TEST(test_lisaaListaan_indeksilla);
 
-    // Listasta poistamiseen liittyvat testit.
+    // Listasta poistamiseen liittyvat testit
     RUN_TEST(test_useammalleAlkiolleSamaLKM);
     RUN_TEST(test_poistaListaLkmPerusteella);
     RUN_TEST(test_poistaListaNimenPerusteella);

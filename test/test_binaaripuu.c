@@ -2,7 +2,7 @@
 #include "../src/binaaripuu.h"
 
 
-// Onnistuuko varaaMuistiaPuulle, kun se on tyhja
+// Onnistuuko muistin varaaminen puulle, kun se on tyhjä?
 void test_VaraaMuistiaPuulle() {
     PUU *pJuuriSolmu = NULL;
 
@@ -12,18 +12,18 @@ void test_VaraaMuistiaPuulle() {
     pJuuriSolmu = varaaMuistiaPuulle(expectedNimi, expectedArvo);
     TEST_ASSERT_NOT_NULL(pJuuriSolmu);
 
-    // Pitaisi olla ainut solmu
+    // Pitäisi olla ainut solmu.
     TEST_ASSERT_NULL(pJuuriSolmu->pVasen);
     TEST_ASSERT_NULL(pJuuriSolmu->pOikea);
 
-    // Loytyyko oikeat arvot
+    // Löytyykö oikeat arvot?
     TEST_ASSERT_EQUAL_STRING(expectedNimi, pJuuriSolmu->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedArvo, pJuuriSolmu->iArvo);
 
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
 }
 
-// Onnistuuko varata muistia usealle solmulle puussa, kun se on tyhja.
+// Onnistuuko muistinvaraus useammalle solmulle puussa, kun se on tyhjä?
 void test_VaraaMuistiaUsealleSolmullePuussa() {
     PUU *pJuuriSolmu = NULL;
     char expectedNimi1[] = "Kosonen";
@@ -33,43 +33,44 @@ void test_VaraaMuistiaUsealleSolmullePuussa() {
     char expectedNimi3[] = "Karjalainen";
     int expectedArvo3 = 600;
 
-    // Varataan muistia ensimmaiselle solmulle
+    // Varataan muistia ensimmäiselle solmulle.
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, expectedNimi1, expectedArvo1);
     TEST_ASSERT_NOT_NULL(pJuuriSolmu->aNimi);
-    // Loytyyko oikeat arvot
+    // Löytyykö oikeat arvot?
     TEST_ASSERT_EQUAL_STRING(expectedNimi1, pJuuriSolmu->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedArvo1, pJuuriSolmu->iArvo);
 
-    // Varataan muistia toiselle solmulle
+    // Varataan muistia toiselle solmulle.
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, expectedNimi2, expectedArvo2);
     TEST_ASSERT_NOT_NULL(pJuuriSolmu->aNimi);
-    // Loytyyko oikeat arvot
+
+    // Löytyykö oikeat arvot?
     TEST_ASSERT_EQUAL_STRING(expectedNimi2, pJuuriSolmu->pVasen->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedArvo2, pJuuriSolmu->pVasen->iArvo);
 
-    // Varataan muistia kolmannelle solmulle
+    // Varataan muistia kolmannelle solmulle.
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, expectedNimi3, expectedArvo3);
     TEST_ASSERT_NOT_NULL(pJuuriSolmu->aNimi);
-    // Loytyyko oikeat arvot
+    // Löytyykö oikeat arvot?
     TEST_ASSERT_EQUAL_STRING(expectedNimi3, pJuuriSolmu->pOikea->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedArvo3, pJuuriSolmu->pOikea->iArvo);
 
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
 }
 
-// Onnistuuko Puun muistin vapauttaminen
+// Onnistuuko puun muistin vapauttaminen?
 void test_VapautaPuunMuisti() {
     PUU *pJuuriSolmu = NULL;
-    // Varataan muistia
+    // Varataan muistia.
     pJuuriSolmu = varaaMuistiaPuulle("Kosonen", 500);
 
-    // Vapautetaan muisti
+    // Vapautetaan muisti.
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
-    // Tarkistetaan, onko vapautus onnistunut
+    // Tarkistetaan, onko vapautus onnistunut.
     TEST_ASSERT_NULL(pJuuriSolmu);
 }
 
-// Onnistuuko Puun muistin vapauttaminen useasta alkiosta
+// Onnistuuko puun muistin vapauttaminen usealla alkiolla?
 void test_VapautaPuunMuistiUseastaSolmusta() {
     PUU *pJuuriSolmu = NULL;
     // Varataan muistia
@@ -78,14 +79,14 @@ void test_VapautaPuunMuistiUseastaSolmusta() {
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Karjalainen", 245);
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Suomalainen", 4);
 
-    // Vapautetaan muisti
+    // Vapautetaan muisti.
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
 
-    // Tarkistetaan, onko vapautus onnistunut
+    // Tarkistetaan, onnistuiko vapautus.
     TEST_ASSERT_NULL(pJuuriSolmu);
 }
 
-// Onnistuuko vasen-vasen tasapainotus.
+// Onnistuuko vasen-vasen tasapainotus?
 void test_LLtasapainotus() {
     PUU *pJuuriSolmu = NULL;
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 500);
@@ -100,7 +101,7 @@ void test_LLtasapainotus() {
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
 }
 
-// Onnistuuko oikea-oikea tasapainotus.
+// Onnistuuko oikea-oikea tasapainotus?
 void test_RRtasapainotus() {
     PUU *pJuuriSolmu = NULL;
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 500);
@@ -116,7 +117,7 @@ void test_RRtasapainotus() {
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
 }
 
-// Onnistuuko vasen-oikea tasapainotus.
+// Onnistuuko vasen-oikea tasapainotus?
 void test_LRtasapainotus() {
     PUU *pJuuriSolmu = NULL;
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 500);
@@ -132,7 +133,7 @@ void test_LRtasapainotus() {
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
 }
 
-// Onnistuuko oikea-vasen tasapainotus.
+// Onnistuuko oikea-vasen tasapainotus?
 void test_RLtasapainotus() {
     PUU *pJuuriSolmu = NULL;
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 300);
@@ -148,8 +149,6 @@ void test_RLtasapainotus() {
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
 }
 
-
-
 // Testataan, toimiiko lukuarvon tarkistus.
 void test_onkoLuku() {
     char aLuku1[] = "50";
@@ -159,7 +158,7 @@ void test_onkoLuku() {
     TEST_ASSERT_EQUAL_INT(0, onkoLuku(aLuku2));
 }
 
-// Testataan, löytyykö nimen avulla arvo.
+// Testataan, löytyykö nimen avulla arvoa.
 void test_nimenArvo() {
     PUU *pJuuriSolmu = NULL;
 
@@ -190,6 +189,7 @@ void test_poistaSolmuNimi() {
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
 }
 
+// Testataan solmun poistamista arvolla.
 void test_poistaSolmuArvo() {
     PUU *pJuuriSolmu = NULL;
 
@@ -206,7 +206,7 @@ void test_poistaSolmuArvo() {
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
 }
 
-// Onnistuuko varata muistia RBSolmulle
+// Onnistuuko varata muistia RBSolmulle?
 void test_VaraaMuistiaRBSolmulle() {
     RBSOLMU *pJuuriSolmuRB = NULL;
     char expectedNimi[] = "Kosonen";
@@ -215,11 +215,11 @@ void test_VaraaMuistiaRBSolmulle() {
     pJuuriSolmuRB = varaaMuistiaRB(expectedNimi, expectedArvo);
     TEST_ASSERT_NOT_NULL(pJuuriSolmuRB);
 
-    //Pitaisi olla ainut solmu
+    // Pitäisi olla ainut solmu.
     TEST_ASSERT_NULL(pJuuriSolmuRB->pOikea);
     TEST_ASSERT_NULL(pJuuriSolmuRB->pVasen);
 
-    // Loytyyko oikeat arvot
+    // Löytyykö oikeat arvot?
     TEST_ASSERT_EQUAL_STRING(expectedNimi, pJuuriSolmuRB->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedArvo, pJuuriSolmuRB->iArvo); 
 

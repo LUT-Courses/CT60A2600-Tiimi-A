@@ -1,7 +1,7 @@
 #include "../src/linkitettylista.h"
 #include "unity.h"
 
-// Onnistuuko varaaMuistia, kun lista on tyhjä
+// Onnistuuko muistin varaaminen, kun lista on tyhjä?
 void test_VaraaMuistia(void) {
     TIEDOT *pAlku = NULL;
 
@@ -11,18 +11,18 @@ void test_VaraaMuistia(void) {
     pAlku = varaaMuistia(pAlku, expectedNimi, expectedYhteensa);
     TEST_ASSERT_NOT_NULL(pAlku);
 
-    // Pitäisi olla ainut solmu listassa
+    // Pitäisi olla ainut solmu listassa.
     TEST_ASSERT_NULL(pAlku->pEdellinen);
     TEST_ASSERT_NULL(pAlku->pSeuraava);
 
-    // Löytyykö oikeat arvot
+    // Löytyykö oikeat arvot?
     TEST_ASSERT_EQUAL_STRING(expectedNimi, pAlku->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa, pAlku->iYhteensa);
 
     pAlku = vapautaMuisti(pAlku);
 }
 
-// Testataan, onnistuuko muistin vapauttaminen.
+// Testataan, onnistuuko muistin vapauttaminen?
 void test_VapautaMuisti(void) {
     TIEDOT *pAlku = NULL;
     pAlku = varaaMuistia(NULL, "Kosonen", 500);
@@ -33,7 +33,7 @@ void test_VapautaMuisti(void) {
     pAlku = vapautaMuisti(pAlku);
 }
 
-// Onnistuuko varata muistia usealle alkiolle kun lista on tyhjä
+// Onnistuuko muistin varaaminen usealle alkiolle, kun lista on tyhjä?
 void test_VaraaMuistiUsealleAlkiolle(void) {
     TIEDOT *pAlku = NULL;
 
@@ -55,7 +55,7 @@ void test_VaraaMuistiUsealleAlkiolle(void) {
     pAlku = varaaMuistia(pAlku, expectedNimi3, expectedYhteensa3);
     TEST_ASSERT_NOT_NULL(pAlku);
 
-    // Loytyyko oikeat arvot
+    // Löytyykö oikeat arvot.
     TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa1, pAlku->iYhteensa);
     ptr = pAlku->pSeuraava;
@@ -65,7 +65,7 @@ void test_VaraaMuistiUsealleAlkiolle(void) {
     TEST_ASSERT_EQUAL_STRING(expectedNimi3, ptr->aNimi);
     TEST_ASSERT_EQUAL_INT(expectedYhteensa3, ptr->iYhteensa);
 
-    // ptr pitaisi olla viimeisessa solmussa ja pAlku pitaisi olla ensimmainen solmu
+    // ptr pitäisi olla viimeisessä solmussa ja pAlku pitäisi olla ensimmäinen solmu.
     ptr = ptr->pSeuraava;
     TEST_ASSERT_NULL(ptr);
     TEST_ASSERT_NULL(pAlku->pEdellinen);
@@ -73,6 +73,7 @@ void test_VaraaMuistiUsealleAlkiolle(void) {
     pAlku = vapautaMuisti(pAlku);
 }
 
+// Onnistuuko yhden alkion lisääminen tyhjälle listalle?
 void test_lisaaListaan_tyhja() {
     TIEDOT *pAlku = NULL;
 
@@ -89,7 +90,7 @@ void test_lisaaListaan_tyhja() {
     pAlku = vapautaMuisti(pAlku);
 }
 
-// Testataan, onnistuuko listan alkuun lisaaminen.
+// Testataan, onnistuuko listan alkuun lisääminen.
 void test_lisaaListaan_alkuun() {
     TIEDOT *pAlku = NULL;
 
@@ -119,7 +120,7 @@ void test_lisaaListaan_alkuun() {
     pAlku = vapautaMuisti(pAlku);
 }
 
-// Testataan indeksin mukaan lisaaminen.
+// Testataan indeksin mukaan lisääminen.
 void test_lisaaListaan_indeksilla() {
     TIEDOT *pAlku = NULL;
 
@@ -152,7 +153,7 @@ void test_lisaaListaan_indeksilla() {
     pAlku = vapautaMuisti(pAlku);
 }
 
-// Testataan, onnistuuko alkioiden maaran laskeminen.
+// Testataan, onnistuuko alkioiden määrän laskeminen.
 void test_useammalleAlkiolleSamaLKM() {
     TIEDOT *pAlku = NULL;
 
@@ -173,7 +174,7 @@ void test_useammalleAlkiolleSamaLKM() {
     pAlku = vapautaMuisti(pAlku);
 }
 
-// Testataan, onnistuuko poistaminen lukumaaran perusteella.
+// Testataan, onnistuuko poistaminen lukumäärän perusteella.
 void test_poistaListaLkmPerusteella() {
     TIEDOT *pAlku = NULL;
 
@@ -221,7 +222,7 @@ void test_poistaListaNimenPerusteella() {
     pAlku = vapautaMuisti(pAlku);
 }
 
-// Testataan lomituslajittelu, tyhjä lista
+// Testataan lomituslajittelu, kun lista on tyhjä.
 void test_lomitusLajitteluTyhjaLista() {
     TIEDOT *pAlku = NULL;
 
@@ -231,7 +232,7 @@ void test_lomitusLajitteluTyhjaLista() {
     pAlku = vapautaMuisti(pAlku);
 }
 
-// Testataan lomituslajittelu yhdellä alkiolla
+// Testataan lomituslajittelu yhdellä alkiolla.
 void test_lomitusLajitteluYhdellaAlkiolla() {
     TIEDOT *pAlku = NULL;
 
@@ -250,7 +251,7 @@ void test_lomitusLajitteluYhdellaAlkiolla() {
     pAlku = vapautaMuisti(pAlku);
 }
 
-// Testataan lomituslajittelu kahdella alkiolla
+// Testataan lomituslajittelu kahdella alkiolla.
 void test_lomitusLajitteluKahdellaAlkiolla() {
     TIEDOT *pAlku = NULL;
 
@@ -274,7 +275,7 @@ void test_lomitusLajitteluKahdellaAlkiolla() {
     pAlku = vapautaMuisti(pAlku);
 }
 
-// Testataan lomituslajittelu usealla alkiolla
+// Testataan lomituslajittelu usealla alkiolla.
 void test_lomitusLajitteluUseallaAlkiolla() {
     TIEDOT *pAlku = NULL;
 
@@ -344,7 +345,7 @@ void test_lomitusLajitteluSamaArvo() {
     pAlku = vapautaMuisti(pAlku);
 }
 
-// Testataan lisäyslajittelu, tyhjä lista
+// Testataan lisäyslajittelu, kun lista on tyhjä.
 void test_lisaysLajitteluTyhjaLista() {
     TIEDOT *pAlku = NULL;
 
@@ -354,7 +355,7 @@ void test_lisaysLajitteluTyhjaLista() {
     pAlku = vapautaMuisti(pAlku);
 }
 
-// Testataan lisäyslajittelu yhdellä alkiolla
+// Testataan lisäyslajittelu yhdellä alkiolla.
 void test_lisaysLajitteluYhdellaAlkiolla() {
     TIEDOT *pAlku = NULL;
 
@@ -373,7 +374,7 @@ void test_lisaysLajitteluYhdellaAlkiolla() {
     pAlku = vapautaMuisti(pAlku);
 }
 
-// Testataan lisäyslajittelu kahdella alkiolla
+// Testataan lisäyslajittelu kahdella alkiolla.
 void test_lisaysLajitteluKahdellaAlkiolla() {
     TIEDOT *pAlku = NULL;
 
@@ -397,7 +398,7 @@ void test_lisaysLajitteluKahdellaAlkiolla() {
     pAlku = vapautaMuisti(pAlku);
 }
 
-// Testataan lisäyslajittelu usealla alkiolla
+// Testataan lisäyslajittelu usealla alkiolla.
 void test_lisaysLajitteluUseallaAlkiolla() {
     TIEDOT *pAlku = NULL;
 

@@ -2,7 +2,7 @@
 #include "../src/haut.h"
 #include <stdlib.h>
 
-// Onnistuuko muistin varaaminen jonolle.
+// Onnistuuko muistin varaaminen jonolle?
 void test_VaraaMuistiaJonolle() {
     PUU *pSolmu1 = NULL;
     PUU *pSolmu2 = NULL;
