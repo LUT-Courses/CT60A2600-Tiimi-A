@@ -1,6 +1,6 @@
 # TiimiA:n tietorakenteet
 
-> **Projektin kuvaus**: Tämä ohjelma on C-ohjelmoinnin kurssi projekti, joka sisältää linkitettyyn listaan ja tasapainotettuun binäärihakupuuhun liittyviä ominaisuuksia.
+> **Projektin kuvaus**: Tämä ohjelma on C-ohjelmoinnin kurssiprojekti, joka sisältää linkitettyyn listaan ja tasapainotettuun binäärihakupuuhun liittyviä ominaisuuksia.
 
 ---
 
