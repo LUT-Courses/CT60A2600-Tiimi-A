@@ -214,7 +214,7 @@ Viikko 11:
     - void test_lisaysLajitteluUseallaAlkiolla(void)
     - void test_lisaysLajitteluSamaArvo(void)
 
-Viikko 5:
+Viikko 12:
 - Uusia testejä 4.
 - Yhteensä 34 testiä.
 - Testit liittyvät AVL-puun tasapainotuksen rotaatioihin.
