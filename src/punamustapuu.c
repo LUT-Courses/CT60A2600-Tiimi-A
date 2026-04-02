@@ -1,30 +1,28 @@
-#include "binaaripuu.h"
+#include "punamustapuu.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-/** L10 / Punamustapuu
- * Vaatii oman structin takia omat aliohjelmat, jotka ovat
- * binaaripuu.c tiedoston aliohjelmia muokattuina.
- */
-
+// Punamustapuun luominen ja kirjoittaminen tiedostoon.
 
  /**
   * @brief Varaa muistia punamustalle puulle.
   * 
   * @param pNimi Solmun nimi, jolle varataan muistia ja kopioidaan uuteen solmuun.
-  * @param iArvo Solmun arvo, jolle varataan muistia ja kopioidaan uuteen solmuun..
+  * @param iArvo Solmun arvo, jolle varataan muistia ja kopioidaan uuteen solmuun.
   * @return RBSOLMU* Palauttaa osoittimen uuteen alustettuun solmuun. 
   */
 RBSOLMU *varaaMuistiaRB(char *pNimi, int iArvo) {
     RBSOLMU *pUusi = NULL;
 
+    // Muistin varaaminen
     if ((pUusi = (RBSOLMU *)malloc(sizeof(RBSOLMU))) == NULL) {
         perror("Muistin varaus epäonnistui, lopetetaan");
         exit(0);
     }
 
-    pUusi->iVariBitti = 0; // uudet aina punaisia
+    // Alustetaan uusi solmu.
+    pUusi->iVariBitti = 0; // Uudet solmut aina punaisia.
     strcpy(pUusi->aNimi, pNimi);
     pUusi->iArvo = iArvo;
     pUusi->pVasen = NULL;
@@ -52,9 +50,9 @@ RBSOLMU *vapautaMuistiRB(RBSOLMU *pJuuriSolmu) {
 /**
  * @brief Lisää solmun punamustapuuhun.
  * 
- * @param pJuurisolmu Punamustapuun juurisolmu.
- * @param pUusi Lisättävä solmu.
- * @return RBSOLMU* Palauttaa punamustapuun juurisolmun. 
+ * @param pJuurisolmu Osoitin punamustapuun juurisolmuun.
+ * @param pUusi Osoitin lisättävään solmuun.
+ * @return RBSOLMU* Palauttaa osoittimen punamustapuun juurisolmuun. 
  */
 RBSOLMU *lisaaRBSolmu(RBSOLMU *pJuurisolmu, RBSOLMU *pUusi) {
     int iVertailu = 0;
@@ -87,7 +85,13 @@ RBSOLMU *lisaaRBSolmu(RBSOLMU *pJuurisolmu, RBSOLMU *pUusi) {
     return (pJuurisolmu);
 }
 
-
+/**
+ * @brief Luo punamustapuun.
+ * Lukee tiedoston, käsittelee tiedot, sekä luo puun.
+ * @param pJuurisolmu Osoitin punamustapuun solmuun.
+ * @param pNimi Osoitin luettava tiedoston nimeen.
+ * @return RBSOLMU* Palauttaa solmun osoittimen.
+ */
 RBSOLMU *luoRBPuu(RBSOLMU *pJuurisolmu, char *pNimi) {
     FILE *Tiedosto = NULL;
     char aRivi[LEN] = "";
@@ -100,6 +104,7 @@ RBSOLMU *luoRBPuu(RBSOLMU *pJuurisolmu, char *pNimi) {
         exit(0);
     }
 
+    // Luetaan, pilkotaan ja käsitellään tiedosto.
     while ((fgets(aRivi, LEN, Tiedosto)) != NULL) {
         aRivi[strlen(aRivi) - 1] = '\0';
         if (iOtsikko == 0) {
@@ -128,6 +133,12 @@ RBSOLMU *luoRBPuu(RBSOLMU *pJuurisolmu, char *pNimi) {
     return (pJuurisolmu);
 }
 
+/**
+ * @brief Tekee vasemman rotaation punamustalle puulle.
+ * 
+ * @param pJuurisolmu Osoitin juurisolmun osoittimeen.
+ * @param pSolmu Osoitin solmuun. Kierto tehdään tämän solmun ympärille.
+ */
 void kierraVasemmalle(RBSOLMU **pJuurisolmu, RBSOLMU *pSolmu) {
     RBSOLMU *pOikeaLapsi = pSolmu->pOikea;
     pSolmu->pOikea = pOikeaLapsi->pVasen;
@@ -135,7 +146,7 @@ void kierraVasemmalle(RBSOLMU **pJuurisolmu, RBSOLMU *pSolmu) {
     if (pSolmu->pOikea != NULL)
         pSolmu->pOikea->pVanhempi = pSolmu;
 
-    // Solmun oikea lapsi nousee ylös puussa
+    // Solmun oikea lapsi nousee ylös puussa.
     pOikeaLapsi->pVanhempi = pSolmu->pVanhempi;
 
     if (pSolmu->pVanhempi == NULL)
@@ -147,8 +158,15 @@ void kierraVasemmalle(RBSOLMU **pJuurisolmu, RBSOLMU *pSolmu) {
 
     pOikeaLapsi->pVasen = pSolmu;
     pSolmu->pVanhempi = pOikeaLapsi;
+    return;
 }
 
+/**
+ * @brief Tekee oikean rotaation punamustalle puulle. 
+ * 
+ * @param pJuurisolmu Osoitin juurisolmun osoittimeen.
+ * @param pSolmu Osoitin solmuun. Kierto tehdään tämän solmun ympärille.
+ */
 void kierraOikealle(RBSOLMU **pJuurisolmu, RBSOLMU *pSolmu) {
     RBSOLMU *pVasenLapsi = pSolmu->pVasen;
     pSolmu->pVasen = pVasenLapsi->pOikea;
@@ -167,26 +185,39 @@ void kierraOikealle(RBSOLMU **pJuurisolmu, RBSOLMU *pSolmu) {
 
     pVasenLapsi->pOikea = pSolmu;
     pSolmu->pVanhempi = pVasenLapsi;
+
+    return;
 }
 
+/**
+ * @brief Korjaa lisäyksen jälkeen punamustan puun rakenteen ja värit oikeiksi.
+ * 
+ * @param pJuurisolmu Osoitin juurisolmun osoittimeen. 
+ * @param pUusi Osoitin lisättyyn solmuun.
+ */
 void korjaaLisays(RBSOLMU **pJuurisolmu, RBSOLMU *pUusi) {
-    // Ilman p-alkua, koska pVanhempi->pVanhempi oli sekava
     RBSOLMU *vanhempi = NULL;
     RBSOLMU *seta = NULL;
     RBSOLMU *isoVanhempi = NULL;
 
+    // Pyöritään while:sssa kunnes päädytään juurisolmuun tai vanhempi on mustan värinen.
     while ((pUusi != *pJuurisolmu) && (pUusi->pVanhempi->iVariBitti == 0)) {
         vanhempi = pUusi->pVanhempi;
         isoVanhempi = vanhempi->pVanhempi;
 
+        // Vanhempi on isovanhemman vasen lapsi.
         if (vanhempi == isoVanhempi->pVasen) {
             seta = isoVanhempi->pOikea;
+
+            // Tarkastetaan onko setä punainen.
             if (seta != NULL && seta->iVariBitti == 0) {
                 vanhempi->iVariBitti = 1;
                 seta->iVariBitti = 1;
                 isoVanhempi->iVariBitti = 0;
                 pUusi = isoVanhempi;
             } else {
+
+                // Tarkastetaan onko uusi solmu vanhemman solmun oikea lapsi solmu.
                 if (pUusi == vanhempi->pOikea) {
                     pUusi = vanhempi;
                     kierraVasemmalle(pJuurisolmu, pUusi);
@@ -199,12 +230,16 @@ void korjaaLisays(RBSOLMU **pJuurisolmu, RBSOLMU *pUusi) {
 
         } else {
             seta = isoVanhempi->pVasen;
+
+            // Tarkastetaan onko setä punainen.
             if (seta != NULL && seta->iVariBitti == 0) {
                 vanhempi->iVariBitti = 1;
                 seta->iVariBitti = 1;
                 isoVanhempi->iVariBitti = 0;
                 pUusi = isoVanhempi;
             } else {
+
+                // Tarkastetaan onko uusi solmu vanhemman solmun vasen lapsi solmu.
                 if (pUusi == vanhempi->pVasen) {
                     pUusi = vanhempi;
                     kierraOikealle(pJuurisolmu, pUusi);
@@ -217,13 +252,14 @@ void korjaaLisays(RBSOLMU **pJuurisolmu, RBSOLMU *pUusi) {
         }
     }
     (*pJuurisolmu)->iVariBitti = 1;
+
+    return;
 }
 
-// Koska binaaripuu.c versio ottaa parametrina PUU*, tarvitaan uusi kirjoitusaliohjelma.
 /**
- * @brief Kirjoittaa punamustapuun Tiedostoon.
+ * @brief Kirjoittaa punamustapuun tiedostoon.
  * 
- * @param pNimi Kirjoitettavan tiedoston nimi.
+ * @param pNimi Osoitin kirjoitettavan tiedoston nimeen.
  * @param pJuurisolmu Osoitin punamustapuun juurisolmuun.
  */
 void kirjoitaRBTiedostoon(char *pNimi, RBSOLMU *pJuurisolmu) {
@@ -243,14 +279,13 @@ void kirjoitaRBTiedostoon(char *pNimi, RBSOLMU *pJuurisolmu) {
 
     /* Tiedoston sulkeminen. */
     fclose(Tiedosto);
-    printf("Tiedosto '%s' kirjoitettu.\n", pNimi);
     return;
 }
 
 /**
  * @brief Kirjoittaa punamustapuun. 
  * Kutsuu tiedostoon kirjoittavaa aliohjelmaa ja antaa sille kirjoitettavat arvot.
- * @param pNimi Kirjoitettavan tiedoston nimi.
+ * @param pNimi Osoitin kirjoitettavan tiedoston nimeen.
  * @param pJuurisolmu Osoitin solmuun, jota aliohjelma käsittelee.
  */
 void kirjoitaRB(char *pNimi, RBSOLMU *pJuurisolmu) {

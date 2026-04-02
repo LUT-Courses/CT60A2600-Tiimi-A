@@ -57,6 +57,7 @@ void tarkistaLoytyykoSyvyyshaulla(char *aNimiKirjoitettava, PUU *pJuuriSolmu, in
     if (iLoytyi == 0) {
         printf("Arvoa %d ei löytynyt puusta.\n", iArvo);
     }
+    return;
 }
 
 /**
