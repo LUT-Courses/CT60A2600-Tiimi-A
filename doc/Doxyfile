@@ -1,5 +1,7 @@
 # Projektin nimi
 PROJECT_NAME           = "CT60A2600-TIIMI-A"
+PROJECT_NUMBER         =
+PROJECT_BRIEF          =
 
 # Dokumentaation tallennuspaikka
 OUTPUT_DIRECTORY       = doc
@@ -20,13 +22,24 @@ LATEX_OUTPUT           = ../doc_latex_tmp
 
 # Kommenttien käsittely
 JAVADOC_AUTOBRIEF      = YES
-EXTRACT_ALL            = YES
+BRIEF_MEMBER_DESC      = YES
+REPEAT_BRIEF           = NO
+STRIP_CODE_COMMENTS    = YES
+
+# Dokumentoidaan vain kommentoidut osat, ei tyhjiä sivuja
+EXTRACT_ALL            = NO
 EXTRACT_PRIVATE        = NO
 EXTRACT_STATIC         = NO
 EXTRACT_LOCAL_METHODS  = NO
 HIDE_UNDOC_MEMBERS     = YES
 HIDE_UNDOC_CLASSES     = YES
-STRIP_CODE_COMMENTS    = YES
+
+# Poistetaan tyhjät erikoissivut
+GENERATE_TODOLIST      = NO
+GENERATE_TESTLIST      = NO
+GENERATE_BUGLIST       = NO
+GENERATE_DEPRECATEDLIST = NO
+SHOW_NAMESPACES        = NO
 
 # Ei lähdekoodia dokumentaatiossa
 SOURCE_BROWSER         = NO
@@ -43,14 +56,19 @@ CALLER_GRAPH           = NO
 FULL_PATH_NAMES        = NO
 
 # Lyhyt kuvaus
-BRIEF_MEMBER_DESC      = YES
-REPEAT_BRIEF           = NO
+SHOW_FILES             = YES
 
 # LaTeX / PDF asetukset
 PDF_HYPERLINKS         = YES
 USE_PDFLATEX           = YES
-LATEX_BATCHMODE        = NO
+LATEX_BATCHMODE        = YES
 LATEX_HIDE_INDICES     = YES
+COMPACT_LATEX          = YES
 
 # Estetään ylimääräiset kansiot
 CREATE_SUBDIRS         = NO
+
+# Varoitukset
+QUIET                  = YES
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
