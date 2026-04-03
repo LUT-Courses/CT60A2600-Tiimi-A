@@ -9,7 +9,7 @@
 /**
  * @brief Lukee tiedoston.
  *
- * Avaa ja lukee kayttajan syötteen mukaisen tiedoston.
+ * Avaa ja lukee kayttäjän syötteen mukaisen tiedoston.
  * Kutsuu muistinvaraus aliohjelmaa muistin varaamiseksi.
  *
  * @param pNimi Luettavan tiedoston nimi.
@@ -67,7 +67,7 @@ TIEDOT *lue(char *pNimi, TIEDOT *pAlku) {
  *
  * @param pAlku Osoitin linkitetyn listan alkuun.
  * @param pNimi Merkkijono solmun nimeksi.
- * @param iMaara Luku, joka asetetaan solmuun maaraksi.
+ * @param iMaara Luku, joka asetetaan solmuun määräksi.
  * @return pAlku Uusi osoitin linkitetyn listan alkuun.
  */
 TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pNimi, int iMaara) {
@@ -105,7 +105,7 @@ TIEDOT *varaaMuistia(TIEDOT *pAlku, char *pNimi, int iMaara) {
  * @brief Vapauttaa linkitetyn listan varaaman muistin.
  *
  * @param pAlku Osoitin linkitetyn listan alkuun.
- * @return pAlku Osoitin, joka on NULL, koska lista on tyhja.
+ * @return TIEDOT* Osoitin pAlku, joka on NULL, koska lista on tyhjä.
  */
 TIEDOT *vapautaMuisti(TIEDOT *pAlku) {
     /* Muistin vapauttaminen. */
@@ -131,24 +131,23 @@ void kirjoitaTiedostoAlustaLoppuun(char *pNimi, TIEDOT *pAlku) {
     TIEDOT *ptr = NULL;
 
     if (pAlku == NULL) {
-        printf("Lista on tyhjä, lue tiedosto ennen kirjoittamista.\n");
         return;
     }
 
-    // Kirjoitus tiedoston avaaminen
+    // Kirjoitus tiedoston avaaminen.
     if ((Tiedosto = fopen(pNimi, "w")) == NULL) {
         perror("Tiedoston avaaminen epäonnistui, lopetetaan");
         exit(0);
     }
 
-    // Tiedostoon kirjoittaminen
+    // Tiedostoon kirjoittaminen.
     ptr = pAlku;
     while (ptr != NULL) {
         fprintf(Tiedosto, "%s,%d\n", ptr->aNimi, ptr->iYhteensa);
         ptr = ptr->pSeuraava;
     }
 
-    // Tiedoston sulkeminen
+    // Tiedoston sulkeminen.
     fclose(Tiedosto);
     printf("Tiedosto %s kirjoitettu.\n", pNimi);
     return;
@@ -166,7 +165,6 @@ void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku) {
     TIEDOT *ptr = pAlku;
 
     if (pAlku == NULL) {
-        printf("Lista on tyhjä, lue tiedosto ennen kirjoittamista.\n");
         return;
     }
 
@@ -192,17 +190,17 @@ void kirjoitaTiedostoLopustaAlkuun(char *pNimi, TIEDOT *pAlku) {
 }
 
 /**
- * @brief Lisää linkitettyyn listaan kayttajan syottamat tiedot.
+ * @brief Lisää linkitettyyn listaan kayttajan syöttämät tiedot.
  *
- * Lisaa kayttajan haluamaan kohtaan (indeksi) tiedot lisattavasta nimesta ja niiden lukumaarasta.
+ * Lisää käyttäjän haluamaan kohtaan (indeksi) tiedot lisättävästä nimesta ja niiden lukumäärästä.
  *
  * @param pAlku Osoitin linkitetyn listan alkuun.
- * @param iIndeksi Kayttajan antama indeksi, eli kohta, johon tietue lisataan linkitetyssa listassa.
- * Jos lista on tyhja, lisataan automaattisesti ensimmaiseksi elementiksi.
- * Jos indeksi on suurempi kuin listan elementtien maara, lisataan automaattisesti viimeiseksi.
- * @param pNimi Lisattava nimi.
- * @param iArvo Lisattavan nimen lukumaara.
- * @return pAlku Osoitin listan nykyiseen alkuun.
+ * @param iIndeksi Käyttäjän antama indeksi, eli kohta, johon tietue lisätään linkitetyssa listassa.
+ * Jos lista on tyhjä, lisätään automaattisesti ensimmäiseksi elementiksi.
+ * Jos indeksi on suurempi kuin listan elementtien määrä, lisätään automaattisesti viimeiseksi.
+ * @param pNimi Lisättävä nimi.
+ * @param iArvo Lisättävän nimen lukumäärä.
+ * @return TIEDOT* Osoitin pAlku listan nykyiseen alkuun.
  */
 TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
     TIEDOT *pUusi = NULL;
@@ -219,14 +217,14 @@ TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
     strcpy(pUusi->aNimi, pNimi);
     pUusi->iYhteensa = iArvo;
 
-    // Jos lista on tyhja, lisataan uusi solmu ensimmaiseksi.
+    // Jos lista on tyhjä, lisätään uusi solmu ensimmäiseksi.
     if (pAlku == NULL) {
         pUusi->pEdellinen = NULL;
         pUusi->pSeuraava = NULL;
         pAlku = pUusi;
         return (pAlku);
     } else {
-        // Jos lisataan listan alkuun, eli indeksi = 0.
+        // Jos lisatään listan alkuun, eli indeksi = 0. Tai jos kohta on negatiivinen, lisätään automaattisesti ensimmäiseksi alkioksi.
         if (iIndeksi <= 1) {
             pUusi->pEdellinen = NULL;
             pUusi->pSeuraava = pAlku;
@@ -235,13 +233,13 @@ TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
             return (pAlku);
         }
 
-        // Etsitaan listalta oikea kohta, johon tiedot lisataan.
+        // Etsitaan listalta oikea kohta, johon tiedot lisätään.
         while (ptr->pSeuraava != NULL && i < (iIndeksi - 1)) {
             ptr = ptr->pSeuraava;
             i++;
         }
-        // Lisataan tiedot oikeaan kohtaan linkitettya listaa.
-        // Paivitetaan osoittimet osoittamaan oikeisiin kohtiin.
+        // Lisätään tiedot oikeaan kohtaan linkitettya listaa.
+        // Päivitetään osoittimet osoittamaan oikeisiin kohtiin.
         pUusi->pSeuraava = ptr->pSeuraava;
         pUusi->pEdellinen = ptr;
 
@@ -258,24 +256,24 @@ TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
  * @brief Poistaa linkitetystä listasta alkion.
  * 
  * @param pAlku Osoitin linkitetyn listan alkuun.
- * @param iLuvuVaiNimi Tieto siitä, haluaako käyttäjä poistaa alkion nimen vai luvun perusteella.  
+ * @param iLukuVaiNimi Tieto siitä, haluaako käyttäjä poistaa alkion nimen vai luvun perusteella.  
  * @param pTieto Poistettavan alkion tieto, nimi tai luku.
  * @return TIEDOT* pAlku Osoitin listan nykyiseen alkuun.
  */
-TIEDOT *poistaListastaAlkio(TIEDOT *pAlku, int iLuvuVaiNimi, char *pTieto) {
+TIEDOT *poistaListastaAlkio(TIEDOT *pAlku, int iLukuVaiNimi, char *pTieto) {
     int iSamojenAlkiodenLkm = 0;
     char aPoistettavaNimi[LEN] = "";
 
-    if (iLuvuVaiNimi == -2) {
+    if (iLukuVaiNimi == -2) {
         pAlku = poistaListastaNimenPerusteella(pAlku, pTieto);
     } else {
-        iSamojenAlkiodenLkm = useammallaAlkiollaSamaLKM(pAlku, iLuvuVaiNimi);
+        iSamojenAlkiodenLkm = useammallaAlkiollaSamaLKM(pAlku, iLukuVaiNimi);
 
         if (iSamojenAlkiodenLkm > 1) {
             kysyNimi("Anna nimi, joka poistetaan: ", aPoistettavaNimi);
             pAlku = poistaListastaNimenPerusteella(pAlku, aPoistettavaNimi);
         } else {
-            pAlku = poistaListastaLkmPeruusteella(pAlku, iLuvuVaiNimi);
+            pAlku = poistaListastaLkmPeruusteella(pAlku, iLukuVaiNimi);
         }
     }
 
@@ -381,7 +379,7 @@ int useammallaAlkiollaSamaLKM(TIEDOT *pAlku, int iLKM) {
     TIEDOT *ptr = NULL;
     ptr = pAlku;
 
-    // Käydään linkitettylista läpi
+    // Käydään linkitettylista läpi.
     while (ptr != NULL) {
         // Lisätään summaan yksi, jos linkitetyn listan alkion lukumäärä on sama kuin käyttäjän
         // antama luku.
@@ -460,14 +458,14 @@ TIEDOT *halkaise(TIEDOT *pAlku) {
         p1 = p1->pSeuraava;
     }
 
-    // Halkaistaan lista kahtia, p1 päättyy siihen mistä p2 alkaa
+    // Halkaistaan lista kahtia, p1 päättyy siihen mistä p2 alkaa.
     p2 = p1->pSeuraava;
     p1->pSeuraava = NULL;
     if (p2 != NULL) {
         p2->pEdellinen = NULL;
     }
 
-    // palautetaan osoitin toisen listan alkuun
+    // Palautetaan osoitin toisen listan alkuun.
     return p2;
 }
 
