@@ -161,14 +161,19 @@ Viikko 11:
     - void test_lisaysLajitteluSamaArvo(void)
 
 Viikko 12:
-- Uusia testejä 4.
-- Yhteensä 34 testiä.
-- Testit liittyvät AVL-puun tasapainotuksen rotaatioihin.
+- Uusia testejä 9.
+- Yhteensä 39 testiä.
+- Testit liittyvät AVL-puun tasapainotuksen rotaatioihin, sekä punamustapuun muistin varaamiseen ja vapauttamiseen, ja rotaatioihin.
 - Uudet testit:
     - void test_LLtasapainotus();
     - void test_RRtasapainotus();
     - void test_LRtasapainotus();
     - void test_RLtasapainotus();
+    - void test_VaraaMuistiaUsealleRBSolmulle(void)
+    - void test_VapautaRBMuisti(void)
+    - void test_VapautaRBMuistiUseastaSolmusta(void)
+    - void test_RBlisayksenKorjaus(void)
+    - void test_RBLisayksenKorjausSolmujenPaikatVaihtuu(void)
 
 Aja testit komennolla: 
 ```bash

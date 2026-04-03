@@ -35,6 +35,11 @@ void test_poistaSolmuNimi();
 void test_poistaSolmuArvo();
 
 void test_VaraaMuistiaRBSolmulle();
+void test_VaraaMuistiaUsealleRBSolmulle();
+void test_VapautaRBMuisti();
+void test_VapautaRBMuistiUseastaSolmusta();
+void test_RBlisayksenKorjaus();
+void test_RBLisayksenKorjausSolmujenPaikatVaihtuu();
 
 void test_lisaaListaan_tyhja();
 void test_lisaaListaan_alkuun();
@@ -85,6 +90,11 @@ int main(void) {
 
     // RBSolmu structin testit
     RUN_TEST(test_VaraaMuistiaRBSolmulle);
+    RUN_TEST(test_VaraaMuistiaUsealleRBSolmulle);
+    RUN_TEST(test_VapautaRBMuisti);
+    RUN_TEST(test_VapautaRBMuistiUseastaSolmusta);
+    RUN_TEST(test_RBlisayksenKorjaus);
+    RUN_TEST(test_RBLisayksenKorjausSolmujenPaikatVaihtuu);
 
     // Listaan lisaamiseen liittyvat testit
     RUN_TEST(test_lisaaListaan_tyhja);
