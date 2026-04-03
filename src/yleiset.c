@@ -27,7 +27,7 @@ void mainLista(void) {
     do {
         iValinta = listaValikko();
         if (iValinta == 1) {
-            // Luekee tiedoston.
+            // Lukee tiedoston.
             kysyNimi("Anna luettavan tiedoston nimi: ", aNimiLuettava);
             pAlku = lue(aNimiLuettava, pAlku);
 
@@ -50,19 +50,27 @@ void mainLista(void) {
             }
 
         } else if (iValinta == 4) {
-            // Vapauttaa musitin,
+            // Vapauttaa muistin.
             pAlku = vapautaMuisti(pAlku);
             printf("Muisti vapautettu.\n");
 
         } else if (iValinta == 5) {
-            // Lajittelee nousevasti lomistuslajittelulla.
-            pAlku = lomitusLajittelu(pAlku);
-            printf("Numerot lajiteltu nousevasti.\n");
+            // Lajittelee listan nousevasti lomistuslajittelulla.
+            if (pAlku == NULL) {
+                printf("Lue tiedosto ennen lajittelua.\n");
+            } else {
+                pAlku = lomitusLajittelu(pAlku);
+                printf("Numerot lajiteltu nousevasti.\n");
+            }
 
         } else if (iValinta == 6) {
-            // Lajittelee kasjetavastu lisäyslajittelulla.
-            pAlku = lisaysLajittelu(pAlku);
-            printf("Numerot lajiteltu laskevasti.\n");
+            // Lajittelee listan laskevasti lisäyslajittelulla.
+            if (pAlku == NULL) {
+                printf("Lue tiedosto ennen lajittelua.\n");
+            } else {
+                pAlku = lisaysLajittelu(pAlku);
+                printf("Numerot lajiteltu laskevasti.\n");
+            }
 
         } else if (iValinta == 7) {
             // Lisää tietoja listaan.
@@ -73,9 +81,13 @@ void mainLista(void) {
 
         } else if (iValinta == 8) {
             // Poistaminen listalta.
-            kysyNimi("Anna poistettava tieto: ", aTietoPoistettava);
-            iArvo = onkoLukuVaiNimi(aTietoPoistettava);
-            pAlku = poistaListastaAlkio(pAlku, iArvo, aTietoPoistettava);
+            if (pAlku == NULL) {
+                printf("Lista on tyhjä, ei poistettavia alkioita.\n");
+            } else {
+                kysyNimi("Anna poistettava tnimi tai arvo: ", aTietoPoistettava);
+                iArvo = onkoLukuVaiNimi(aTietoPoistettava);
+                pAlku = poistaListastaAlkio(pAlku, iArvo, aTietoPoistettava);
+            }
 
         } else if (iValinta == 0) {
             printf("Palataan takaisin päävalikkoon.\n");
@@ -111,7 +123,7 @@ void mainBinaaripuu(void) {
         iValinta = binaaripuuValikko();
         if (iValinta == 1) {
             // Luo AVL puun.
-            kysyNimi("Tiedoston nimi: ", aNimiLuettava);
+            kysyNimi("Anna luettavan tiedoston nimi: ", aNimiLuettava);
             pJuuriSolmu = luoPuu(aNimiLuettava, pJuuriSolmu);
 
         } else if (iValinta == 2) {
@@ -160,7 +172,7 @@ void mainBinaaripuu(void) {
         } else if (iValinta == 7) {
             // Binäärihaku
             if (pJuuriSolmu == NULL) {
-                printf("Luo binääripuu ennen binäärihakua.\n");
+                printf("Binääripuu on tyhjä, ei poistettavia alkioita.\n");
             } else {
                 kysyNimi("Anna kirjoitettavan tiedoston nimi: ", aNimiKirjoitettava);
                 iArvo = kysyArvo("Anna haettava numeroarvo: ", iArvo);
@@ -237,7 +249,7 @@ int listaValikko(void) {
 }
 
 /**
- * @brief Tulostaa binaariluku valikon ja kysyy käyttäjältä valinnan.
+ * @brief Tulostaa binääriluku valikon ja kysyy käyttäjältä valinnan.
  *
  * @param iValinta Käyttäjän antama syöte vaihtoehtojen pohjalta.
  * @return int Palauttaa käyttäjän valinnan.

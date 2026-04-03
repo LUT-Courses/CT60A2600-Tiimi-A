@@ -196,6 +196,11 @@ git push origin v0.1.0
 ---
 ## Tunnetut ongelmat
 
+- Mikäli syötetään merkkijono kohtaan, jossa odotetaan kokonaisluku syötettä:
+    - Ohjelma joko loppuu, ja tulostaa ensimmäisen valikon, ja kiitos ohjelman käytöstä.
+    - Tai jättää osan merkkijonosta puskuriin:
+        - Esim. Jos syöttää listaan lisäys kohdassa rivin kohdalle nimen, ohjelma tulkitsee ensimmäisen merkin nimeksi, ja asettaa loput kirjaimet nimeksi.
+
 ---
 
 ## 👤 Author & Course
