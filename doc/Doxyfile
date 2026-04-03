@@ -14,8 +14,8 @@ GENERATE_HTML          = YES
 GENERATE_LATEX         = YES
 GENERATE_XML           = NO
 
-# HTML suoraan doc/ juureen, LaTeX väliaikaiseen kansioon
-HTML_OUTPUT            = .
+# HTML doc/html/ kansioon, LaTeX väliaikaiseen kansioon
+HTML_OUTPUT            = html
 LATEX_OUTPUT           = ../doc_latex_tmp
 
 # Kommenttien käsittely

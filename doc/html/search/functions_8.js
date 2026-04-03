@@ -1,0 +1,9 @@
+var searchData=
+[
+  ['paivitapuu_0',['paivitaPuu',['../binaaripuu_8c.html#ad9bd63f4b90d1b66a89ae814d8ddeb9c',1,'paivitaPuu(PUU *pJuuriSolmu):&#160;binaaripuu.c'],['../binaaripuu_8h.html#ab4ba0ce03d5aa3392c5d5b0115c73918',1,'paivitaPuu(PUU *pJuurisolmu):&#160;binaaripuu.c']]],
+  ['poistalistastaalkio_1',['poistaListastaAlkio',['../linkitettylista_8c.html#a236d97f89d8123fd104bb71313a69836',1,'poistaListastaAlkio(TIEDOT *pAlku, int iLukuVaiNimi, char *pTieto):&#160;linkitettylista.c'],['../linkitettylista_8h.html#abf41a4fe2c19f236f4b83799551cbeb6',1,'poistaListastaAlkio(TIEDOT *pAlku, int iLuvuVaiNimi, char *pTieto):&#160;linkitettylista.c']]],
+  ['poistalistastalkmperuusteella_2',['poistaListastaLkmPeruusteella',['../linkitettylista_8c.html#a7bede932ed4475a684d8a30ec2514b5a',1,'poistaListastaLkmPeruusteella(TIEDOT *pAlku, int iLKM):&#160;linkitettylista.c'],['../linkitettylista_8h.html#a7bede932ed4475a684d8a30ec2514b5a',1,'poistaListastaLkmPeruusteella(TIEDOT *pAlku, int iLKM):&#160;linkitettylista.c']]],
+  ['poistalistastanimenperusteella_3',['poistaListastaNimenPerusteella',['../linkitettylista_8c.html#aeb429faed37c0c064031cf1e76a204dd',1,'poistaListastaNimenPerusteella(TIEDOT *pAlku, char *pNimi):&#160;linkitettylista.c'],['../linkitettylista_8h.html#aeb429faed37c0c064031cf1e76a204dd',1,'poistaListastaNimenPerusteella(TIEDOT *pAlku, char *pNimi):&#160;linkitettylista.c']]],
+  ['poistasolmu_4',['poistaSolmu',['../binaaripuu_8c.html#a5fded49f61d0282b1f777ebe8599f4dd',1,'poistaSolmu(char *pNimi, PUU *pJuuriSolmu):&#160;binaaripuu.c'],['../binaaripuu_8h.html#a5fded49f61d0282b1f777ebe8599f4dd',1,'poistaSolmu(char *pNimi, PUU *pJuuriSolmu):&#160;binaaripuu.c']]],
+  ['puunpituus_5',['puunPituus',['../binaaripuu_8c.html#abc36f8e1374d272f964633afcb007b88',1,'puunPituus(PUU *pAlku):&#160;binaaripuu.c'],['../binaaripuu_8h.html#abc36f8e1374d272f964633afcb007b88',1,'puunPituus(PUU *pAlku):&#160;binaaripuu.c']]]
+];
