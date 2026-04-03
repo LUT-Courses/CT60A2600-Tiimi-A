@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 // Onnistuuko muistin varaaminen jonolle?
-void test_VaraaMuistiaJonolle() {
+void test_VaraaMuistiaJonolle(void) {
     PUU *pSolmu1 = NULL;
     PUU *pSolmu2 = NULL;
     JONO *pJono1 = NULL;
@@ -28,10 +28,11 @@ void test_VaraaMuistiaJonolle() {
     free(pJono2);
     free(pSolmu1);
     free(pSolmu2);
+    return;
 }
 
 // Testataan, toimiiko jonon muistin vapautus.
-void test_VapautaMuistiJono() {
+void test_VapautaMuistiJono(void) {
     PUU *pSolmu1 = NULL;
     PUU *pSolmu2 = NULL;
     JONO *pJono1 = NULL;
@@ -56,4 +57,5 @@ void test_VapautaMuistiJono() {
 
     free(pSolmu1);
     free(pSolmu2);
+    return;
 }

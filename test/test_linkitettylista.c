@@ -20,6 +20,7 @@ void test_VaraaMuistia(void) {
     TEST_ASSERT_EQUAL_INT(expectedYhteensa, pAlku->iYhteensa);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Testataan, onnistuuko muistin vapauttaminen?
@@ -31,6 +32,7 @@ void test_VapautaMuisti(void) {
     TEST_ASSERT_NULL(pAlku);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Onnistuuko muistin varaaminen usealle alkiolle, kun lista on tyhjä?
@@ -71,10 +73,11 @@ void test_VaraaMuistiUsealleAlkiolle(void) {
     TEST_ASSERT_NULL(pAlku->pEdellinen);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Onnistuuko yhden alkion lisääminen tyhjälle listalle?
-void test_lisaaListaan_tyhja() {
+void test_lisaaListaan_tyhja(void) {
     TIEDOT *pAlku = NULL;
 
     char expectedNimi[] = "Kosonen";
@@ -88,10 +91,11 @@ void test_lisaaListaan_tyhja() {
     TEST_ASSERT_EQUAL_INT(expectedArvo, pAlku->iYhteensa);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Testataan, onnistuuko listan alkuun lisääminen.
-void test_lisaaListaan_alkuun() {
+void test_lisaaListaan_alkuun(void) {
     TIEDOT *pAlku = NULL;
 
     char expectedNimi1[] = "Kosonen";
@@ -118,10 +122,11 @@ void test_lisaaListaan_alkuun() {
     TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->aNimi);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Testataan indeksin mukaan lisääminen.
-void test_lisaaListaan_indeksilla() {
+void test_lisaaListaan_indeksilla(void) {
     TIEDOT *pAlku = NULL;
 
     char expectedNimi1[] = "Kosonen";
@@ -151,10 +156,11 @@ void test_lisaaListaan_indeksilla() {
     TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->pSeuraava->aNimi);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Testataan, onnistuuko alkioiden määrän laskeminen.
-void test_useammalleAlkiolleSamaLKM() {
+void test_useammalleAlkiolleSamaLKM(void) {
     TIEDOT *pAlku = NULL;
 
     char expectedNimi1[] = "Kosonen";
@@ -172,10 +178,11 @@ void test_useammalleAlkiolleSamaLKM() {
     TEST_ASSERT_EQUAL_INT(2, iLKMSama);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Testataan, onnistuuko poistaminen lukumäärän perusteella.
-void test_poistaListaLkmPerusteella() {
+void test_poistaListaLkmPerusteella(void) {
     TIEDOT *pAlku = NULL;
 
     char expectedNimi1[] = "Kosonen";
@@ -196,10 +203,11 @@ void test_poistaListaLkmPerusteella() {
     TEST_ASSERT_EQUAL_STRING(expectedNimi1, pAlku->aNimi);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Testataan, onnistuuko poistaminen nimen perusteella.
-void test_poistaListaNimenPerusteella() {
+void test_poistaListaNimenPerusteella(void) {
     TIEDOT *pAlku = NULL;
 
     char expectedNimi1[] = "Kosonen";
@@ -220,16 +228,18 @@ void test_poistaListaNimenPerusteella() {
     TEST_ASSERT_EQUAL_STRING("Karjalainen", pAlku->aNimi);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Testataan lomituslajittelu, kun lista on tyhjä.
-void test_lomitusLajitteluTyhjaLista() {
+void test_lomitusLajitteluTyhjaLista(void) {
     TIEDOT *pAlku = NULL;
 
     pAlku = lomitusLajittelu(pAlku);
     TEST_ASSERT_NULL(pAlku);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Testataan lomituslajittelu yhdellä alkiolla.
@@ -249,10 +259,11 @@ void test_lomitusLajitteluYhdellaAlkiolla() {
     TEST_ASSERT_NULL(pAlku->pSeuraava);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Testataan lomituslajittelu kahdella alkiolla.
-void test_lomitusLajitteluKahdellaAlkiolla() {
+void test_lomitusLajitteluKahdellaAlkiolla(void) {
     TIEDOT *pAlku = NULL;
 
     char expectedNimi1[] = "Kosonen";
@@ -273,10 +284,11 @@ void test_lomitusLajitteluKahdellaAlkiolla() {
     TEST_ASSERT_NULL(pAlku->pSeuraava->pSeuraava);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Testataan lomituslajittelu usealla alkiolla.
-void test_lomitusLajitteluUseallaAlkiolla() {
+void test_lomitusLajitteluUseallaAlkiolla(void) {
     TIEDOT *pAlku = NULL;
 
     char expectedNimi1[] = "Kosonen";
@@ -314,10 +326,11 @@ void test_lomitusLajitteluUseallaAlkiolla() {
     TEST_ASSERT_NULL(pAlku->pSeuraava->pSeuraava->pSeuraava->pSeuraava->pSeuraava);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Testataan lomituslajittelu, kun on sama arvo. Pitäisi mennä aakkosten mukaan.
-void test_lomitusLajitteluSamaArvo() {
+void test_lomitusLajitteluSamaArvo(void) {
     TIEDOT *pAlku = NULL;
 
     char expectedNimi1[] = "Kosonen";
@@ -343,10 +356,11 @@ void test_lomitusLajitteluSamaArvo() {
     TEST_ASSERT_NULL(pAlku->pSeuraava->pSeuraava->pSeuraava);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Testataan lisäyslajittelu, kun lista on tyhjä.
-void test_lisaysLajitteluTyhjaLista() {
+void test_lisaysLajitteluTyhjaLista(void) {
     TIEDOT *pAlku = NULL;
 
     pAlku = lisaysLajittelu(pAlku);
@@ -356,7 +370,7 @@ void test_lisaysLajitteluTyhjaLista() {
 }
 
 // Testataan lisäyslajittelu yhdellä alkiolla.
-void test_lisaysLajitteluYhdellaAlkiolla() {
+void test_lisaysLajitteluYhdellaAlkiolla(void) {
     TIEDOT *pAlku = NULL;
 
     char expectedNimi[] = "Kosonen";
@@ -372,10 +386,11 @@ void test_lisaysLajitteluYhdellaAlkiolla() {
     TEST_ASSERT_NULL(pAlku->pSeuraava);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Testataan lisäyslajittelu kahdella alkiolla.
-void test_lisaysLajitteluKahdellaAlkiolla() {
+void test_lisaysLajitteluKahdellaAlkiolla(void) {
     TIEDOT *pAlku = NULL;
 
     char expectedNimi1[] = "Kosonen";
@@ -396,10 +411,11 @@ void test_lisaysLajitteluKahdellaAlkiolla() {
     TEST_ASSERT_NULL(pAlku->pSeuraava->pSeuraava);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Testataan lisäyslajittelu usealla alkiolla.
-void test_lisaysLajitteluUseallaAlkiolla() {
+void test_lisaysLajitteluUseallaAlkiolla(void) {
     TIEDOT *pAlku = NULL;
 
     char expectedNimi1[] = "Kosonen";
@@ -437,11 +453,12 @@ void test_lisaysLajitteluUseallaAlkiolla() {
     TEST_ASSERT_NULL(pAlku->pSeuraava->pSeuraava->pSeuraava->pSeuraava->pSeuraava);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }
 
 // Testataan lisäyslajittelu, kun on sama arvo. Pitäisi mennä aakkosten mukaan
 // (väärinpäin koska CodeGrade).
-void test_lisaysLajitteluSamaArvo() {
+void test_lisaysLajitteluSamaArvo(void) {
     TIEDOT *pAlku = NULL;
 
     char expectedNimi1[] = "Karjalainen";
@@ -467,4 +484,5 @@ void test_lisaysLajitteluSamaArvo() {
     TEST_ASSERT_NULL(pAlku->pSeuraava->pSeuraava->pSeuraava);
 
     pAlku = vapautaMuisti(pAlku);
+    return;
 }

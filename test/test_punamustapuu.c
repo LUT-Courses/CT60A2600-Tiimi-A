@@ -2,7 +2,7 @@
 #include "unity.h"
 
 // Onnistuuko varata muistia RBSolmulle?
-void test_VaraaMuistiaRBSolmulle() {
+void test_VaraaMuistiaRBSolmulle(void) {
     RBSOLMU *pJuuriSolmuRB = NULL;
     char expectedNimi[] = "Kosonen";
     int expectedArvo = 500;
@@ -19,4 +19,5 @@ void test_VaraaMuistiaRBSolmulle() {
     TEST_ASSERT_EQUAL_INT(expectedArvo, pJuuriSolmuRB->iArvo); 
 
     pJuuriSolmuRB = vapautaMuistiRB(pJuuriSolmuRB);
+    return;
 }

@@ -181,7 +181,7 @@ make test
 
 - Projektin joka viikosta on tehty oma tag, jotta yhden viikon toimivakoodi on tallessa.
 
-| Versio     | Päivämäärä | Tekijä        | Muutokset                 |
+| Versio     | Päivämäärä | Tekijä            | Muutokset             |
 |------------|------------|-------------------|-----------------------|
 | viikko1    | 2026-03-09 | Noora Vepsäläinen | Viikon 08 koko koodi. |
 | binaaripuu | 2026-03-16 | Aino Pöyhönen     | Viikon 09 koko koodi. |

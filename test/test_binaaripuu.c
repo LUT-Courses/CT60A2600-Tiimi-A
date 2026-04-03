@@ -3,7 +3,7 @@
 
 
 // Onnistuuko muistin varaaminen puulle, kun se on tyhjä?
-void test_VaraaMuistiaPuulle() {
+void test_VaraaMuistiaPuulle(void) {
     PUU *pJuuriSolmu = NULL;
 
     char expectedNimi[] = "Kosonen";
@@ -21,10 +21,11 @@ void test_VaraaMuistiaPuulle() {
     TEST_ASSERT_EQUAL_INT(expectedArvo, pJuuriSolmu->iArvo);
 
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+    return;
 }
 
 // Onnistuuko muistinvaraus useammalle solmulle puussa, kun se on tyhjä?
-void test_VaraaMuistiaUsealleSolmullePuussa() {
+void test_VaraaMuistiaUsealleSolmullePuussa(void) {
     PUU *pJuuriSolmu = NULL;
     char expectedNimi1[] = "Kosonen";
     int expectedArvo1 = 500;
@@ -56,10 +57,11 @@ void test_VaraaMuistiaUsealleSolmullePuussa() {
     TEST_ASSERT_EQUAL_INT(expectedArvo3, pJuuriSolmu->pOikea->iArvo);
 
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+    return;
 }
 
 // Onnistuuko puun muistin vapauttaminen?
-void test_VapautaPuunMuisti() {
+void test_VapautaPuunMuisti(void) {
     PUU *pJuuriSolmu = NULL;
     // Varataan muistia.
     pJuuriSolmu = varaaMuistiaPuulle("Kosonen", 500);
@@ -68,10 +70,11 @@ void test_VapautaPuunMuisti() {
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
     // Tarkistetaan, onko vapautus onnistunut.
     TEST_ASSERT_NULL(pJuuriSolmu);
+    return;
 }
 
 // Onnistuuko puun muistin vapauttaminen usealla alkiolla?
-void test_VapautaPuunMuistiUseastaSolmusta() {
+void test_VapautaPuunMuistiUseastaSolmusta(void) {
     PUU *pJuuriSolmu = NULL;
     // Varataan muistia
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 500);
@@ -84,10 +87,11 @@ void test_VapautaPuunMuistiUseastaSolmusta() {
 
     // Tarkistetaan, onnistuiko vapautus.
     TEST_ASSERT_NULL(pJuuriSolmu);
+    return;
 }
 
 // Onnistuuko vasen-vasen tasapainotus?
-void test_LLtasapainotus() {
+void test_LLtasapainotus(void) {
     PUU *pJuuriSolmu = NULL;
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 500);
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Gekko", 400);
@@ -99,10 +103,11 @@ void test_LLtasapainotus() {
     TEST_ASSERT_EQUAL_STRING(pJuuriSolmu->pOikea->aNimi, "Kosonen");
 
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+    return;
 }
 
 // Onnistuuko oikea-oikea tasapainotus?
-void test_RRtasapainotus() {
+void test_RRtasapainotus(void) {
     PUU *pJuuriSolmu = NULL;
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 500);
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Gekko", 600);
@@ -115,10 +120,11 @@ void test_RRtasapainotus() {
     TEST_ASSERT_NULL(pJuuriSolmu->pOikea->pOikea->aNimi);
 
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+    return;
 }
 
 // Onnistuuko vasen-oikea tasapainotus?
-void test_LRtasapainotus() {
+void test_LRtasapainotus(void) {
     PUU *pJuuriSolmu = NULL;
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 500);
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Gekko", 300);
@@ -131,10 +137,11 @@ void test_LRtasapainotus() {
     TEST_ASSERT_NULL(pJuuriSolmu->pOikea->pOikea->aNimi);
 
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+    return;
 }
 
 // Onnistuuko oikea-vasen tasapainotus?
-void test_RLtasapainotus() {
+void test_RLtasapainotus(void) {
     PUU *pJuuriSolmu = NULL;
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 300);
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Gekko", 500);
@@ -147,19 +154,21 @@ void test_RLtasapainotus() {
     TEST_ASSERT_NULL(pJuuriSolmu->pOikea->pOikea->aNimi);
 
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+    return;
 }
 
 // Testataan, toimiiko lukuarvon tarkistus.
-void test_onkoLuku() {
+void test_onkoLuku(void) {
     char aLuku1[] = "50";
     char aLuku2[] = "abc";
 
     TEST_ASSERT_EQUAL_INT(1, onkoLuku(aLuku1));
     TEST_ASSERT_EQUAL_INT(0, onkoLuku(aLuku2));
+    return;
 }
 
 // Testataan, löytyykö nimen avulla arvoa.
-void test_nimenArvo() {
+void test_nimenArvo(void) {
     PUU *pJuuriSolmu = NULL;
 
     char expectedNimi1[] = "Kosonen";
@@ -171,10 +180,11 @@ void test_nimenArvo() {
     TEST_ASSERT_EQUAL(0, nimenArvo("Karjalainen", pJuuriSolmu));
 
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+    return;
 }
 
 // Testataan, poistuuko solmu nimellä.
-void test_poistaSolmuNimi() {
+void test_poistaSolmuNimi(void) {
     PUU *pJuuriSolmu = NULL;
 
     char expectedNimi1[] = "Kosonen";
@@ -187,10 +197,11 @@ void test_poistaSolmuNimi() {
     TEST_ASSERT_NULL(pJuuriSolmu);
 
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+    return;
 }
 
 // Testataan solmun poistamista arvolla.
-void test_poistaSolmuArvo() {
+void test_poistaSolmuArvo(void) {
     PUU *pJuuriSolmu = NULL;
 
     char expectedNimi1[] = "Kosonen";
@@ -204,4 +215,5 @@ void test_poistaSolmuArvo() {
     TEST_ASSERT_NULL(pJuuriSolmu);
 
     pJuuriSolmu = vapautaMuistiPuu(pJuuriSolmu);
+    return;
 }
