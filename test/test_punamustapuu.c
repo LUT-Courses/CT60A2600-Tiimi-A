@@ -189,3 +189,107 @@ void test_RBLisayksenKorjausSolmujenPaikatVaihtuu(void) {
     pJuuriSolmuRB = vapautaMuistiRB(pJuuriSolmuRB);
     return;
 }
+
+// Toimiiko oikealle kiertäminen punamustassa puussa?
+void test_RBKiertoOikealle(void) {
+    RBSOLMU *pJuuriSolmuRB = NULL;
+    RBSOLMU *pSolmuA = NULL;
+    RBSOLMU *pSolmuB = NULL;
+    RBSOLMU *pSolmuC = NULL;
+    char expectedNimi1[] = "A";
+    int expectedArvo1 = 500;
+    char expectedNimi2[] = "B";
+    int expectedArvo2 = 300;
+    char expectedNimi3[] = "C";
+    int expectedArvo3 = 400;
+
+    // Varataan muistia kolmelle solmulle.
+    pSolmuA = varaaMuistiaRB(expectedNimi1, expectedArvo1);
+    pSolmuB = varaaMuistiaRB(expectedNimi2, expectedArvo2);
+    pSolmuC = varaaMuistiaRB(expectedNimi3, expectedArvo3);
+
+    // Luodaan puu.
+    pJuuriSolmuRB = pSolmuA;
+    pSolmuA->pVasen = pSolmuB;
+    pSolmuB->pVanhempi = pSolmuA;
+    pSolmuB->pOikea = pSolmuC;
+    pSolmuC->pVanhempi = pSolmuB;
+
+    // Oikea kierto RB solmun pSolmuA ympärille.
+    kierraOikealle(&pJuuriSolmuRB, pSolmuA);
+
+    // Tarkistetaan, onko solmujen järjestys muuttunut. 
+    // Juurisolmun tulisi olla B, juurisolmun oikea lapsi pitäisi olla A ja A:n vasen lapsi C
+    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pJuuriSolmuRB->aNimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo2, pJuuriSolmuRB->iArvo);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pJuuriSolmuRB->pOikea->aNimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo1, pJuuriSolmuRB->pOikea->iArvo);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pSolmuA->pVasen->aNimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo3, pSolmuA->pVasen->iArvo);
+    
+    // Tarkistetaan, että muita lapsi solmuja ei ole ja että vanhemmat solmut ovat oikein.
+    TEST_ASSERT_NULL(pJuuriSolmuRB->pVasen);
+    TEST_ASSERT_NULL(pSolmuA->pOikea);
+    TEST_ASSERT_NULL(pSolmuC->pVasen);
+    TEST_ASSERT_NULL(pSolmuC->pOikea);
+
+    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pSolmuA->pVanhempi->aNimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo2, pSolmuA->pVanhempi->iArvo);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pSolmuC->pVanhempi->aNimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo1, pSolmuC->pVanhempi->iArvo);
+
+    pJuuriSolmuRB = vapautaMuistiRB(pJuuriSolmuRB);
+    return;
+}
+
+// Toimiiko vasemmalle kiertäminen punamustassa puussa?
+void test_RBKiertoVasemmalle(void) {
+    RBSOLMU *pJuuriSolmuRB = NULL;
+    RBSOLMU *pSolmuA = NULL;
+    RBSOLMU *pSolmuB = NULL;
+    RBSOLMU *pSolmuC = NULL;
+    char expectedNimi1[] = "A";
+    int expectedArvo1 = 500;
+    char expectedNimi2[] = "B";
+    int expectedArvo2 = 300;
+    char expectedNimi3[] = "C";
+    int expectedArvo3 = 400;
+
+    // Varataan muistia kolmelle solmulle.
+    pSolmuA = varaaMuistiaRB(expectedNimi1, expectedArvo1);
+    pSolmuB = varaaMuistiaRB(expectedNimi2, expectedArvo2);
+    pSolmuC = varaaMuistiaRB(expectedNimi3, expectedArvo3);
+
+    // Luodaan puu.
+    pJuuriSolmuRB = pSolmuA;
+    pSolmuA->pOikea = pSolmuB;
+    pSolmuB->pVanhempi = pSolmuA;
+    pSolmuB->pVasen = pSolmuC;
+    pSolmuC->pVanhempi = pSolmuB;
+
+    // Vasen kierto RB solmun pSolmuA ympärille.
+    kierraVasemmalle(&pJuuriSolmuRB, pSolmuA);
+
+    // Tarkistetaan, onko solmujen järjestys muuttunut. 
+    // Juurisolmun tulisi olla B, juurisolmun vasen lapsi pitäisi olla A ja A:n oikea lapsi C
+    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pJuuriSolmuRB->aNimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo2, pJuuriSolmuRB->iArvo);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pJuuriSolmuRB->pVasen->aNimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo1, pJuuriSolmuRB->pVasen->iArvo);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi3, pSolmuA->pOikea->aNimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo3, pSolmuA->pOikea->iArvo);
+    
+    // Tarkistetaan, että muita lapsi solmuja ei ole ja että vanhemmat solmut ovat oikein.
+    TEST_ASSERT_NULL(pJuuriSolmuRB->pOikea);
+    TEST_ASSERT_NULL(pSolmuA->pVasen);
+    TEST_ASSERT_NULL(pSolmuC->pOikea);
+    TEST_ASSERT_NULL(pSolmuC->pVasen);
+
+    TEST_ASSERT_EQUAL_STRING(expectedNimi2, pSolmuA->pVanhempi->aNimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo2, pSolmuA->pVanhempi->iArvo);
+    TEST_ASSERT_EQUAL_STRING(expectedNimi1, pSolmuC->pVanhempi->aNimi);
+    TEST_ASSERT_EQUAL_INT(expectedArvo1, pSolmuC->pVanhempi->iArvo);
+
+    pJuuriSolmuRB = vapautaMuistiRB(pJuuriSolmuRB);
+    return;
+}
