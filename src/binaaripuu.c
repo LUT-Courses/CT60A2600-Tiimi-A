@@ -50,7 +50,7 @@ PUU *vapautaMuistiPuu(PUU *pJuuriSolmu) {
 /**
  * @brief Lisaa solmun puuhun.
  * Tasapainottaa puun.
- * @param pAlku
+ * @param pAlku Osoitin nykyiseen solmuun.
  * @param pSolmu Lisattava solmu.
  * @param iArvo Solmun arvo.
  * @return PUU*
@@ -172,7 +172,7 @@ PUU *luoPuu(char *pNimi, PUU *pJuuriSolmu) {
  * @brief Tasapainoitetun binaaripuun kirjoittaminen tiedostoon
  *
  * @param pNimi Kirjoitettavan tiedoston nimi.
- * @param pAlku
+ * @param pAlku Osoitin käsiteltävään solmuun.
  */
 void kirjoitaBinaaripuu(char *pNimi, PUU *pAlku) {
     if (pAlku != NULL) {
@@ -213,7 +213,7 @@ void kirjoitaTiedostoon(char *pNimi, PUU *pAlku) {
  * @brief Palauttaa solmun tasapainokertoimen.
  *
  * @param pAlku Solmu, josta tasapainokerroin halutaan
- * @return int
+ * @return int Tasapainokerroin
  */
 int tasapainoitaPuu(PUU *pAlku) {
     // Tarkistetaan, onko Null
@@ -228,7 +228,7 @@ int tasapainoitaPuu(PUU *pAlku) {
 /**
  * @brief Oikean puolen kierto.
  * Puu jarjestetaan, jotta se on tasapainossa.
- * @param pAlku
+ * @param pAlku Osoitin solmuun, jonka kohdalla kierto tehdään.
  * @return PUU* Palauttaa solmun.
  */
 PUU *oikeaPuoli(PUU *pAlku) {
@@ -256,7 +256,7 @@ PUU *oikeaPuoli(PUU *pAlku) {
 /**
  * @brief Vasemman puolen kierto.
  * Puu jarjestetaan, jotta se on tasapainossa.
- * @param pAlku
+ * @param pAlku Osoitin solmuun, jonka kohdalla kierto tehdään.
  * @return PUU* Palauttaa solmun.
  */
 PUU *vasenPuoli(PUU *pAlku) {
@@ -342,11 +342,11 @@ PUU *poistaSolmu(char *pNimi, PUU *pJuuriSolmu) {
         iArvo = atoi(pNimi);
     } else {
         iArvo = nimenArvo(pNimi, pJuuriSolmu);
-        
+
         if (iArvo == 0) {
             printf("Solmua ei löytynyt tällä nimellä.\n");
             return (pJuuriSolmu);
-        } 
+        }
     }
 
     // Lehtisolmun poistaminen.
@@ -448,7 +448,7 @@ PUU *etsiPienin(PUU *pUusiSolmu) {
         pNykyinenSolmu = pNykyinenSolmu->pVasen;
     }
 
-    return(pNykyinenSolmu);
+    return (pNykyinenSolmu);
 }
 
 /**
