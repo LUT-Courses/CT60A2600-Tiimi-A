@@ -1,47 +1,69 @@
 # Projektin nimi
-PROJECT_NAME = "CT60A2600-TIIMI-A"
+PROJECT_NAME           = "CT60A2600-TIIMI-A"
 
-# Paikka johon dokumentaatio tallennetaan
-OUTPUT_DIRECTORY = documentation
+# Dokumentaation tallennuspaikka
+OUTPUT_DIRECTORY       = doc
 
-# Lahdekoodi luetaan src-kansiosta ja vain .c ja .h loppuiset tiedostot luetaan
-INPUT = ../src
-FILE_PATTERNS = *.c *.h
+# Lähdekoodi
+INPUT                  = src
+FILE_PATTERNS          = *.c *.h
+RECURSIVE              = YES
 
-# Myos alikansiot luetaan
-RECURSIVE = YES
+# Dokumentaatiomuodot
+GENERATE_HTML          = YES
+GENERATE_LATEX         = YES
+GENERATE_XML           = NO
 
-# LATEX on, mutta HTML ja XML ei tehda
-GENERATE_XML = NO
-GENERATE_HTML = NO
-GENERATE_LATEX = YES
+# HTML doc/html/ kansioon, LaTeX väliaikaiseen kansioon
+HTML_OUTPUT            = html
+LATEX_OUTPUT           = ../doc_latex_tmp
 
-# Kommentit tunnistetaan automaattisesti ja nakyvat dokumentaatiossa
-JAVADOC_AUTOBRIEF = YES
-EXTRACT_ALL = YES
-EXTRACT_STATIC = YES
-HIDE_UNDOC_MEMBERS = NO
+# Kommenttien käsittely
+JAVADOC_AUTOBRIEF      = YES
+BRIEF_MEMBER_DESC      = YES
+REPEAT_BRIEF           = NO
+STRIP_CODE_COMMENTS    = YES
 
-# Lahdekoodi naytetaan dokumentaatiossa
-SOURCE_BROWSER = YES
-INLINE_SOURCES = YES
+# Näytetään vain dokumentoidut osat
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = NO
+EXTRACT_LOCAL_METHODS  = NO
+HIDE_UNDOC_MEMBERS     = YES
+HIDE_UNDOC_CLASSES     = YES
 
-# Kaavioita tulee dokumentaatioon
-HAVE_DOT = NO
-CAL_GRAPH = NO
-CALLER_GRAPH = NO
+# Poistetaan tyhjät erikoissivut
+GENERATE_TODOLIST      = NO
+GENERATE_TESTLIST      = NO
+GENERATE_BUGLIST       = NO
+GENERATE_DEPRECATEDLIST = NO
+SHOW_NAMESPACES        = NO
 
-# Poistaa polut
-FULL_PATH_NAMES = NO
+# Ei lähdekoodia dokumentaatiossa
+SOURCE_BROWSER         = NO
+INLINE_SOURCES         = NO
+REFERENCES_LINK_SOURCE = NO
+VERBATIM_HEADERS       = NO
 
-# Poista Detailed Description ja Member Data Documentatio osiot Class Documentatioista.
-BRIEF_MEMBER_DESC = YES
-REPEAT_BRIEF = NO
-HIDE_UNDOC_MEMBERS = YES
-HIDE_UNDOC_CLASSES = NO
+# Kaaviot
+HAVE_DOT               = NO
+CALL_GRAPH             = NO
+CALLER_GRAPH           = NO
 
+# Polut
+FULL_PATH_NAMES        = NO
 
-# Nayttaa vain public attribuutit
-EXTRACT_PRIVATE       = NO
-EXTRACT_STATIC        = NO
-EXTRACT_LOCAL_METHODS = NO
+# LaTeX / PDF asetukset
+PDF_HYPERLINKS         = YES
+USE_PDFLATEX           = YES
+LATEX_BATCHMODE        = YES
+LATEX_HIDE_INDICES     = YES
+COMPACT_LATEX          = YES
+
+# Estetään ylimääräiset kansiot
+CREATE_SUBDIRS         = NO
+
+# Varoitukset
+QUIET                  = YES
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
