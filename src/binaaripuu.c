@@ -1,4 +1,5 @@
-// 15.3.2026, Sofia Toropainen, Aino Pöyhönen, Noora Vepsäläinen, binaaripuu.c, Tasapainoitettu binääripuu AVL, muokattu ja lisätty aliohjelmia myöhemmin.
+// 15.3.2026, Sofia Toropainen, Aino Pöyhönen, Noora Vepsäläinen, binaaripuu.c, Tasapainoitettu
+// binääripuu AVL, muokattu ja lisätty aliohjelmia myöhemmin.
 #include "binaaripuu.h"
 #include <ctype.h>
 #include <stdio.h>
@@ -232,7 +233,7 @@ int tasapainoitaPuu(PUU *pAlku) {
  */
 PUU *oikeaPuoli(PUU *pAlku) {
     // Tarkistetaan, onko pAlku tai pAlku oikea puoli NULL
-    if ((pAlku->pVasen == NULL) || (pAlku == NULL)) {
+    if ((pAlku == NULL) || (pAlku->pVasen == NULL)) {
         return (pAlku);
     }
 
@@ -260,7 +261,7 @@ PUU *oikeaPuoli(PUU *pAlku) {
  */
 PUU *vasenPuoli(PUU *pAlku) {
     // Tarkistetaan, onko pAlku tai pAlku oikea puoli NULL
-    if ((pAlku->pOikea == NULL) || (pAlku == NULL)) {
+    if ((pAlku == NULL) || (pAlku->pOikea == NULL)) {
         return (pAlku);
     }
 

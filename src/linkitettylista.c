@@ -1,4 +1,5 @@
-// 8.3.2026, Sofia Toropainen, Aino Pöyhönen, Noora Vepsäläinen, linkitettylista.c, linkitettylista, muokattu ja lisätty tiedostoon aliohjelmia myöhemmin.
+// 8.3.2026, Sofia Toropainen, Aino Pöyhönen, Noora Vepsäläinen, linkitettylista.c, linkitettylista,
+// muokattu ja lisätty tiedostoon aliohjelmia myöhemmin.
 #include "linkitettylista.h"
 #include <ctype.h>
 #include <stdio.h>
@@ -296,6 +297,8 @@ TIEDOT *poistaListastaLkmPeruusteella(TIEDOT *pAlku, int iLKM) {
     if ((ptr != NULL) && (ptr->iYhteensa == iLKM)) {
         // Sijoitetaan osoitin osoittamaan seuraavaan alkioon.
         pAlku = ptr->pSeuraava;
+        if (pAlku != NULL)
+            pAlku->pEdellinen = NULL;
         free(ptr);
         printf("Alkio poistettu.\n");
 
@@ -305,6 +308,9 @@ TIEDOT *poistaListastaLkmPeruusteella(TIEDOT *pAlku, int iLKM) {
         while (ptr != NULL) {
             if (ptr->iYhteensa == iLKM) {
                 pEdellinen->pSeuraava = ptr->pSeuraava;
+                if (ptr->pSeuraava != NULL) {
+                    ptr->pSeuraava->pEdellinen = pEdellinen;
+                }
                 free(ptr);
                 iAlkioLoytyi = 1;
                 break;
@@ -340,6 +346,8 @@ TIEDOT *poistaListastaNimenPerusteella(TIEDOT *pAlku, char *pNimi) {
     if ((ptr != NULL) && (strcmp(ptr->aNimi, pNimi) == 0)) {
         // Sijoitetaan osoitin osoittamaan seuraavaan alkioon.
         pAlku = ptr->pSeuraava;
+        if (pAlku != NULL)
+            pAlku->pEdellinen = NULL;
         free(ptr);
         printf("Alkio poistettu.\n");
 
@@ -349,6 +357,9 @@ TIEDOT *poistaListastaNimenPerusteella(TIEDOT *pAlku, char *pNimi) {
         while (ptr != NULL) {
             if (strcmp(ptr->aNimi, pNimi) == 0) {
                 pEdellinen->pSeuraava = ptr->pSeuraava;
+                if (ptr->pSeuraava != NULL) {
+                    ptr->pSeuraava->pEdellinen = pEdellinen;
+                }
                 free(ptr);
                 iAlkioLoytyi = 1;
                 break;
@@ -453,6 +464,11 @@ TIEDOT *halkaise(TIEDOT *pAlku) {
 
     iPituus = laskeListanPituus(pAlku);
     iKeskikohta = iPituus / 2 - 1;
+
+    // Ei halkaista liian pientä listaa
+    if (iPituus < 2) {
+        return NULL;
+    }
 
     p1 = pAlku;
     for (i = 0; i < iKeskikohta; i++) {

@@ -1,7 +1,7 @@
-// 15.3.2026 Sofia Toropainen, Ainö Pöyhönen, Noora Vepsäläinen, test_binaaripuu.c, binaaripuu.c aliohjelmien testit, tiedostoa muokattu myöhemmin ja testejä lisätty.
-#include "unity.h"
+// 15.3.2026 Sofia Toropainen, Ainö Pöyhönen, Noora Vepsäläinen, test_binaaripuu.c, binaaripuu.c
+// aliohjelmien testit, tiedostoa muokattu myöhemmin ja testejä lisätty.
 #include "../src/binaaripuu.h"
-
+#include "unity.h"
 
 // Onnistuuko muistin varaaminen puulle, kun se on tyhjä?
 void test_VaraaMuistiaPuulle(void) {
@@ -97,7 +97,7 @@ void test_LLtasapainotus(void) {
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 500);
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Gekko", 400);
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Karjalainen", 300);
-    
+
     TEST_ASSERT_EQUAL_STRING(pJuuriSolmu->aNimi, "Gekko");
     TEST_ASSERT_EQUAL_INT(pJuuriSolmu->iArvo, 400);
 
@@ -113,7 +113,7 @@ void test_RRtasapainotus(void) {
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 500);
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Gekko", 600);
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Karjalainen", 700);
-    
+
     TEST_ASSERT_EQUAL_STRING(pJuuriSolmu->aNimi, "Gekko");
     TEST_ASSERT_EQUAL_INT(pJuuriSolmu->iArvo, 600);
 
@@ -130,7 +130,7 @@ void test_LRtasapainotus(void) {
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 500);
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Gekko", 300);
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Karjalainen", 400);
-    
+
     TEST_ASSERT_EQUAL_STRING(pJuuriSolmu->aNimi, "Karjalainen");
     TEST_ASSERT_EQUAL_INT(pJuuriSolmu->iArvo, 400);
 
@@ -147,7 +147,7 @@ void test_RLtasapainotus(void) {
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Kosonen", 300);
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Gekko", 500);
     pJuuriSolmu = lisaaSolmu(pJuuriSolmu, "Karjalainen", 400);
-    
+
     TEST_ASSERT_EQUAL_STRING(pJuuriSolmu->aNimi, "Karjalainen");
     TEST_ASSERT_EQUAL_INT(pJuuriSolmu->iArvo, 400);
 
