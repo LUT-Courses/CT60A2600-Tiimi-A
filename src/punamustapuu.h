@@ -11,7 +11,6 @@ typedef struct RBSolmu {
     struct RBSolmu *pVanhempi;
 } RBSOLMU;
 
-
 RBSOLMU *varaaMuistiaRB(char *pNimi, int iArvo);
 RBSOLMU *vapautaMuistiRB(RBSOLMU *pJuuriSolmu);
 RBSOLMU *lisaaRBSolmu(RBSOLMU *pJuurisolmu, RBSOLMU *pUusi);

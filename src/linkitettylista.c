@@ -224,7 +224,8 @@ TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
         pAlku = pUusi;
         return (pAlku);
     } else {
-        // Jos lisatään listan alkuun, eli indeksi = 0. Tai jos kohta on negatiivinen, lisätään automaattisesti ensimmäiseksi alkioksi.
+        // Jos lisatään listan alkuun, eli indeksi = 0. Tai jos kohta on negatiivinen, lisätään
+        // automaattisesti ensimmäiseksi alkioksi.
         if (iIndeksi <= 1) {
             pUusi->pEdellinen = NULL;
             pUusi->pSeuraava = pAlku;
@@ -254,9 +255,9 @@ TIEDOT *lisaaListaan(TIEDOT *pAlku, int iIndeksi, char *pNimi, int iArvo) {
 
 /**
  * @brief Poistaa linkitetystä listasta alkion.
- * 
+ *
  * @param pAlku Osoitin linkitetyn listan alkuun.
- * @param iLukuVaiNimi Tieto siitä, haluaako käyttäjä poistaa alkion nimen vai luvun perusteella.  
+ * @param iLukuVaiNimi Tieto siitä, haluaako käyttäjä poistaa alkion nimen vai luvun perusteella.
  * @param pTieto Poistettavan alkion tieto, nimi tai luku.
  * @return TIEDOT* pAlku Osoitin listan nykyiseen alkuun.
  */
@@ -314,7 +315,7 @@ TIEDOT *poistaListastaLkmPeruusteella(TIEDOT *pAlku, int iLKM) {
         }
 
         // Kerrotaan käyttäjälle, poistettiinko alkio.
-        if(iAlkioLoytyi == 1) {
+        if (iAlkioLoytyi == 1) {
             printf("Alkio poistettu.\n");
         } else {
             printf("Poistettavaa alkiota ei löydetty.\n");
@@ -358,7 +359,7 @@ TIEDOT *poistaListastaNimenPerusteella(TIEDOT *pAlku, char *pNimi) {
         }
 
         // Kerrotaan käyttäjälle, poistettiinko alkio.
-        if(iAlkioLoytyi == 1) {
+        if (iAlkioLoytyi == 1) {
             printf("Alkio poistettu.\n");
         } else {
             printf("Poistettavaa alkiota ei löydetty.\n");
@@ -393,10 +394,11 @@ int useammallaAlkiollaSamaLKM(TIEDOT *pAlku, int iLKM) {
 }
 
 /**
- * @brief Selvittää onko käyttäjän antama syöte luku vai nimi. 
- * 
+ * @brief Selvittää onko käyttäjän antama syöte luku vai nimi.
+ *
  * @param Tieto Käyttäjän antama syöte.
- * @return int Tieto, onko luku vai nimi, jos -2, niin käyttäjä antoi luvun, jos joku muu niin se on luku.
+ * @return int Tieto, onko luku vai nimi, jos -2, niin käyttäjä antoi luvun, jos joku muu niin se on
+ * luku.
  */
 int onkoLukuVaiNimi(char *Tieto) {
     int iVastaus = 0;

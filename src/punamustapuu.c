@@ -5,13 +5,13 @@
 
 // Punamustapuun luominen ja kirjoittaminen tiedostoon.
 
- /**
-  * @brief Varaa muistia punamustalle puulle.
-  * 
-  * @param pNimi Solmun nimi, jolle varataan muistia ja kopioidaan uuteen solmuun.
-  * @param iArvo Solmun arvo, jolle varataan muistia ja kopioidaan uuteen solmuun.
-  * @return RBSOLMU* Palauttaa osoittimen uuteen alustettuun solmuun. 
-  */
+/**
+ * @brief Varaa muistia punamustalle puulle.
+ *
+ * @param pNimi Solmun nimi, jolle varataan muistia ja kopioidaan uuteen solmuun.
+ * @param iArvo Solmun arvo, jolle varataan muistia ja kopioidaan uuteen solmuun.
+ * @return RBSOLMU* Palauttaa osoittimen uuteen alustettuun solmuun.
+ */
 RBSOLMU *varaaMuistiaRB(char *pNimi, int iArvo) {
     RBSOLMU *pUusi = NULL;
 
@@ -33,7 +33,7 @@ RBSOLMU *varaaMuistiaRB(char *pNimi, int iArvo) {
 
 /**
  * @brief Vapauttaa muistin punamustasta puusta.
- * 
+ *
  * @param pJuuriSolmu Osoitin punamustapuun solmuun.
  * @return RBSOLMU* Palauttaa punamustapuun osoittimen.
  */
@@ -48,11 +48,12 @@ RBSOLMU *vapautaMuistiRB(RBSOLMU *pJuuriSolmu) {
 }
 
 /**
- * @brief Lisää solmun punamustapuuhun.
- * 
+ * @brief Lisää solmun punamustapuuhun binääripuun sääntöjen mukaisesti. Värit ja rakenne korjataan
+ * erikseen korjaaLisäys-aliohjelmassa.
+ *
  * @param pJuurisolmu Osoitin punamustapuun juurisolmuun.
  * @param pUusi Osoitin lisättävään solmuun.
- * @return RBSOLMU* Palauttaa osoittimen punamustapuun juurisolmuun. 
+ * @return RBSOLMU* Palauttaa osoittimen punamustapuun juurisolmuun.
  */
 RBSOLMU *lisaaRBSolmu(RBSOLMU *pJuurisolmu, RBSOLMU *pUusi) {
     int iVertailu = 0;
@@ -86,8 +87,10 @@ RBSOLMU *lisaaRBSolmu(RBSOLMU *pJuurisolmu, RBSOLMU *pUusi) {
 }
 
 /**
- * @brief Luo punamustapuun.
- * Lukee tiedoston, käsittelee tiedot, sekä luo puun.
+ * @brief Luo punamustapuun tiedostosta.
+ * @details Lukee tiedoston, käsittelee tiedot, sekä luo puun. Jokaisen lisäyksen jälkeen puun
+ * rakenne ja värit korjataan punamustapuun sääntöjen mukaisiksi.
+ *
  * @param pJuurisolmu Osoitin punamustapuun solmuun.
  * @param pNimi Osoitin luettava tiedoston nimeen.
  * @return RBSOLMU* Palauttaa solmun osoittimen.
@@ -135,7 +138,7 @@ RBSOLMU *luoRBPuu(RBSOLMU *pJuurisolmu, char *pNimi) {
 
 /**
  * @brief Tekee vasemman rotaation punamustalle puulle.
- * 
+ *
  * @param pJuurisolmu Osoitin juurisolmun osoittimeen.
  * @param pSolmu Osoitin solmuun. Kierto tehdään tämän solmun ympärille.
  */
@@ -162,8 +165,8 @@ void kierraVasemmalle(RBSOLMU **pJuurisolmu, RBSOLMU *pSolmu) {
 }
 
 /**
- * @brief Tekee oikean rotaation punamustalle puulle. 
- * 
+ * @brief Tekee oikean rotaation punamustalle puulle.
+ *
  * @param pJuurisolmu Osoitin juurisolmun osoittimeen.
  * @param pSolmu Osoitin solmuun. Kierto tehdään tämän solmun ympärille.
  */
@@ -191,8 +194,10 @@ void kierraOikealle(RBSOLMU **pJuurisolmu, RBSOLMU *pSolmu) {
 
 /**
  * @brief Korjaa lisäyksen jälkeen punamustan puun rakenteen ja värit oikeiksi.
- * 
- * @param pJuurisolmu Osoitin juurisolmun osoittimeen. 
+ * @details Käy puuta läpi ylöspäin ja korjaa väririkkomukset rotaatioiden ja värinvaihtojen avulla.
+ * Juurisolmu asetetaan aina mustaksi.
+ *
+ * @param pJuurisolmu Osoitin juurisolmun osoittimeen.
  * @param pUusi Osoitin lisättyyn solmuun.
  */
 void korjaaLisays(RBSOLMU **pJuurisolmu, RBSOLMU *pUusi) {
@@ -257,16 +262,26 @@ void korjaaLisays(RBSOLMU **pJuurisolmu, RBSOLMU *pUusi) {
 }
 
 /**
- * @brief Kirjoittaa punamustapuun tiedostoon.
- * 
+ * @brief Kirjoittaa yksittäisen solmun punamustapuusta tiedostoon.
+ * @details Solmun väri kirjoitetaan näkyviin (punainen/musta), jotta punamustapuu erottuu
+ * AVL-tasapainotetusta puusta.
+ *
  * @param pNimi Osoitin kirjoitettavan tiedoston nimeen.
- * @param pJuurisolmu Osoitin punamustapuun juurisolmuun.
+ * @param pJuurisolmu Osoitin kirjoitettavaan solmuun.
  */
 void kirjoitaRBTiedostoon(char *pNimi, RBSOLMU *pJuurisolmu) {
     FILE *Tiedosto = NULL;
+    char *pVari = NULL;
 
     if (pJuurisolmu == NULL) {
         return;
+    }
+
+    /* Kirjoitetaan solmulle väri näkyviin, niin erottuu AVL tasapainotetusta puusta */
+    if (pJuurisolmu->iVariBitti == 0) {
+        pVari = "punainen";
+    } else {
+        pVari = "musta";
     }
 
     /* Tiedoston avaaminen. */
@@ -275,7 +290,7 @@ void kirjoitaRBTiedostoon(char *pNimi, RBSOLMU *pJuurisolmu) {
         exit(0);
     }
     /* Tiedostoon kirjoittaminen. */
-    fprintf(Tiedosto, "%s,%d\n", pJuurisolmu->aNimi, pJuurisolmu->iArvo);
+    fprintf(Tiedosto, "%s,%d;%s\n", pJuurisolmu->aNimi, pJuurisolmu->iArvo, pVari);
 
     /* Tiedoston sulkeminen. */
     fclose(Tiedosto);
@@ -283,8 +298,10 @@ void kirjoitaRBTiedostoon(char *pNimi, RBSOLMU *pJuurisolmu) {
 }
 
 /**
- * @brief Kirjoittaa punamustapuun. 
- * Kutsuu tiedostoon kirjoittavaa aliohjelmaa ja antaa sille kirjoitettavat arvot.
+ * @brief Kirjoittaa punamustapuun rekursiivisesti tiedostoon.
+ * Kutsuu tiedostoon kirjoittavaa aliohjelmaa jokaiselle solmulle ja antaa sille kirjoitettavat
+ * arvot.
+ *
  * @param pNimi Osoitin kirjoitettavan tiedoston nimeen.
  * @param pJuurisolmu Osoitin solmuun, jota aliohjelma käsittelee.
  */
