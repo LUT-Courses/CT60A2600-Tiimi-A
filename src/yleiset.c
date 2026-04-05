@@ -84,7 +84,7 @@ void mainLista(void) {
             if (pAlku == NULL) {
                 printf("Lista on tyhjä, ei poistettavia alkioita.\n");
             } else {
-                kysyNimi("Anna poistettava tnimi tai arvo: ", aTietoPoistettava);
+                kysyNimi("Anna poistettava nimi tai arvo: ", aTietoPoistettava);
                 iArvo = onkoLukuVaiNimi(aTietoPoistettava);
                 pAlku = poistaListastaAlkio(pAlku, iArvo, aTietoPoistettava);
             }
