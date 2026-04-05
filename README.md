@@ -28,9 +28,7 @@
 │   ├── design.md
 │   ├── readme.md
 │   └── refman.pdf
-├── documentation             # Doxygen dokumentaatio
-│   └── latex
-│       └── refman.out
+│   └── Manuaali.pdf
 ├── makefile                  # Käännöskomennot: käännä, suorita, testaa, siivoa jne.
 ├── src                       # C lähdekooditiedostot ja otsikkotiedostot
 │   ├── binaaripuu.c
@@ -105,7 +103,7 @@ make memcheck
 - Yksikkötestejä ja integraatiotestejä on koodattu viikoittain, ja ne on jaettu tiedostoihin sen perusteella, mitä toimintoja ne testaavat.
 - Ohjelmaa on regressiotestattu jokaisella viikolla.
 - Mustalaatikkotestausta (bloack-box) on tehty viikoittain ajamalla ohjelmaa sekä ns. oikeilla syötteillä, että viallisilla syötteillä.
-- Kaikki 34 yksikkötestiä menevät läpi ajettaessa.
+- Kaikki 41 yksikkötestiä menevät läpi ajettaessa.
 
 Viikko 08:
 - Uusia yksikkötestejä 3. 
@@ -150,7 +148,7 @@ Viikko 11:
     - void test_poistaListaLkmPerusteella(void)
     - void test_poistaListaNimenPerusteella(void)
     - void test_lomitusLajitteluTyhjaLista(void)
-    - void test_lomitusLajitteluYhdellaAlkiolla()
+    - void test_lomitusLajitteluYhdellaAlkiolla(void)
     - void test_lomitusLajitteluKahdellaAlkiolla(void)
     - void test_lomitusLajitteluUseallaAlkiolla(void)
     - void test_lomitusLajitteluSamaArvo(void)
@@ -161,14 +159,14 @@ Viikko 11:
     - void test_lisaysLajitteluSamaArvo(void)
 
 Viikko 12:
-- Uusia testejä 9.
-- Yhteensä 39 testiä.
+- Uusia testejä 11.
+- Yhteensä 41 testiä.
 - Testit liittyvät AVL-puun tasapainotuksen rotaatioihin, sekä punamustapuun muistin varaamiseen ja vapauttamiseen, ja rotaatioihin.
 - Uudet testit:
-    - void test_LLtasapainotus();
-    - void test_RRtasapainotus();
-    - void test_LRtasapainotus();
-    - void test_RLtasapainotus();
+    - void test_LLtasapainotus(void)
+    - void test_RRtasapainotus(void)
+    - void test_LRtasapainotus(void)
+    - void test_RLtasapainotus(void)
     - void test_VaraaMuistiaUsealleRBSolmulle(void)
     - void test_VapautaRBMuisti(void)
     - void test_VapautaRBMuistiUseastaSolmusta(void)
@@ -188,7 +186,7 @@ make test
 
 | Versio     | Päivämäärä | Tekijä            | Muutokset             |
 |------------|------------|-------------------|-----------------------|
-| viikko1    | 2026-03-09 | Noora Vepsäläinen | Viikon 08 koko koodi. |
+| viikko1    | 2026-03-09 | Aino Pöyhönen     | Viikon 08 koko koodi. |
 | binaaripuu | 2026-03-16 | Aino Pöyhönen     | Viikon 09 koko koodi. |
 | L10TA      | 2026-03-23 | Aino Pöyhönen     | Viikon 10 koko koodi. | 
 

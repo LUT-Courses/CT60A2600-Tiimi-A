@@ -1,3 +1,4 @@
+// 22.3.2026, Sofia Toropainen, Aino Pöyhönen, haut.h, muokattu tiedostoa myöhemmin.
 #ifndef HAUT_H
 #define HAUT_H
 #include "binaaripuu.h"

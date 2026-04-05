@@ -1,3 +1,4 @@
+// 15.3.2026 Sofia Toropainen, Ainö Pöyhönen, Noora Vepsäläinen, test_binaaripuu.c, binaaripuu.c aliohjelmien testit, tiedostoa muokattu myöhemmin ja testejä lisätty.
 #include "unity.h"
 #include "../src/binaaripuu.h"
 

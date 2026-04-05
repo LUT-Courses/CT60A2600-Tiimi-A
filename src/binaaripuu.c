@@ -1,10 +1,9 @@
+// 15.3.2026, Sofia Toropainen, Aino Pöyhönen, Noora Vepsäläinen, binaaripuu.c, Tasapainoitettu binääripuu AVL, muokattu ja lisätty aliohjelmia myöhemmin.
 #include "binaaripuu.h"
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-// Tasapainoitettu binääripuu AVL:
 
 /**
  * @brief Muistin varaaminen puu structin alkioille

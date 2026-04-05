@@ -1,3 +1,4 @@
+// 22.3.2026, Sofia Toropainen, Aino Pöyhönen, haut.c, haut binääripuusta, muokattu tiedostoa myöhemmin.
 #include "haut.h"
 #include <stdio.h>
 #include <stdlib.h>

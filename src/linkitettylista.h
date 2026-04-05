@@ -1,3 +1,4 @@
+// 8.3.2026, Sofia Toropainen, Aino Pöyhönen, Noora Vepsäläinen, linkitettylista.h, muokattu tiedostoa myöhemmin.
 #ifndef LINKITETTYLISTA_H
 #define LINKITETTYLISTA_H
 #include "yleiset.h"

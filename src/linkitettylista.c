@@ -1,10 +1,9 @@
+// 8.3.2026, Sofia Toropainen, Aino Pöyhönen, Noora Vepsäläinen, linkitettylista.c, linkitettylista, muokattu ja lisätty tiedostoon aliohjelmia myöhemmin.
 #include "linkitettylista.h"
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-// Linkitettylista
 
 /**
  * @brief Lukee tiedoston.

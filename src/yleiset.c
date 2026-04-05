@@ -1,3 +1,4 @@
+// 22.3.2026, Sofia Toropainen, Aino Pöyhönen, Noora Vepsäläinen, yleiset.c, Yleisiä ja usein käytettyjä aliohjelmia, muokattu tiedostoa myöhemmin.
 #include "yleiset.h"
 #include "binaaripuu.h"
 #include "haut.h"
@@ -6,8 +7,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-// Yleisiä ja usein käytettyjä aliohjelmia.
 
 /**
  * @brief Tekee käyttäjän valinnan perusteella listan toiminnot.

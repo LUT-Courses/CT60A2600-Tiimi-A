@@ -1,3 +1,4 @@
+// 15.3.2026, Sofia Toropainen, Aino Pöyhönen, Noora Vepsäläinen, binaaripuu.h, muokattu tiedostoa myöhemmin.
 #ifndef BINAARIPUU_H
 #define BINAARIPUU_H
 #include "yleiset.h"

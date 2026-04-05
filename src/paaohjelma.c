@@ -1,3 +1,4 @@
+// 8.3.2026, Sofia Toropainen, Aino Pöyhönen, Noora Vepsäläinen, paaohjelma.c, sisältää main, muokattu tiedostoa myöhemmin.
 #include "binaaripuu.h"
 #include "linkitettylista.h"
 #include "yleiset.h"

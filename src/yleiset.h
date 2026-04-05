@@ -1,3 +1,4 @@
+// 22.3.2026, Sofia Toropainen, Aino Pöyhönen, Noora Vepsäläinen, yleiset.h, muokattu tiedostoa myöhemmin.
 #ifndef YLEISET_H
 #define YLEISET_H
 
