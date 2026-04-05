@@ -105,7 +105,7 @@ make memcheck
 - Yksikkötestejä ja integraatiotestejä on koodattu viikoittain, ja ne on jaettu tiedostoihin sen perusteella, mitä toimintoja ne testaavat.
 - Ohjelmaa on regressiotestattu jokaisella viikolla.
 - Mustalaatikkotestausta (bloack-box) on tehty viikoittain ajamalla ohjelmaa sekä ns. oikeilla syötteillä, että viallisilla syötteillä.
-- Kaikki 41 yksikkötestiä menevät läpi ajettaessa.
+- Kaikki 34 yksikkötestiä menevät läpi ajettaessa.
 
 Viikko 08:
 - Uusia yksikkötestejä 3. 
@@ -161,8 +161,8 @@ Viikko 11:
     - void test_lisaysLajitteluSamaArvo(void)
 
 Viikko 12:
-- Uusia testejä 11.
-- Yhteensä 41 testiä.
+- Uusia testejä 9.
+- Yhteensä 39 testiä.
 - Testit liittyvät AVL-puun tasapainotuksen rotaatioihin, sekä punamustapuun muistin varaamiseen ja vapauttamiseen, ja rotaatioihin.
 - Uudet testit:
     - void test_LLtasapainotus();
@@ -174,8 +174,6 @@ Viikko 12:
     - void test_VapautaRBMuistiUseastaSolmusta(void)
     - void test_RBlisayksenKorjaus(void)
     - void test_RBLisayksenKorjausSolmujenPaikatVaihtuu(void)
-    - void test_RBKiertoOikealle(void)
-    - void test_RBKiertoVasemmalle(void)
 
 Aja testit komennolla: 
 ```bash
@@ -190,7 +188,7 @@ make test
 
 | Versio     | Päivämäärä | Tekijä            | Muutokset             |
 |------------|------------|-------------------|-----------------------|
-| viikko1    | 2026-03-09 | Aino Pöyhönen     | Viikon 08 koko koodi. |
+| viikko1    | 2026-03-09 | Noora Vepsäläinen | Viikon 08 koko koodi. |
 | binaaripuu | 2026-03-16 | Aino Pöyhönen     | Viikon 09 koko koodi. |
 | L10TA      | 2026-03-23 | Aino Pöyhönen     | Viikon 10 koko koodi. | 
 
