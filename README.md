@@ -10,21 +10,17 @@
 .
 ├── README.md
 ├── bin                       # Käännetyt ohjelmat (buildin tuottamat tiedostot)
-│   ├── app
-│   ├── test
-│   └── tests
+│   └── .empty
 ├── data                      # Syötetiedostot
 │   ├── miehet_2025.txt
 │   ├── naiset_2025.txt
 │   ├── readme.md
 │   ├── sukunimet_2025.txt
-│   ├── testi_miehet.txt
-│   ├── testi_naiset.txt
 │   ├── verkko_iso.txt
 │   ├── verkko_iso_lyhenteilla.txt
 │   └── verkko_pieni.txt
 ├── doc
-│   ├── /html                 # index.html avattava selaimessa
+│   ├── /html                 # doc/html/index.html avattava selaimessa
 │   ├── Doxyfile
 │   ├── refman.pdf
 │   └── Manuaali.pdf
