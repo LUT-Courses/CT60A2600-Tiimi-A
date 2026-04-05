@@ -181,9 +181,9 @@ make test
 
 ---
 
-## 🗂️ Versio historia
+## 🗂️ Versiohistoria
 
-- Projektin joka viikosta on tehty oma tag, jotta yhden viikon toimivakoodi on tallessa.
+- Projektin jokaiselle viikolle on tehty oma git tag, jotta yhden viikon toimiva koodi pysyy tallessa.
 
 | Versio | Päivämäärä | Tekijä        | Muutokset             |
 | ------ | ---------- | ------------- | --------------------- |
