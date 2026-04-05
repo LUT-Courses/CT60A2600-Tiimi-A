@@ -71,9 +71,6 @@ make
 
 # Testit
 make test
-
-# Muistintarkistus
-make memcheck
 ```
 
 ---
