@@ -20,11 +20,15 @@
 │   ├── verkko_iso_lyhenteilla.txt
 │   └── verkko_pieni.txt
 ├── doc
-│   ├── /html                 # doc/html/index.html avattava selaimessa
+│   ├── html/                 # doc/html/index.html avattava selaimessa
 │   ├── Doxyfile
 │   ├── refman.pdf
 │   └── Manuaali.pdf
 ├── makefile                  # Käännöskomennot: käännä, suorita, testaa, siivoa jne.
+├── Unity/src                 # Unity-testikehyksen lähdekoodit
+│   ├── unity.c
+│   ├── unity.h
+│   └── unity_internals.h
 ├── src                       # C lähdekooditiedostot ja otsikkotiedostot
 │   ├── binaaripuu.c
 │   ├── binaaripuu.h
