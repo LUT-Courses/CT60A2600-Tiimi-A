@@ -22,7 +22,8 @@
 ├── doc
 │   ├── html/                 # doc/html/index.html avattava selaimessa
 │   ├── Doxyfile
-│   ├── refman.pdf
+│   ├── refman.pdf            # Lähdekoodidokumentaatio (generoitu Doxygenilla)
+│   ├── Laaturaportti.pdf
 │   └── Manuaali.pdf
 ├── makefile                  # Käännöskomennot: käännä, suorita, testaa, siivoa jne.
 ├── Unity/src                 # Unity-testikehyksen lähdekoodit
@@ -41,8 +42,8 @@
 │   ├── punamustapuu.h
 │   ├── yleiset.c
 │   └── yleiset.h
-└── test
-    ├── test_binaaripuu.c     # Testitiedostot
+└── test                      # Testitiedostot
+    ├── test_binaaripuu.c
     ├── test_haut.c
     ├── test_linkitettylista.c
     ├── test_main.c
