@@ -207,6 +207,7 @@ git push origin v0.1.0
   - Ohjelma joko loppuu, ja tulostaa ensimmäisen valikon, ja kiitos ohjelman käytöstä.
   - Tai jättää osan merkkijonosta puskuriin:
     - Esim. Jos syöttää listaan lisäys kohdassa rivin kohdalle nimen, ohjelma tulkitsee ensimmäisen merkin nimeksi, ja asettaa loput kirjaimet nimeksi.
+- Mikäli tiedoston rivi (nimi;arvo) on pidempi kuin 49 merkkiä, se katkaistaan, koska rivi luetaan puskuriin, jonka pituus on kovakoodattu arvoon LEN = 50 (yleiset.h). Yksi merkki varataan rivinvaihtomerkin korvaavalle null-terminaattorille.
 
 ---
 
